@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0a0d12">
+<title>BUFFETT+ · Kwaliteit × Timing</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📈</text></svg>">
+<style>
+  html, body { margin:0; padding:0; background:#0a0d12; }
+  #root { min-height:100vh; }
+  .bplus-loading { color:#8b949e; font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+    font-size:14px; text-align:center; padding-top:42vh; letter-spacing:1px; }
+</style>
+<script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.23.5/babel.min.js"></script>
+</head>
+<body>
+<div id="root"><div class="bplus-loading">BUFFETT+ laden…</div></div>
+<script type="text/babel" data-presets="react">
+const { useState, useEffect } = React;
+
+// ── CONFIG ────────────────────────────────────────────────────────────────────
+// Relatief pad: dit dashboard wordt door GitHub Pages geserveerd vanaf dezelfde
+// map als de data. Repo-naam of hoofdletters maken dus niets meer uit.
+const SIGNALS_URL = "./signals.json";
+
+// ── FALLBACK fundamentals (statisch, als backup) ──────────────────────────────
+const FALLBACK_FUND = {
+  WM:    { pe:29.2,  roe:29.9, fcfYield:3.0,  debtEquity:2.28, netMargin:11.0, divYield:1.69, revenueGrowth:6.1,   eps:7.72,  mktCap:"$90B",   beta:0.46 },
+  PLTR:  { pe:117.6, roe:32.6, fcfYield:1.0,  debtEquity:0.02, netMargin:43.7, divYield:0,    revenueGrowth:67.7,  eps:0.96,  mktCap:"$271B",  beta:1.52 },
+  CAT:   { pe:47.1,  roe:51.3, fcfYield:1.7,  debtEquity:2.31, netMargin:13.3, divYield:1.1,  revenueGrowth:11.9,  eps:8.12,  mktCap:"$176B",  beta:1.60 },
+  ASML:  { pe:54.5,  roe:52.2, fcfYield:1.7,  debtEquity:0.13, netMargin:29.7, divYield:0.7,  revenueGrowth:18.0,  eps:18.10, mktCap:"$379B",  beta:1.37 },
+  ASMI:  { pe:44.9,  roe:21.6, fcfYield:2.9,  debtEquity:0.01, netMargin:23.9, divYield:0.3,  revenueGrowth:12.0,  eps:23.75, mktCap:"$52B",   beta:1.50 },
+  MU:    { pe:25.3,  roe:66.6, fcfYield:2.1,  debtEquity:0.06, netMargin:55.9, divYield:0.05, revenueGrowth:125.0, eps:44.80, mktCap:"$1280B", beta:2.17 },
+  GOOGL: { pe:19.8,  roe:31.5, fcfYield:4.2,  debtEquity:0.07, netMargin:28.6, divYield:0.5,  revenueGrowth:14.0,  eps:9.15,  mktCap:"$2200B", beta:1.05 },
+  AMZN:  { pe:27.2,  roe:24.3, fcfYield:2.8,  debtEquity:0.53, netMargin:12.2, divYield:0,    revenueGrowth:11.0,  eps:8.36,  mktCap:"$2440B", beta:1.44 },
+  ORCL:  { pe:31.6,  roe:53.4, fcfYield:4.2,  debtEquity:3.63, netMargin:25.2, divYield:1.3,  revenueGrowth:15.0,  eps:5.83,  mktCap:"$438B",  beta:1.65 },
+  KO:    { pe:25.5,  roe:43.4, fcfYield:3.3,  debtEquity:1.25, netMargin:27.8, divYield:3.0,  revenueGrowth:3.5,   eps:2.91,  mktCap:"$320B",  beta:0.36 },
+  LHX:   { pe:24.5, roe:11.2, fcfYield:4.8, debtEquity:0.70, netMargin:9.8,   divYield:1.9, revenueGrowth:9.5,   eps:13.10, mktCap:"$47B",  beta:0.90 },
+  MOGA:  { pe:22.0, roe:13.5, fcfYield:3.5, debtEquity:0.85, netMargin:7.5,   divYield:1.1, revenueGrowth:11.0,  eps:8.60,  mktCap:"$6B",   beta:1.15 },
+  TDG:   { pe:38.0, roe:45.0, fcfYield:2.7, debtEquity:5.20, netMargin:18.5,  divYield:0,   revenueGrowth:12.5,  eps:33.00, mktCap:"$78B",  beta:1.20 },
+  KTOS:  { pe:95.0, roe:3.5,  fcfYield:0.4, debtEquity:0.25, netMargin:3.2,   divYield:0,   revenueGrowth:22.0,  eps:0.55,  mktCap:"$9B",   beta:1.40 },
+  RKLB:  { pe:null, roe:-18.0,fcfYield:-3.0,debtEquity:0.60, netMargin:-28.0, divYield:0,   revenueGrowth:58.0,  eps:-0.28, mktCap:"$14B",  beta:2.10 },
+  OPEN:  { pe:null, roe:-22.0,fcfYield:-5.0,debtEquity:3.10, netMargin:-6.5,  divYield:0,   revenueGrowth:45.0,  eps:-0.35, mktCap:"$3B",   beta:2.60 },
+  SDGR:  { pe:null, roe:-15.0,fcfYield:-4.0,debtEquity:0.05, netMargin:-32.0, divYield:0,   revenueGrowth:32.0,  eps:-1.60, mktCap:"$2B",   beta:1.70 },
+  BNGO:  { pe:null, roe:-85.0,fcfYield:-40.0,debtEquity:0.40,netMargin:-180.0,divYield:0,   revenueGrowth:15.0,  eps:-2.50, mktCap:"$0.05B",beta:3.20 },
+};
+
+const STOCK_NAMES = {
+  WM:"Waste Management", PLTR:"Palantir", CAT:"Caterpillar",
+  ASML:"ASML Holding", ASMI:"ASM International", MU:"Micron Technology",
+  GOOGL:"Alphabet (Google)", AMZN:"Amazon", ORCL:"Oracle", KO:"Coca-Cola",
+  LHX:"L3Harris Technologies", MOGA:"Moog Inc. (A)", TDG:"TransDigm Group",
+  KTOS:"Kratos Defense", RKLB:"Rocket Lab", OPEN:"Opendoor",
+  SDGR:"Schrödinger", BNGO:"Bionano Genomics",
+};
+
+const TV_LINKS = {
+  WM:"NYSE:WM", PLTR:"NASDAQ:PLTR", CAT:"NYSE:CAT", ASML:"NASDAQ:ASML",
+  ASMI:"EURONEXT:ASM", MU:"NASDAQ:MU", GOOGL:"NASDAQ:GOOGL",
+  AMZN:"NASDAQ:AMZN", ORCL:"NYSE:ORCL", KO:"NYSE:KO",
+  LHX:"NYSE:LHX", MOGA:"NYSE:MOG.A", TDG:"NYSE:TDG", KTOS:"NASDAQ:KTOS",
+  RKLB:"NASDAQ:RKLB", OPEN:"NASDAQ:OPEN", SDGR:"NASDAQ:SDGR", BNGO:"NASDAQ:BNGO",
+};
+
+// ── DESIGN TOKENS ─────────────────────────────────────────────────────────────
+const C = {
+  bg:"#0a0d12", panel:"#111620", panel2:"#161c28", border:"#1e2533",
+  accent:"#e8c84a", green:"#22c55e", red:"#ef4444", orange:"#f59e0b",
+  blue:"#3b82f6", purple:"#a855f7", teal:"#14b8a6",
+  text:"#e2e8f0", textDim:"#8892a4", muted:"#4a5568",
+};
+
+// ── BUFFETT SCORE ─────────────────────────────────────────────────────────────
+function bScore(f) {
+  if (!f) return 0;
+  let s = 0;
+  if (f.pe > 0 && f.pe < 15) s+=22; else if (f.pe<20) s+=14; else if (f.pe<28) s+=7;
+  if (f.roe > 20) s+=20; else if (f.roe>12) s+=10;
+  if (f.fcfYield > 5) s+=15; else if (f.fcfYield>2.5) s+=8;
+  if (f.debtEquity>=0&&f.debtEquity<0.5) s+=15;
+  else if (f.debtEquity<1) s+=8;
+  else if (f.debtEquity>2.5) s-=8;
+  if (f.netMargin > 20) s+=15; else if (f.netMargin>10) s+=8;
+  if (f.revenueGrowth > 10) s+=8; else if (f.revenueGrowth>4) s+=4;
+  if (f.divYield > 0) s+=3;
+  return Math.min(100, Math.max(0, s));
+}
+
+// ── UI COMPONENTS ─────────────────────────────────────────────────────────────
+function OverallBadge({ signal }) {
+  const m = {
+    "STERK KOOP":   {bg:"#14532d",fg:"#4ade80",bo:"#16a34a"},
+    "KOOP":         {bg:"#052e16",fg:"#86efac",bo:"#166534"},
+    "LICHT KOOP":   {bg:"#052e16",fg:"#6ee7b7",bo:"#065f46"},
+    "NEUTRAAL":     {bg:"#1e293b",fg:"#94a3b8",bo:"#334155"},
+    "LICHT VERKOOP":{bg:"#3b0a0a",fg:"#fca5a5",bo:"#7f1d1d"},
+    "VERKOOP":      {bg:"#450a0a",fg:"#f87171",bo:"#991b1b"},
+    "STERK VERKOOP":{bg:"#450a0a",fg:"#ef4444",bo:"#dc2626"},
+  };
+  const s = m[signal] || m["NEUTRAAL"];
+  return <span style={{background:s.bg,color:s.fg,border:`1px solid ${s.bo}`,borderRadius:4,padding:"3px 9px",fontSize:11,fontWeight:700,whiteSpace:"nowrap"}}>{signal}</span>;
+}
+
+function Ring({ score, size=48 }) {
+  const r=(size/2)-5, circ=2*Math.PI*r, fill=circ*(1-score/100);
+  const col=score>=70?C.green:score>=50?C.accent:C.red;
+  return (
+    <svg width={size} height={size} style={{transform:"rotate(-90deg)",flexShrink:0}}>
+      <circle cx={size/2} cy={size/2} r={r} fill="none" stroke={C.border} strokeWidth={5}/>
+      <circle cx={size/2} cy={size/2} r={r} fill="none" stroke={col} strokeWidth={5}
+        strokeDasharray={circ} strokeDashoffset={fill} strokeLinecap="round"/>
+      <text x={size/2} y={size/2} textAnchor="middle" dominantBaseline="central"
+        style={{transform:`rotate(90deg)`,transformOrigin:`${size/2}px ${size/2}px`,
+          fill:col,fontSize:size<44?10:13,fontWeight:700}}>{score}</text>
+    </svg>
+  );
+}
+
+function SignalCard({ sig }) {
+  const colors = {
+    BUY:   {bg:"#052e16",border:"#166534",text:C.green,  tag:"KOOP"},
+    SELL:  {bg:"#450a0a",border:"#991b1b",text:C.red,    tag:"VERKOOP"},
+    WATCH: {bg:"#1c1a06",border:"#854d0e",text:C.orange, tag:"LET OP"},
+    INFO:  {bg:"#0f172a",border:"#1e3a5f",text:C.blue,   tag:"INFO"},
+  };
+  const c = colors[sig.type] || colors.WATCH;
+  return (
+    <div style={{background:c.bg,border:`1px solid ${c.border}`,borderRadius:6,padding:"8px 10px",marginBottom:5}}>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",gap:6}}>
+        <div style={{flex:1}}>
+          <div style={{display:"flex",alignItems:"center",gap:5,marginBottom:2,flexWrap:"wrap"}}>
+            <span style={{fontSize:13}}>{sig.icon}</span>
+            <span style={{color:c.text,fontSize:12,fontWeight:700}}>{sig.title}</span>
+            {sig.tf&&<span style={{background:C.border,color:C.textDim,borderRadius:3,padding:"1px 5px",fontSize:9}}>{sig.tf}</span>}
+            {sig.cat&&<span style={{background:C.border,color:C.textDim,borderRadius:3,padding:"1px 5px",fontSize:9}}>{sig.cat}</span>}
+          </div>
+          {sig.detail&&<div style={{color:C.textDim,fontSize:11,lineHeight:1.4}}>{sig.detail}</div>}
+        </div>
+        <span style={{color:c.text,fontSize:9,fontWeight:700,background:c.border,borderRadius:3,padding:"2px 5px",whiteSpace:"nowrap"}}>{c.tag}</span>
+      </div>
+    </div>
+  );
+}
+
+function ValuationBadge({ color, compact }) {
+  const map = {
+    green:   { bg:"#052e16", fg:"#4ade80", bo:"#166534", label:"Gunstig" },
+    neutral: { bg:"#1e293b", fg:"#94a3b8", bo:"#334155", label:"Neutraal" },
+    orange:  { bg:"#1c1206", fg:"#f59e0b", bo:"#854d0e", label:"Aan dure kant" },
+    red:     { bg:"#450a0a", fg:"#ef4444", bo:"#991b1b", label:"Duur" },
+  };
+  const s = map[color] || map.neutral;
+  return (
+    <span style={{background:s.bg,color:s.fg,border:`1px solid ${s.bo}`,borderRadius:4,
+      padding:compact?"1px 6px":"2px 8px",fontSize:compact?9:10,fontWeight:700,whiteSpace:"nowrap"}}>
+      {compact ? `💰 ${s.label}` : s.label}
+    </span>
+  );
+}
+
+function ValuationPanel({ valuation, fund }) {
+  if (!valuation) {
+    return <div style={{color:C.textDim,textAlign:"center",padding:20}}>
+      Nog geen waarderingsdata beschikbaar.
+    </div>;
+  }
+  const v = valuation;
+  const colorHex = {green:C.green, neutral:C.textDim, orange:C.orange, red:C.red}[v.verdictColor] || C.text;
+
+  // PEG meter (0 to 4 scale)
+  const pegVal = v.peg;
+  const pegPos = pegVal != null ? Math.min(pegVal / 4 * 100, 100) : null;
+
+  return (
+    <div>
+      {/* Verdict hero */}
+      <div style={{background:C.bg,borderRadius:8,padding:14,marginBottom:12,
+        borderLeft:`3px solid ${colorHex}`}}>
+        <div style={{color:C.textDim,fontSize:11,marginBottom:4}}>Waarderingsoordeel</div>
+        <div style={{color:colorHex,fontSize:15,fontWeight:700,lineHeight:1.3}}>{v.verdict}</div>
+        {v.notes && v.notes.length>0 && (
+          <div style={{color:C.muted,fontSize:10,marginTop:6}}>{v.notes.join(" · ")}</div>
+        )}
+      </div>
+
+      {/* PEG meter */}
+      {pegVal != null && (
+        <div style={{background:C.bg,borderRadius:8,padding:12,marginBottom:10}}>
+          <div style={{display:"flex",justifyContent:"space-between",marginBottom:6}}>
+            <span style={{color:C.textDim,fontSize:11}}>PEG-ratio (P/E ÷ groei)</span>
+            <span style={{color:colorHex,fontWeight:700,fontSize:13}}>{pegVal}</span>
+          </div>
+          <div style={{position:"relative",height:8,background:"#0a0d12",borderRadius:4,overflow:"hidden"}}>
+            {/* zones: <1 green, 1-2.5 neutral, >2.5 red */}
+            <div style={{position:"absolute",left:0,width:"25%",height:"100%",background:"#14532d",opacity:0.5}}/>
+            <div style={{position:"absolute",left:"25%",width:"37.5%",height:"100%",background:"#334155",opacity:0.4}}/>
+            <div style={{position:"absolute",left:"62.5%",width:"37.5%",height:"100%",background:"#450a0a",opacity:0.5}}/>
+            <div style={{position:"absolute",left:`${pegPos}%`,top:-2,width:2,height:12,background:C.accent}}/>
+          </div>
+          <div style={{display:"flex",justifyContent:"space-between",marginTop:3,fontSize:8,color:C.muted}}>
+            <span>0 goedkoop</span><span>1</span><span>2.5</span><span>4+ duur</span>
+          </div>
+        </div>
+      )}
+
+      {/* P/E percentiel (alleen met echte FMP-data) */}
+      {v.pePercentile != null ? (
+        <div style={{background:C.bg,borderRadius:8,padding:12,marginBottom:10}}>
+          <div style={{display:"flex",justifyContent:"space-between",marginBottom:6}}>
+            <span style={{color:C.textDim,fontSize:11}}>P/E vs eigen historie (5j)</span>
+            <span style={{color:v.pePercentile<30?C.green:v.pePercentile>70?C.red:C.text,fontWeight:700,fontSize:13}}>
+              {v.pePercentile}ᵉ percentiel
+            </span>
+          </div>
+          <div style={{position:"relative",height:8,background:"#0a0d12",borderRadius:4}}>
+            <div style={{position:"absolute",left:`${v.pePercentile}%`,top:-2,width:2,height:12,background:C.accent}}/>
+          </div>
+          <div style={{display:"flex",justifyContent:"space-between",marginTop:6,fontSize:10,color:C.textDim}}>
+            <span>Laag: <b style={{color:C.green}}>{v.peMin}x</b></span>
+            <span>Mediaan: <b>{v.peMedian}x</b></span>
+            <span>Hoog: <b style={{color:C.red}}>{v.peMax}x</b></span>
+          </div>
+          <div style={{fontSize:9,color:C.muted,marginTop:6}}>Bron: echte historische P/E (FMP)</div>
+        </div>
+      ) : (
+        <div style={{background:C.bg,borderRadius:8,padding:10,marginBottom:10,fontSize:10,color:C.muted}}>
+          P/E-percentiel vereist FMP-historie. Nu wordt PEG gebruikt als groei-gecorrigeerde
+          waarderingsmaatstaf. (Stel <code style={{color:C.accent}}>FMP_API_KEY</code> in als GitHub Secret voor echte historische P/E.)
+        </div>
+      )}
+
+      {/* Prijspositie in range */}
+      {v.priceRangePosition != null && (
+        <div style={{background:C.bg,borderRadius:8,padding:12,marginBottom:10}}>
+          <div style={{display:"flex",justifyContent:"space-between",marginBottom:6}}>
+            <span style={{color:C.textDim,fontSize:11}}>Prijspositie in 5-jaars range</span>
+            <span style={{color:C.text,fontWeight:700,fontSize:13}}>{v.priceRangePosition}%</span>
+          </div>
+          <div style={{position:"relative",height:8,background:"linear-gradient(90deg,#14532d,#334155,#450a0a)",borderRadius:4,opacity:0.6}}>
+            <div style={{position:"absolute",left:`${v.priceRangePosition}%`,top:-2,width:2,height:12,background:C.accent}}/>
+          </div>
+          <div style={{fontSize:9,color:C.muted,marginTop:6}}>
+            Let op: dit is prijspositie, geen waardering — een aandeel hoog in zijn range kan nog goedkoop zijn als de winst sneller groeide.
+          </div>
+        </div>
+      )}
+
+      {/* Huidige P/E */}
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:6}}>
+        <div style={{background:C.bg,borderRadius:6,padding:"8px 10px"}}>
+          <div style={{color:C.textDim,fontSize:10}}>Huidige P/E</div>
+          <div style={{color:C.text,fontSize:14,fontWeight:700}}>{v.currentPE!=null?`${v.currentPE}x`:"—"}</div>
+        </div>
+        <div style={{background:C.bg,borderRadius:6,padding:"8px 10px"}}>
+          <div style={{color:C.textDim,fontSize:10}}>Omzetgroei (YoY)</div>
+          <div style={{color:C.text,fontSize:14,fontWeight:700}}>{fund?.revenueGrowth!=null?`${fund.revenueGrowth>=0?"+":""}${fund.revenueGrowth}%`:"—"}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ScoreBar({ label, score, max=100, hint }) {
+  const pct = Math.max(0, Math.min(100, (score/max)*100));
+  const col = score>=70?C.green:score>=50?C.accent:score>=35?C.orange:C.red;
+  return (
+    <div style={{marginBottom:8}}>
+      <div style={{display:"flex",justifyContent:"space-between",marginBottom:3}}>
+        <span style={{color:C.textDim,fontSize:11}}>{label}{hint&&<span style={{color:C.muted,fontSize:9}}> · {hint}</span>}</span>
+        <span style={{color:col,fontSize:12,fontWeight:700}}>{score!=null?score:"—"}</span>
+      </div>
+      <div style={{height:6,background:"#0a0d12",borderRadius:3,overflow:"hidden"}}>
+        <div style={{width:`${pct}%`,height:"100%",background:col,borderRadius:3,transition:"width 0.3s"}}/>
+      </div>
+    </div>
+  );
+}
+
+function TimingBreakdown({ timing }) {
+  if (!timing) return <div style={{color:C.textDim,textAlign:"center",padding:16}}>Geen timing-data.</div>;
+  const t = timing;
+  const tfColor = v => v==null?C.muted:v>=60?C.green:v>=45?C.accent:v>=35?C.orange:C.red;
+  return (
+    <div>
+      <div style={{background:C.bg,borderRadius:8,padding:14,marginBottom:12,
+        borderLeft:`3px solid ${{green:C.green,neutral:C.textDim,orange:C.orange,red:C.red}[t.color]||C.text}`}}>
+        <div style={{color:C.textDim,fontSize:11,marginBottom:2}}>Timing-oordeel</div>
+        <div style={{color:{green:C.green,neutral:C.textDim,orange:C.orange,red:C.red}[t.color]||C.text,fontSize:16,fontWeight:800}}>
+          {t.score}/100 · {t.label}
+        </div>
+      </div>
+
+      <div style={{fontSize:11,color:C.textDim,marginBottom:6,fontWeight:700}}>SAMENSTELLING</div>
+      <ScoreBar label="Trend-score (uptrend?)" score={t.trendScore} hint="hogere TF's wegen zwaarder"/>
+      <ScoreBar label="Entry-score (goede instap nu?)" score={t.entryScore} hint="vooral daily"/>
+
+      <div style={{fontSize:11,color:C.textDim,margin:"14px 0 6px",fontWeight:700}}>TREND PER TIMEFRAME</div>
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:6}}>
+        {[["Monthly",t.trendMonthly,"45%"],["Weekly",t.trendWeekly,"35%"],["Daily",t.trendDaily,"20%"]].map(([lbl,v,w])=>(
+          <div key={lbl} style={{background:C.bg,borderRadius:6,padding:"8px 6px",textAlign:"center"}}>
+            <div style={{color:C.muted,fontSize:9}}>{lbl} <span style={{color:C.muted}}>({w})</span></div>
+            <div style={{color:tfColor(v),fontSize:16,fontWeight:800}}>{v!=null?v:"—"}</div>
+          </div>
+        ))}
+      </div>
+      {!t.hasMonthly&&(
+        <div style={{marginTop:8,fontSize:9,color:C.muted}}>Monthly nog niet beschikbaar (te weinig historie) — trend gebaseerd op weekly + daily.</div>
+      )}
+      <div style={{marginTop:10,fontSize:9,color:C.muted,lineHeight:1.5}}>
+        Filosofie: koop kwaliteit in een uptrend die net is teruggevallen. Hoge trend + hoge entry = ideale setup.
+        Hoge trend maar lage entry = uptrend maar overbought (wachten op pullback).
+      </div>
+    </div>
+  );
+}
+
+function TrackRecord({ track }) {
+  if (!track) {
+    return (
+      <div style={{textAlign:"center",color:C.textDim,padding:30}}>
+        Nog geen trackrecord. Dit vult zich vanaf de eerste GitHub Actions run met de nieuwe versie;
+        uitkomsten verschijnen naarmate de horizons (1/4/13/26 weken) verstrijken.
+      </div>
+    );
+  }
+  const acc = track.accuracy || {};
+  const bench = track.benchmarkName || "benchmark";
+  const minObs = track.minObservations || 20;
+  const records = track.records || {};
+  const recList = Object.values(records);
+  const [tab, setTab] = useState("monthly_pick");
+  const HORIZONS = track.horizonsWeeks || [1,4,13,26];
+
+  const typeLabel = {monthly_pick:"Maandaanbeveling", strong_signal:"Sterke signalen"};
+
+  const typeRecs = recList.filter(r=>r.type===tab)
+    .sort((a,b)=> (b.date||"").localeCompare(a.date||""));
+
+  return (
+    <div>
+      {/* Disclaimer */}
+      <div style={{background:"#1c1206",border:"1px solid #854d0e",borderRadius:8,padding:"10px 12px",marginBottom:14,fontSize:11,color:C.orange,lineHeight:1.5}}>
+        ⚠️ Observatie-instrument, geen bewijs. Accuraatheid wordt pas getoond vanaf {minObs} afgeronde
+        observaties per horizon — daaronder zie je enkel de telling en gemiddelde return. Alles is
+        gemeten <b>relatief tot {bench}</b> (beter dan de index, niet "ging de markt omhoog"). Het model
+        past nooit zelf gewichten aan; jij trekt de conclusies.
+      </div>
+
+      {/* Type toggle */}
+      <div style={{display:"flex",gap:6,marginBottom:14}}>
+        {["monthly_pick","strong_signal"].map(t=>(
+          <button key={t} onClick={()=>setTab(t)} style={{
+            background:tab===t?C.accent:"none",color:tab===t?C.bg:C.textDim,
+            border:`1px solid ${tab===t?C.accent:C.border}`,borderRadius:5,
+            padding:"5px 12px",fontSize:11,cursor:"pointer",fontWeight:tab===t?700:400}}>
+            {typeLabel[t]}
+          </button>
+        ))}
+      </div>
+
+      {/* Accuracy grid per horizon */}
+      <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(130px,1fr))",gap:8,marginBottom:16}}>
+        {HORIZONS.map(wk=>{
+          const e = (acc[tab]||{})[`${wk}w`] || {n:0,status:"geen data"};
+          const relColor = e.avgRelativeReturn==null?C.textDim:e.avgRelativeReturn>0?C.green:C.red;
+          return (
+            <div key={wk} style={{background:C.panel,border:`1px solid ${C.border}`,borderRadius:8,padding:"10px 12px"}}>
+              <div style={{color:C.textDim,fontSize:10,marginBottom:4}}>Na {wk} {wk===1?"week":"weken"}</div>
+              {e.accuracyShown?(
+                <>
+                  <div style={{color:e.accuracy>=50?C.green:C.red,fontSize:22,fontWeight:800}}>{e.accuracy}%</div>
+                  <div style={{color:C.muted,fontSize:9}}>beter dan index · n={e.n}</div>
+                </>
+              ):(
+                <>
+                  <div style={{color:C.textDim,fontSize:14,fontWeight:700}}>{e.n>0?`n=${e.n}`:"—"}</div>
+                  <div style={{color:C.muted,fontSize:9}}>{e.status}</div>
+                </>
+              )}
+              {e.avgRelativeReturn!=null&&(
+                <div style={{marginTop:6,paddingTop:6,borderTop:`1px solid ${C.border}`}}>
+                  <div style={{color:relColor,fontSize:13,fontWeight:700}}>{e.avgRelativeReturn>0?"+":""}{e.avgRelativeReturn}%</div>
+                  <div style={{color:C.muted,fontSize:9}}>gem. vs {bench}</div>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Individual records */}
+      <div style={{color:C.textDim,fontSize:11,fontWeight:700,marginBottom:8}}>
+        VASTGELEGDE AANBEVELINGEN · {typeRecs.length}
+      </div>
+      {typeRecs.length===0?(
+        <div style={{color:C.textDim,fontSize:12,padding:16,textAlign:"center"}}>Nog geen aanbevelingen van dit type vastgelegd.</div>
+      ):(
+        <div style={{display:"grid",gap:6}}>
+          {typeRecs.slice(0,30).map((r,i)=>{
+            const o4 = r.outcomes?.["4w"];
+            const o13 = r.outcomes?.["13w"];
+            return (
+              <div key={i} style={{background:C.panel,border:`1px solid ${C.border}`,borderRadius:8,padding:"8px 12px"}}>
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:6}}>
+                  <div style={{display:"flex",alignItems:"center",gap:8}}>
+                    <span style={{color:C.accent,fontWeight:700,fontSize:13}}>{r.ticker}</span>
+                    <span style={{background:r.direction==="BUY"?"#052e16":"#450a0a",
+                      color:r.direction==="BUY"?C.green:C.red,border:`1px solid ${r.direction==="BUY"?"#166534":"#991b1b"}`,
+                      borderRadius:3,padding:"1px 6px",fontSize:9,fontWeight:700}}>
+                      {r.direction==="BUY"?"KOOP":"VERKOOP"}
+                    </span>
+                    <span style={{color:C.muted,fontSize:10}}>{r.date}</span>
+                  </div>
+                  <div style={{display:"flex",gap:10,fontSize:11}}>
+                    {["1w","4w","13w","26w"].map(h=>{
+                      const o = r.outcomes?.[h];
+                      if(!o) return <span key={h} style={{color:C.muted,fontSize:10}}>{h}:—</span>;
+                      const c = o.success?C.green:C.red;
+                      return <span key={h} style={{color:c,fontSize:10}} title={`return ${o.return}%, vs index ${o.relativeReturn}%`}>
+                        {h}:{o.relativeReturn!=null?(o.relativeReturn>0?"+":"")+o.relativeReturn+"%":(o.return>0?"+":"")+o.return+"%"}
+                      </span>;
+                    })}
+                  </div>
+                </div>
+                {r.snapshot&&(
+                  <div style={{color:C.muted,fontSize:9,marginTop:4}}>
+                    Bij vastlegging: {r.snapshot.composite!=null?`composiet ${r.snapshot.composite}`:""}
+                    {r.snapshot.timing!=null?` · timing ${r.snapshot.timing}`:""}
+                    {r.entryPrice?` · entry $${r.entryPrice}`:""}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function BaggerTrack({ baggers, onSelect }) {
+  if (!baggers) {
+    return <div style={{textAlign:"center",color:C.textDim,padding:30}}>
+      Nog geen bagger-data. Verschijnt na de eerste run met de bagger-tickers.
+    </div>;
+  }
+  const list = baggers.candidates || [];
+  const riskColor = {"gemiddeld":C.textDim,"hoog":C.orange,"zeer hoog":C.red};
+  return (
+    <div>
+      {/* Intro / warning */}
+      <div style={{background:"#1c1206",border:"1px solid #854d0e",borderRadius:8,padding:"10px 12px",marginBottom:14,fontSize:11,color:C.orange,lineHeight:1.5}}>
+        🚀 Apart spoor voor asymmetrisch potentieel. <b>Waardering telt hier niet</b> — deze aandelen
+        zien er per definitie "duur" uit. In ruil daarvoor kleine positiegroottes, want het
+        faillissementsrisico is reëel. 100x-baggers vooraf spotten lukt zelfs topfondsen zelden;
+        dit verhoogt de kans, het is geen garantie. Geen financieel advies.
+      </div>
+
+      <div style={{display:"grid",gap:8}}>
+        {list.map((b,i)=>{
+          const col = {green:C.green,orange:C.orange,red:C.red}[b.color]||C.text;
+          return (
+            <div key={b.ticker} onClick={()=>onSelect(b.ticker)}
+              style={{background:C.panel,border:`1px solid ${i===0&&b.color==="green"?C.green:C.border}`,
+                borderRadius:10,padding:"12px 14px",cursor:"pointer"}}>
+              <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:8}}>
+                <div style={{flex:1,minWidth:0}}>
+                  <div style={{display:"flex",alignItems:"center",gap:8,flexWrap:"wrap"}}>
+                    <span style={{color:C.muted,fontSize:14,fontWeight:800}}>{i+1}</span>
+                    <span style={{color:C.accent,fontWeight:700,fontSize:15}}>{b.ticker}</span>
+                    <span style={{color:C.textDim,fontSize:11}}>{STOCK_NAMES[b.ticker]}</span>
+                    {b.passesQualityGate&&(
+                      <span style={{background:"#052e16",color:C.green,border:"1px solid #166534",borderRadius:3,padding:"1px 6px",fontSize:9,fontWeight:700}}>
+                        ✓ ook kwaliteitspoort
+                      </span>
+                    )}
+                  </div>
+                  <div style={{color:col,fontSize:12,fontWeight:700,marginTop:4}}>{b.label}</div>
+                </div>
+                <div style={{textAlign:"center",background:C.bg,borderRadius:8,padding:"6px 12px"}}>
+                  <div style={{color:col,fontSize:24,fontWeight:900,lineHeight:1}}>{b.score}</div>
+                  <div style={{color:C.muted,fontSize:9}}>bagger</div>
+                </div>
+              </div>
+
+              {/* Key metrics */}
+              <div style={{display:"flex",gap:12,marginTop:8,flexWrap:"wrap",fontSize:10}}>
+                {b.revenueGrowth!=null&&<span style={{color:C.textDim}}>Groei <b style={{color:b.revenueGrowth>=40?C.green:C.text}}>+{b.revenueGrowth}%</b></span>}
+                {b.grossMarginTrend!=null&&<span style={{color:C.textDim}}>Marge-trend <b style={{color:b.grossMarginTrend>0?C.green:C.red}}>{b.grossMarginTrend>0?"+":""}{b.grossMarginTrend}pp</b></span>}
+                {b.relStrength!=null&&<span style={{color:C.textDim}}>vs markt <b style={{color:b.relStrength>0?C.green:C.red}}>{b.relStrength>0?"+":""}{b.relStrength}%</b></span>}
+                <span style={{color:C.textDim}}>Risico <b style={{color:riskColor[b.risk]||C.text}}>{b.risk}</b></span>
+              </div>
+
+              {/* Position sizing */}
+              <div style={{marginTop:8,padding:"5px 8px",background:C.bg,borderRadius:5,fontSize:10}}>
+                <span style={{color:C.textDim}}>Positiegrootte-advies: </span>
+                <span style={{color:col,fontWeight:700}}>{b.positionSizing}</span>
+              </div>
+
+              {/* Reasons + flags */}
+              {b.reasons&&b.reasons.length>0&&(
+                <div style={{marginTop:6,display:"flex",flexWrap:"wrap",gap:"3px 8px"}}>
+                  {b.reasons.map((r,j)=><span key={j} style={{color:C.green,fontSize:10}}>✓ {r}</span>)}
+                </div>
+              )}
+              {b.flags&&b.flags.length>0&&(
+                <div style={{marginTop:4,display:"flex",flexWrap:"wrap",gap:"3px 8px"}}>
+                  {b.flags.map((f,j)=><span key={j} style={{color:C.red,fontSize:10}}>⚠ {f}</span>)}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      <div style={{marginTop:14,padding:"10px 12px",background:C.panel,borderRadius:8,fontSize:10,color:C.muted,lineHeight:1.6}}>
+        <b style={{color:C.textDim}}>Methode:</b> {baggers.methodNote} {baggers.note}
+      </div>
+    </div>
+  );
+}
+
+function WeeklyChangelog({ weekly, onSelect }) {
+  if (!weekly) return null;
+  const changes = weekly.changes || [];
+  const dirColor = {up:C.green, down:C.red, neutral:C.textDim};
+  const dirIcon  = {up:"🟢", down:"🔴", neutral:"⚪"};
+  return (
+    <div style={{background:C.panel,border:`1px solid ${C.border}`,borderRadius:12,padding:16,marginBottom:16}}>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10,flexWrap:"wrap",gap:6}}>
+        <div style={{color:C.text,fontSize:14,fontWeight:800}}>📅 Wekelijkse update</div>
+        <div style={{color:C.textDim,fontSize:10}}>{weekly.periodLabel||"sinds ~1 week geleden"}</div>
+      </div>
+      {changes.length===0?(
+        <div style={{color:C.textDim,fontSize:12,padding:"8px 0"}}>
+          Stabiele week — geen noemenswaardige veranderingen in scores, poort of signalen.
+        </div>
+      ):(
+        <div style={{display:"grid",gap:8}}>
+          {changes.map(c=>(
+            <div key={c.ticker} onClick={()=>onSelect(c.ticker)}
+              style={{background:C.bg,borderRadius:8,padding:"8px 10px",cursor:"pointer"}}>
+              <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:4}}>
+                <span style={{color:C.accent,fontWeight:700,fontSize:13}}>{c.ticker}</span>
+                <span style={{color:C.textDim,fontSize:10}}>{STOCK_NAMES[c.ticker]}</span>
+                <span style={{color:C.muted,fontSize:9,marginLeft:"auto"}}>{c.daysAgo}d geleden</span>
+              </div>
+              <div style={{display:"flex",flexWrap:"wrap",gap:"4px 12px"}}>
+                {c.changes.map((ch,i)=>(
+                  <span key={i} style={{fontSize:11,color:dirColor[ch.dir]||C.textDim}}>
+                    {dirIcon[ch.dir]||"⚪"} {ch.text}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function MRow({ label, value, good, warn, fmt }) {
+  let col = C.text;
+  const v = parseFloat(value);
+  if (!isNaN(v) && good !== undefined && v <= good) col = C.green;
+  if (!isNaN(v) && warn !== undefined && v >= warn) col = C.red;
+  const d = value === null || value === undefined ? "—" : fmt ? fmt(value) : String(value);
+  return (
+    <div style={{display:"flex",justifyContent:"space-between",padding:"5px 0",borderBottom:`1px solid ${C.border}`}}>
+      <span style={{color:C.textDim,fontSize:12}}>{label}</span>
+      <span style={{color:col,fontSize:12,fontWeight:600}}>{d}</span>
+    </div>
+  );
+}
+
+function FibTable({ fib, currentPrice }) {
+  if (!fib) return null;
+  const { retracements, extensions, swingLow, swingHigh } = fib;
+  const all = [
+    ...Object.entries(retracements).map(([k,v])=>({label:k,price:v,type:"retrace"})),
+    ...Object.entries(extensions).map(([k,v])=>({label:k,price:v,type:"ext"})),
+  ].sort((a,b)=>b.price-a.price);
+
+  return (
+    <div style={{background:C.bg,borderRadius:8,padding:12}}>
+      <div style={{display:"flex",justifyContent:"space-between",marginBottom:8,fontSize:11}}>
+        <span style={{color:C.textDim}}>Swing High: <b style={{color:C.red}}>${swingHigh}</b></span>
+        <span style={{color:C.textDim}}>Swing Low: <b style={{color:C.green}}>${swingLow}</b></span>
+      </div>
+      <div style={{fontSize:9,color:C.muted,marginBottom:8}}>52-week swing · Retracements = steun (blauw) · Extensies = TP (oranje)</div>
+      {all.map((f,i)=>{
+        const dist = Math.abs((currentPrice-f.price)/currentPrice*100);
+        const isNear = dist < 3;
+        const isCurrent = dist < 1.5;
+        return (
+          <div key={i} style={{
+            display:"flex",justifyContent:"space-between",alignItems:"center",
+            padding:"4px 7px",borderRadius:4,marginBottom:3,
+            background:isCurrent?(f.type==="retrace"?"#052e16":"#450a0a"):isNear?"#1a1f2e":"transparent",
+            border:`1px solid ${isCurrent?(f.type==="retrace"?C.green:C.red):C.border}`,
+          }}>
+            <div style={{display:"flex",gap:6,alignItems:"center"}}>
+              <span style={{color:f.type==="retrace"?C.teal:C.orange,fontSize:11,fontWeight:700,minWidth:38}}>
+                {f.label}
+              </span>
+              <span style={{fontSize:9,color:C.muted}}>{f.type==="retrace"?"steun":"TP"}</span>
+            </div>
+            <div style={{display:"flex",gap:8,alignItems:"center"}}>
+              {isCurrent&&<span style={{fontSize:9,color:C.accent,fontWeight:700}}>← NU</span>}
+              {isNear&&!isCurrent&&<span style={{fontSize:9,color:C.orange}}>{dist.toFixed(1)}%</span>}
+              <span style={{color:isNear?C.text:C.textDim,fontSize:12,fontWeight:isNear?700:400}}>${f.price}</span>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function IndicatorGrid({ ind }) {
+  if (!ind) return null;
+  const items = [
+    {l:"RSI Daily",    v:ind.rsiDaily?.toFixed(1),   c:ind.rsiDaily<30?C.green:ind.rsiDaily>70?C.red:C.text},
+    {l:"RSI Weekly",   v:ind.rsiWeekly?.toFixed(1),  c:ind.rsiWeekly<30?C.green:ind.rsiWeekly>70?C.red:C.text},
+    {l:"EMA 8 (D)",    v:`$${ind.ema8d?.toFixed(2)}`, c:ind.last>ind.ema8d?C.green:C.red},
+    {l:"EMA 21 (D)",   v:`$${ind.ema21d?.toFixed(2)}`,c:ind.last>ind.ema21d?C.green:C.red},
+    {l:"EMA 8 (W)",    v:`$${ind.ema8w?.toFixed(2)}`, c:ind.last>ind.ema8w?C.green:C.red},
+    {l:"EMA 21 (W)",   v:`$${ind.ema21w?.toFixed(2)}`,c:ind.last>ind.ema21w?C.green:C.red},
+    {l:"MA 50",        v:`$${ind.ma50?.toFixed(2)}`,  c:ind.last>ind.ma50?C.green:C.red},
+    {l:"MA 200",       v:`$${ind.ma200?.toFixed(2)}`,  c:ind.last>ind.ma200?C.green:C.red},
+    {l:"MACD (D)",     v:ind.macdLine?.toFixed(3),    c:ind.macdLine>ind.macdSignal?C.green:C.red},
+    {l:"MACD (W)",     v:ind.macdLineW?.toFixed(3),   c:ind.macdLineW>ind.macdSigW?C.green:C.red},
+    {l:"Boll. Hoog",   v:`$${ind.bollUpper?.toFixed(2)}`, c:C.text},
+    {l:"Boll. Laag",   v:`$${ind.bollLower?.toFixed(2)}`, c:C.text},
+    {l:"Volume ratio", v:`${ind.volRatio?.toFixed(2)}x`, c:ind.highVolume?C.green:C.text},
+    {l:"Weekly eval.", v:ind.isFriday?"Vrijdag ✓":"Weekdag (W signalen vrijdag)", c:ind.isFriday?C.green:C.orange},
+  ];
+  return (
+    <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:5}}>
+      {items.map((item,i)=>(
+        <div key={i} style={{background:C.bg,borderRadius:5,padding:"7px 9px"}}>
+          <div style={{color:C.textDim,fontSize:9}}>{item.l}</div>
+          <div style={{color:item.c,fontSize:12,fontWeight:700}}>{item.v||"—"}</div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function usePortfolio() {
+  const [p,setP] = useState(()=>{try{return JSON.parse(localStorage.getItem("bplus_v9")||"[]")}catch{return[]}});
+  const save = v=>{setP(v);try{localStorage.setItem("bplus_v9",JSON.stringify(v))}catch{}};
+  return {
+    portfolio:p,
+    add:(ticker,shares,buyPrice,date)=>save([...p,{ticker,shares:+shares,buyPrice:+buyPrice,date}]),
+    remove:i=>save(p.filter((_,j)=>j!==i)),
+  };
+}
+
+// ── DETAIL MODAL ──────────────────────────────────────────────────────────────
+function Detail({ ticker, data, onClose, portfolio, add }) {
+  const [tab,setTab] = useState("signalen");
+  const [sh,setSh]   = useState("");
+  const [pr,setPr]   = useState(data?.indicators?.last?.toFixed(2)||"");
+  const [dt,setDt]   = useState(new Date().toISOString().slice(0,10));
+
+  const fund  = data?.fund || FALLBACK_FUND[ticker] || {};
+  const ind   = data?.indicators || {};
+  const last  = ind.last || 0;
+  const score = bScore(fund);
+  const tvLink= `https://www.tradingview.com/chart/?symbol=${TV_LINKS[ticker]||ticker}`;
+
+  const pct=(v,d=1)=>v==null?"—":`${(+v).toFixed(d)}%`;
+  const usd=(v,d=2)=>v==null?"—":`$${(+v).toFixed(d)}`;
+
+  return (
+    <div style={{position:"fixed",inset:0,background:"rgba(0,0,0,0.88)",zIndex:100,
+      display:"flex",alignItems:"center",justifyContent:"center",padding:12}}
+      onClick={onClose}>
+      <div style={{background:C.panel,border:`1px solid ${C.border}`,borderRadius:12,
+        maxWidth:680,width:"100%",maxHeight:"94vh",overflowY:"auto",padding:20}}
+        onClick={e=>e.stopPropagation()}>
+
+        {/* Header */}
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:14}}>
+          <div>
+            <div style={{color:C.accent,fontWeight:800,fontSize:22}}>{ticker}</div>
+            <div style={{color:C.text,fontSize:13}}>{STOCK_NAMES[ticker]||ticker}</div>
+            <div style={{display:"flex",gap:8,marginTop:6,alignItems:"center",flexWrap:"wrap"}}>
+              <span style={{color:C.text,fontSize:18,fontWeight:700}}>{last?`$${last.toFixed(2)}`:"—"}</span>
+              {data?.overall&&<OverallBadge signal={data.overall}/>}
+              <a href={tvLink} target="_blank" rel="noopener noreferrer"
+                style={{color:C.accent,fontSize:11,textDecoration:"none"}}
+                onClick={e=>e.stopPropagation()}>
+                📈 TradingView ↗
+              </a>
+            </div>
+            {/* Conflict waarschuwing */}
+            {data?.conflict&&(
+              <div style={{marginTop:6,padding:"5px 8px",background:"#1c1206",border:"1px solid #854d0e",borderRadius:5,fontSize:10,color:C.orange}}>
+                ⚠️ {data.conflictNote}
+              </div>
+            )}
+          </div>
+          <button onClick={onClose} style={{background:"none",border:"none",color:C.textDim,fontSize:24,cursor:"pointer"}}>✕</button>
+        </div>
+
+        {/* Tabs */}
+        <div style={{display:"flex",gap:4,marginBottom:14,flexWrap:"wrap"}}>
+          {[["signalen","🚦 Signalen"],["timing","⏱️ Timing"],["waardering","💰 Waardering"],
+            ...(data?.bagger?[["bagger","🚀 Bagger"]]:[]),
+            ["indicatoren","📊 Indicatoren"],
+            ["fibonacci","📐 Fibonacci"],["fundamentals","📋 Fundamentals"],["portfolio","💼 Portfolio"]].map(([tb,lb])=>(
+            <button key={tb} onClick={()=>setTab(tb)} style={{
+              background:tab===tb?C.accent:"none",color:tab===tb?C.bg:C.textDim,
+              border:`1px solid ${tab===tb?C.accent:C.border}`,borderRadius:4,
+              padding:"4px 10px",fontSize:11,cursor:"pointer",fontWeight:tab===tb?700:400}}>
+              {lb}
+            </button>
+          ))}
+        </div>
+
+        {/* BAGGER */}
+        {tab==="bagger"&&data?.bagger&&(
+          <div>
+            <div style={{background:C.bg,borderRadius:8,padding:14,marginBottom:12,
+              borderLeft:`3px solid ${{green:C.green,orange:C.orange,red:C.red}[data.bagger.color]||C.text}`}}>
+              <div style={{color:C.textDim,fontSize:11,marginBottom:2}}>Bagger-potentieel</div>
+              <div style={{color:{green:C.green,orange:C.orange,red:C.red}[data.bagger.color]||C.text,fontSize:16,fontWeight:800}}>
+                {data.bagger.score}/100 · {data.bagger.label}
+              </div>
+              <div style={{color:C.textDim,fontSize:11,marginTop:6}}>
+                Positiegrootte-advies: <b style={{color:C.text}}>{data.bagger.positionSizing}</b> · Risico: <b style={{color:data.bagger.risk==="zeer hoog"?C.red:data.bagger.risk==="hoog"?C.orange:C.text}}>{data.bagger.risk}</b>
+              </div>
+            </div>
+            {data.bagger.reasons?.length>0&&(
+              <div style={{marginBottom:8}}>
+                <div style={{color:C.green,fontSize:11,fontWeight:700,marginBottom:4}}>STERKE PUNTEN</div>
+                {data.bagger.reasons.map((r,i)=><div key={i} style={{color:C.textDim,fontSize:11,marginBottom:2}}>✓ {r}</div>)}
+              </div>
+            )}
+            {data.bagger.flags?.length>0&&(
+              <div>
+                <div style={{color:C.red,fontSize:11,fontWeight:700,marginBottom:4}}>RISICO'S</div>
+                {data.bagger.flags.map((f,i)=><div key={i} style={{color:C.orange,fontSize:11,marginBottom:2}}>⚠ {f}</div>)}
+              </div>
+            )}
+            <div style={{marginTop:10,padding:"8px 10px",background:C.bg,borderRadius:6,fontSize:10,color:C.muted,lineHeight:1.5}}>
+              Dit is het bagger-spoor: beoordeeld op asymmetrisch potentieel, niet op klassieke kwaliteit of waardering.
+              100x-baggers vooraf spotten is extreem moeilijk — klein instappen.
+            </div>
+          </div>
+        )}
+
+        {/* TIMING */}
+        {tab==="timing"&&(
+          <TimingBreakdown timing={data?.timing}/>
+        )}
+
+        {/* WAARDERING */}
+        {tab==="waardering"&&(
+          <ValuationPanel valuation={data?.valuation} fund={fund}/>
+        )}
+
+        {/* SIGNALEN */}
+        {tab==="signalen"&&(
+          <div>
+            {!data?(
+              <div style={{color:C.orange,padding:16,textAlign:"center",background:"#1c1206",borderRadius:8,border:"1px solid #854d0e"}}>
+                ⚠️ Nog geen live data. Wacht op eerste GitHub Actions run, of open TradingView voor live analyse.
+              </div>
+            ):(
+              <>
+                <div style={{display:"flex",gap:8,marginBottom:14,flexWrap:"wrap"}}>
+                  {[
+                    {l:"🟢 Koop",    v:data.buyWeight||0,  c:C.green},
+                    {l:"🔴 Verkoop", v:data.sellWeight||0, c:C.red},
+                    {l:"⚠️ Alerts",  v:data.alerts?.length||0, c:C.orange},
+                  ].map(x=>(
+                    <div key={x.l} style={{background:C.bg,borderRadius:6,padding:"8px 14px",textAlign:"center"}}>
+                      <div style={{color:C.textDim,fontSize:10}}>{x.l}</div>
+                      <div style={{color:x.c,fontSize:20,fontWeight:800}}>{x.v}</div>
+                    </div>
+                  ))}
+                  <div style={{background:C.bg,borderRadius:6,padding:"8px 14px",textAlign:"center",fontSize:9,color:C.textDim,maxWidth:140}}>
+                    <div style={{marginBottom:2}}>Gewichten zijn indicatief</div>
+                    <div style={{color:C.muted}}>Combineer altijd met eigen analyse en TradingView chart</div>
+                  </div>
+                </div>
+
+                {data.signals?.filter(s=>s.type==="BUY").length>0&&(
+                  <div style={{marginBottom:10}}>
+                    <div style={{color:C.green,fontSize:11,fontWeight:700,marginBottom:6}}>🟢 KOOP SIGNALEN</div>
+                    {data.signals.filter(s=>s.type==="BUY").map((s,i)=><SignalCard key={i} sig={s}/>)}
+                  </div>
+                )}
+                {data.signals?.filter(s=>s.type==="SELL").length>0&&(
+                  <div style={{marginBottom:10}}>
+                    <div style={{color:C.red,fontSize:11,fontWeight:700,marginBottom:6}}>🔴 VERKOOP SIGNALEN</div>
+                    {data.signals.filter(s=>s.type==="SELL").map((s,i)=><SignalCard key={i} sig={s}/>)}
+                  </div>
+                )}
+                {data.signals?.filter(s=>s.type==="INFO").length>0&&(
+                  <div style={{marginBottom:10}}>
+                    <div style={{color:C.blue,fontSize:11,fontWeight:700,marginBottom:6}}>ℹ️ INFO</div>
+                    {data.signals.filter(s=>s.type==="INFO").map((s,i)=><SignalCard key={i} sig={s}/>)}
+                  </div>
+                )}
+                {data.alerts?.length>0&&(
+                  <div>
+                    <div style={{color:C.orange,fontSize:11,fontWeight:700,marginBottom:6}}>⚠️ NABIJHEID ALERTS</div>
+                    {data.alerts.map((s,i)=><SignalCard key={i} sig={s}/>)}
+                  </div>
+                )}
+              </>
+            )}
+          </div>
+        )}
+
+        {tab==="indicatoren"&&<IndicatorGrid ind={ind}/>}
+
+        {tab==="fibonacci"&&(
+          ind.fib
+            ?<FibTable fib={ind.fib} currentPrice={last}/>
+            :<div style={{color:C.textDim,textAlign:"center",padding:20}}>Nog geen live data beschikbaar.</div>
+        )}
+
+        {tab==="fundamentals"&&(
+          <div>
+            <div style={{display:"flex",alignItems:"center",gap:14,marginBottom:14,background:C.bg,padding:12,borderRadius:8}}>
+              <Ring score={score} size={58}/>
+              <div>
+                <div style={{color:C.textDim,fontSize:11,marginBottom:2}}>Buffett Score</div>
+                <div style={{color:score>=70?C.green:score>=50?C.accent:C.red,fontSize:13,fontWeight:700}}>
+                  {score>=70?"Uitstekend":score>=50?"Goed":"Zwak"}
+                </div>
+                {fund.lastUpdated&&(
+                  <div style={{color:C.muted,fontSize:9,marginTop:4}}>
+                    Fundamentals bijgewerkt: {fund.lastUpdated} · Controleer bij elk kwartaalrapport
+                  </div>
+                )}
+              </div>
+            </div>
+            <MRow label="P/E Ratio (TTM)"   value={fund.pe}           good={18} warn={40}  fmt={v=>`${(+v).toFixed(1)}x`}/>
+            <MRow label="ROE"               value={fund.roe}                               fmt={v=>`${(+v).toFixed(1)}%`}/>
+            <MRow label="FCF Yield"         value={fund.fcfYield}                          fmt={v=>`${(+v).toFixed(2)}%`}/>
+            <MRow label="Debt / Equity"     value={fund.debtEquity}   good={0.5} warn={2.5} fmt={v=>`${(+v).toFixed(2)}`}/>
+            <MRow label="Netto winstmarge"  value={fund.netMargin}                         fmt={v=>`${(+v).toFixed(1)}%`}/>
+            <MRow label="Dividend Yield"    value={fund.divYield}                          fmt={v=>`${(+v).toFixed(2)}%`}/>
+            <MRow label="Revenue groei YoY" value={fund.revenueGrowth}                     fmt={v=>`${v>=0?"+":""}${(+v).toFixed(1)}%`}/>
+            <MRow label="EPS (TTM)"         value={fund.eps}                               fmt={v=>`$${(+v).toFixed(2)}`}/>
+            <MRow label="Market Cap"        value={fund.mktCap}                            fmt={v=>String(v)}/>
+            <MRow label="Beta"              value={fund.beta}                              fmt={v=>`${(+v).toFixed(2)}`}/>
+          </div>
+        )}
+
+        {tab==="portfolio"&&(
+          <div>
+            <div style={{marginBottom:16}}>
+              <div style={{color:C.accent,fontSize:13,fontWeight:700,marginBottom:10}}>Positie toevoegen</div>
+              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:8}}>
+                <div>
+                  <div style={{color:C.textDim,fontSize:11,marginBottom:3}}>Aantal aandelen</div>
+                  <input value={sh} onChange={e=>setSh(e.target.value)} placeholder="bijv. 10"
+                    style={{width:"100%",background:C.bg,border:`1px solid ${C.border}`,color:C.text,borderRadius:5,padding:"6px 8px",fontSize:12,boxSizing:"border-box"}}/>
+                </div>
+                <div>
+                  <div style={{color:C.textDim,fontSize:11,marginBottom:3}}>Aankoopprijs ($)</div>
+                  <input value={pr} onChange={e=>setPr(e.target.value)}
+                    style={{width:"100%",background:C.bg,border:`1px solid ${C.border}`,color:C.text,borderRadius:5,padding:"6px 8px",fontSize:12,boxSizing:"border-box"}}/>
+                </div>
+              </div>
+              <div style={{marginBottom:8}}>
+                <div style={{color:C.textDim,fontSize:11,marginBottom:3}}>Datum</div>
+                <input type="date" value={dt} onChange={e=>setDt(e.target.value)}
+                  style={{background:C.bg,border:`1px solid ${C.border}`,color:C.text,borderRadius:5,padding:"6px 8px",fontSize:12}}/>
+              </div>
+              <button onClick={()=>{if(sh&&pr){add(ticker,sh,pr,dt);setSh("")}}}
+                style={{background:C.accent,color:C.bg,border:"none",borderRadius:5,padding:"8px 16px",fontWeight:700,fontSize:12,cursor:"pointer"}}>
+                + Toevoegen
+              </button>
+            </div>
+            {portfolio.filter(p=>p.ticker===ticker).map((p,i)=>{
+              const pnl=(last-p.buyPrice)*p.shares;
+              return(
+                <div key={i} style={{background:C.bg,borderRadius:6,padding:10,marginBottom:6}}>
+                  <div style={{display:"flex",justifyContent:"space-between"}}>
+                    <span style={{color:C.text,fontSize:12}}>{p.shares} × ${p.buyPrice}</span>
+                    <span style={{color:pnl>=0?C.green:C.red,fontWeight:700,fontSize:12}}>
+                      {pnl>=0?"+":""}${pnl.toFixed(0)} ({((pnl/(p.buyPrice*p.shares))*100).toFixed(1)}%)
+                    </span>
+                  </div>
+                  <div style={{color:C.textDim,fontSize:10,marginTop:2}}>{p.date}</div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ── MAIN APP ──────────────────────────────────────────────────────────────────
+const TICKER_ORDER = ["WM","PLTR","CAT","ASML","ASMI","MU","GOOGL","AMZN","ORCL","KO",
+  "LHX","MOGA","TDG","KTOS","RKLB","OPEN","SDGR","BNGO"];
+
+function App() {
+  const [jsonData,  setJsonData]  = useState(null);
+  const [trackData, setTrackData] = useState(null);
+  const [loadState, setLoadState] = useState("loading"); // loading | ok | error | unconfigured
+  const [selected,  setSelected]  = useState(null);
+  const [view,      setView]      = useState("allocatie");
+  const [sortBy,    setSortBy]    = useState("buyWeight");
+  const [sortDir,   setSortDir]   = useState("desc");
+  const [filterType,setFilter]    = useState("ALL");
+  const { portfolio, add, remove } = usePortfolio();
+
+  // Cache-busting: voeg timestamp toe aan URL
+  useEffect(()=>{
+    if (SIGNALS_URL.includes("YOUR-USERNAME")) {
+      setLoadState("unconfigured");
+      return;
+    }
+    const t = Date.now();
+    fetch(`${SIGNALS_URL}?t=${t}`)
+      .then(r=>{ if(!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
+      .then(d=>{ setJsonData(d); setLoadState("ok"); })
+      .catch(e=>{ console.error(e); setLoadState("error"); });
+    // Trackrecord apart ophalen (zelfde map)
+    const trackUrl = SIGNALS_URL.replace("signals.json","track_record.json");
+    fetch(`${trackUrl}?t=${t}`)
+      .then(r=>r.ok?r.json():null)
+      .then(d=>{ if(d) setTrackData(d); })
+      .catch(()=>{});
+  },[]);
+
+  const stocks = jsonData?.stocks || {};
+  const meta   = jsonData?.meta || {};
+  const allocation = jsonData?.allocation || null;
+  const weekly = jsonData?.weekly || null;
+  const baggers = jsonData?.baggers || null;
+  const errors = jsonData?.errors || [];
+
+  // Combineer live data met fallback fundamentals
+  const getStockData = (ticker) => {
+    const live = stocks[ticker];
+    if (!live) return null;
+    return {
+      ...live,
+      fund: live.fund || FALLBACK_FUND[ticker] || {},
+    };
+  };
+
+  // Alle signalen over alle aandelen
+  const allBuySignals  = TICKER_ORDER.flatMap(t=>(stocks[t]?.signals||[]).filter(s=>s.type==="BUY").map(s=>({...s,ticker:t})));
+  const allSellSignals = TICKER_ORDER.flatMap(t=>(stocks[t]?.signals||[]).filter(s=>s.type==="SELL").map(s=>({...s,ticker:t})));
+  const allAlerts      = TICKER_ORDER.flatMap(t=>(stocks[t]?.alerts||[]).map(a=>({...a,ticker:t})));
+
+  const filteredSignals =
+    filterType==="BUY"   ? allBuySignals :
+    filterType==="SELL"  ? allSellSignals :
+    filterType==="WATCH" ? allAlerts :
+    [...allBuySignals,...allSellSignals,...allAlerts];
+
+  // Group by ticker
+  const grouped = {};
+  filteredSignals.forEach(s=>{
+    if(!grouped[s.ticker]) grouped[s.ticker]={ticker:s.ticker,items:[]};
+    grouped[s.ticker].items.push(s);
+  });
+
+  const sorted = [...TICKER_ORDER]
+    .filter(t=>stocks[t])
+    .sort((a,b)=>{
+      const valScore = t => {
+        const c = stocks[t]?.valuation?.verdictColor;
+        return c==="green"?3:c==="neutral"?2:c==="orange"?1:c==="red"?0:-1;
+      };
+      const v = t =>
+        sortBy==="composite"  ? (stocks[t]?.scores?.composite ?? -1) :
+        sortBy==="timing"     ? (stocks[t]?.scores?.timing ?? -1) :
+        sortBy==="buyWeight"  ? (stocks[t]?.buyWeight||0) :
+        sortBy==="sellWeight" ? (stocks[t]?.sellWeight||0) :
+        sortBy==="valuation"  ? valScore(t) :
+        sortBy==="rsi"        ? (stocks[t]?.indicators?.rsiDaily||50) :
+        sortBy==="alerts"     ? (stocks[t]?.alerts?.length||0) :
+                                bScore(stocks[t]?.fund||FALLBACK_FUND[t]||{});
+      return sortDir==="desc"?v(b)-v(a):v(a)-v(b);
+    });
+
+  const portItems = portfolio.map(p=>{
+    const last = stocks[p.ticker]?.indicators?.last;
+    if (!last) return null;
+    return{...p,last,cv:last*p.shares,cb:p.buyPrice*p.shares,pnl:(last-p.buyPrice)*p.shares};
+  }).filter(Boolean);
+  const tv2=portItems.reduce((a,p)=>a+p.cv,0);
+  const tc2=portItems.reduce((a,p)=>a+p.cb,0);
+
+  const SBtn=({k,l})=>(
+    <button onClick={()=>{if(sortBy===k)setSortDir(d=>d==="desc"?"asc":"desc");else{setSortBy(k);setSortDir("desc")}}}
+      style={{background:sortBy===k?C.accent:"none",color:sortBy===k?C.bg:C.textDim,
+        border:`1px solid ${sortBy===k?C.accent:C.border}`,borderRadius:4,
+        padding:"3px 9px",fontSize:10,cursor:"pointer",fontWeight:sortBy===k?700:400}}>
+      {l}{sortBy===k?(sortDir==="desc"?" ↓":" ↑"):""}
+    </button>
+  );
+
+  return (
+    <div style={{background:C.bg,minHeight:"100vh",fontFamily:"'Inter',system-ui,sans-serif",color:C.text}}>
+
+      {/* NAV */}
+      <div style={{borderBottom:`1px solid ${C.border}`,padding:"12px 18px",
+        display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:8}}>
+        <div>
+          <span style={{color:C.accent,fontWeight:900,fontSize:18,letterSpacing:2}}>BUFFETT+</span>
+          <span style={{color:C.textDim,fontSize:11,marginLeft:10}}>Kwaliteit × Timing</span>
+        </div>
+        <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
+          {[["allocatie","🎯 Allocatie"],["baggers","🚀 Baggers"],["signalen","🚦 Signalen"],["screener","📊 Screener"],["trackrecord","📈 Trackrecord"],["portfolio","💼 Portfolio"]].map(([v,l])=>(
+            <button key={v} onClick={()=>setView(v)} style={{
+              background:view===v?C.accent:"none",color:view===v?C.bg:C.textDim,
+              border:`1px solid ${view===v?C.accent:C.border}`,borderRadius:5,
+              padding:"5px 12px",fontSize:11,cursor:"pointer",fontWeight:view===v?700:400}}>{l}</button>
+          ))}
+        </div>
+      </div>
+
+      {/* STATUS BALK */}
+      <div style={{padding:"8px 18px",borderBottom:`1px solid ${C.border}`,
+        display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:6}}>
+        <div style={{fontSize:11}}>
+          {loadState==="loading"&&<span style={{color:C.orange}}>⟳ Data ophalen van GitHub Pages…</span>}
+          {loadState==="ok"&&(
+            <span style={{color:C.green}}>
+              ✓ Laatste update: {meta.generatedAtHuman||"onbekend"}
+              {meta.isFriday&&" · 📅 Vrijdag: weekly signalen geëvalueerd"}
+            </span>
+          )}
+          {loadState==="error"&&(
+            <span style={{color:C.red}}>
+              ✗ Kan data niet laden — controleer of GitHub Actions al gedraaid heeft
+            </span>
+          )}
+          {loadState==="unconfigured"&&(
+            <span style={{color:C.orange}}>
+              ⚙️ Configuratie nodig: vervang YOUR-USERNAME in de app met je GitHub gebruikersnaam
+            </span>
+          )}
+        </div>
+        {errors.length>0&&(
+          <span style={{color:C.red,fontSize:10}}>⚠️ {errors.length} fout(en) bij laatste run</span>
+        )}
+      </div>
+
+      {/* SETUP INSTRUCTIE (als nog niet geconfigureerd) */}
+      {loadState==="unconfigured"&&(
+        <div style={{margin:16,padding:16,background:"#1c1206",border:"1px solid #854d0e",borderRadius:8}}>
+          <div style={{color:C.accent,fontWeight:700,marginBottom:8}}>⚙️ Eenmalige setup nodig</div>
+          <div style={{color:C.textDim,fontSize:12,lineHeight:1.8}}>
+            <b style={{color:C.text}}>Stap 1:</b> Maak een gratis GitHub account op github.com<br/>
+            <b style={{color:C.text}}>Stap 2:</b> Maak een nieuwe repository aan: <code style={{color:C.accent}}>buffett-dashboard</code><br/>
+            <b style={{color:C.text}}>Stap 3:</b> Upload de bestanden: <code style={{color:C.accent}}>analyze.py</code>, <code style={{color:C.accent}}>requirements.txt</code>, <code style={{color:C.accent}}>signals.json</code>, en de <code style={{color:C.accent}}>.github/workflows/daily.yml</code><br/>
+            <b style={{color:C.text}}>Stap 4:</b> Activeer GitHub Pages in de repository settings (branch: main)<br/>
+            <b style={{color:C.text}}>Stap 5:</b> Vervang <code style={{color:C.accent}}>YOUR-USERNAME</code> in de eerste regel van deze app met je GitHub gebruikersnaam<br/>
+            <b style={{color:C.text}}>Stap 6:</b> Run de workflow handmatig via GitHub → Actions → "Dagelijkse Signaalanalyse" → "Run workflow"
+          </div>
+        </div>
+      )}
+
+      {/* ALLOCATIE VIEW */}
+      {view==="allocatie"&&(
+        <div style={{padding:"14px 16px"}}>
+          {loadState==="unconfigured"?(
+            <div style={{textAlign:"center",color:C.textDim,padding:30}}>
+              Configureer eerst de data-URL (zie instructies boven).
+            </div>
+          ):!allocation?(
+            <div style={{textAlign:"center",color:C.textDim,padding:30}}>
+              Nog geen allocatie-aanbeveling. Deze verschijnt na de eerste GitHub Actions run met de nieuwe versie.
+            </div>
+          ):(
+            <>
+              {/* Primary pick hero */}
+              {allocation.primaryPick&&(
+                <div style={{background:`linear-gradient(135deg,${C.panel2},${C.panel})`,
+                  border:`1px solid ${C.accent}`,borderRadius:12,padding:18,marginBottom:16}}>
+                  <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:10}}>
+                    <div>
+                      <div style={{color:C.textDim,fontSize:11,letterSpacing:1}}>AANBEVOLEN DEZE MAAND · {allocation.generatedForMonth}</div>
+                      <div style={{display:"flex",alignItems:"center",gap:10,marginTop:4}}>
+                        <span style={{color:C.accent,fontSize:30,fontWeight:900}}>{allocation.primaryPick.ticker}</span>
+                        <span style={{color:C.text,fontSize:14}}>{STOCK_NAMES[allocation.primaryPick.ticker]}</span>
+                      </div>
+                      <div style={{color:C.text,fontSize:13,marginTop:2}}>
+                        ${allocation.primaryPick.price?.toFixed(2)}
+                      </div>
+                    </div>
+                    <div style={{textAlign:"center",background:C.bg,borderRadius:10,padding:"10px 16px"}}>
+                      <div style={{color:C.textDim,fontSize:10}}>Composiet</div>
+                      <div style={{color:C.accent,fontSize:32,fontWeight:900,lineHeight:1}}>{allocation.primaryPick.composite}</div>
+                      <div style={{color:C.muted,fontSize:9}}>/ 100</div>
+                    </div>
+                  </div>
+                  {/* Score breakdown */}
+                  <div style={{marginTop:14}}>
+                    <ScoreBar label="Kwaliteit (Buffett-poort)" score={allocation.primaryPick.quality} hint="30%"/>
+                    <ScoreBar label="Waardering (niet te duur)" score={allocation.primaryPick.valuation} hint="30%"/>
+                    <ScoreBar label="Timing (multi-timeframe chart)" score={allocation.primaryPick.timing} hint="40%"/>
+                  </div>
+                  {allocation.reasoning&&(
+                    <div style={{marginTop:10,padding:"8px 10px",background:C.bg,borderRadius:6,fontSize:11,color:C.textDim,lineHeight:1.5}}>
+                      {allocation.reasoning}
+                    </div>
+                  )}
+                  <button onClick={()=>setSelected(allocation.primaryPick.ticker)}
+                    style={{marginTop:10,background:C.accent,color:C.bg,border:"none",borderRadius:6,
+                      padding:"8px 16px",fontWeight:700,fontSize:12,cursor:"pointer"}}>
+                    Bekijk volledige analyse →
+                  </button>
+                </div>
+              )}
+
+              {/* Weekly changelog */}
+              <WeeklyChangelog weekly={weekly} onSelect={setSelected}/>
+
+              {/* Ranked candidates */}
+              <div style={{color:C.textDim,fontSize:11,fontWeight:700,marginBottom:8}}>
+                KWALITEITSKANDIDATEN · gerangschikt op composiet
+              </div>
+              <div style={{display:"grid",gap:6,marginBottom:16}}>
+                {allocation.candidates?.map((c,i)=>(
+                  <div key={c.ticker} onClick={()=>setSelected(c.ticker)}
+                    style={{background:C.panel,border:`1px solid ${i===0?C.accent:C.border}`,borderRadius:8,
+                      padding:"10px 12px",cursor:"pointer",display:"flex",alignItems:"center",gap:12}}>
+                    <div style={{color:C.muted,fontSize:16,fontWeight:800,minWidth:24}}>{i+1}</div>
+                    <div style={{flex:1,minWidth:0}}>
+                      <div style={{display:"flex",alignItems:"center",gap:8,flexWrap:"wrap"}}>
+                        <span style={{color:C.accent,fontWeight:700,fontSize:14}}>{c.ticker}</span>
+                        <span style={{color:C.textDim,fontSize:10}}>{STOCK_NAMES[c.ticker]}</span>
+                      </div>
+                      <div style={{display:"flex",gap:10,marginTop:4,fontSize:10,color:C.textDim,flexWrap:"wrap"}}>
+                        <span>K <b style={{color:C.text}}>{c.quality}</b></span>
+                        <span>W <b style={{color:C.text}}>{c.valuation}</b></span>
+                        <span>T <b style={{color:C.text}}>{c.timing}</b></span>
+                        <span style={{color:C.muted}}>{c.timingLabel}</span>
+                      </div>
+                    </div>
+                    <div style={{textAlign:"right"}}>
+                      <div style={{color:i===0?C.accent:C.text,fontSize:20,fontWeight:800}}>{c.composite}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Gate-failed */}
+              {allocation.gateFailed?.length>0&&(
+                <div>
+                  <div style={{color:C.textDim,fontSize:11,fontWeight:700,marginBottom:8}}>
+                    BUITEN KWALITEITSPOORT · niet aanbevolen als kernbelegging
+                  </div>
+                  <div style={{display:"grid",gap:6}}>
+                    {allocation.gateFailed.map(c=>(
+                      <div key={c.ticker} onClick={()=>setSelected(c.ticker)}
+                        style={{background:C.panel,border:`1px solid ${C.border}`,borderRadius:8,
+                          padding:"8px 12px",cursor:"pointer",display:"flex",justifyContent:"space-between",
+                          alignItems:"center",opacity:0.7}}>
+                        <div style={{display:"flex",alignItems:"center",gap:8}}>
+                          <span style={{color:C.textDim,fontWeight:700}}>{c.ticker}</span>
+                          <span style={{color:C.red,fontSize:10}}>✗ {(c.fails||[]).join(", ")}</span>
+                        </div>
+                        <span style={{color:C.muted,fontSize:11}}>K {c.quality}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Method note */}
+              <div style={{marginTop:16,padding:"10px 12px",background:C.panel,borderRadius:8,fontSize:10,color:C.muted,lineHeight:1.6}}>
+                <b style={{color:C.textDim}}>Methode:</b> alleen aandelen die de kwaliteitspoort passeren (voldoende ROE, marge, houdbare schuld)
+                worden gerangschikt. De composietscore weegt kwaliteit (30%), waardering (30%) en multi-timeframe
+                timing (40%). Timing combineert trend (monthly/weekly/daily) met instapkwaliteit (RSI, MACD, Bollinger,
+                Fibonacci, volume). {allocation.note} Geen financieel advies.
+              </div>
+            </>
+          )}
+        </div>
+      )}
+
+      {/* SIGNALEN VIEW */}
+      {view==="signalen"&&(
+        <div style={{padding:"14px 16px"}}>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:8,marginBottom:14}}>
+            {[
+              {l:"🟢 Koop signalen",   v:allBuySignals.length,  c:C.green,  f:"BUY"},
+              {l:"🔴 Verkoop signalen", v:allSellSignals.length, c:C.red,    f:"SELL"},
+              {l:"⚠️ Nabijheid alerts", v:allAlerts.length,      c:C.orange, f:"WATCH"},
+            ].map(x=>(
+              <div key={x.l} onClick={()=>setFilter(f=>f===x.f?"ALL":x.f)}
+                style={{background:filterType===x.f?C.panel2:C.panel,
+                  border:`1px solid ${filterType===x.f?C.accent:C.border}`,
+                  borderRadius:8,padding:"10px 12px",cursor:"pointer",transition:"border-color 0.15s"}}>
+                <div style={{color:C.textDim,fontSize:10,marginBottom:2}}>{x.l}</div>
+                <div style={{color:x.c,fontSize:22,fontWeight:800}}>{x.v}</div>
+              </div>
+            ))}
+          </div>
+
+          {loadState==="ok"&&Object.keys(grouped).length===0&&(
+            <div style={{textAlign:"center",color:C.textDim,padding:30}}>
+              Geen actieve signalen voor dit filter.
+            </div>
+          )}
+
+          {loadState!=="unconfigured"&&Object.values(grouped).map(g=>(
+            <div key={g.ticker} style={{background:C.panel,border:`1px solid ${C.border}`,borderRadius:8,padding:12,marginBottom:10}}>
+              <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:8,cursor:"pointer"}}
+                onClick={()=>setSelected(g.ticker)}>
+                <div style={{display:"flex",alignItems:"center",gap:8,flexWrap:"wrap"}}>
+                  <span style={{color:C.accent,fontWeight:700,fontSize:15}}>{g.ticker}</span>
+                  <span style={{color:C.textDim,fontSize:11}}>{STOCK_NAMES[g.ticker]}</span>
+                  {stocks[g.ticker]?.overall&&<OverallBadge signal={stocks[g.ticker].overall}/>}
+                  {stocks[g.ticker]?.conflict&&<span style={{color:C.orange,fontSize:10}}>⚠️ Conflict</span>}
+                </div>
+                <span style={{color:C.textDim,fontSize:11}}>→ details</span>
+              </div>
+              {g.items.map((s,i)=><SignalCard key={i} sig={s}/>)}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* SCREENER VIEW */}
+      {view==="screener"&&(
+        <div style={{padding:"14px 16px"}}>
+          <div style={{display:"flex",gap:4,flexWrap:"wrap",marginBottom:14,alignItems:"center"}}>
+            <span style={{color:C.textDim,fontSize:10}}>Sorteer:</span>
+            {[["composite","Composiet ★"],["timing","Timing ⏱️"],["valuation","Waardering 💰"],["buyWeight","Koop 🟢"],["alerts","Alerts ⚠️"],["score","Buffett"]].map(([k,l])=><SBtn key={k} k={k} l={l}/>)}
+          </div>
+
+          {/* Als geen live data: toon alle tickers met fallback fundamentals */}
+          {(loadState==="unconfigured"||loadState==="error")&&(
+            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(280px,1fr))",gap:10}}>
+              {TICKER_ORDER.map(ticker=>{
+                const fund  = FALLBACK_FUND[ticker]||{};
+                const score = bScore(fund);
+                return(
+                  <div key={ticker} onClick={()=>setSelected(ticker)}
+                    style={{background:C.panel,borderRadius:8,padding:"13px",cursor:"pointer",
+                      border:`1px solid ${C.border}`,transition:"transform 0.1s"}}
+                    onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-2px)";e.currentTarget.style.borderColor=C.accent;}}
+                    onMouseLeave={e=>{e.currentTarget.style.transform="";e.currentTarget.style.borderColor=C.border;}}>
+                    <div style={{display:"flex",justifyContent:"space-between",marginBottom:8}}>
+                      <div>
+                        <div style={{color:C.accent,fontWeight:700}}>{ticker}</div>
+                        <div style={{color:C.textDim,fontSize:10}}>{STOCK_NAMES[ticker]}</div>
+                      </div>
+                      <Ring score={score} size={40}/>
+                    </div>
+                    <div style={{color:C.orange,fontSize:10}}>⚠️ Geen live data — klik voor fundamentals</div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          {loadState==="ok"&&(
+            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(280px,1fr))",gap:10}}>
+              {sorted.map(ticker=>{
+                const data  = getStockData(ticker);
+                const fund  = data?.fund||FALLBACK_FUND[ticker]||{};
+                const ind   = data?.indicators||{};
+                const score = bScore(fund);
+                return(
+                  <div key={ticker} onClick={()=>setSelected(ticker)}
+                    style={{background:C.panel,borderRadius:8,padding:"13px",cursor:"pointer",
+                      border:`1px solid ${C.border}`,
+                      borderLeft:`3px solid ${(data?.buyWeight||0)>(data?.sellWeight||0)?C.green:(data?.sellWeight||0)>(data?.buyWeight||0)?C.red:C.border}`,
+                      transition:"transform 0.1s,border-color 0.12s"}}
+                    onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-2px)";e.currentTarget.style.borderColor=C.accent;}}
+                    onMouseLeave={e=>{e.currentTarget.style.transform="";e.currentTarget.style.borderColor=(data?.buyWeight||0)>(data?.sellWeight||0)?C.green:(data?.sellWeight||0)>(data?.buyWeight||0)?C.red:C.border;}}>
+
+                    <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:8}}>
+                      <div>
+                        <div style={{color:C.accent,fontWeight:700,fontSize:15}}>{ticker}</div>
+                        <div style={{color:C.textDim,fontSize:10}}>{STOCK_NAMES[ticker]}</div>
+                      </div>
+                      <div style={{textAlign:"right"}}>
+                        <div style={{color:C.text,fontWeight:700,fontSize:15}}>{ind.last?`$${ind.last.toFixed(2)}`:"—"}</div>
+                        {data?.overall&&<OverallBadge signal={data.overall}/>}
+                      </div>
+                    </div>
+
+                    <div style={{display:"flex",gap:6,marginBottom:8,flexWrap:"wrap",alignItems:"center"}}>
+                      <span style={{background:"#052e16",color:C.green,border:"1px solid #166534",borderRadius:4,padding:"2px 7px",fontSize:10,fontWeight:700}}>
+                        🟢 {data?.signals?.filter(s=>s.type==="BUY").length||0}
+                      </span>
+                      <span style={{background:"#450a0a",color:C.red,border:"1px solid #991b1b",borderRadius:4,padding:"2px 7px",fontSize:10,fontWeight:700}}>
+                        🔴 {data?.signals?.filter(s=>s.type==="SELL").length||0}
+                      </span>
+                      <span style={{background:"#1c1a06",color:C.orange,border:"1px solid #854d0e",borderRadius:4,padding:"2px 7px",fontSize:10,fontWeight:700}}>
+                        ⚠️ {data?.alerts?.length||0}
+                      </span>
+                      {data?.valuation?.verdictColor&&<ValuationBadge color={data.valuation.verdictColor} compact/>}
+                      {data?.scores?.composite!=null&&(
+                        <span style={{background:C.panel2,color:C.accent,border:`1px solid ${C.accent}`,
+                          borderRadius:4,padding:"2px 7px",fontSize:10,fontWeight:700}}>
+                          ★ {data.scores.composite}
+                        </span>
+                      )}
+                      {data?.conflict&&<span style={{color:C.orange,fontSize:10,alignSelf:"center"}}>⚡ conflict</span>}
+                    </div>
+
+                    <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+                      <div style={{display:"flex",gap:10}}>
+                        {[
+                          {l:"RSI-D",v:ind.rsiDaily?.toFixed(0)||"—",c:ind.rsiDaily<30?C.green:ind.rsiDaily>70?C.red:C.text},
+                          {l:"RSI-W",v:ind.rsiWeekly?.toFixed(0)||"—",c:ind.rsiWeekly<30?C.green:ind.rsiWeekly>70?C.red:C.text},
+                          {l:"P/E",  v:fund.pe?`${(+fund.pe).toFixed(0)}x`:"—",c:fund.pe<20?C.green:fund.pe>45?C.red:C.text},
+                        ].map(m=>(
+                          <div key={m.l}>
+                            <div style={{color:C.textDim,fontSize:9}}>{m.l}</div>
+                            <div style={{color:m.c,fontSize:11,fontWeight:600}}>{m.v}</div>
+                          </div>
+                        ))}
+                      </div>
+                      <Ring score={score} size={40}/>
+                    </div>
+
+                    {portfolio.find(p=>p.ticker===ticker)&&(
+                      <div style={{marginTop:8,padding:"3px 6px",background:"#1e3a2f",border:"1px solid #166534",borderRadius:4,fontSize:10,color:"#4ade80"}}>
+                        💼 In portfolio
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* BAGGERS VIEW */}
+      {view==="baggers"&&(
+        <div style={{padding:"14px 16px"}}>
+          <BaggerTrack baggers={baggers} onSelect={setSelected}/>
+        </div>
+      )}
+
+      {/* TRACKRECORD VIEW */}
+      {view==="trackrecord"&&(
+        <div style={{padding:"14px 16px"}}>
+          <TrackRecord track={trackData}/>
+        </div>
+      )}
+
+      {/* PORTFOLIO VIEW */}
+      {view==="portfolio"&&(
+        <div style={{padding:"14px 16px"}}>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:10,marginBottom:16}}>
+            {[
+              {l:"Totale waarde",v:`$${tv2.toFixed(0)}`,c:C.accent},
+              {l:"Kostprijs",    v:`$${tc2.toFixed(0)}`,c:C.text},
+              {l:"P&L",         v:`${tv2-tc2>=0?"+":""}$${(tv2-tc2).toFixed(0)}`,c:tv2-tc2>=0?C.green:C.red},
+            ].map(x=>(
+              <div key={x.l} style={{background:C.panel,border:`1px solid ${C.border}`,borderRadius:8,padding:"12px 14px"}}>
+                <div style={{color:C.textDim,fontSize:11}}>{x.l}</div>
+                <div style={{color:x.c,fontSize:20,fontWeight:800,marginTop:2}}>{x.v}</div>
+              </div>
+            ))}
+          </div>
+          {portItems.length===0
+            ?<div style={{textAlign:"center",color:C.textDim,padding:40}}>Nog geen posities. Klik een aandeel → tab "Portfolio".</div>
+            :<div style={{display:"grid",gap:8}}>
+              {portItems.map((p,i)=>{
+                const data=getStockData(p.ticker);
+                return(
+                  <div key={i} style={{background:C.panel,border:`1px solid ${C.border}`,
+                    borderRadius:8,padding:"12px 14px",display:"flex",
+                    justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:8}}>
+                    <div>
+                      <div style={{color:C.accent,fontWeight:700}}>{p.ticker} <span style={{color:C.textDim,fontWeight:400,fontSize:11}}>{STOCK_NAMES[p.ticker]}</span></div>
+                      <div style={{color:C.textDim,fontSize:11}}>{p.shares} × ${p.buyPrice} · {p.date}</div>
+                      <div style={{color:C.textDim,fontSize:11}}>Huidig: ${p.last?.toFixed(2)||"—"}</div>
+                      {data?.overall&&<div style={{marginTop:4}}><OverallBadge signal={data.overall}/></div>}
+                    </div>
+                    <div style={{textAlign:"right"}}>
+                      <div style={{color:p.pnl>=0?C.green:C.red,fontWeight:700,fontSize:16}}>{p.pnl>=0?"+":""}${p.pnl.toFixed(0)}</div>
+                      <div style={{color:p.pnl>=0?C.green:C.red,fontSize:12}}>{((p.pnl/p.cb)*100).toFixed(1)}%</div>
+                    </div>
+                    <button onClick={()=>remove(i)} style={{background:"none",border:`1px solid ${C.border}`,color:C.textDim,borderRadius:4,padding:"3px 8px",fontSize:10,cursor:"pointer"}}>Verwijder</button>
+                  </div>
+                );
+              })}
+            </div>
+          }
+        </div>
+      )}
+
+      {selected&&(
+        <Detail ticker={selected} data={getStockData(selected)}
+          onClose={()=>setSelected(null)} portfolio={portfolio} add={add}/>
+      )}
+
+      <div style={{borderTop:`1px solid ${C.border}`,padding:"8px 16px",textAlign:"center",color:C.muted,fontSize:10}}>
+        Technische data via yfinance · Fundamentals jun 2026 · Signaalgewichten zijn indicatief · Geen financieel advies
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>
