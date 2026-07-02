@@ -1,0 +1,64 @@
+name: Dagelijkse Signaalanalyse
+
+on:
+  schedule:
+    # Elke werkdag om 07:30 UTC (dekt winter- en zomertijd voor ~08:00 Brussels)
+    - cron: '30 7 * * 1-5'
+  workflow_dispatch:        # Handmatig starten via GitHub website
+
+# Minimale permissies (security: alleen wat nodig is)
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository ophalen
+        uses: actions/checkout@v4
+
+      - name: Python installeren
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Dependencies installeren
+        run: pip install -r requirements.txt
+
+      - name: Signaalanalyse uitvoeren
+        env:
+          # Optioneel: voor echte historische P/E. Zonder key valt het systeem terug op PEG.
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+        run: python analyze.py
+
+      - name: Resultaten committen
+        run: |
+          git config user.name  "Buffett+ Bot"
+          git config user.email "bot@buffett-dashboard"
+          git add signals.json timeline.json weekly.json track_record.json history/ || true
+          git diff --staged --quiet || git commit -m "Update $(date '+%Y-%m-%d %H:%M UTC')"
+          git push
+
+      - name: E-mail bij fout
+        if: failure()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.GMAIL_USER }}
+          password: ${{ secrets.GMAIL_PASS }}
+          subject: "BUFFETT+ Analyse gefaald"
+          to: ${{ secrets.NOTIFY_EMAIL }}
+          from: Buffett+ Dashboard
+          body: |
+            De dagelijkse analyse is gefaald.
+            Logs: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+  keepalive:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: gautamkrishnar/keepalive-workflow@v2
