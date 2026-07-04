@@ -1479,8 +1479,12 @@ def main():
     print(f"{'='*60}\n")
 
     if IS_WEEKEND:
-        print("Weekend — beurs gesloten. Bestaande data blijft geldig. Analyse overgeslagen.")
-        sys.exit(0)
+        # Handmatige runs (Run workflow-knop) mogen wél in het weekend: analyse op vrijdagdata.
+        if os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch":
+            print("Weekend, maar handmatige run — analyse draait op de laatste handelsdag (vrijdag).")
+        else:
+            print("Weekend — beurs gesloten. Bestaande data blijft geldig. Analyse overgeslagen.")
+            sys.exit(0)
 
     os.makedirs(HISTORY_DIR, exist_ok=True)
     timeline = load_timeline()
