@@ -2,7 +2,7 @@
   "_meta": {
     "created": "2026-07-02T21:21:34",
     "note": "Schone start — demo-data verwijderd 2026-07-02",
-    "lastUpdate": "2026-07-03T15:24:52.353662+02:00"
+    "lastUpdate": "2026-07-05T00:47:18.831600+02:00"
   },
   "stocks": {
     "WM": [
@@ -26,6 +26,18 @@
         "overall": "LICHT KOOP",
         "composite": 38,
         "timing": 48,
+        "qualityGate": true,
+        "valuationVerdict": "Duur (PEG > 3.5)",
+        "valuationColor": "red"
+      },
+      {
+        "date": "2026-07-05",
+        "price": 230.4,
+        "rsiDaily": 64.5,
+        "rsiWeekly": 55.2,
+        "overall": "LICHT KOOP",
+        "composite": 40,
+        "timing": 49,
         "qualityGate": true,
         "valuationVerdict": "Duur (PEG > 3.5)",
         "valuationColor": "red"
@@ -81,6 +93,18 @@
         "qualityGate": true,
         "valuationVerdict": "Duur (PEG > 3.5)",
         "valuationColor": "red"
+      },
+      {
+        "date": "2026-07-05",
+        "price": 963.53,
+        "rsiDaily": 50.9,
+        "rsiWeekly": 74.8,
+        "overall": "VERKOOP",
+        "composite": 49,
+        "timing": 65,
+        "qualityGate": true,
+        "valuationVerdict": "Duur (PEG > 3.5)",
+        "valuationColor": "red"
       }
     ],
     "ASML": [
@@ -107,6 +131,18 @@
         "qualityGate": true,
         "valuationVerdict": "Aan de dure kant (PEG 2.5–3.5)",
         "valuationColor": "orange"
+      },
+      {
+        "date": "2026-07-05",
+        "price": 1634.4,
+        "rsiDaily": 57.1,
+        "rsiWeekly": 73.9,
+        "overall": "VERKOOP",
+        "composite": 56,
+        "timing": 65,
+        "qualityGate": true,
+        "valuationVerdict": "Duur (PEG > 3.5)",
+        "valuationColor": "red"
       }
     ],
     "ASMI": [
@@ -133,6 +169,18 @@
         "qualityGate": true,
         "valuationVerdict": "Duur (PEG > 3.5)",
         "valuationColor": "red"
+      },
+      {
+        "date": "2026-07-05",
+        "price": 975.6,
+        "rsiDaily": 52.2,
+        "rsiWeekly": 65.6,
+        "overall": "NEUTRAAL",
+        "composite": 66,
+        "timing": 71,
+        "qualityGate": true,
+        "valuationVerdict": "Aan de dure kant (PEG 2.5–3.5)",
+        "valuationColor": "orange"
       }
     ],
     "MU": [
@@ -156,6 +204,18 @@
         "overall": "VERKOOP",
         "composite": 85,
         "timing": 73,
+        "qualityGate": true,
+        "valuationVerdict": "Aantrekkelijk (PEG < 1)",
+        "valuationColor": "green"
+      },
+      {
+        "date": "2026-07-05",
+        "price": 975.56,
+        "rsiDaily": 48.5,
+        "rsiWeekly": 68.6,
+        "overall": "LICHT KOOP",
+        "composite": 88,
+        "timing": 77,
         "qualityGate": true,
         "valuationVerdict": "Aantrekkelijk (PEG < 1)",
         "valuationColor": "green"
@@ -185,6 +245,18 @@
         "qualityGate": true,
         "valuationVerdict": "Redelijk (PEG 1–1.5)",
         "valuationColor": "green"
+      },
+      {
+        "date": "2026-07-05",
+        "price": 359.91,
+        "rsiDaily": 49.5,
+        "rsiWeekly": 56.7,
+        "overall": "LICHT KOOP",
+        "composite": 69,
+        "timing": 67,
+        "qualityGate": true,
+        "valuationVerdict": "Aan de dure kant (PEG 2.5–3.5)",
+        "valuationColor": "orange"
       }
     ],
     "AMZN": [
@@ -211,6 +283,18 @@
         "qualityGate": true,
         "valuationVerdict": "Neutraal (PEG 1.5–2.5)",
         "valuationColor": "neutral"
+      },
+      {
+        "date": "2026-07-05",
+        "price": 242.67,
+        "rsiDaily": 48.7,
+        "rsiWeekly": 51.5,
+        "overall": "NEUTRAAL",
+        "composite": 64,
+        "timing": 66,
+        "qualityGate": true,
+        "valuationVerdict": "Aan de dure kant (PEG 2.5–3.5)",
+        "valuationColor": "orange"
       }
     ],
     "ORCL": [
@@ -237,6 +321,18 @@
         "qualityGate": true,
         "valuationVerdict": "Neutraal (PEG 1.5–2.5)",
         "valuationColor": "neutral"
+      },
+      {
+        "date": "2026-07-05",
+        "price": 140.27,
+        "rsiDaily": 26.7,
+        "rsiWeekly": 38.8,
+        "overall": "LICHT KOOP",
+        "composite": 66,
+        "timing": 53,
+        "qualityGate": true,
+        "valuationVerdict": "Neutraal (PEG 1.5–2.5)",
+        "valuationColor": "neutral"
       }
     ],
     "KO": [
@@ -259,6 +355,18 @@
         "rsiWeekly": 63.6,
         "overall": "LICHT VERKOOP",
         "composite": 47,
+        "timing": 64,
+        "qualityGate": true,
+        "valuationVerdict": "Duur (PEG > 3.5)",
+        "valuationColor": "red"
+      },
+      {
+        "date": "2026-07-05",
+        "price": 84.14,
+        "rsiDaily": 65.0,
+        "rsiWeekly": 65.9,
+        "overall": "LICHT VERKOOP",
+        "composite": 49,
         "timing": 64,
         "qualityGate": true,
         "valuationVerdict": "Duur (PEG > 3.5)",
@@ -289,6 +397,18 @@
         "qualityGate": false,
         "valuationVerdict": "Aan de dure kant (PEG 2.5–3.5)",
         "valuationColor": "orange"
+      },
+      {
+        "date": "2026-07-05",
+        "price": 302.07,
+        "rsiDaily": 51.0,
+        "rsiWeekly": 44.3,
+        "overall": "LICHT KOOP",
+        "composite": 56,
+        "timing": 52,
+        "qualityGate": false,
+        "valuationVerdict": "Neutraal (PEG 1.5–2.5)",
+        "valuationColor": "neutral"
       }
     ],
     "MOGA": [
@@ -315,6 +435,18 @@
         "qualityGate": false,
         "valuationVerdict": "Neutraal (PEG 1.5–2.5)",
         "valuationColor": "neutral"
+      },
+      {
+        "date": "2026-07-05",
+        "price": 417.42,
+        "rsiDaily": 69.1,
+        "rsiWeekly": 76.1,
+        "overall": "VERKOOP",
+        "composite": 46,
+        "timing": 61,
+        "qualityGate": false,
+        "valuationVerdict": "Duur (PEG > 3.5)",
+        "valuationColor": "red"
       }
     ],
     "TDG": [
@@ -341,6 +473,18 @@
         "qualityGate": false,
         "valuationVerdict": "Aan de dure kant (PEG 2.5–3.5)",
         "valuationColor": "orange"
+      },
+      {
+        "date": "2026-07-05",
+        "price": 1348.49,
+        "rsiDaily": 63.1,
+        "rsiWeekly": 57.7,
+        "overall": "LICHT KOOP",
+        "composite": 55,
+        "timing": 62,
+        "qualityGate": false,
+        "valuationVerdict": "Aan de dure kant (PEG 2.5–3.5)",
+        "valuationColor": "orange"
       }
     ],
     "KTOS": [
@@ -363,6 +507,18 @@
         "rsiWeekly": 35.2,
         "overall": "LICHT KOOP",
         "composite": 36,
+        "timing": 42,
+        "qualityGate": false,
+        "valuationVerdict": "Duur (PEG > 3.5)",
+        "valuationColor": "red"
+      },
+      {
+        "date": "2026-07-05",
+        "price": 55.35,
+        "rsiDaily": 51.6,
+        "rsiWeekly": 41.9,
+        "overall": "LICHT KOOP",
+        "composite": 35,
         "timing": 42,
         "qualityGate": false,
         "valuationVerdict": "Duur (PEG > 3.5)",
@@ -393,6 +549,18 @@
         "qualityGate": false,
         "valuationVerdict": "Onvoldoende data",
         "valuationColor": "neutral"
+      },
+      {
+        "date": "2026-07-05",
+        "price": 100.46,
+        "rsiDaily": 47.8,
+        "rsiWeekly": 54.3,
+        "overall": "NEUTRAAL",
+        "composite": 52,
+        "timing": 62,
+        "qualityGate": false,
+        "valuationVerdict": "Onvoldoende data",
+        "valuationColor": "neutral"
       }
     ],
     "OPEN": [
@@ -416,6 +584,18 @@
         "overall": "NEUTRAAL",
         "composite": 41,
         "timing": 49,
+        "qualityGate": false,
+        "valuationVerdict": "Onvoldoende data",
+        "valuationColor": "neutral"
+      },
+      {
+        "date": "2026-07-05",
+        "price": 4.9,
+        "rsiDaily": 57.9,
+        "rsiWeekly": 49.1,
+        "overall": "NEUTRAAL",
+        "composite": 43,
+        "timing": 50,
         "qualityGate": false,
         "valuationVerdict": "Onvoldoende data",
         "valuationColor": "neutral"
@@ -445,6 +625,18 @@
         "qualityGate": false,
         "valuationVerdict": "Onvoldoende data",
         "valuationColor": "neutral"
+      },
+      {
+        "date": "2026-07-05",
+        "price": 16.88,
+        "rsiDaily": 63.7,
+        "rsiWeekly": 60.0,
+        "overall": "NEUTRAAL",
+        "composite": 48,
+        "timing": 48,
+        "qualityGate": false,
+        "valuationVerdict": "Onvoldoende data",
+        "valuationColor": "neutral"
       }
     ],
     "BNGO": [
@@ -468,6 +660,662 @@
         "overall": "NEUTRAAL",
         "composite": 43,
         "timing": 41,
+        "qualityGate": false,
+        "valuationVerdict": "Onvoldoende data",
+        "valuationColor": "neutral"
+      },
+      {
+        "date": "2026-07-05",
+        "price": 1.15,
+        "rsiDaily": 46.2,
+        "rsiWeekly": 37.5,
+        "overall": "NEUTRAAL",
+        "composite": 45,
+        "timing": 41,
+        "qualityGate": false,
+        "valuationVerdict": "Onvoldoende data",
+        "valuationColor": "neutral"
+      }
+    ],
+    "GAW": [
+      {
+        "date": "2026-07-05",
+        "price": 21140.0,
+        "rsiDaily": 58.4,
+        "rsiWeekly": 61.7,
+        "overall": "LICHT KOOP",
+        "composite": 72,
+        "timing": 74,
+        "qualityGate": true,
+        "valuationVerdict": "Aan de dure kant (PEG 2.5–3.5)",
+        "valuationColor": "orange"
+      }
+    ],
+    "MNST": [
+      {
+        "date": "2026-07-05",
+        "price": 97.6,
+        "rsiDaily": 71.9,
+        "rsiWeekly": 74.8,
+        "overall": "STERK VERKOOP",
+        "composite": 51,
+        "timing": 54,
+        "qualityGate": true,
+        "valuationVerdict": "Duur (PEG > 3.5)",
+        "valuationColor": "red"
+      }
+    ],
+    "V": [
+      {
+        "date": "2026-07-05",
+        "price": 362.13,
+        "rsiDaily": 76.8,
+        "rsiWeekly": 67.2,
+        "overall": "STERK VERKOOP",
+        "composite": 57,
+        "timing": 53,
+        "qualityGate": true,
+        "valuationVerdict": "Aan de dure kant (PEG 2.5–3.5)",
+        "valuationColor": "orange"
+      }
+    ],
+    "KPG": [
+      {
+        "date": "2026-07-05",
+        "price": 4.03,
+        "rsiDaily": 56.5,
+        "rsiWeekly": 33.3,
+        "overall": "NEUTRAAL",
+        "composite": 61,
+        "timing": 34,
+        "qualityGate": true,
+        "valuationVerdict": "Aantrekkelijk (PEG < 1)",
+        "valuationColor": "green"
+      }
+    ],
+    "ADM": [
+      {
+        "date": "2026-07-05",
+        "price": 3666.0,
+        "rsiDaily": 71.0,
+        "rsiWeekly": 61.7,
+        "overall": "VERKOOP",
+        "composite": 70,
+        "timing": 58,
+        "qualityGate": true,
+        "valuationVerdict": "Neutraal (PEG 1.5–2.5)",
+        "valuationColor": "neutral"
+      }
+    ],
+    "AON": [
+      {
+        "date": "2026-07-05",
+        "price": 357.46,
+        "rsiDaily": 69.1,
+        "rsiWeekly": 59.3,
+        "overall": "LICHT KOOP",
+        "composite": 52,
+        "timing": 45,
+        "qualityGate": true,
+        "valuationVerdict": "Aan de dure kant (PEG 2.5–3.5)",
+        "valuationColor": "orange"
+      }
+    ],
+    "MELI": [
+      {
+        "date": "2026-07-05",
+        "price": 1763.36,
+        "rsiDaily": 61.6,
+        "rsiWeekly": 48.3,
+        "overall": "LICHT VERKOOP",
+        "composite": 61,
+        "timing": 37,
+        "qualityGate": true,
+        "valuationVerdict": "Redelijk (PEG 1–1.5)",
+        "valuationColor": "green"
+      }
+    ],
+    "III": [
+      {
+        "date": "2026-07-05",
+        "price": 2611.0,
+        "rsiDaily": 67.9,
+        "rsiWeekly": 46.0,
+        "overall": "NEUTRAAL",
+        "composite": 70,
+        "timing": 31,
+        "qualityGate": true,
+        "valuationVerdict": "Aantrekkelijk (PEG < 1)",
+        "valuationColor": "green"
+      }
+    ],
+    "SHOP": [
+      {
+        "date": "2026-07-05",
+        "price": 119.46,
+        "rsiDaily": 57.9,
+        "rsiWeekly": 48.9,
+        "overall": "NEUTRAAL",
+        "composite": 51,
+        "timing": 49,
+        "qualityGate": true,
+        "valuationVerdict": "Aan de dure kant (PEG 2.5–3.5)",
+        "valuationColor": "orange"
+      }
+    ],
+    "NET": [
+      {
+        "date": "2026-07-05",
+        "price": 242.41,
+        "rsiDaily": 56.2,
+        "rsiWeekly": 58.8,
+        "overall": "NEUTRAAL",
+        "composite": 44,
+        "timing": 71,
+        "qualityGate": false,
+        "valuationVerdict": "Duur (PEG > 3.5)",
+        "valuationColor": "red"
+      }
+    ],
+    "CRWV": [
+      {
+        "date": "2026-07-05",
+        "price": 81.75,
+        "rsiDaily": 33.7,
+        "rsiWeekly": 43.5,
+        "overall": "LICHT KOOP",
+        "composite": 43,
+        "timing": 51,
+        "qualityGate": false,
+        "valuationVerdict": "Onvoldoende data",
+        "valuationColor": "neutral"
+      }
+    ],
+    "MSFT": [
+      {
+        "date": "2026-07-05",
+        "price": 390.49,
+        "rsiDaily": 49.8,
+        "rsiWeekly": 43.5,
+        "overall": "KOOP",
+        "composite": 66,
+        "timing": 43,
+        "qualityGate": true,
+        "valuationVerdict": "Neutraal (PEG 1.5–2.5)",
+        "valuationColor": "neutral"
+      }
+    ],
+    "MTLS": [
+      {
+        "date": "2026-07-05",
+        "price": 7.16,
+        "rsiDaily": 64.5,
+        "rsiWeekly": 71.4,
+        "overall": "VERKOOP",
+        "composite": 35,
+        "timing": 51,
+        "qualityGate": false,
+        "valuationVerdict": "Duur (PEG > 3.5)",
+        "valuationColor": "red"
+      }
+    ],
+    "SNAP": [
+      {
+        "date": "2026-07-05",
+        "price": 4.84,
+        "rsiDaily": 45.2,
+        "rsiWeekly": 41.3,
+        "overall": "NEUTRAAL",
+        "composite": 42,
+        "timing": 38,
+        "qualityGate": false,
+        "valuationVerdict": "Onvoldoende data",
+        "valuationColor": "neutral"
+      }
+    ],
+    "NVDA": [
+      {
+        "date": "2026-07-05",
+        "price": 194.83,
+        "rsiDaily": 41.2,
+        "rsiWeekly": 50.0,
+        "overall": "LICHT KOOP",
+        "composite": 82,
+        "timing": 62,
+        "qualityGate": true,
+        "valuationVerdict": "Aantrekkelijk (PEG < 1)",
+        "valuationColor": "green"
+      }
+    ],
+    "NKE": [
+      {
+        "date": "2026-07-05",
+        "price": 44.09,
+        "rsiDaily": 52.9,
+        "rsiWeekly": 40.2,
+        "overall": "LICHT KOOP",
+        "composite": 47,
+        "timing": 33,
+        "qualityGate": true,
+        "valuationVerdict": "Gemiddelde P/E (absoluut)",
+        "valuationColor": "neutral"
+      }
+    ],
+    "DIE": [
+      {
+        "date": "2026-07-05",
+        "price": 180.4,
+        "rsiDaily": 66.6,
+        "rsiWeekly": 56.5,
+        "overall": "LICHT VERKOOP",
+        "composite": 61,
+        "timing": 59,
+        "qualityGate": true,
+        "valuationVerdict": "Neutraal (PEG 1.5–2.5)",
+        "valuationColor": "neutral"
+      }
+    ],
+    "SOF": [
+      {
+        "date": "2026-07-05",
+        "price": 230.6,
+        "rsiDaily": 65.1,
+        "rsiWeekly": 53.3,
+        "overall": "LICHT KOOP",
+        "composite": 48,
+        "timing": 39,
+        "qualityGate": false,
+        "valuationVerdict": "Neutraal (PEG 1.5–2.5)",
+        "valuationColor": "neutral"
+      }
+    ],
+    "AIR": [
+      {
+        "date": "2026-07-05",
+        "price": 206.15,
+        "rsiDaily": 75.2,
+        "rsiWeekly": 65.1,
+        "overall": "LICHT VERKOOP",
+        "composite": 57,
+        "timing": 56,
+        "qualityGate": false,
+        "valuationVerdict": "Aan de dure kant (PEG 2.5–3.5)",
+        "valuationColor": "orange"
+      }
+    ],
+    "ALFEN": [
+      {
+        "date": "2026-07-05",
+        "price": 14.67,
+        "rsiDaily": 45.4,
+        "rsiWeekly": 59.1,
+        "overall": "NEUTRAAL",
+        "composite": 46,
+        "timing": 55,
+        "qualityGate": false,
+        "valuationVerdict": "Hoge P/E (absoluut)",
+        "valuationColor": "orange"
+      }
+    ],
+    "LOTB": [
+      {
+        "date": "2026-07-05",
+        "price": 11780.0,
+        "rsiDaily": 67.2,
+        "rsiWeekly": 71.3,
+        "overall": "VERKOOP",
+        "composite": 52,
+        "timing": 60,
+        "qualityGate": true,
+        "valuationVerdict": "Duur (PEG > 3.5)",
+        "valuationColor": "red"
+      }
+    ],
+    "MSTR": [
+      {
+        "date": "2026-07-05",
+        "price": 100.77,
+        "rsiDaily": 40.6,
+        "rsiWeekly": 35.0,
+        "overall": "NEUTRAAL",
+        "composite": 35,
+        "timing": 35,
+        "qualityGate": false,
+        "valuationVerdict": "Onvoldoende data",
+        "valuationColor": "neutral"
+      }
+    ],
+    "AAPL": [
+      {
+        "date": "2026-07-05",
+        "price": 308.63,
+        "rsiDaily": 60.3,
+        "rsiWeekly": 62.6,
+        "overall": "LICHT KOOP",
+        "composite": 50,
+        "timing": 60,
+        "qualityGate": true,
+        "valuationVerdict": "Duur (PEG > 3.5)",
+        "valuationColor": "red"
+      }
+    ],
+    "NFLX": [
+      {
+        "date": "2026-07-05",
+        "price": 77.65,
+        "rsiDaily": 47.3,
+        "rsiWeekly": 36.9,
+        "overall": "KOOP",
+        "composite": 70,
+        "timing": 39,
+        "qualityGate": true,
+        "valuationVerdict": "Aantrekkelijk (PEG < 1)",
+        "valuationColor": "green"
+      }
+    ],
+    "DIS": [
+      {
+        "date": "2026-07-05",
+        "price": 99.5,
+        "rsiDaily": 49.3,
+        "rsiWeekly": 45.5,
+        "overall": "LICHT KOOP",
+        "composite": 34,
+        "timing": 39,
+        "qualityGate": false,
+        "valuationVerdict": "Duur (PEG > 3.5)",
+        "valuationColor": "red"
+      }
+    ],
+    "BLK": [
+      {
+        "date": "2026-07-05",
+        "price": 995.73,
+        "rsiDaily": 46.0,
+        "rsiWeekly": 45.9,
+        "overall": "NEUTRAAL",
+        "composite": 59,
+        "timing": 40,
+        "qualityGate": true,
+        "valuationVerdict": "Neutraal (PEG 1.5–2.5)",
+        "valuationColor": "neutral"
+      }
+    ],
+    "BABA": [
+      {
+        "date": "2026-07-05",
+        "price": 96.14,
+        "rsiDaily": 24.1,
+        "rsiWeekly": 30.3,
+        "overall": "LICHT KOOP",
+        "composite": 62,
+        "timing": 52,
+        "qualityGate": false,
+        "valuationVerdict": "Neutraal (PEG 1.5–2.5)",
+        "valuationColor": "neutral"
+      }
+    ],
+    "NABTESCO": [
+      {
+        "date": "2026-07-05",
+        "price": 5655.0,
+        "rsiDaily": 59.9,
+        "rsiWeekly": 63.1,
+        "overall": "NEUTRAAL",
+        "composite": 41,
+        "timing": 64,
+        "qualityGate": false,
+        "valuationVerdict": "Duur (PEG > 3.5)",
+        "valuationColor": "red"
+      }
+    ],
+    "HARMONIC": [
+      {
+        "date": "2026-07-05",
+        "price": 8840.0,
+        "rsiDaily": 64.5,
+        "rsiWeekly": 71.4,
+        "overall": "VERKOOP",
+        "composite": 44,
+        "timing": 60,
+        "qualityGate": false,
+        "valuationVerdict": "Duur (PEG > 3.5)",
+        "valuationColor": "red"
+      }
+    ],
+    "KEYENCE": [
+      {
+        "date": "2026-07-05",
+        "price": 80300.0,
+        "rsiDaily": 59.3,
+        "rsiWeekly": 63.6,
+        "overall": "NEUTRAAL",
+        "composite": 54,
+        "timing": 68,
+        "qualityGate": true,
+        "valuationVerdict": "Duur (PEG > 3.5)",
+        "valuationColor": "red"
+      }
+    ],
+    "FANUC": [
+      {
+        "date": "2026-07-05",
+        "price": 7439.0,
+        "rsiDaily": 51.2,
+        "rsiWeekly": 58.0,
+        "overall": "NEUTRAAL",
+        "composite": 44,
+        "timing": 60,
+        "qualityGate": false,
+        "valuationVerdict": "Duur (PEG > 3.5)",
+        "valuationColor": "red"
+      }
+    ],
+    "YASKAWA": [
+      {
+        "date": "2026-07-05",
+        "price": 7479.0,
+        "rsiDaily": 58.3,
+        "rsiWeekly": 67.9,
+        "overall": "LICHT KOOP",
+        "composite": 48,
+        "timing": 68,
+        "qualityGate": false,
+        "valuationVerdict": "Duur (PEG > 3.5)",
+        "valuationColor": "red"
+      }
+    ],
+    "SOFTBANK": [
+      {
+        "date": "2026-07-05",
+        "price": 6169.0,
+        "rsiDaily": 45.2,
+        "rsiWeekly": 55.8,
+        "overall": "NEUTRAAL",
+        "composite": 72,
+        "timing": 70,
+        "qualityGate": true,
+        "valuationVerdict": "Aantrekkelijk (PEG < 1)",
+        "valuationColor": "green"
+      }
+    ],
+    "ROK": [
+      {
+        "date": "2026-07-05",
+        "price": 471.7,
+        "rsiDaily": 53.5,
+        "rsiWeekly": 68.7,
+        "overall": "NEUTRAAL",
+        "composite": 52,
+        "timing": 71,
+        "qualityGate": true,
+        "valuationVerdict": "Duur (PEG > 3.5)",
+        "valuationColor": "red"
+      }
+    ],
+    "TER": [
+      {
+        "date": "2026-07-05",
+        "price": 369.09,
+        "rsiDaily": 44.1,
+        "rsiWeekly": 56.5,
+        "overall": "LICHT VERKOOP",
+        "composite": 57,
+        "timing": 69,
+        "qualityGate": true,
+        "valuationVerdict": "Duur (PEG > 3.5)",
+        "valuationColor": "red"
+      }
+    ],
+    "ISRG": [
+      {
+        "date": "2026-07-05",
+        "price": 426.01,
+        "rsiDaily": 56.5,
+        "rsiWeekly": 40.8,
+        "overall": "LICHT KOOP",
+        "composite": 49,
+        "timing": 32,
+        "qualityGate": true,
+        "valuationVerdict": "Aan de dure kant (PEG 2.5–3.5)",
+        "valuationColor": "orange"
+      }
+    ],
+    "CGNX": [
+      {
+        "date": "2026-07-05",
+        "price": 67.8,
+        "rsiDaily": 54.8,
+        "rsiWeekly": 68.3,
+        "overall": "NEUTRAAL",
+        "composite": 51,
+        "timing": 71,
+        "qualityGate": false,
+        "valuationVerdict": "Duur (PEG > 3.5)",
+        "valuationColor": "red"
+      }
+    ],
+    "NOVT": [
+      {
+        "date": "2026-07-05",
+        "price": 161.72,
+        "rsiDaily": 55.9,
+        "rsiWeekly": 64.9,
+        "overall": "LICHT KOOP",
+        "composite": 47,
+        "timing": 69,
+        "qualityGate": true,
+        "valuationVerdict": "Duur (PEG > 3.5)",
+        "valuationColor": "red"
+      }
+    ],
+    "IONQ": [
+      {
+        "date": "2026-07-05",
+        "price": 49.12,
+        "rsiDaily": 41.0,
+        "rsiWeekly": 50.7,
+        "overall": "NEUTRAAL",
+        "composite": 57,
+        "timing": 71,
+        "qualityGate": false,
+        "valuationVerdict": "Onvoldoende data",
+        "valuationColor": "neutral"
+      }
+    ],
+    "RGTI": [
+      {
+        "date": "2026-07-05",
+        "price": 17.94,
+        "rsiDaily": 41.1,
+        "rsiWeekly": 46.4,
+        "overall": "NEUTRAAL",
+        "composite": 51,
+        "timing": 54,
+        "qualityGate": false,
+        "valuationVerdict": "Onvoldoende data",
+        "valuationColor": "neutral"
+      }
+    ],
+    "QBTS": [
+      {
+        "date": "2026-07-05",
+        "price": 22.53,
+        "rsiDaily": 45.7,
+        "rsiWeekly": 50.5,
+        "overall": "NEUTRAAL",
+        "composite": 57,
+        "timing": 69,
+        "qualityGate": false,
+        "valuationVerdict": "Onvoldoende data",
+        "valuationColor": "neutral"
+      }
+    ],
+    "UBTECH": [
+      {
+        "date": "2026-07-05",
+        "price": 108.9,
+        "rsiDaily": 53.2,
+        "rsiWeekly": 49.2,
+        "overall": "LICHT KOOP",
+        "composite": 46,
+        "timing": 46,
+        "qualityGate": false,
+        "valuationVerdict": "Onvoldoende data",
+        "valuationColor": "neutral"
+      }
+    ],
+    "SYM": [
+      {
+        "date": "2026-07-05",
+        "price": 42.74,
+        "rsiDaily": 45.7,
+        "rsiWeekly": 41.8,
+        "overall": "NEUTRAAL",
+        "composite": 35,
+        "timing": 42,
+        "qualityGate": false,
+        "valuationVerdict": "Duur (PEG > 3.5)",
+        "valuationColor": "red"
+      }
+    ],
+    "SERV": [
+      {
+        "date": "2026-07-05",
+        "price": 6.31,
+        "rsiDaily": 38.3,
+        "rsiWeekly": 36.8,
+        "overall": "NEUTRAAL",
+        "composite": 48,
+        "timing": 47,
+        "qualityGate": false,
+        "valuationVerdict": "Onvoldoende data",
+        "valuationColor": "neutral"
+      }
+    ],
+    "RR": [
+      {
+        "date": "2026-07-05",
+        "price": 1.96,
+        "rsiDaily": 38.5,
+        "rsiWeekly": 38.9,
+        "overall": "NEUTRAAL",
+        "composite": 43,
+        "timing": 35,
+        "qualityGate": false,
+        "valuationVerdict": "Onvoldoende data",
+        "valuationColor": "neutral"
+      }
+    ],
+    "PL": [
+      {
+        "date": "2026-07-05",
+        "price": 31.38,
+        "rsiDaily": 45.9,
+        "rsiWeekly": 51.3,
+        "overall": "NEUTRAAL",
+        "composite": 53,
+        "timing": 61,
         "qualityGate": false,
         "valuationVerdict": "Onvoldoende data",
         "valuationColor": "neutral"

@@ -1,7 +1,7 @@
 {
   "_meta": {
     "created": "2026-07-02T21:36:20.214972+02:00",
-    "lastUpdate": "2026-07-03T15:24:52.353662+02:00"
+    "lastUpdate": "2026-07-05T00:47:18.831600+02:00"
   },
   "records": {
     "monthly_pick:MU:2026-07-02": {
@@ -31,6 +31,52 @@
         "quality": 95,
         "valuation": 90,
         "timing": 73
+      },
+      "outcomes": {}
+    },
+    "monthly_pick:MU:2026-07-05": {
+      "ticker": "MU",
+      "type": "monthly_pick",
+      "direction": "BUY",
+      "date": "2026-07-05",
+      "entryPrice": 975.56,
+      "benchEntry": 7483.240234375,
+      "currency": "$",
+      "snapshot": {
+        "composite": 88,
+        "quality": 95,
+        "valuation": 90,
+        "timing": 77
+      },
+      "outcomes": {}
+    },
+    "strong_signal:MNST:2026-07-05": {
+      "ticker": "MNST",
+      "type": "strong_signal",
+      "direction": "SELL",
+      "date": "2026-07-05",
+      "entryPrice": 97.6,
+      "benchEntry": 7483.240234375,
+      "currency": "$",
+      "snapshot": {
+        "overall": "STERK VERKOOP",
+        "composite": 51,
+        "timing": 54
+      },
+      "outcomes": {}
+    },
+    "strong_signal:V:2026-07-05": {
+      "ticker": "V",
+      "type": "strong_signal",
+      "direction": "SELL",
+      "date": "2026-07-05",
+      "entryPrice": 362.13,
+      "benchEntry": 7483.240234375,
+      "currency": "$",
+      "snapshot": {
+        "overall": "STERK VERKOOP",
+        "composite": 57,
+        "timing": 53
       },
       "outcomes": {}
     }

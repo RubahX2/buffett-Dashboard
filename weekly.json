@@ -1,12 +1,43 @@
 {
-  "generatedAt": "2026-07-03T15:24:52.353662+02:00",
-  "generatedAtHuman": "Friday 03 July 2026 om 15:24",
+  "generatedAt": "2026-07-05T00:47:18.831600+02:00",
+  "generatedAtHuman": "Sunday 05 July 2026 om 00:47",
   "periodLabel": "sinds ~1 week geleden",
   "changes": [
     {
-      "ticker": "ASMI",
-      "daysAgo": 1,
+      "ticker": "ASML",
+      "daysAgo": 3,
       "changes": [
+        {
+          "type": "composite",
+          "dir": "down",
+          "text": "Composiet 66 ↓ 56"
+        },
+        {
+          "type": "valuation",
+          "dir": "neutral",
+          "text": "Waardering: Aan de dure kant (PEG 2.5–3.5) → Duur (PEG > 3.5)"
+        },
+        {
+          "type": "signal",
+          "dir": "up",
+          "text": "Signaal: NEUTRAAL → VERKOOP"
+        },
+        {
+          "type": "rsi",
+          "dir": "down",
+          "text": "RSI weekly overbought (74)"
+        }
+      ]
+    },
+    {
+      "ticker": "ASMI",
+      "daysAgo": 3,
+      "changes": [
+        {
+          "type": "valuation",
+          "dir": "neutral",
+          "text": "Waardering: Duur (PEG > 3.5) → Aan de dure kant (PEG 2.5–3.5)"
+        },
         {
           "type": "signal",
           "dir": "neutral",
@@ -15,39 +46,76 @@
       ]
     },
     {
-      "ticker": "AMZN",
-      "daysAgo": 1,
+      "ticker": "GOOGL",
+      "daysAgo": 3,
       "changes": [
         {
-          "type": "signal",
-          "dir": "up",
-          "text": "Signaal: NEUTRAAL → VERKOOP"
+          "type": "composite",
+          "dir": "down",
+          "text": "Composiet 76 ↓ 69"
+        },
+        {
+          "type": "valuation",
+          "dir": "neutral",
+          "text": "Waardering: Redelijk (PEG 1–1.5) → Aan de dure kant (PEG 2.5–3.5)"
         }
       ]
     },
     {
-      "ticker": "TDG",
-      "daysAgo": 1,
+      "ticker": "LHX",
+      "daysAgo": 3,
+      "changes": [
+        {
+          "type": "composite",
+          "dir": "up",
+          "text": "Composiet 51 ↑ 56"
+        },
+        {
+          "type": "valuation",
+          "dir": "neutral",
+          "text": "Waardering: Aan de dure kant (PEG 2.5–3.5) → Neutraal (PEG 1.5–2.5)"
+        }
+      ]
+    },
+    {
+      "ticker": "MOGA",
+      "daysAgo": 3,
+      "changes": [
+        {
+          "type": "composite",
+          "dir": "down",
+          "text": "Composiet 54 ↓ 46"
+        },
+        {
+          "type": "valuation",
+          "dir": "neutral",
+          "text": "Waardering: Neutraal (PEG 1.5–2.5) → Duur (PEG > 3.5)"
+        }
+      ]
+    },
+    {
+      "ticker": "MU",
+      "daysAgo": 3,
       "changes": [
         {
           "type": "signal",
           "dir": "neutral",
-          "text": "Signaal: LICHT KOOP → KOOP"
+          "text": "Signaal: VERKOOP → LICHT KOOP"
         }
       ]
     },
     {
-      "ticker": "RKLB",
-      "daysAgo": 1,
+      "ticker": "AMZN",
+      "daysAgo": 3,
       "changes": [
         {
-          "type": "signal",
-          "dir": "up",
-          "text": "Signaal: NEUTRAAL → VERKOOP"
+          "type": "valuation",
+          "dir": "neutral",
+          "text": "Waardering: Neutraal (PEG 1.5–2.5) → Aan de dure kant (PEG 2.5–3.5)"
         }
       ]
     }
   ],
-  "changedCount": 4,
+  "changedCount": 7,
   "note": "Toont enkel wat veranderde t.o.v. ~7 dagen geleden. Geen wijzigingen = stabiele week."
 }
