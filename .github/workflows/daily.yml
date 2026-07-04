@@ -42,6 +42,7 @@ jobs:
 
       - name: E-mail bij fout
         if: failure()
+        continue-on-error: true
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
@@ -54,3 +55,11 @@ jobs:
           body: |
             De dagelijkse analyse is gefaald.
             Logs: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+  keepalive:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: gautamkrishnar/keepalive-workflow@v2
