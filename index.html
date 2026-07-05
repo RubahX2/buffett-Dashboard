@@ -124,6 +124,7 @@ function OverallBadge({ signal }) {
     "LICHT VERKOOP":{bg:"#3b0a0a",fg:"#fca5a5",bo:"#7f1d1d"},
     "VERKOOP":      {bg:"#450a0a",fg:"#f87171",bo:"#991b1b"},
     "STERK VERKOOP":{bg:"#450a0a",fg:"#ef4444",bo:"#dc2626"},
+    "CAUTION (overextended)":{bg:"#422006",fg:"#fbbf24",bo:"#b45309"},
   };
   const s = m[signal] || m["NEUTRAAL"];
   return <span style={{background:s.bg,color:s.fg,border:`1px solid ${s.bo}`,borderRadius:4,padding:"3px 9px",fontSize:11,fontWeight:700,whiteSpace:"nowrap"}}>{signal}</span>;

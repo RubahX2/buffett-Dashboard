@@ -561,6 +561,165 @@ def fetch_all(watchlist) -> dict:
     return result
 
 # ── SIGNAAL ENGINE ────────────────────────────────────────────────────────────
+def _monthly_state(monthly):
+    """Drie-toestanden-oordeel over de monthly (richting-anker).
+    Returns: ("strong_bear" | "light_bear" | "neutral" | "bull", detail-dict).
+
+    strong_bear = EMA bearish gekruist + MACD bearish & dalend  -> VETO op koop
+    light_bear  = reversal-tekenen: RSI oversold, MACD keert & dicht bij kruising,
+                  verkoopvolume neemt week na week af           -> koop mits confluence
+    """
+    d = {}
+    if monthly is None or len(monthly) < 35:
+        return "neutral", d
+    cm = monthly["Close"]
+    ema8  = calc_ema(cm, 8);  ema21 = calc_ema(cm, 21)
+    e8, e21 = safe_last(ema8), safe_last(ema21)
+    macd_l, macd_s, macd_h = calc_macd(cm)
+    ml, ms = safe_last(macd_l), safe_last(macd_s)
+    hist = (macd_l - macd_s).dropna()
+    rsi_m = safe_last(calc_rsi(cm, 14), 50.0)
+    d["ema8"], d["ema21"], d["rsi"] = e8, e21, round(rsi_m,1)
+    d["macdLine"], d["macdSignal"] = (round(ml,3) if ml else None), (round(ms,3) if ms else None)
+
+    ema_bear = (e8 is not None and e21 is not None and e8 < e21)
+    macd_bear = (ml is not None and ms is not None and ml < ms)
+    macd_falling = len(hist) >= 2 and hist.iloc[-1] < hist.iloc[-2]
+    macd_rising  = len(hist) >= 2 and hist.iloc[-1] > hist.iloc[-2]
+    # MACD "dicht bij kruising": lijn en signaal binnen kleine marge
+    macd_near_cross = (ml is not None and ms is not None and
+                       abs(ml - ms) < (abs(ms) * 0.15 + 1e-9))
+    # Verkoopvolume neemt af: laatste 3 maandvolumes dalend
+    vol_declining = False
+    if "Volume" in monthly.columns and len(monthly) >= 4:
+        v = monthly["Volume"].dropna()
+        if len(v) >= 3:
+            vol_declining = v.iloc[-1] < v.iloc[-2] < v.iloc[-3]
+    # Prijs vlakt af of draait: de recente 3 closes dalen niet meer gestaag.
+    # ZONDER dit tellen RSI-oversold en MACD-nabijheid ten onrechte als reversal
+    # tijdens een vrije val (RSI is dan permanent laag). Reversal vereist stabilisatie.
+    price_stabilizing = False
+    if len(cm) >= 4:
+        c1, c2, c3 = cm.iloc[-1], cm.iloc[-2], cm.iloc[-3]
+        price_stabilizing = not (c1 < c2 < c3)   # niet drie op rij lager = afvlakking/kering
+    d["emaBear"], d["macdBear"], d["rsiOversold"] = ema_bear, macd_bear, rsi_m < 35
+    d["volDeclining"], d["macdNearCross"], d["macdRising"] = vol_declining, macd_near_cross, macd_rising
+
+    # Reversal-tekenen tellen ALLEEN als de prijs stabiliseert (niet in vrije val).
+    reversal_signs = 0
+    if price_stabilizing:
+        reversal_signs = sum([rsi_m < 40, macd_near_cross or macd_rising, vol_declining])
+    d["priceStabilizing"] = price_stabilizing
+
+    # STRONG BEAR: EMA bearish gekruist én MACD bearish (lijn onder signaal, beide negatief).
+    # Een diep-negatieve, gevestigde MACD IS het sterkste bear-signaal — geen 'dalend' vereist.
+    # UITZONDERING: als er ≥2 duidelijke reversal-tekenen zijn, degradeer naar light_bear
+    # (de bodem lijkt nabij → koop mag weer, mits confluence).
+    macd_deep_bear = macd_bear and (ml is not None and ml < 0)
+    if ema_bear and macd_deep_bear:
+        if reversal_signs >= 2:
+            return "light_bear", d   # bearish maar met keer-tekenen → vroege instap mogelijk
+        return "strong_bear", d
+    # Eén van beide bearish, of ondiepe MACD → licht bearish (onder druk, niet gebroken)
+    if ema_bear or macd_bear:
+        return "light_bear", d
+    # Beide bullish → bull; anders neutraal
+    return ("bull" if (ml is not None and ms is not None and ml > ms) else "neutral"), d
+
+
+def _weekly_turn(weekly):
+    """Weekly timing-oordeel (de scherprechter). Returns dict met bullish/bearish draai."""
+    d = {}
+    if weekly is None or len(weekly) < 30:
+        return d
+    cw = weekly["Close"]
+    ema8 = calc_ema(cw, 8); ema21 = calc_ema(cw, 21)
+    e8, e21 = safe_last(ema8), safe_last(ema21)
+    macd_l, macd_s, _ = calc_macd(cw)
+    ml, ms = safe_last(macd_l), safe_last(macd_s)
+    rsi_w = safe_last(calc_rsi(cw, 14), 50.0)
+    d["emaBullish"] = (e8 is not None and e21 is not None and e8 > e21)
+    d["emaBearish"] = (e8 is not None and e21 is not None and e8 < e21)
+    d["emaCrossUp"] = crossed_up(ema8, ema21)
+    d["emaCrossDown"] = crossed_down(ema8, ema21)
+    d["macdBullish"] = (ml is not None and ms is not None and ml > ms)
+    d["rsi"] = round(rsi_w, 1)
+    d["oversold"] = rsi_w < 40
+    d["overbought"] = rsi_w > 70
+    # "Bullish draai": EMA bullish (of net gekruist) én momentum mee
+    d["bullTurn"] = (d["emaBullish"] or d["emaCrossUp"]) and d["macdBullish"]
+    d["bearTurn"] = (d["emaBearish"] or d["emaCrossDown"]) and not d["macdBullish"]
+    return d
+
+
+def _fib_buy_depth(last, fib):
+    """Hoe diep in de koop-retracement zit de prijs? 0 = niet, 1..N = toenemend interessant.
+    Koopzone = golden pocket (0.618/0.705) t/m 1.818 (dieper = interessanter).
+    """
+    if not fib:
+        return 0, None
+    retr = fib.get("retracements", {})
+    # Levels van ondiep->diep die als koopzone tellen (vanaf 0.618 dieper)
+    order = ["0.618","0.705","0.786","0.886","1.000"]
+    # 1.0 -> swing low; nog dieper (richting 1.272..1.818 onder de bodem) ook koop
+    deeper = ["1.272","1.414","1.618","1.818"]  # deze staan in extensions bij een DALING onder de low
+    zone_level = None
+    depth = 0
+    for i, lbl in enumerate(order, start=1):
+        lvl = retr.get(lbl)
+        if lvl is not None and last <= lvl * 1.02:  # prijs op of onder dit level
+            depth = i
+            zone_level = lbl
+    # Nog dieper dan de swing low? (prijs onder 1.000) -> extra diepte via extensies
+    lvl_100 = retr.get("1.000")
+    if lvl_100 is not None and last < lvl_100:
+        exts = fib.get("extensions", {})
+        for j, lbl in enumerate(deeper, start=len(order)+1):
+            lvl = exts.get(lbl)
+            if lvl is not None and last <= lvl:
+                depth = j; zone_level = lbl
+    return depth, zone_level
+
+
+def _support_confluence(last, daily, weekly, monthly_state):
+    """Detecteert 200-MA-steun en onderste weekly-Bollinger-steun als KOOP-bewijs.
+
+    Cruciaal (uit onderzoek): een bandaanraking/MA-tik is ALLEEN steun in een intacte
+    of neutrale trend. In een sterke downtrend 'walkt' de prijs langs de band / stuitert
+    van de MA als weerstand -> geen koopsignaal, maar vallend mes. Daarom telt steun
+    NIET mee als de monthly strong_bear is.
+
+    Returns (count, flags): aantal samenvallende steunen + beschrijvingen.
+    """
+    flags = []
+    if monthly_state == "strong_bear":
+        return 0, flags   # walking-the-band-regime: steun telt niet
+
+    close_d = daily["Close"]
+    rsi_d = safe_last(calc_rsi(close_d, 14), 50.0)
+    oversold = rsi_d < 45   # bevestiging vereist (bron: nooit kale bandtouch)
+
+    # 200-daagse MA: steun alleen als de MA STIJGT (bron: dalende MA = weerstand)
+    ma200 = close_d.rolling(200).mean()
+    m_last = safe_last(ma200)
+    if m_last is not None and len(ma200.dropna()) > 20:
+        ma_rising = m_last > safe_last(ma200.iloc[:-20], m_last)
+        near_ma = prox_pct(last, m_last) < 3.0 and last >= m_last * 0.98
+        if near_ma and ma_rising and oversold:
+            flags.append("200-MA-steun (stijgende MA + oversold)")
+
+    # Onderste weekly-Bollinger: mean-reversion-bounce, alleen met oversold-bevestiging
+    if weekly is not None and len(weekly) >= 25:
+        cw = weekly["Close"]
+        _, _, bb_l_w = calc_bollinger(cw, 20)
+        bl = safe_last(bb_l_w)
+        rsi_w = safe_last(calc_rsi(cw, 14), 50.0)
+        if bl is not None and last <= bl * 1.02 and rsi_w < 40:
+            flags.append("onderste weekly-Bollinger (oversold bounce)")
+
+    return len(flags), flags
+
+
 def generate_signals(name: str, daily: pd.DataFrame, weekly: pd.DataFrame, monthly: pd.DataFrame = None) -> dict:
     signals, alerts = [], []
 
@@ -628,14 +787,20 @@ def generate_signals(name: str, daily: pd.DataFrame, weekly: pd.DataFrame, month
     since_lo = daily[daily.index >= lo_idx]
     swing_lo = float(since_lo["Low"].min())
     swing_hi = float(since_lo["High"].max())             # hoogste top ná de bodem
-    # Extensie (TP): de correctie ná die top, omhoog geprojecteerd naar nieuwe TP-zones.
-    hi_idx = since_lo["High"].idxmax()
-    after_top = since_lo[since_lo.index >= hi_idx]
-    if len(after_top) >= 3:
-        ext_hi = float(after_top["High"].max())
-        ext_lo = float(after_top["Low"].min())
+    # Extensie (TP): projecteer de LAATSTE grote impuls omhoog. We nemen de meest
+    # recente betekenisvolle swing-low (laagste punt in de recentste ~26 weken) naar
+    # de top. Zo liggen de TP-zones op een zinvolle afstand boven de prijs, óók als
+    # het aandeel nu op zijn top staat (dan is er geen "correctie ná de top").
+    recent_cut = daily.index[-1] - pd.DateOffset(weeks=26)
+    recent = daily[daily.index >= recent_cut]
+    if len(recent) >= 20:
+        ext_lo = float(recent["Low"].min())
+        ext_hi = float(recent["High"].max())
+        if ext_hi - ext_lo < (swing_hi - swing_lo) * 0.15:
+            # Te kleine recente swing → gebruik de volledige grote swing als basis
+            ext_lo, ext_hi = swing_lo, swing_hi
     else:
-        ext_hi, ext_lo = swing_hi, swing_lo
+        ext_lo, ext_hi = swing_lo, swing_hi
     fib      = calc_fibonacci(swing_lo, swing_hi, ext_low=ext_lo, ext_high=ext_hi)
 
     vol_note = " ✓ hoog volume" if high_volume else (" (laag volume)" if vol_known else "")
@@ -782,12 +947,12 @@ def generate_signals(name: str, daily: pd.DataFrame, weekly: pd.DataFrame, month
         mm_l, mm_s = safe_last(macd_ml), safe_last(macd_ms)
         if mm_l is not None and mm_s is not None:
             if mm_l < mm_s:
-                signals.append({"type":"SELL","cat":"MACD","tf":"1M","weight":6,"icon":"🔴",
+                signals.append({"type":"SELL","cat":"MACD","tf":"1M","weight":4,"icon":"🔴",
                     "title":"MACD bearish (MONTHLY) ⭐⭐",
                     "detail":f"MACD {mm_l:.2f} onder signaal {mm_s:.2f} op maandbasis — "
                              "zwaarste momentum-tegenwind. Hoogste timeframe."})
             else:
-                signals.append({"type":"BUY","cat":"MACD","tf":"1M","weight":6,"icon":"🟢",
+                signals.append({"type":"BUY","cat":"MACD","tf":"1M","weight":4,"icon":"🟢",
                     "title":"MACD bullish (MONTHLY) ⭐⭐",
                     "detail":f"MACD {mm_l:.2f} boven signaal {mm_s:.2f} op maandbasis — "
                              "zwaarste momentum-rugwind. Hoogste timeframe."})
@@ -799,23 +964,23 @@ def generate_signals(name: str, daily: pd.DataFrame, weekly: pd.DataFrame, month
     tr_m = _tf_trend_score(monthly["Close"]) if monthly is not None and len(monthly) >= 25 else None
     if tr_w is not None:
         if tr_w <= 35:
-            signals.append({"type":"SELL","cat":"TREND","tf":"1W","weight":5,"icon":"📉",
-                "title":"Downtrend (WEEKLY) ⭐",
+            signals.append({"type":"SELL","cat":"TREND","tf":"1W","weight":3,"icon":"📉",
+                "title":"Downtrend (WEEKLY)",
                 "detail":f"Weekly trendscore {tr_w}/100 — structureel dalend. "
                          "Weegt zwaarder dan daily koopsignalen."})
         elif tr_w >= 65:
-            signals.append({"type":"BUY","cat":"TREND","tf":"1W","weight":5,"icon":"📈",
-                "title":"Uptrend (WEEKLY) ⭐",
+            signals.append({"type":"BUY","cat":"TREND","tf":"1W","weight":3,"icon":"📈",
+                "title":"Uptrend (WEEKLY)",
                 "detail":f"Weekly trendscore {tr_w}/100 — structureel stijgend."})
     if tr_m is not None:
         if tr_m <= 35:
-            signals.append({"type":"SELL","cat":"TREND","tf":"1M","weight":6,"icon":"📉",
-                "title":"Downtrend (MONTHLY) ⭐⭐",
+            signals.append({"type":"SELL","cat":"TREND","tf":"1M","weight":4,"icon":"📉",
+                "title":"Downtrend (MONTHLY) ⭐",
                 "detail":f"Monthly trendscore {tr_m}/100 — dalend op de hoogste timeframe. "
                          "Zwaarste trendsignaal."})
         elif tr_m >= 65:
-            signals.append({"type":"BUY","cat":"TREND","tf":"1M","weight":6,"icon":"📈",
-                "title":"Uptrend (MONTHLY) ⭐⭐",
+            signals.append({"type":"BUY","cat":"TREND","tf":"1M","weight":4,"icon":"📈",
+                "title":"Uptrend (MONTHLY) ⭐",
                 "detail":f"Monthly trendscore {tr_m}/100 — stijgend op de hoogste timeframe."})
 
     # ── Conflict + score ──
@@ -833,17 +998,96 @@ def generate_signals(name: str, daily: pd.DataFrame, weekly: pd.DataFrame, month
     # verschil. Zo kan een aandeel met zwaar verkoop-overwicht nooit "KOOP" tonen
     # omdat er toevallig één koopsignaal met gewicht ≥4 tussen zit.
     net = buy_w - sell_w
-    if   net >=  8: overall = "STERK KOOP"
-    elif net >=  4: overall = "KOOP"
-    elif net >=  1: overall = "LICHT KOOP"
-    elif net <= -8: overall = "STERK VERKOOP"
-    elif net <= -4: overall = "VERKOOP"
-    elif net <= -1: overall = "LICHT VERKOOP"
-    else:           overall = "NEUTRAAL"
+
+    # ── OVEREXTENSIE-VETO ──
+    # Trend geeft richting, MAAR een aandeel in de take-profit-zone of ver boven de
+    # 8-EMA is rijp voor terugval — dan mag "STERK KOOP" niet blijven staan, hoe
+    # sterk de trend ook is. Dit vangt precies de overextended-markt-situatie.
+    overext_flags = []
+    # a) Prijs in/nabij een echte take-profit-extensie (≥1.272)?
+    tp_zone = False
+    for lbl, lvl in fib.get("extensions", {}).items():
+        try:
+            if float(lbl) >= 1.272 and prox_pct(last, lvl) < 2.5:
+                tp_zone = True; break
+        except (ValueError, TypeError):
+            pass
+    # b) Ver boven 8-EMA op weekly/monthly?
+    wk_close = weekly["Close"] if (weekly is not None and len(weekly) >= 10) else None
+    mo_close = monthly["Close"] if (monthly is not None and len(monthly) >= 10) else None
+    overext_pen, overext_detail = _overextension_penalty(wk_close, mo_close)
+    far_above_ema = overext_pen >= 12   # substantieel boven de 8-EMA
+    if tp_zone:        overext_flags.append("take-profit-zone")
+    if far_above_ema:  overext_flags.append(f"ver boven 8-EMA {overext_detail}")
+
+    if   net >=  8: base_overall = "STERK KOOP"
+    elif net >=  4: base_overall = "KOOP"
+    elif net >=  1: base_overall = "LICHT KOOP"
+    elif net <= -8: base_overall = "STERK VERKOOP"
+    elif net <= -4: base_overall = "VERKOOP"
+    elif net <= -1: base_overall = "LICHT VERKOOP"
+    else:           base_overall = "NEUTRAAL"
+
+    # ══ CONFLUENCE-ENGINE ══════════════════════════════════════════════════════
+    # Vervangt "tel de signalen op" door "wijzen richting (monthly), moment (weekly)
+    # en zone (fib) samen dezelfde kant op?". Zo leest een trader een chart.
+    m_state, m_det = _monthly_state(monthly)
+    w_turn = _weekly_turn(weekly)
+    fib_depth, fib_zone = _fib_buy_depth(last, fib)
+    support_count, support_flags = _support_confluence(last, daily, weekly, m_state)
+    confl = {"monthlyState": m_state, "weeklyBullTurn": w_turn.get("bullTurn"),
+             "weeklyBearTurn": w_turn.get("bearTurn"), "fibBuyDepth": fib_depth, "fibZone": fib_zone,
+             "supportCount": support_count, "supportFlags": support_flags}
+    reasons_c = []
+    overall = base_overall
+
+    # ── 1. MONTHLY STRONG-BEAR VETO: geen koop mogelijk ──
+    if m_state == "strong_bear":
+        if "KOOP" in overall or overall == "NEUTRAAL":
+            overall = "VERKOOP" if (w_turn.get("bearTurn") or w_turn.get("emaBearish")) else "LICHT VERKOOP"
+        reasons_c.append("Monthly sterk bearish (EMA-kruising + MACD bearish & dalend) - koop geblokkeerd")
+    else:
+        # ── 2. KOOP-CONFLUENCE: weekly bullish draai + steunbewijs (fib-zone en/of MA/Bollinger) ──
+        #    Monthly mag licht-bearish of neutraal zijn (niet sterk-bearish).
+        #    Steunbewijzen: fib-koopzone, 200-MA-steun, onderste weekly-Bollinger.
+        #    Hoe meer samenvallen, hoe sterker (bron: confluence verhoogt betrouwbaarheid).
+        total_support = (1 if fib_depth >= 1 else 0) + support_count
+        if w_turn.get("bullTurn") and total_support >= 1:
+            # Sterk bij: diepe fib OF meerdere samenvallende steunen OF gezonde trend + oversold
+            strong = (fib_depth >= 2) or (total_support >= 2) or \
+                     (m_state in ("bull", "neutral") and w_turn.get("oversold"))
+            overall = "STERK KOOP" if strong else "KOOP"
+            bewijs = []
+            if fib_depth >= 1: bewijs.append("fib " + (fib_zone or "koopzone"))
+            bewijs.extend(support_flags)
+            reasons_c.append("Confluence KOOP: weekly bullish draai + " + " + ".join(bewijs))
+            if m_state == "light_bear":
+                reasons_c.append("Monthly licht bearish met keer-tekenen - vroege instap")
+        # ── 3. VERKOOP-CONFLUENCE: weekly bearish draai + daily downtrend ──
+        elif w_turn.get("bearTurn") and net < 0:
+            overall = "STERK VERKOOP" if (m_state in ("light_bear", "strong_bear") and net <= -4) else "VERKOOP"
+            reasons_c.append("Confluence VERKOOP: weekly bearish draai + daily downtrend")
+        # ── 4. Geen confluence -> geen 'sterk', laat netto meespelen maar getemperd ──
+        else:
+            if "STERK" in base_overall:
+                overall = base_overall.replace("STERK ", "")
+            reasons_c.append("Geen duidelijke confluence - signaal getemperd")
+
+    # ── 5. OVEREXTENSIE-VETO: TP-zone of ver boven 8-EMA kapt koop af ──
+    if overext_flags:
+        if "KOOP" in overall:
+            overall = "CAUTION (overextended)"
+        elif overall == "NEUTRAAL":
+            overall = "LICHT VERKOOP"
+        conflict_note = (conflict_note + " " if conflict_note else "") + ("Overextensie: " + ", ".join(overext_flags) + " - rijp voor terugval.")
+
+    if reasons_c:
+        conflict_note = (conflict_note + " " if conflict_note else "") + " | ".join(reasons_c)
 
     return {
         "signals": signals, "alerts": alerts, "overall": overall,
-        "buyWeight": buy_w, "sellWeight": sell_w,
+        "buyWeight": buy_w, "sellWeight": sell_w, "baseOverall": base_overall,
+        "confluence": confl,
         "conflict": conflict, "conflictNote": conflict_note,
         "indicators": {
             "last": round(last, 2),
