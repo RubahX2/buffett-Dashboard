@@ -1028,7 +1028,7 @@ function App() {
   const [loadState, setLoadState] = useState("loading"); // loading | ok | error | unconfigured
   const [selected,  setSelected]  = useState(null);
   const [view,      setView]      = useState("allocatie");
-  const [sortBy,    setSortBy]    = useState("buyWeight");
+  const [sortBy,    setSortBy]    = useState("action");
   const [sortDir,   setSortDir]   = useState("desc");
   const [filterType,setFilter]    = useState("ALL");
   const { portfolio, add, remove, syncLink } = usePortfolio();
@@ -1095,7 +1095,20 @@ function App() {
         const c = stocks[t]?.valuation?.verdictColor;
         return c==="green"?3:c==="neutral"?2:c==="orange"?1:c==="red"?0:-1;
       };
+      // Actie-rang: groepeert op categorie (Koop → Verkoop → Caution → Neutraal),
+      // binnen elke groep sterkste eerst. Zo staan actievragers bovenaan.
+      const actionRank = t => {
+        const o = stocks[t]?.overall || "NEUTRAAL";
+        const map = {
+          "STERK KOOP": 100, "KOOP": 90, "LICHT KOOP": 80,
+          "STERK VERKOOP": 70, "VERKOOP": 60, "LICHT VERKOOP": 50,
+          "CAUTION (overextended)": 40,
+          "NEUTRAAL": 10,
+        };
+        return map[o] ?? 10;
+      };
       const v = t =>
+        sortBy==="action"     ? actionRank(t) :
         sortBy==="composite"  ? (stocks[t]?.scores?.composite ?? -1) :
         sortBy==="timing"     ? (stocks[t]?.scores?.timing ?? -1) :
         sortBy==="buyWeight"  ? (stocks[t]?.buyWeight||0) :
@@ -1104,7 +1117,12 @@ function App() {
         sortBy==="rsi"        ? (stocks[t]?.indicators?.rsiDaily||50) :
         sortBy==="alerts"     ? (stocks[t]?.alerts?.length||0) :
                                 bScore(stocks[t]?.fund||FALLBACK_FUND[t]||{});
-      return sortDir==="desc"?v(b)-v(a):v(a)-v(b);
+      // Tiebreak binnen actie-groep: hoogste composiet eerst
+      const primary = sortDir==="desc"?v(b)-v(a):v(a)-v(b);
+      if (sortBy==="action" && primary===0) {
+        return (stocks[b]?.scores?.composite ?? 0) - (stocks[a]?.scores?.composite ?? 0);
+      }
+      return primary;
     });
 
   const portItems = portfolio.map(p=>{
@@ -1359,7 +1377,7 @@ function App() {
         <div style={{padding:"14px 16px"}}>
           <div style={{display:"flex",gap:4,flexWrap:"wrap",marginBottom:14,alignItems:"center"}}>
             <span style={{color:C.textDim,fontSize:10}}>Sorteer:</span>
-            {[["composite","Composiet ★"],["timing","Timing ⏱️"],["valuation","Waardering 💰"],["buyWeight","Koop 🟢"],["alerts","Alerts ⚠️"],["score","Buffett"]].map(([k,l])=><SBtn key={k} k={k} l={l}/>)}
+            {[["action","Actie 🎯"],["composite","Composiet ★"],["timing","Timing ⏱️"],["valuation","Waardering 💰"],["buyWeight","Koop 🟢"],["alerts","Alerts ⚠️"],["score","Buffett"]].map(([k,l])=><SBtn key={k} k={k} l={l}/>)}
           </div>
 
           {/* Als geen live data: toon alle tickers met fallback fundamentals */}
