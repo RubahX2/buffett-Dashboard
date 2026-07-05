@@ -1,7 +1,7 @@
 {
   "meta": {
-    "generatedAt": "2026-07-05T11:24:10.015792+02:00",
-    "generatedAtHuman": "Sunday 05 July 2026 om 11:24",
+    "generatedAt": "2026-07-05T12:54:14.863818+02:00",
+    "generatedAtHuman": "Sunday 05 July 2026 om 12:54",
     "isFriday": false,
     "isWeekend": true,
     "version": "5.0",
@@ -87,7 +87,7 @@
           "type": "SELL",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🔴",
           "title": "MACD bearish (MONTHLY) ⭐⭐",
           "detail": "MACD 8.52 onder signaal 10.71 op maandbasis — zwaarste momentum-tegenwind. Hoogste timeframe."
@@ -96,9 +96,9 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 65/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -119,11 +119,21 @@
           "detail": "MACD: -0.223 | Signaal: -0.167"
         }
       ],
-      "overall": "LICHT VERKOOP",
-      "buyWeight": 6,
-      "sellWeight": 8,
+      "overall": "VERKOOP",
+      "buyWeight": 4,
+      "sellWeight": 6,
+      "baseOverall": "LICHT VERKOOP",
+      "confluence": {
+        "monthlyState": "light_bear",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": true,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 1 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 1 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Confluence VERKOOP: weekly bearish draai + daily downtrend",
       "indicators": {
         "last": 230.4,
         "rsiDaily": 64.5,
@@ -271,7 +281,7 @@
           "type": "SELL",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🔴",
           "title": "MACD bearish (MONTHLY) ⭐⭐",
           "detail": "MACD 24.54 onder signaal 30.78 op maandbasis — zwaarste momentum-tegenwind. Hoogste timeframe."
@@ -280,9 +290,9 @@
           "type": "SELL",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📉",
-          "title": "Downtrend (WEEKLY) ⭐",
+          "title": "Downtrend (WEEKLY)",
           "detail": "Weekly trendscore 15/100 — structureel dalend. Weegt zwaarder dan daily koopsignalen."
         }
       ],
@@ -298,9 +308,19 @@
       ],
       "overall": "VERKOOP",
       "buyWeight": 5,
-      "sellWeight": 11,
+      "sellWeight": 7,
+      "baseOverall": "LICHT VERKOOP",
+      "confluence": {
+        "monthlyState": "light_bear",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": true,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 2 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 2 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Confluence VERKOOP: weekly bearish draai + daily downtrend",
       "indicators": {
         "last": 129.3,
         "rsiDaily": 51.5,
@@ -334,13 +354,13 @@
             "1.000": 5.92
           },
           "extensions": {
-            "1.000": 207.52,
-            "1.272": 235.03,
-            "1.414": 249.4,
-            "1.618": 270.03,
-            "1.818": 290.26,
-            "2.000": 308.67,
-            "2.618": 371.18
+            "1.000": 187.28,
+            "1.272": 209.29,
+            "1.414": 220.78,
+            "1.618": 237.28,
+            "1.818": 253.46,
+            "2.000": 268.19,
+            "2.618": 318.19
           },
           "goldenPocket": {
             "low": 65.39,
@@ -348,7 +368,7 @@
           },
           "swingHigh": 207.52,
           "swingLow": 5.92,
-          "extSwingHigh": 207.52,
+          "extSwingHigh": 187.28,
           "extSwingLow": 106.37
         },
         "isFriday": false,
@@ -446,7 +466,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 155.96 boven signaal 103.44 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -455,18 +475,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 90/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -480,11 +500,21 @@
           "detail": "MACD: 92.653 | Signaal: 85.573"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 17,
+      "overall": "CAUTION (overextended)",
+      "buyWeight": 11,
       "sellWeight": 6,
+      "baseOverall": "KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 3 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 3 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Overextensie: ver boven 8-EMA {'weekly': 3.7, 'monthly': 34.4} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 963.53,
         "rsiDaily": 50.9,
@@ -519,12 +549,12 @@
           },
           "extensions": {
             "1.000": 1073.46,
-            "1.272": 1107.37,
-            "1.414": 1125.08,
-            "1.618": 1150.51,
-            "1.818": 1175.45,
-            "2.000": 1198.14,
-            "2.618": 1275.19
+            "1.272": 1209.62,
+            "1.414": 1280.7,
+            "1.618": 1382.82,
+            "1.818": 1482.94,
+            "2.000": 1574.04,
+            "2.618": 1883.4
           },
           "goldenPocket": {
             "low": 423.08,
@@ -533,7 +563,7 @@
           "swingHigh": 1073.46,
           "swingLow": 150.93,
           "extSwingHigh": 1073.46,
-          "extSwingLow": 948.78
+          "extSwingLow": 572.88
         },
         "isFriday": false,
         "hasWeekly": true
@@ -622,7 +652,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 193.36 boven signaal 109.62 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -631,18 +661,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 90/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -656,11 +686,21 @@
           "detail": "MACD: 155.551 | Signaal: 129.853"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 17,
+      "overall": "CAUTION (overextended)",
+      "buyWeight": 11,
       "sellWeight": 4,
+      "baseOverall": "KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 3 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 3 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Overextensie: ver boven 8-EMA {'weekly': 7.5, 'monthly': 36.8} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 1634.4,
         "rsiDaily": 57.1,
@@ -695,12 +735,12 @@
           },
           "extensions": {
             "1.000": 1741.0,
-            "1.272": 1788.6,
-            "1.414": 1813.45,
-            "1.618": 1849.15,
-            "1.818": 1884.15,
-            "2.000": 1916.0,
-            "2.618": 2024.15
+            "1.272": 1965.42,
+            "1.414": 2082.57,
+            "1.618": 2250.89,
+            "1.818": 2415.9,
+            "2.000": 2566.06,
+            "2.618": 3075.94
           },
           "goldenPocket": {
             "low": 769.61,
@@ -709,7 +749,7 @@
           "swingHigh": 1741.0,
           "swingLow": 363.14,
           "extSwingHigh": 1741.0,
-          "extSwingLow": 1566.0
+          "extSwingLow": 915.94
         },
         "isFriday": false,
         "hasWeekly": true
@@ -789,7 +829,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 100.47 boven signaal 54.31 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -798,18 +838,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 90/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -830,11 +870,21 @@
           "detail": "MACD: 100.204 | Signaal: 88.641"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 17,
+      "overall": "CAUTION (overextended)",
+      "buyWeight": 11,
       "sellWeight": 0,
+      "baseOverall": "STERK KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Overextensie: ver boven 8-EMA {'weekly': 3.8, 'monthly': 30.3} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 975.6,
         "rsiDaily": 52.2,
@@ -869,12 +919,12 @@
           },
           "extensions": {
             "1.000": 1092.5,
-            "1.272": 1138.33,
-            "1.414": 1162.26,
-            "1.618": 1196.63,
-            "1.818": 1230.33,
-            "2.000": 1261.0,
-            "2.618": 1365.13
+            "1.272": 1247.85,
+            "1.414": 1328.95,
+            "1.618": 1445.46,
+            "1.818": 1559.68,
+            "2.000": 1663.63,
+            "2.618": 2016.59
           },
           "goldenPocket": {
             "low": 455.94,
@@ -883,7 +933,7 @@
           "swingHigh": 1092.5,
           "swingLow": 189.58,
           "extSwingHigh": 1092.5,
-          "extSwingLow": 924.0
+          "extSwingLow": 521.37
         },
         "isFriday": false,
         "hasWeekly": true
@@ -974,7 +1024,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 183.29 boven signaal 89.38 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -983,18 +1033,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 90/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -1015,11 +1065,21 @@
           "detail": "MACD: 194.948 | Signaal: 151.659"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 20,
+      "overall": "CAUTION (overextended)",
+      "buyWeight": 14,
       "sellWeight": 0,
+      "baseOverall": "STERK KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Overextensie: ver boven 8-EMA {'weekly': 4.5, 'monthly': 82.9} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 975.56,
         "rsiDaily": 48.5,
@@ -1054,12 +1114,12 @@
           },
           "extensions": {
             "1.000": 1255.0,
-            "1.272": 1337.88,
-            "1.414": 1381.15,
-            "1.618": 1443.32,
-            "1.818": 1504.26,
-            "2.000": 1559.72,
-            "2.618": 1748.04
+            "1.272": 1516.19,
+            "1.414": 1652.55,
+            "1.618": 1848.44,
+            "1.818": 2040.5,
+            "2.000": 2215.26,
+            "2.618": 2808.71
           },
           "goldenPocket": {
             "low": 403.73,
@@ -1068,7 +1128,7 @@
           "swingHigh": 1255.0,
           "swingLow": 47.53,
           "extSwingHigh": 1255.0,
-          "extSwingLow": 950.28
+          "extSwingLow": 294.74
         },
         "isFriday": false,
         "hasWeekly": true
@@ -1158,7 +1218,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 54.61 boven signaal 42.74 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -1167,18 +1227,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 70/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -1192,11 +1252,21 @@
           "detail": "MACD: 19.348 | Signaal: 22.676"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 19,
+      "overall": "KOOP",
+      "buyWeight": 13,
       "sellWeight": 0,
+      "baseOverall": "STERK KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 359.91,
         "rsiDaily": 49.5,
@@ -1231,12 +1301,12 @@
           },
           "extensions": {
             "1.000": 408.37,
-            "1.272": 429.63,
-            "1.414": 440.73,
-            "1.618": 456.67,
-            "1.818": 472.31,
-            "2.000": 486.53,
-            "2.618": 534.84
+            "1.272": 445.47,
+            "1.414": 464.84,
+            "1.618": 492.67,
+            "1.818": 519.96,
+            "2.000": 544.78,
+            "2.618": 629.09
           },
           "goldenPocket": {
             "low": 178.71,
@@ -1245,7 +1315,7 @@
           "swingHigh": 408.37,
           "swingLow": 82.61,
           "extSwingHigh": 408.37,
-          "extSwingLow": 330.2
+          "extSwingLow": 271.95
         },
         "isFriday": false,
         "hasWeekly": true
@@ -1324,7 +1394,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 18.83 boven signaal 18.42 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -1333,18 +1403,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 65/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -1358,11 +1428,21 @@
           "detail": "MACD: 5.613 | Signaal: 7.179"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 17,
+      "overall": "KOOP",
+      "buyWeight": 11,
       "sellWeight": 0,
+      "baseOverall": "STERK KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 242.67,
         "rsiDaily": 48.7,
@@ -1397,12 +1477,12 @@
           },
           "extensions": {
             "1.000": 278.56,
-            "1.272": 292.98,
-            "1.414": 300.51,
-            "1.618": 311.32,
-            "1.818": 321.92,
-            "2.000": 331.57,
-            "2.618": 364.33
+            "1.272": 301.02,
+            "1.414": 312.74,
+            "1.618": 329.58,
+            "1.818": 346.09,
+            "2.000": 361.12,
+            "2.618": 412.14
           },
           "goldenPocket": {
             "low": 139.58,
@@ -1411,7 +1491,7 @@
           "swingHigh": 278.56,
           "swingLow": 81.43,
           "extSwingHigh": 278.56,
-          "extSwingLow": 225.55
+          "extSwingLow": 196.0
         },
         "isFriday": false,
         "hasWeekly": true
@@ -1510,7 +1590,7 @@
           "type": "SELL",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🔴",
           "title": "MACD bearish (MONTHLY) ⭐⭐",
           "detail": "MACD 9.56 onder signaal 17.38 op maandbasis — zwaarste momentum-tegenwind. Hoogste timeframe."
@@ -1519,9 +1599,9 @@
           "type": "SELL",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📉",
-          "title": "Downtrend (WEEKLY) ⭐",
+          "title": "Downtrend (WEEKLY)",
           "detail": "Weekly trendscore 10/100 — structureel dalend. Weegt zwaarder dan daily koopsignalen."
         }
       ],
@@ -1551,9 +1631,19 @@
       ],
       "overall": "VERKOOP",
       "buyWeight": 6,
-      "sellWeight": 11,
+      "sellWeight": 7,
+      "baseOverall": "LICHT VERKOOP",
+      "confluence": {
+        "monthlyState": "light_bear",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": true,
+        "fibBuyDepth": 2,
+        "fibZone": "0.705",
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 2 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 2 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Confluence VERKOOP: weekly bearish draai + daily downtrend",
       "indicators": {
         "last": 140.27,
         "rsiDaily": 26.7,
@@ -1587,13 +1677,13 @@
             "1.000": 57.91
           },
           "extensions": {
-            "1.000": 343.01,
-            "1.272": 399.71,
-            "1.414": 429.31,
-            "1.618": 471.83,
-            "1.818": 513.52,
-            "2.000": 551.46,
-            "2.618": 680.27
+            "1.000": 250.25,
+            "1.272": 281.71,
+            "1.414": 298.14,
+            "1.618": 321.74,
+            "1.818": 344.88,
+            "2.000": 365.93,
+            "2.618": 437.42
           },
           "goldenPocket": {
             "low": 142.01,
@@ -1601,7 +1691,7 @@
           },
           "swingHigh": 343.01,
           "swingLow": 57.91,
-          "extSwingHigh": 343.01,
+          "extSwingHigh": 250.25,
           "extSwingLow": 134.57
         },
         "isFriday": false,
@@ -1697,7 +1787,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 4.97 boven signaal 4.10 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -1706,18 +1796,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 90/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -1752,11 +1842,21 @@
           "title": "Nadert Bollinger bovenband ($84.19)"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 20,
+      "overall": "KOOP",
+      "buyWeight": 14,
       "sellWeight": 3,
+      "baseOverall": "STERK KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 4 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 4 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 84.14,
         "rsiDaily": 65.0,
@@ -1791,12 +1891,12 @@
           },
           "extensions": {
             "1.000": 84.14,
-            "1.272": 94.64,
-            "1.414": 100.12,
-            "1.618": 108.0,
-            "1.818": 115.72,
-            "2.000": 122.74,
-            "2.618": 146.6
+            "1.272": 88.97,
+            "1.414": 91.49,
+            "1.618": 95.11,
+            "1.818": 98.67,
+            "2.000": 101.9,
+            "2.618": 112.87
           },
           "goldenPocket": {
             "low": 56.92,
@@ -1805,7 +1905,7 @@
           "swingHigh": 84.14,
           "swingLow": 45.54,
           "extSwingHigh": 84.14,
-          "extSwingLow": 45.54
+          "extSwingLow": 66.38
         },
         "isFriday": false,
         "hasWeekly": true
@@ -1908,7 +2008,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 28.66 boven signaal 26.92 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -1917,18 +2017,18 @@
           "type": "SELL",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📉",
-          "title": "Downtrend (WEEKLY) ⭐",
+          "title": "Downtrend (WEEKLY)",
           "detail": "Weekly trendscore 10/100 — structureel dalend. Weegt zwaarder dan daily koopsignalen."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -1942,11 +2042,21 @@
           "detail": "MACD: -4.224 | Signaal: 1.536"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 14,
-      "sellWeight": 5,
+      "overall": "KOOP",
+      "buyWeight": 10,
+      "sellWeight": 3,
+      "baseOverall": "KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": true,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 3 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 3 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 302.07,
         "rsiDaily": 51.0,
@@ -2099,7 +2209,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 54.40 boven signaal 37.43 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -2108,18 +2218,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 90/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -2140,11 +2250,21 @@
           "detail": "MACD: 37.802 | Signaal: 29.165"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 17,
+      "overall": "CAUTION (overextended)",
+      "buyWeight": 11,
       "sellWeight": 4,
+      "baseOverall": "KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 3 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 3 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Overextensie: ver boven 8-EMA {'weekly': 8.7, 'monthly': 32.2} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 417.42,
         "rsiDaily": 69.1,
@@ -2179,12 +2299,12 @@
           },
           "extensions": {
             "1.000": 430.52,
-            "1.272": 436.26,
-            "1.414": 439.26,
-            "1.618": 443.56,
-            "1.818": 447.78,
-            "2.000": 451.62,
-            "2.618": 464.66
+            "1.272": 481.47,
+            "1.414": 508.07,
+            "1.618": 546.28,
+            "1.818": 583.75,
+            "2.000": 617.84,
+            "2.618": 733.6
           },
           "goldenPocket": {
             "low": 173.05,
@@ -2193,7 +2313,7 @@
           "swingHigh": 430.52,
           "swingLow": 65.31,
           "extSwingHigh": 430.52,
-          "extSwingLow": 409.42
+          "extSwingLow": 243.2
         },
         "isFriday": false,
         "hasWeekly": true
@@ -2287,7 +2407,7 @@
           "type": "SELL",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🔴",
           "title": "MACD bearish (MONTHLY) ⭐⭐",
           "detail": "MACD 64.61 onder signaal 96.43 op maandbasis — zwaarste momentum-tegenwind. Hoogste timeframe."
@@ -2296,18 +2416,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 90/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 70/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -2335,11 +2455,21 @@
           "title": "Nadert Bollinger bovenband ($1373.21)"
         }
       ],
-      "overall": "KOOP",
-      "buyWeight": 11,
-      "sellWeight": 6,
+      "overall": "LICHT KOOP",
+      "buyWeight": 7,
+      "sellWeight": 4,
+      "baseOverall": "LICHT KOOP",
+      "confluence": {
+        "monthlyState": "light_bear",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 2 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 2 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 1348.49,
         "rsiDaily": 63.1,
@@ -2373,13 +2503,13 @@
             "1.000": 415.64
           },
           "extensions": {
-            "1.000": 1519.36,
-            "1.272": 1627.0,
-            "1.414": 1683.2,
-            "1.618": 1763.93,
-            "1.818": 1843.08,
-            "2.000": 1915.1,
-            "2.618": 2159.68
+            "1.000": 1463.03,
+            "1.272": 1555.35,
+            "1.414": 1603.55,
+            "1.618": 1672.79,
+            "1.818": 1740.68,
+            "2.000": 1802.45,
+            "2.618": 2012.21
           },
           "goldenPocket": {
             "low": 741.23,
@@ -2387,7 +2517,7 @@
           },
           "swingHigh": 1519.36,
           "swingLow": 415.64,
-          "extSwingHigh": 1519.36,
+          "extSwingHigh": 1463.03,
           "extSwingLow": 1123.61
         },
         "isFriday": false,
@@ -2497,7 +2627,7 @@
           "type": "SELL",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🔴",
           "title": "MACD bearish (MONTHLY) ⭐⭐",
           "detail": "MACD 11.15 onder signaal 13.63 op maandbasis — zwaarste momentum-tegenwind. Hoogste timeframe."
@@ -2506,9 +2636,9 @@
           "type": "SELL",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📉",
-          "title": "Downtrend (WEEKLY) ⭐",
+          "title": "Downtrend (WEEKLY)",
           "detail": "Weekly trendscore 10/100 — structureel dalend. Weegt zwaarder dan daily koopsignalen."
         }
       ],
@@ -2531,9 +2661,19 @@
       ],
       "overall": "STERK VERKOOP",
       "buyWeight": 2,
-      "sellWeight": 11,
+      "sellWeight": 7,
+      "baseOverall": "VERKOOP",
+      "confluence": {
+        "monthlyState": "light_bear",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": true,
+        "fibBuyDepth": 1,
+        "fibZone": "0.618",
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 1 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 1 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Confluence VERKOOP: weekly bearish draai + daily downtrend",
       "indicators": {
         "last": 55.35,
         "rsiDaily": 51.6,
@@ -2682,7 +2822,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 22.96 boven signaal 16.42 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -2691,18 +2831,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 65/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -2716,11 +2856,21 @@
           "detail": "MACD: 10.890 | Signaal: 11.971"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 17,
+      "overall": "CAUTION (overextended)",
+      "buyWeight": 11,
       "sellWeight": 0,
+      "baseOverall": "STERK KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Overextensie: ver boven 8-EMA {'weekly': -2.0, 'monthly': 17.4} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 100.46,
         "rsiDaily": 47.8,
@@ -2755,12 +2905,12 @@
           },
           "extensions": {
             "1.000": 151.0,
-            "1.272": 170.31,
-            "1.414": 180.39,
-            "1.618": 194.88,
-            "1.818": 209.08,
-            "2.000": 222.0,
-            "2.618": 265.88
+            "1.272": 176.8,
+            "1.414": 190.28,
+            "1.618": 209.63,
+            "1.818": 228.6,
+            "2.000": 245.87,
+            "2.618": 304.5
           },
           "goldenPocket": {
             "low": 46.99,
@@ -2769,7 +2919,7 @@
           "swingHigh": 151.0,
           "swingLow": 3.47,
           "extSwingHigh": 151.0,
-          "extSwingLow": 80.0
+          "extSwingLow": 56.13
         },
         "isFriday": false,
         "hasWeekly": true
@@ -2868,7 +3018,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 0.52 boven signaal 0.37 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -2877,18 +3027,18 @@
           "type": "SELL",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📉",
-          "title": "Downtrend (WEEKLY) ⭐",
+          "title": "Downtrend (WEEKLY)",
           "detail": "Weekly trendscore 15/100 — structureel dalend. Weegt zwaarder dan daily koopsignalen."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 85/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -2910,10 +3060,20 @@
         }
       ],
       "overall": "KOOP",
-      "buyWeight": 12,
-      "sellWeight": 5,
+      "buyWeight": 8,
+      "sellWeight": 3,
+      "baseOverall": "KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": true,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 2 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 2 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 4.9,
         "rsiDaily": 57.9,
@@ -2947,13 +3107,13 @@
             "1.000": 0.51
           },
           "extensions": {
-            "1.000": 10.87,
-            "1.272": 12.72,
-            "1.414": 13.68,
-            "1.618": 15.07,
-            "1.818": 16.42,
-            "2.000": 17.66,
-            "2.618": 21.86
+            "1.000": 7.92,
+            "1.272": 8.96,
+            "1.414": 9.51,
+            "1.618": 10.29,
+            "1.818": 11.06,
+            "2.000": 11.76,
+            "2.618": 14.13
           },
           "goldenPocket": {
             "low": 3.56,
@@ -2961,7 +3121,7 @@
           },
           "swingHigh": 10.87,
           "swingLow": 0.51,
-          "extSwingHigh": 10.87,
+          "extSwingHigh": 7.92,
           "extSwingLow": 4.08
         },
         "isFriday": false,
@@ -3059,7 +3219,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD -3.41 boven signaal -3.44 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -3068,18 +3228,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 90/100 — structureel stijgend."
         },
         {
           "type": "SELL",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📉",
-          "title": "Downtrend (MONTHLY) ⭐⭐",
+          "title": "Downtrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 30/100 — dalend op de hoogste timeframe. Zwaarste trendsignaal."
         }
       ],
@@ -3114,11 +3274,21 @@
           "title": "Nadert Bollinger bovenband ($17.32)"
         }
       ],
-      "overall": "KOOP",
-      "buyWeight": 11,
-      "sellWeight": 6,
+      "overall": "CAUTION (overextended)",
+      "buyWeight": 7,
+      "sellWeight": 4,
+      "baseOverall": "LICHT KOOP",
+      "confluence": {
+        "monthlyState": "light_bear",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 2 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 2 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Overextensie: ver boven 8-EMA {'weekly': 11.1, 'monthly': 6.6} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 16.88,
         "rsiDaily": 63.7,
@@ -3152,13 +3322,13 @@
             "1.000": 10.94
           },
           "extensions": {
-            "1.000": 17.82,
-            "1.272": 18.35,
-            "1.414": 18.63,
-            "1.618": 19.03,
-            "1.818": 19.42,
-            "2.000": 19.77,
-            "2.618": 20.98
+            "1.000": 19.58,
+            "1.272": 21.93,
+            "1.414": 23.15,
+            "1.618": 24.92,
+            "1.818": 26.64,
+            "2.000": 28.22,
+            "2.618": 33.55
           },
           "goldenPocket": {
             "low": 12.97,
@@ -3166,8 +3336,8 @@
           },
           "swingHigh": 17.82,
           "swingLow": 10.94,
-          "extSwingHigh": 17.82,
-          "extSwingLow": 15.87
+          "extSwingHigh": 19.58,
+          "extSwingLow": 10.94
         },
         "isFriday": false,
         "hasWeekly": true
@@ -3277,7 +3447,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD -100.70 boven signaal -140.67 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -3286,18 +3456,18 @@
           "type": "SELL",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📉",
-          "title": "Downtrend (WEEKLY) ⭐",
+          "title": "Downtrend (WEEKLY)",
           "detail": "Weekly trendscore 30/100 — structureel dalend. Weegt zwaarder dan daily koopsignalen."
         },
         {
           "type": "SELL",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📉",
-          "title": "Downtrend (MONTHLY) ⭐⭐",
+          "title": "Downtrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 30/100 — dalend op de hoogste timeframe. Zwaarste trendsignaal."
         }
       ],
@@ -3325,11 +3495,21 @@
           "title": "Nadert Fib 0.705 steunzone: $1.18 (2.6% weg)"
         }
       ],
-      "overall": "LICHT VERKOOP",
-      "buyWeight": 9,
-      "sellWeight": 11,
+      "overall": "NEUTRAAL",
+      "buyWeight": 7,
+      "sellWeight": 7,
+      "baseOverall": "NEUTRAAL",
+      "confluence": {
+        "monthlyState": "light_bear",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 3,
+        "fibZone": "0.786",
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 2 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 2 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 1.15,
         "rsiDaily": 46.2,
@@ -3363,13 +3543,13 @@
             "1.000": 1.06
           },
           "extensions": {
-            "1.000": 1.47,
-            "1.272": 1.57,
-            "1.414": 1.63,
-            "1.618": 1.7,
-            "1.818": 1.78,
-            "2.000": 1.85,
-            "2.618": 2.08
+            "1.000": 1.75,
+            "1.272": 1.94,
+            "1.414": 2.04,
+            "1.618": 2.18,
+            "1.818": 2.31,
+            "2.000": 2.44,
+            "2.618": 2.87
           },
           "goldenPocket": {
             "low": 1.18,
@@ -3377,8 +3557,8 @@
           },
           "swingHigh": 1.47,
           "swingLow": 1.06,
-          "extSwingHigh": 1.47,
-          "extSwingLow": 1.09
+          "extSwingHigh": 1.75,
+          "extSwingLow": 1.06
         },
         "isFriday": false,
         "hasWeekly": true
@@ -3459,7 +3639,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 2210.88 boven signaal 1887.26 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -3468,18 +3648,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 90/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -3500,11 +3680,21 @@
           "detail": "MACD: 930.679 | Signaal: 773.269"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 17,
+      "overall": "CAUTION (overextended)",
+      "buyWeight": 11,
       "sellWeight": 0,
+      "baseOverall": "STERK KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Overextensie: ver boven 8-EMA {'weekly': 3.6, 'monthly': 14.1} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 21140.0,
         "rsiDaily": 58.4,
@@ -3539,12 +3729,12 @@
           },
           "extensions": {
             "1.000": 23539.02,
-            "1.272": 24876.99,
-            "1.414": 25575.49,
-            "1.618": 26578.97,
-            "1.818": 27562.77,
-            "2.000": 28458.03,
-            "2.618": 31497.99
+            "1.272": 25486.84,
+            "1.414": 26503.71,
+            "1.618": 27964.58,
+            "1.818": 29396.8,
+            "2.000": 30700.12,
+            "2.618": 35125.69
           },
           "goldenPocket": {
             "low": 10861.57,
@@ -3553,7 +3743,7 @@
           "swingHigh": 23539.02,
           "swingLow": 5556.82,
           "extSwingHigh": 23539.02,
-          "extSwingLow": 18620.0
+          "extSwingLow": 16377.91
         },
         "isFriday": false,
         "hasWeekly": true
@@ -3669,7 +3859,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 8.68 boven signaal 6.23 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -3678,18 +3868,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 90/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -3710,11 +3900,21 @@
           "title": "Nadert Bollinger bovenband ($98.91)"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 20,
+      "overall": "CAUTION (overextended)",
+      "buyWeight": 14,
       "sellWeight": 10,
+      "baseOverall": "KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 4 koop vs 3 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 4 koop vs 3 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Overextensie: ver boven 8-EMA {'weekly': 6.9, 'monthly': 17.9} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 97.6,
         "rsiDaily": 71.9,
@@ -3749,12 +3949,12 @@
           },
           "extensions": {
             "1.000": 98.93,
-            "1.272": 116.08,
-            "1.414": 125.03,
-            "1.618": 137.89,
-            "1.818": 150.5,
-            "2.000": 161.97,
-            "2.618": 200.93
+            "1.272": 106.57,
+            "1.414": 110.55,
+            "1.618": 116.28,
+            "1.818": 121.89,
+            "2.000": 127.0,
+            "2.618": 144.35
           },
           "goldenPocket": {
             "low": 54.49,
@@ -3763,7 +3963,7 @@
           "swingHigh": 98.93,
           "swingLow": 35.89,
           "extSwingHigh": 98.93,
-          "extSwingLow": 35.89
+          "extSwingLow": 70.86
         },
         "isFriday": false,
         "hasWeekly": true
@@ -3856,9 +4056,18 @@
         },
         {
           "type": "SELL",
+          "cat": "FIB",
+          "tf": "1D",
+          "weight": 3,
+          "icon": "📐",
+          "title": "Fib 1.000 — take-profit zone: $362.13 (0.0% weg)",
+          "detail": "Prijs $362.13 raakt Fibonacci 1.000. Overweeg winstneming."
+        },
+        {
+          "type": "SELL",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🔴",
           "title": "MACD bearish (MONTHLY) ⭐⭐",
           "detail": "MACD 13.47 onder signaal 18.11 op maandbasis — zwaarste momentum-tegenwind. Hoogste timeframe."
@@ -3867,18 +4076,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 90/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 70/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -3904,20 +4113,23 @@
           "tf": "1D",
           "icon": "📐",
           "title": "Nadert Fib 0.000 steunzone: $372.57 (2.9% weg)"
-        },
-        {
-          "type": "WATCH",
-          "cat": "FIB",
-          "tf": "1D",
-          "icon": "📐",
-          "title": "Nadert Fib 1.000 take-profit zone: $372.57 (2.9% weg)"
         }
       ],
-      "overall": "NEUTRAAL",
-      "buyWeight": 11,
-      "sellWeight": 11,
+      "overall": "VERKOOP",
+      "buyWeight": 7,
+      "sellWeight": 12,
+      "baseOverall": "VERKOOP",
+      "confluence": {
+        "monthlyState": "light_bear",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 2 koop vs 3 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 2 koop vs 4 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 362.13,
         "rsiDaily": 76.8,
@@ -3951,13 +4163,13 @@
             "1.000": 169.62
           },
           "extensions": {
-            "1.000": 372.57,
-            "1.272": 394.13,
-            "1.414": 405.39,
-            "1.618": 421.57,
-            "1.818": 437.42,
-            "2.000": 451.85,
-            "2.618": 500.85
+            "1.000": 362.13,
+            "1.272": 380.86,
+            "1.414": 390.63,
+            "1.618": 404.68,
+            "1.818": 418.45,
+            "2.000": 430.98,
+            "2.618": 473.53
           },
           "goldenPocket": {
             "low": 229.49,
@@ -3965,7 +4177,7 @@
           },
           "swingHigh": 372.57,
           "swingLow": 169.62,
-          "extSwingHigh": 372.57,
+          "extSwingHigh": 362.13,
           "extSwingLow": 293.28
         },
         "isFriday": false,
@@ -4043,7 +4255,7 @@
           "type": "SELL",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🔴",
           "title": "MACD bearish (MONTHLY) ⭐⭐",
           "detail": "MACD -0.85 onder signaal 0.05 op maandbasis — zwaarste momentum-tegenwind. Hoogste timeframe."
@@ -4052,18 +4264,18 @@
           "type": "SELL",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📉",
-          "title": "Downtrend (WEEKLY) ⭐",
+          "title": "Downtrend (WEEKLY)",
           "detail": "Weekly trendscore 30/100 — structureel dalend. Weegt zwaarder dan daily koopsignalen."
         },
         {
           "type": "SELL",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📉",
-          "title": "Downtrend (MONTHLY) ⭐⭐",
+          "title": "Downtrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 10/100 — dalend op de hoogste timeframe. Zwaarste trendsignaal."
         }
       ],
@@ -4091,11 +4303,21 @@
           "title": "Nadert Bollinger bovenband ($4.07)"
         }
       ],
-      "overall": "STERK VERKOOP",
+      "overall": "VERKOOP",
       "buyWeight": 0,
-      "sellWeight": 17,
+      "sellWeight": 11,
+      "baseOverall": "STERK VERKOOP",
+      "confluence": {
+        "monthlyState": "strong_bear",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 4,
+        "fibZone": "0.886",
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Monthly sterk bearish (EMA-kruising + MACD bearish & dalend) - koop geblokkeerd",
       "indicators": {
         "last": 4.03,
         "rsiDaily": 56.5,
@@ -4129,13 +4351,13 @@
             "1.000": 2.96
           },
           "extensions": {
-            "1.000": 13.6,
-            "1.272": 16.39,
-            "1.414": 17.84,
-            "1.618": 19.93,
-            "1.818": 21.98,
-            "2.000": 23.85,
-            "2.618": 30.18
+            "1.000": 9.0,
+            "1.272": 10.54,
+            "1.414": 11.34,
+            "1.618": 12.49,
+            "1.818": 13.62,
+            "2.000": 14.65,
+            "2.618": 18.14
           },
           "goldenPocket": {
             "low": 6.1,
@@ -4143,7 +4365,7 @@
           },
           "swingHigh": 13.6,
           "swingLow": 2.96,
-          "extSwingHigh": 13.6,
+          "extSwingHigh": 9.0,
           "extSwingLow": 3.35
         },
         "isFriday": false,
@@ -4241,14 +4463,14 @@
           "tf": "1D",
           "weight": 3,
           "icon": "📐",
-          "title": "Fib 1.000 — take-profit zone: $3683.81 (0.5% weg)",
+          "title": "Fib 1.000 — take-profit zone: $3682.00 (0.4% weg)",
           "detail": "Prijs $3666.00 raakt Fibonacci 1.000. Overweeg winstneming."
         },
         {
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 154.68 boven signaal 144.65 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -4257,18 +4479,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 90/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -4296,11 +4518,21 @@
           "title": "Nadert Bollinger bovenband ($3671.73)"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 20,
+      "overall": "KOOP",
+      "buyWeight": 14,
       "sellWeight": 6,
+      "baseOverall": "STERK KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 4 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 4 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 3666.0,
         "rsiDaily": 71.0,
@@ -4334,13 +4566,13 @@
             "1.000": 1687.58
           },
           "extensions": {
-            "1.000": 3683.81,
-            "1.272": 3972.27,
-            "1.414": 4122.86,
-            "1.618": 4339.2,
-            "1.818": 4551.3,
-            "2.000": 4744.32,
-            "2.618": 5399.71
+            "1.000": 3682.0,
+            "1.272": 3969.97,
+            "1.414": 4120.3,
+            "1.618": 4336.28,
+            "1.818": 4548.02,
+            "2.000": 4740.71,
+            "2.618": 5394.99
           },
           "goldenPocket": {
             "low": 2276.46,
@@ -4348,7 +4580,7 @@
           },
           "swingHigh": 3683.81,
           "swingLow": 1687.58,
-          "extSwingHigh": 3683.81,
+          "extSwingHigh": 3682.0,
           "extSwingLow": 2623.29
         },
         "isFriday": false,
@@ -4432,9 +4664,18 @@
         },
         {
           "type": "SELL",
+          "cat": "FIB",
+          "tf": "1D",
+          "weight": 3,
+          "icon": "📐",
+          "title": "Fib 1.000 — take-profit zone: $357.54 (0.0% weg)",
+          "detail": "Prijs $357.46 raakt Fibonacci 1.000. Overweeg winstneming."
+        },
+        {
+          "type": "SELL",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🔴",
           "title": "MACD bearish (MONTHLY) ⭐⭐",
           "detail": "MACD -1.09 onder signaal 5.49 op maandbasis — zwaarste momentum-tegenwind. Hoogste timeframe."
@@ -4443,18 +4684,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 80/100 — structureel stijgend."
         },
         {
           "type": "SELL",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📉",
-          "title": "Downtrend (MONTHLY) ⭐⭐",
+          "title": "Downtrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 15/100 — dalend op de hoogste timeframe. Zwaarste trendsignaal."
         }
       ],
@@ -4482,11 +4723,21 @@
           "title": "Nadert Fib 0.236 steunzone: $364.19 (1.9% weg)"
         }
       ],
-      "overall": "STERK VERKOOP",
-      "buyWeight": 5,
-      "sellWeight": 14,
+      "overall": "LICHT VERKOOP",
+      "buyWeight": 3,
+      "sellWeight": 13,
+      "baseOverall": "STERK VERKOOP",
+      "confluence": {
+        "monthlyState": "strong_bear",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 1 koop vs 3 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 1 koop vs 4 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Monthly sterk bearish (EMA-kruising + MACD bearish & dalend) - koop geblokkeerd",
       "indicators": {
         "last": 357.46,
         "rsiDaily": 69.1,
@@ -4520,13 +4771,13 @@
             "1.000": 215.39
           },
           "extensions": {
-            "1.000": 410.16,
-            "1.272": 439.09,
-            "1.414": 454.19,
-            "1.618": 475.89,
-            "1.818": 497.17,
-            "2.000": 516.53,
-            "2.618": 582.26
+            "1.000": 357.54,
+            "1.272": 372.16,
+            "1.414": 379.79,
+            "1.618": 390.76,
+            "1.818": 401.51,
+            "2.000": 411.29,
+            "2.618": 444.51
           },
           "goldenPocket": {
             "low": 272.85,
@@ -4534,7 +4785,7 @@
           },
           "swingHigh": 410.16,
           "swingLow": 215.39,
-          "extSwingHigh": 410.16,
+          "extSwingHigh": 357.54,
           "extSwingLow": 303.79
         },
         "isFriday": false,
@@ -4621,7 +4872,7 @@
           "type": "SELL",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🔴",
           "title": "MACD bearish (MONTHLY) ⭐⭐",
           "detail": "MACD 6.70 onder signaal 104.65 op maandbasis — zwaarste momentum-tegenwind. Hoogste timeframe."
@@ -4630,9 +4881,9 @@
           "type": "SELL",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📉",
-          "title": "Downtrend (MONTHLY) ⭐⭐",
+          "title": "Downtrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 20/100 — dalend op de hoogste timeframe. Zwaarste trendsignaal."
         }
       ],
@@ -4653,11 +4904,21 @@
           "detail": "MACD: -90.825 | Signaal: -106.883"
         }
       ],
-      "overall": "STERK VERKOOP",
+      "overall": "VERKOOP",
       "buyWeight": 0,
-      "sellWeight": 14,
+      "sellWeight": 10,
+      "baseOverall": "STERK VERKOOP",
+      "confluence": {
+        "monthlyState": "light_bear",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 1763.36,
         "rsiDaily": 61.6,
@@ -4691,13 +4952,13 @@
             "1.000": 600.68
           },
           "extensions": {
-            "1.000": 2645.22,
-            "1.272": 2958.08,
-            "1.414": 3121.41,
-            "1.618": 3356.06,
-            "1.818": 3586.1,
-            "2.000": 3795.44,
-            "2.618": 4506.28
+            "1.000": 2342.0,
+            "1.272": 2572.38,
+            "1.414": 2692.66,
+            "1.618": 2865.45,
+            "1.818": 3034.85,
+            "2.000": 3189.0,
+            "2.618": 3712.45
           },
           "goldenPocket": {
             "low": 1203.82,
@@ -4705,7 +4966,7 @@
           },
           "swingHigh": 2645.22,
           "swingLow": 600.68,
-          "extSwingHigh": 2645.22,
+          "extSwingHigh": 2342.0,
           "extSwingLow": 1495.0
         },
         "isFriday": false,
@@ -4785,7 +5046,7 @@
           "type": "SELL",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🔴",
           "title": "MACD bearish (MONTHLY) ⭐⭐",
           "detail": "MACD -74.55 onder signaal 170.07 op maandbasis — zwaarste momentum-tegenwind. Hoogste timeframe."
@@ -4794,18 +5055,18 @@
           "type": "SELL",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📉",
-          "title": "Downtrend (WEEKLY) ⭐",
+          "title": "Downtrend (WEEKLY)",
           "detail": "Weekly trendscore 35/100 — structureel dalend. Weegt zwaarder dan daily koopsignalen."
         },
         {
           "type": "SELL",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📉",
-          "title": "Downtrend (MONTHLY) ⭐⭐",
+          "title": "Downtrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 10/100 — dalend op de hoogste timeframe. Zwaarste trendsignaal."
         }
       ],
@@ -4833,11 +5094,21 @@
           "title": "Nadert Bollinger bovenband ($2639.09)"
         }
       ],
-      "overall": "STERK VERKOOP",
+      "overall": "VERKOOP",
       "buyWeight": 0,
-      "sellWeight": 17,
+      "sellWeight": 11,
+      "baseOverall": "STERK VERKOOP",
+      "confluence": {
+        "monthlyState": "strong_bear",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Monthly sterk bearish (EMA-kruising + MACD bearish & dalend) - koop geblokkeerd",
       "indicators": {
         "last": 2611.0,
         "rsiDaily": 67.9,
@@ -4871,13 +5142,13 @@
             "1.000": 1040.89
           },
           "extensions": {
-            "1.000": 4495.56,
-            "1.272": 5222.05,
-            "1.414": 5601.33,
-            "1.618": 6146.2,
-            "1.818": 6680.38,
-            "2.000": 7166.49,
-            "2.618": 8817.13
+            "1.000": 3625.24,
+            "1.272": 4115.01,
+            "1.414": 4370.7,
+            "1.618": 4738.03,
+            "1.818": 5098.16,
+            "2.000": 5425.87,
+            "2.618": 6538.66
           },
           "goldenPocket": {
             "low": 2060.02,
@@ -4885,7 +5156,7 @@
           },
           "swingHigh": 4495.56,
           "swingLow": 1040.89,
-          "extSwingHigh": 4495.56,
+          "extSwingHigh": 3625.24,
           "extSwingLow": 1824.62
         },
         "isFriday": false,
@@ -4965,7 +5236,7 @@
           "type": "SELL",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🔴",
           "title": "MACD bearish (MONTHLY) ⭐⭐",
           "detail": "MACD 9.80 onder signaal 13.83 op maandbasis — zwaarste momentum-tegenwind. Hoogste timeframe."
@@ -4997,9 +5268,19 @@
       ],
       "overall": "VERKOOP",
       "buyWeight": 0,
-      "sellWeight": 6,
+      "sellWeight": 4,
+      "baseOverall": "VERKOOP",
+      "confluence": {
+        "monthlyState": "light_bear",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 119.46,
         "rsiDaily": 57.9,
@@ -5033,13 +5314,13 @@
             "1.000": 23.63
           },
           "extensions": {
-            "1.000": 182.19,
-            "1.272": 206.18,
-            "1.414": 218.7,
-            "1.618": 236.69,
-            "1.818": 254.33,
-            "2.000": 270.38,
-            "2.618": 324.88
+            "1.000": 170.9,
+            "1.272": 191.82,
+            "1.414": 202.74,
+            "1.618": 218.42,
+            "1.818": 233.8,
+            "2.000": 247.8,
+            "2.618": 295.32
           },
           "goldenPocket": {
             "low": 70.41,
@@ -5047,7 +5328,7 @@
           },
           "swingHigh": 182.19,
           "swingLow": 23.63,
-          "extSwingHigh": 182.19,
+          "extSwingHigh": 170.9,
           "extSwingLow": 94.0
         },
         "isFriday": false,
@@ -5127,7 +5408,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 32.48 boven signaal 29.77 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -5136,18 +5417,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 90/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -5161,11 +5442,21 @@
           "detail": "MACD: 11.446 | Signaal: 7.915"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 17,
+      "overall": "CAUTION (overextended)",
+      "buyWeight": 11,
       "sellWeight": 0,
+      "baseOverall": "STERK KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Overextensie: ver boven 8-EMA {'weekly': 5.6, 'monthly': 14.6} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 242.41,
         "rsiDaily": 56.2,
@@ -5200,12 +5491,12 @@
           },
           "extensions": {
             "1.000": 276.82,
-            "1.272": 294.36,
-            "1.414": 303.52,
-            "1.618": 316.67,
-            "1.818": 329.57,
-            "2.000": 341.31,
-            "2.618": 381.17
+            "1.272": 308.91,
+            "1.414": 325.66,
+            "1.618": 349.73,
+            "1.818": 373.33,
+            "2.000": 394.8,
+            "2.618": 467.71
           },
           "goldenPocket": {
             "low": 108.01,
@@ -5214,7 +5505,7 @@
           "swingHigh": 276.82,
           "swingLow": 37.37,
           "extSwingHigh": 276.82,
-          "extSwingLow": 212.32
+          "extSwingLow": 158.83
         },
         "isFriday": false,
         "hasWeekly": true
@@ -5339,8 +5630,18 @@
       "overall": "LICHT KOOP",
       "buyWeight": 2,
       "sellWeight": 0,
+      "baseOverall": "LICHT KOOP",
+      "confluence": {
+        "monthlyState": "neutral",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 1,
+        "fibZone": "0.618",
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 81.75,
         "rsiDaily": 33.7,
@@ -5374,13 +5675,13 @@
             "1.000": 33.51
           },
           "extensions": {
-            "1.000": 187.0,
-            "1.272": 220.51,
-            "1.414": 238.0,
-            "1.618": 263.14,
-            "1.818": 287.78,
-            "2.000": 310.2,
-            "2.618": 386.34
+            "1.000": 138.25,
+            "1.272": 157.59,
+            "1.414": 167.69,
+            "1.618": 182.19,
+            "1.818": 196.41,
+            "2.000": 209.35,
+            "2.618": 253.29
           },
           "goldenPocket": {
             "low": 78.79,
@@ -5388,8 +5689,8 @@
           },
           "swingHigh": 187.0,
           "swingLow": 33.51,
-          "extSwingHigh": 187.0,
-          "extSwingLow": 63.8
+          "extSwingHigh": 138.25,
+          "extSwingLow": 67.15
         },
         "isFriday": false,
         "hasWeekly": true
@@ -5479,7 +5780,7 @@
           "type": "SELL",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🔴",
           "title": "MACD bearish (MONTHLY) ⭐⭐",
           "detail": "MACD 7.13 onder signaal 21.22 op maandbasis — zwaarste momentum-tegenwind. Hoogste timeframe."
@@ -5488,18 +5789,18 @@
           "type": "SELL",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📉",
-          "title": "Downtrend (WEEKLY) ⭐",
+          "title": "Downtrend (WEEKLY)",
           "detail": "Weekly trendscore 30/100 — structureel dalend. Weegt zwaarder dan daily koopsignalen."
         },
         {
           "type": "SELL",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📉",
-          "title": "Downtrend (MONTHLY) ⭐⭐",
+          "title": "Downtrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 20/100 — dalend op de hoogste timeframe. Zwaarste trendsignaal."
         }
       ],
@@ -5520,11 +5821,21 @@
           "title": "Nadert Fib 0.500 steunzone: $378.99 (2.9% weg)"
         }
       ],
-      "overall": "STERK VERKOOP",
+      "overall": "VERKOOP",
       "buyWeight": 2,
-      "sellWeight": 17,
+      "sellWeight": 11,
+      "baseOverall": "STERK VERKOOP",
+      "confluence": {
+        "monthlyState": "light_bear",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 1 koop vs 3 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 1 koop vs 3 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 390.49,
         "rsiDaily": 49.8,
@@ -5558,13 +5869,13 @@
             "1.000": 206.94
           },
           "extensions": {
-            "1.000": 551.05,
-            "1.272": 605.95,
-            "1.414": 634.61,
-            "1.618": 675.79,
-            "1.818": 716.16,
-            "2.000": 752.9,
-            "2.618": 877.64
+            "1.000": 487.53,
+            "1.272": 525.15,
+            "1.414": 544.8,
+            "1.618": 573.02,
+            "1.818": 600.68,
+            "2.000": 625.86,
+            "2.618": 711.35
           },
           "goldenPocket": {
             "low": 308.45,
@@ -5572,7 +5883,7 @@
           },
           "swingHigh": 551.05,
           "swingLow": 206.94,
-          "extSwingHigh": 551.05,
+          "extSwingHigh": 487.53,
           "extSwingLow": 349.2
         },
         "isFriday": false,
@@ -5663,7 +5974,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD -0.39 boven signaal -0.75 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -5672,9 +5983,9 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 90/100 — structureel stijgend."
         }
       ],
@@ -5702,11 +6013,21 @@
           "title": "Nadert Bollinger bovenband ($7.29)"
         }
       ],
-      "overall": "KOOP",
-      "buyWeight": 11,
+      "overall": "CAUTION (overextended)",
+      "buyWeight": 7,
       "sellWeight": 4,
+      "baseOverall": "LICHT KOOP",
+      "confluence": {
+        "monthlyState": "light_bear",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 2 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 2 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Overextensie: ver boven 8-EMA {'weekly': 8.7, 'monthly': 21.9} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 7.16,
         "rsiDaily": 64.5,
@@ -5741,12 +6062,12 @@
           },
           "extensions": {
             "1.000": 7.5,
-            "1.272": 8.47,
-            "1.414": 8.98,
-            "1.618": 9.71,
-            "1.818": 10.42,
-            "2.000": 11.07,
-            "2.618": 13.28
+            "1.272": 8.24,
+            "1.414": 8.63,
+            "1.618": 9.18,
+            "1.818": 9.72,
+            "2.000": 10.22,
+            "2.618": 11.9
           },
           "goldenPocket": {
             "low": 4.98,
@@ -5755,7 +6076,7 @@
           "swingHigh": 7.5,
           "swingLow": 3.93,
           "extSwingHigh": 7.5,
-          "extSwingLow": 3.93
+          "extSwingLow": 4.78
         },
         "isFriday": false,
         "hasWeekly": true
@@ -5842,7 +6163,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD -2.63 boven signaal -2.81 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -5851,18 +6172,18 @@
           "type": "SELL",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📉",
-          "title": "Downtrend (WEEKLY) ⭐",
+          "title": "Downtrend (WEEKLY)",
           "detail": "Weekly trendscore 30/100 — structureel dalend. Weegt zwaarder dan daily koopsignalen."
         },
         {
           "type": "SELL",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📉",
-          "title": "Downtrend (MONTHLY) ⭐⭐",
+          "title": "Downtrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 30/100 — dalend op de hoogste timeframe. Zwaarste trendsignaal."
         }
       ],
@@ -5876,11 +6197,21 @@
           "detail": "MACD: -0.482 | Signaal: -0.493"
         }
       ],
-      "overall": "LICHT VERKOOP",
-      "buyWeight": 9,
-      "sellWeight": 11,
+      "overall": "NEUTRAAL",
+      "buyWeight": 7,
+      "sellWeight": 7,
+      "baseOverall": "NEUTRAAL",
+      "confluence": {
+        "monthlyState": "light_bear",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 1,
+        "fibZone": "0.618",
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 2 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 2 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 4.84,
         "rsiDaily": 45.2,
@@ -5914,13 +6245,13 @@
             "1.000": 3.81
           },
           "extensions": {
-            "1.000": 6.36,
-            "1.272": 6.92,
-            "1.414": 7.22,
-            "1.618": 7.64,
-            "1.818": 8.06,
-            "2.000": 8.44,
-            "2.618": 9.73
+            "1.000": 9.07,
+            "1.272": 10.5,
+            "1.414": 11.25,
+            "1.618": 12.32,
+            "1.818": 13.37,
+            "2.000": 14.33,
+            "2.618": 17.58
           },
           "goldenPocket": {
             "low": 4.56,
@@ -5928,8 +6259,8 @@
           },
           "swingHigh": 6.36,
           "swingLow": 3.81,
-          "extSwingHigh": 6.36,
-          "extSwingLow": 4.27
+          "extSwingHigh": 9.07,
+          "extSwingLow": 3.81
         },
         "isFriday": false,
         "hasWeekly": true
@@ -6011,7 +6342,7 @@
           "type": "SELL",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🔴",
           "title": "MACD bearish (MONTHLY) ⭐⭐",
           "detail": "MACD 28.89 onder signaal 28.95 op maandbasis — zwaarste momentum-tegenwind. Hoogste timeframe."
@@ -6020,9 +6351,9 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 70/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -6037,10 +6368,22 @@
         }
       ],
       "overall": "NEUTRAAL",
-      "buyWeight": 6,
-      "sellWeight": 6,
+      "buyWeight": 4,
+      "sellWeight": 4,
+      "baseOverall": "NEUTRAAL",
+      "confluence": {
+        "monthlyState": "light_bear",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 1,
+        "supportFlags": [
+          "200-MA-steun (stijgende MA + oversold)"
+        ]
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 1 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 1 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 194.83,
         "rsiDaily": 41.2,
@@ -6075,12 +6418,12 @@
           },
           "extensions": {
             "1.000": 236.26,
-            "1.272": 248.9,
-            "1.414": 255.5,
-            "1.618": 264.98,
-            "1.818": 274.27,
-            "2.000": 282.73,
-            "2.618": 311.44
+            "1.272": 255.9,
+            "1.414": 266.15,
+            "1.618": 280.88,
+            "1.818": 295.31,
+            "2.000": 308.45,
+            "2.618": 353.06
           },
           "goldenPocket": {
             "low": 77.3,
@@ -6089,7 +6432,7 @@
           "swingHigh": 236.26,
           "swingLow": 10.79,
           "extSwingHigh": 236.26,
-          "extSwingLow": 189.8
+          "extSwingLow": 164.08
         },
         "isFriday": false,
         "hasWeekly": true
@@ -6177,7 +6520,7 @@
           "type": "SELL",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🔴",
           "title": "MACD bearish (MONTHLY) ⭐⭐",
           "detail": "MACD -11.13 onder signaal -9.94 op maandbasis — zwaarste momentum-tegenwind. Hoogste timeframe."
@@ -6186,18 +6529,18 @@
           "type": "SELL",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📉",
-          "title": "Downtrend (WEEKLY) ⭐",
+          "title": "Downtrend (WEEKLY)",
           "detail": "Weekly trendscore 30/100 — structureel dalend. Weegt zwaarder dan daily koopsignalen."
         },
         {
           "type": "SELL",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📉",
-          "title": "Downtrend (MONTHLY) ⭐⭐",
+          "title": "Downtrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 10/100 — dalend op de hoogste timeframe. Zwaarste trendsignaal."
         }
       ],
@@ -6223,20 +6566,23 @@
           "tf": "1D",
           "icon": "📐",
           "title": "Nadert Fib 0.382 steunzone: $43.11 (2.2% weg)"
-        },
-        {
-          "type": "WATCH",
-          "cat": "FIB",
-          "tf": "1D",
-          "icon": "📐",
-          "title": "Nadert Fib 1.000 take-profit zone: $45.04 (2.2% weg)"
         }
       ],
-      "overall": "STERK VERKOOP",
+      "overall": "VERKOOP",
       "buyWeight": 3,
-      "sellWeight": 17,
+      "sellWeight": 11,
+      "baseOverall": "STERK VERKOOP",
+      "confluence": {
+        "monthlyState": "light_bear",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 1 koop vs 3 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 1 koop vs 3 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 44.09,
         "rsiDaily": 52.9,
@@ -6270,13 +6616,13 @@
             "1.000": 40.0
           },
           "extensions": {
-            "1.000": 45.04,
-            "1.272": 46.41,
-            "1.414": 47.13,
-            "1.618": 48.15,
-            "1.818": 49.16,
-            "2.000": 50.08,
-            "2.618": 53.19
+            "1.000": 68.04,
+            "1.272": 75.66,
+            "1.414": 79.65,
+            "1.618": 85.37,
+            "1.818": 90.97,
+            "2.000": 96.08,
+            "2.618": 113.4
           },
           "goldenPocket": {
             "low": 41.49,
@@ -6284,7 +6630,7 @@
           },
           "swingHigh": 45.04,
           "swingLow": 40.0,
-          "extSwingHigh": 45.04,
+          "extSwingHigh": 68.04,
           "extSwingLow": 40.0
         },
         "isFriday": false,
@@ -6372,7 +6718,7 @@
           "type": "SELL",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🔴",
           "title": "MACD bearish (MONTHLY) ⭐⭐",
           "detail": "MACD 12.00 onder signaal 13.77 op maandbasis — zwaarste momentum-tegenwind. Hoogste timeframe."
@@ -6381,18 +6727,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 90/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 70/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -6414,10 +6760,20 @@
         }
       ],
       "overall": "LICHT KOOP",
-      "buyWeight": 11,
-      "sellWeight": 8,
+      "buyWeight": 7,
+      "sellWeight": 6,
+      "baseOverall": "LICHT KOOP",
+      "confluence": {
+        "monthlyState": "light_bear",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 2 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 2 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 180.4,
         "rsiDaily": 66.6,
@@ -6452,12 +6808,12 @@
           },
           "extensions": {
             "1.000": 197.42,
-            "1.272": 209.85,
-            "1.414": 216.35,
-            "1.618": 225.67,
-            "1.818": 234.82,
-            "2.000": 243.14,
-            "2.618": 271.4
+            "1.272": 210.34,
+            "1.414": 217.08,
+            "1.618": 226.77,
+            "1.818": 236.27,
+            "2.000": 244.92,
+            "2.618": 274.27
           },
           "goldenPocket": {
             "low": 100.76,
@@ -6466,7 +6822,7 @@
           "swingHigh": 197.42,
           "swingLow": 60.31,
           "extSwingHigh": 197.42,
-          "extSwingLow": 151.69
+          "extSwingLow": 149.91
         },
         "isFriday": false,
         "hasWeekly": true
@@ -6545,7 +6901,7 @@
           "type": "SELL",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🔴",
           "title": "MACD bearish (MONTHLY) ⭐⭐",
           "detail": "MACD -1.25 onder signaal 1.89 op maandbasis — zwaarste momentum-tegenwind. Hoogste timeframe."
@@ -6554,9 +6910,9 @@
           "type": "SELL",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📉",
-          "title": "Downtrend (MONTHLY) ⭐⭐",
+          "title": "Downtrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 15/100 — dalend op de hoogste timeframe. Zwaarste trendsignaal."
         }
       ],
@@ -6591,11 +6947,21 @@
           "title": "Nadert Fib 0.382 steunzone: $234.46 (1.7% weg)"
         }
       ],
-      "overall": "STERK VERKOOP",
+      "overall": "VERKOOP",
       "buyWeight": 0,
-      "sellWeight": 12,
+      "sellWeight": 8,
+      "baseOverall": "STERK VERKOOP",
+      "confluence": {
+        "monthlyState": "strong_bear",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Monthly sterk bearish (EMA-kruising + MACD bearish & dalend) - koop geblokkeerd",
       "indicators": {
         "last": 230.6,
         "rsiDaily": 65.1,
@@ -6629,13 +6995,13 @@
             "1.000": 159.88
           },
           "extensions": {
-            "1.000": 280.56,
-            "1.272": 302.39,
-            "1.414": 313.79,
-            "1.618": 330.17,
-            "1.818": 346.22,
-            "2.000": 360.83,
-            "2.618": 410.44
+            "1.000": 261.28,
+            "1.272": 277.87,
+            "1.414": 286.53,
+            "1.618": 298.97,
+            "1.818": 311.17,
+            "2.000": 322.27,
+            "2.618": 359.96
           },
           "goldenPocket": {
             "low": 195.48,
@@ -6643,7 +7009,7 @@
           },
           "swingHigh": 280.56,
           "swingLow": 159.88,
-          "extSwingHigh": 280.56,
+          "extSwingHigh": 261.28,
           "extSwingLow": 200.29
         },
         "isFriday": false,
@@ -6732,7 +7098,7 @@
           "type": "SELL",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🔴",
           "title": "MACD bearish (MONTHLY) ⭐⭐",
           "detail": "MACD 12.47 onder signaal 13.83 op maandbasis — zwaarste momentum-tegenwind. Hoogste timeframe."
@@ -6741,18 +7107,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 90/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 70/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -6780,11 +7146,21 @@
           "title": "Nadert Bollinger bovenband ($206.80)"
         }
       ],
-      "overall": "LICHT KOOP",
-      "buyWeight": 11,
-      "sellWeight": 9,
+      "overall": "NEUTRAAL",
+      "buyWeight": 7,
+      "sellWeight": 7,
+      "baseOverall": "NEUTRAAL",
+      "confluence": {
+        "monthlyState": "light_bear",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 2 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 2 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 206.15,
         "rsiDaily": 75.2,
@@ -6914,7 +7290,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD -6.63 boven signaal -9.37 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -6923,18 +7299,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 90/100 — structureel stijgend."
         },
         {
           "type": "SELL",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📉",
-          "title": "Downtrend (MONTHLY) ⭐⭐",
+          "title": "Downtrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 30/100 — dalend op de hoogste timeframe. Zwaarste trendsignaal."
         }
       ],
@@ -6948,11 +7324,21 @@
           "detail": "MACD: 1.407 | Signaal: 1.081"
         }
       ],
-      "overall": "KOOP",
-      "buyWeight": 11,
-      "sellWeight": 6,
+      "overall": "CAUTION (overextended)",
+      "buyWeight": 7,
+      "sellWeight": 4,
+      "baseOverall": "LICHT KOOP",
+      "confluence": {
+        "monthlyState": "light_bear",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 2 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 2 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Overextensie: ver boven 8-EMA {'weekly': -0.3, 'monthly': 22.7} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 14.67,
         "rsiDaily": 45.4,
@@ -6987,12 +7373,12 @@
           },
           "extensions": {
             "1.000": 19.9,
-            "1.272": 21.47,
-            "1.414": 22.3,
-            "1.618": 23.48,
-            "1.818": 24.64,
-            "2.000": 25.69,
-            "2.618": 29.27
+            "1.272": 23.12,
+            "1.414": 24.81,
+            "1.618": 27.22,
+            "1.818": 29.59,
+            "2.000": 31.75,
+            "2.618": 39.07
           },
           "goldenPocket": {
             "low": 11.55,
@@ -7001,7 +7387,7 @@
           "swingHigh": 19.9,
           "swingLow": 8.05,
           "extSwingHigh": 19.9,
-          "extSwingLow": 14.11
+          "extSwingLow": 8.05
         },
         "isFriday": false,
         "hasWeekly": true
@@ -7084,10 +7470,19 @@
           "detail": "Sterk verkoopsignaal op hogere timeframe."
         },
         {
+          "type": "SELL",
+          "cat": "FIB",
+          "tf": "1D",
+          "weight": 3,
+          "icon": "📐",
+          "title": "Fib 1.000 — take-profit zone: $11860.00 (0.7% weg)",
+          "detail": "Prijs $11780.00 raakt Fibonacci 1.000. Overweeg winstneming."
+        },
+        {
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 609.11 boven signaal 358.60 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -7096,18 +7491,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 90/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -7135,11 +7530,21 @@
           "title": "Nadert Bollinger bovenband ($11864.52)"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 17,
-      "sellWeight": 4,
+      "overall": "CAUTION (overextended)",
+      "buyWeight": 11,
+      "sellWeight": 7,
+      "baseOverall": "KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 3 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 3 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Overextensie: ver boven 8-EMA {'weekly': 5.0, 'monthly': 15.0} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 11780.0,
         "rsiDaily": 67.2,
@@ -7173,13 +7578,13 @@
             "1.000": 4285.97
           },
           "extensions": {
-            "1.000": 12367.04,
-            "1.272": 13780.76,
-            "1.414": 14518.81,
-            "1.618": 15579.1,
-            "1.818": 16618.61,
-            "2.000": 17564.55,
-            "2.618": 20776.62
+            "1.000": 11860.0,
+            "1.272": 12933.52,
+            "1.414": 13493.95,
+            "1.618": 14299.09,
+            "1.818": 15088.44,
+            "2.000": 15806.75,
+            "2.618": 18245.84
           },
           "goldenPocket": {
             "low": 6669.88,
@@ -7187,8 +7592,8 @@
           },
           "swingHigh": 12367.04,
           "swingLow": 4285.97,
-          "extSwingHigh": 12367.04,
-          "extSwingLow": 7169.53
+          "extSwingHigh": 11860.0,
+          "extSwingLow": 7913.25
         },
         "isFriday": false,
         "hasWeekly": true
@@ -7266,7 +7671,7 @@
           "type": "SELL",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🔴",
           "title": "MACD bearish (MONTHLY) ⭐⭐",
           "detail": "MACD -13.36 onder signaal 15.04 op maandbasis — zwaarste momentum-tegenwind. Hoogste timeframe."
@@ -7275,18 +7680,18 @@
           "type": "SELL",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📉",
-          "title": "Downtrend (WEEKLY) ⭐",
+          "title": "Downtrend (WEEKLY)",
           "detail": "Weekly trendscore 10/100 — structureel dalend. Weegt zwaarder dan daily koopsignalen."
         },
         {
           "type": "SELL",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📉",
-          "title": "Downtrend (MONTHLY) ⭐⭐",
+          "title": "Downtrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 10/100 — dalend op de hoogste timeframe. Zwaarste trendsignaal."
         }
       ],
@@ -7307,11 +7712,21 @@
           "detail": "MACD: -23.495 | Signaal: -21.413"
         }
       ],
-      "overall": "STERK VERKOOP",
+      "overall": "VERKOOP",
       "buyWeight": 0,
-      "sellWeight": 17,
+      "sellWeight": 11,
+      "baseOverall": "STERK VERKOOP",
+      "confluence": {
+        "monthlyState": "strong_bear",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": true,
+        "fibBuyDepth": 3,
+        "fibZone": "0.786",
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Monthly sterk bearish (EMA-kruising + MACD bearish & dalend) - koop geblokkeerd",
       "indicators": {
         "last": 100.77,
         "rsiDaily": 40.6,
@@ -7345,13 +7760,13 @@
             "1.000": 13.26
           },
           "extensions": {
-            "1.000": 543.0,
-            "1.272": 668.44,
-            "1.414": 733.93,
-            "1.618": 828.02,
-            "1.818": 920.25,
-            "2.000": 1004.19,
-            "2.618": 1289.21
+            "1.000": 197.0,
+            "1.272": 228.33,
+            "1.414": 244.69,
+            "1.618": 268.19,
+            "1.818": 291.23,
+            "2.000": 312.19,
+            "2.618": 383.38
           },
           "goldenPocket": {
             "low": 169.53,
@@ -7359,7 +7774,7 @@
           },
           "swingHigh": 543.0,
           "swingLow": 13.26,
-          "extSwingHigh": 543.0,
+          "extSwingHigh": 197.0,
           "extSwingLow": 81.81
         },
         "isFriday": false,
@@ -7448,7 +7863,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 23.36 boven signaal 19.99 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -7457,18 +7872,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 90/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -7517,11 +7932,21 @@
           "title": "Nadert Fib 1.000 take-profit zone: $317.40 (2.8% weg)"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 19,
+      "overall": "KOOP",
+      "buyWeight": 13,
       "sellWeight": 0,
+      "baseOverall": "STERK KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 308.63,
         "rsiDaily": 60.3,
@@ -7556,12 +7981,12 @@
           },
           "extensions": {
             "1.000": 317.4,
-            "1.272": 329.27,
-            "1.414": 335.47,
-            "1.618": 344.38,
-            "1.818": 353.11,
-            "2.000": 361.05,
-            "2.618": 388.03
+            "1.272": 337.65,
+            "1.414": 348.21,
+            "1.618": 363.4,
+            "1.818": 378.28,
+            "2.000": 391.83,
+            "2.618": 437.83
           },
           "goldenPocket": {
             "low": 179.71,
@@ -7570,7 +7995,7 @@
           "swingHigh": 317.4,
           "swingLow": 122.1,
           "extSwingHigh": 317.4,
-          "extSwingLow": 273.75
+          "extSwingLow": 242.97
         },
         "isFriday": false,
         "hasWeekly": true
@@ -7658,7 +8083,7 @@
           "type": "SELL",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🔴",
           "title": "MACD bearish (MONTHLY) ⭐⭐",
           "detail": "MACD 4.06 onder signaal 9.86 op maandbasis — zwaarste momentum-tegenwind. Hoogste timeframe."
@@ -7667,18 +8092,18 @@
           "type": "SELL",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📉",
-          "title": "Downtrend (WEEKLY) ⭐",
+          "title": "Downtrend (WEEKLY)",
           "detail": "Weekly trendscore 10/100 — structureel dalend. Weegt zwaarder dan daily koopsignalen."
         },
         {
           "type": "SELL",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📉",
-          "title": "Downtrend (MONTHLY) ⭐⭐",
+          "title": "Downtrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 20/100 — dalend op de hoogste timeframe. Zwaarste trendsignaal."
         }
       ],
@@ -7701,9 +8126,19 @@
       ],
       "overall": "STERK VERKOOP",
       "buyWeight": 2,
-      "sellWeight": 17,
+      "sellWeight": 11,
+      "baseOverall": "STERK VERKOOP",
+      "confluence": {
+        "monthlyState": "light_bear",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": true,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 1 koop vs 3 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 1 koop vs 3 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Confluence VERKOOP: weekly bearish draai + daily downtrend",
       "indicators": {
         "last": 77.65,
         "rsiDaily": 47.3,
@@ -7737,13 +8172,13 @@
             "1.000": 16.27
           },
           "extensions": {
-            "1.000": 134.12,
-            "1.272": 151.32,
-            "1.414": 160.3,
-            "1.618": 173.21,
-            "1.818": 185.86,
-            "2.000": 197.37,
-            "2.618": 236.46
+            "1.000": 108.95,
+            "1.272": 119.31,
+            "1.414": 124.72,
+            "1.618": 132.49,
+            "1.818": 140.11,
+            "2.000": 147.04,
+            "2.618": 170.58
           },
           "goldenPocket": {
             "low": 51.03,
@@ -7751,7 +8186,7 @@
           },
           "swingHigh": 134.12,
           "swingLow": 16.27,
-          "extSwingHigh": 134.12,
+          "extSwingHigh": 108.95,
           "extSwingLow": 70.86
         },
         "isFriday": false,
@@ -7842,7 +8277,7 @@
           "type": "SELL",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🔴",
           "title": "MACD bearish (MONTHLY) ⭐⭐",
           "detail": "MACD -1.09 onder signaal 0.28 op maandbasis — zwaarste momentum-tegenwind. Hoogste timeframe."
@@ -7851,18 +8286,18 @@
           "type": "SELL",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📉",
-          "title": "Downtrend (WEEKLY) ⭐",
+          "title": "Downtrend (WEEKLY)",
           "detail": "Weekly trendscore 35/100 — structureel dalend. Weegt zwaarder dan daily koopsignalen."
         },
         {
           "type": "SELL",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📉",
-          "title": "Downtrend (MONTHLY) ⭐⭐",
+          "title": "Downtrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 10/100 — dalend op de hoogste timeframe. Zwaarste trendsignaal."
         }
       ],
@@ -7876,11 +8311,21 @@
           "detail": "MACD: -1.732 | Signaal: -1.803"
         }
       ],
-      "overall": "STERK VERKOOP",
+      "overall": "VERKOOP",
       "buyWeight": 3,
-      "sellWeight": 17,
+      "sellWeight": 11,
+      "baseOverall": "STERK VERKOOP",
+      "confluence": {
+        "monthlyState": "strong_bear",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 1 koop vs 3 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 1 koop vs 3 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Monthly sterk bearish (EMA-kruising + MACD bearish & dalend) - koop geblokkeerd",
       "indicators": {
         "last": 99.5,
         "rsiDaily": 49.3,
@@ -7914,13 +8359,13 @@
             "1.000": 76.33
           },
           "extensions": {
-            "1.000": 122.91,
-            "1.272": 131.46,
-            "1.414": 135.92,
-            "1.618": 142.33,
-            "1.818": 148.61,
-            "2.000": 154.33,
-            "2.618": 173.75
+            "1.000": 115.15,
+            "1.272": 121.58,
+            "1.414": 124.94,
+            "1.618": 129.77,
+            "1.818": 134.5,
+            "2.000": 138.81,
+            "2.618": 153.43
           },
           "goldenPocket": {
             "low": 90.07,
@@ -7928,7 +8373,7 @@
           },
           "swingHigh": 122.91,
           "swingLow": 76.33,
-          "extSwingHigh": 122.91,
+          "extSwingHigh": 115.15,
           "extSwingLow": 91.49
         },
         "isFriday": false,
@@ -8009,7 +8454,7 @@
           "type": "SELL",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🔴",
           "title": "MACD bearish (MONTHLY) ⭐⭐",
           "detail": "MACD 52.21 onder signaal 70.05 op maandbasis — zwaarste momentum-tegenwind. Hoogste timeframe."
@@ -8018,9 +8463,9 @@
           "type": "SELL",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📉",
-          "title": "Downtrend (WEEKLY) ⭐",
+          "title": "Downtrend (WEEKLY)",
           "detail": "Weekly trendscore 15/100 — structureel dalend. Weegt zwaarder dan daily koopsignalen."
         }
       ],
@@ -8036,9 +8481,19 @@
       ],
       "overall": "STERK VERKOOP",
       "buyWeight": 0,
-      "sellWeight": 11,
+      "sellWeight": 7,
+      "baseOverall": "VERKOOP",
+      "confluence": {
+        "monthlyState": "light_bear",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": true,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Confluence VERKOOP: weekly bearish draai + daily downtrend",
       "indicators": {
         "last": 995.73,
         "rsiDaily": 46.0,
@@ -8072,13 +8527,13 @@
             "1.000": 459.65
           },
           "extensions": {
-            "1.000": 1200.54,
-            "1.272": 1278.96,
-            "1.414": 1319.9,
-            "1.618": 1378.71,
-            "1.818": 1436.37,
-            "2.000": 1488.84,
-            "2.618": 1667.01
+            "1.000": 1168.24,
+            "1.272": 1237.86,
+            "1.414": 1274.22,
+            "1.618": 1326.44,
+            "1.818": 1377.63,
+            "2.000": 1424.22,
+            "2.618": 1582.42
           },
           "goldenPocket": {
             "low": 678.22,
@@ -8086,7 +8541,7 @@
           },
           "swingHigh": 1200.54,
           "swingLow": 459.65,
-          "extSwingHigh": 1200.54,
+          "extSwingHigh": 1168.24,
           "extSwingLow": 912.25
         },
         "isFriday": false,
@@ -8186,7 +8641,7 @@
           "type": "SELL",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🔴",
           "title": "MACD bearish (MONTHLY) ⭐⭐",
           "detail": "MACD 7.05 onder signaal 11.73 op maandbasis — zwaarste momentum-tegenwind. Hoogste timeframe."
@@ -8195,9 +8650,9 @@
           "type": "SELL",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📉",
-          "title": "Downtrend (WEEKLY) ⭐",
+          "title": "Downtrend (WEEKLY)",
           "detail": "Weekly trendscore 10/100 — structureel dalend. Weegt zwaarder dan daily koopsignalen."
         }
       ],
@@ -8220,9 +8675,21 @@
       ],
       "overall": "VERKOOP",
       "buyWeight": 6,
-      "sellWeight": 11,
+      "sellWeight": 7,
+      "baseOverall": "LICHT VERKOOP",
+      "confluence": {
+        "monthlyState": "light_bear",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": true,
+        "fibBuyDepth": 2,
+        "fibZone": "0.705",
+        "supportCount": 1,
+        "supportFlags": [
+          "onderste weekly-Bollinger (oversold bounce)"
+        ]
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 2 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 2 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Confluence VERKOOP: weekly bearish draai + daily downtrend",
       "indicators": {
         "last": 96.14,
         "rsiDaily": 24.1,
@@ -8256,13 +8723,13 @@
             "1.000": 54.59
           },
           "extensions": {
-            "1.000": 190.92,
-            "1.272": 217.82,
-            "1.414": 231.87,
-            "1.618": 252.05,
-            "1.818": 271.84,
-            "2.000": 289.84,
-            "2.618": 350.98
+            "1.000": 179.45,
+            "1.272": 203.24,
+            "1.414": 215.66,
+            "1.618": 233.5,
+            "1.818": 251.0,
+            "2.000": 266.91,
+            "2.618": 320.97
           },
           "goldenPocket": {
             "low": 94.81,
@@ -8270,7 +8737,7 @@
           },
           "swingHigh": 190.92,
           "swingLow": 54.59,
-          "extSwingHigh": 190.92,
+          "extSwingHigh": 179.45,
           "extSwingLow": 91.99
         },
         "isFriday": false,
@@ -8352,7 +8819,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 632.79 boven signaal 381.62 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -8361,18 +8828,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 70/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -8400,11 +8867,21 @@
           "title": "Nadert Bollinger bovenband ($5721.91)"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 17,
+      "overall": "CAUTION (overextended)",
+      "buyWeight": 11,
       "sellWeight": 0,
+      "baseOverall": "STERK KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Overextensie: ver boven 8-EMA {'weekly': 8.0, 'monthly': 12.6} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 5655.0,
         "rsiDaily": 59.9,
@@ -8439,12 +8916,12 @@
           },
           "extensions": {
             "1.000": 6063.88,
-            "1.272": 6569.78,
-            "1.414": 6833.89,
-            "1.618": 7213.31,
-            "1.818": 7585.3,
-            "2.000": 7923.81,
-            "2.618": 9073.25
+            "1.272": 6699.83,
+            "1.414": 7031.83,
+            "1.618": 7508.8,
+            "1.818": 7976.41,
+            "2.000": 8401.93,
+            "2.618": 9846.85
           },
           "goldenPocket": {
             "low": 3075.01,
@@ -8453,7 +8930,7 @@
           "swingHigh": 6063.88,
           "swingLow": 1824.35,
           "extSwingHigh": 6063.88,
-          "extSwingLow": 4203.94
+          "extSwingLow": 3725.82
         },
         "isFriday": false,
         "hasWeekly": true
@@ -8568,7 +9045,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 634.35 boven signaal 90.06 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -8577,18 +9054,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 90/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -8616,11 +9093,21 @@
           "title": "Nadert Bollinger bovenband ($8885.60)"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 22,
+      "overall": "CAUTION (overextended)",
+      "buyWeight": 16,
       "sellWeight": 7,
+      "baseOverall": "STERK KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 5 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 5 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Overextensie: ver boven 8-EMA {'weekly': 22.0, 'monthly': 43.6} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 8840.0,
         "rsiDaily": 64.5,
@@ -8634,7 +9121,7 @@
         "macdLine": 391.9331,
         "macdSignal": 341.242,
         "macdLineW": 1130.8051,
-        "macdSigW": 870.1878,
+        "macdSigW": 870.1877,
         "bollUpper": 8885.6,
         "bollLower": 6078.4,
         "volRatio": 2.18,
@@ -8655,12 +9142,12 @@
           },
           "extensions": {
             "1.000": 8870.0,
-            "1.272": 9473.84,
-            "1.414": 9789.08,
-            "1.618": 10241.96,
-            "1.818": 10685.96,
-            "2.000": 11090.0,
-            "2.618": 12461.96
+            "1.272": 10394.03,
+            "1.414": 11189.67,
+            "1.618": 12332.69,
+            "1.818": 13453.3,
+            "2.000": 14473.06,
+            "2.618": 17935.75
           },
           "goldenPocket": {
             "low": 3848.49,
@@ -8669,7 +9156,7 @@
           "swingHigh": 8870.0,
           "swingLow": 1747.29,
           "extSwingHigh": 8870.0,
-          "extSwingLow": 6650.0
+          "extSwingLow": 3266.94
         },
         "isFriday": false,
         "hasWeekly": true
@@ -8749,7 +9236,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 2689.41 boven signaal 83.32 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -8758,18 +9245,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 90/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -8790,11 +9277,21 @@
           "detail": "MACD: 5423.211 | Signaal: 4748.236"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 17,
+      "overall": "CAUTION (overextended)",
+      "buyWeight": 11,
       "sellWeight": 0,
+      "baseOverall": "STERK KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Overextensie: ver boven 8-EMA {'weekly': 4.7, 'monthly': 18.2} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 80300.0,
         "rsiDaily": 59.3,
@@ -8820,21 +9317,21 @@
             "0.000": 84170.0,
             "0.236": 74633.91,
             "0.382": 68734.47,
-            "0.500": 63966.42,
+            "0.500": 63966.43,
             "0.618": 59198.38,
             "0.705": 55682.96,
             "0.786": 52409.98,
-            "0.886": 48369.26,
+            "0.886": 48369.27,
             "1.000": 43762.85
           },
           "extensions": {
             "1.000": 84170.0,
-            "1.272": 88296.24,
-            "1.414": 90450.38,
-            "1.618": 93545.06,
-            "1.818": 96579.06,
-            "2.000": 99340.0,
-            "2.618": 108715.06
+            "1.272": 93107.44,
+            "1.414": 97773.3,
+            "1.618": 104476.38,
+            "1.818": 111048.02,
+            "2.000": 117028.22,
+            "2.618": 137334.6
           },
           "goldenPocket": {
             "low": 55682.96,
@@ -8843,7 +9340,7 @@
           "swingHigh": 84170.0,
           "swingLow": 43762.85,
           "extSwingHigh": 84170.0,
-          "extSwingLow": 69000.0
+          "extSwingLow": 51311.78
         },
         "isFriday": false,
         "hasWeekly": true
@@ -8933,7 +9430,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 804.38 boven signaal 484.88 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -8942,18 +9439,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 70/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -8967,11 +9464,21 @@
           "detail": "MACD: 482.404 | Signaal: 509.466"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 20,
+      "overall": "KOOP",
+      "buyWeight": 14,
       "sellWeight": 0,
+      "baseOverall": "STERK KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 7439.0,
         "rsiDaily": 51.2,
@@ -9006,12 +9513,12 @@
           },
           "extensions": {
             "1.000": 8880.0,
-            "1.272": 9584.48,
-            "1.414": 9952.26,
-            "1.618": 10480.62,
-            "1.818": 10998.62,
-            "2.000": 11470.0,
-            "2.618": 13070.62
+            "1.272": 9866.82,
+            "1.414": 10381.99,
+            "1.618": 11122.1,
+            "1.818": 11847.7,
+            "2.000": 12508.0,
+            "2.618": 14750.1
           },
           "goldenPocket": {
             "low": 4715.25,
@@ -9020,7 +9527,7 @@
           "swingHigh": 8880.0,
           "swingLow": 2972.56,
           "extSwingHigh": 8880.0,
-          "extSwingLow": 6290.0
+          "extSwingLow": 5252.0
         },
         "isFriday": false,
         "hasWeekly": true
@@ -9107,7 +9614,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 393.87 boven signaal -13.53 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -9116,18 +9623,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 90/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -9148,11 +9655,21 @@
           "detail": "MACD: 709.369 | Signaal: 592.579"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 19,
+      "overall": "CAUTION (overextended)",
+      "buyWeight": 13,
       "sellWeight": 0,
+      "baseOverall": "STERK KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Overextensie: ver boven 8-EMA {'weekly': 10.0, 'monthly': 25.7} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 7479.0,
         "rsiDaily": 58.3,
@@ -9187,12 +9704,12 @@
           },
           "extensions": {
             "1.000": 7915.0,
-            "1.272": 8283.56,
-            "1.414": 8475.97,
-            "1.618": 8752.39,
-            "1.818": 9023.39,
-            "2.000": 9270.0,
-            "2.618": 10107.39
+            "1.272": 8983.42,
+            "1.414": 9541.19,
+            "1.618": 10342.5,
+            "1.818": 11128.1,
+            "2.000": 11843.0,
+            "2.618": 14270.5
           },
           "goldenPocket": {
             "low": 4123.37,
@@ -9201,7 +9718,7 @@
           "swingHigh": 7915.0,
           "swingLow": 2536.8,
           "extSwingHigh": 7915.0,
-          "extSwingLow": 6560.0
+          "extSwingLow": 3987.0
         },
         "isFriday": false,
         "hasWeekly": true
@@ -9294,7 +9811,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 977.20 boven signaal 737.22 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -9303,18 +9820,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 90/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -9335,11 +9852,21 @@
           "title": "Nadert Fib 0.382 steunzone: $5999.32 (2.8% weg)"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 17,
+      "overall": "KOOP",
+      "buyWeight": 11,
       "sellWeight": 0,
+      "baseOverall": "STERK KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 6169.0,
         "rsiDaily": 45.2,
@@ -9374,12 +9901,12 @@
           },
           "extensions": {
             "1.000": 9074.0,
-            "1.272": 9988.74,
-            "1.414": 10466.28,
-            "1.618": 11152.33,
-            "1.818": 11824.93,
-            "2.000": 12437.0,
-            "2.618": 14515.33
+            "1.272": 10628.12,
+            "1.414": 11439.47,
+            "1.618": 12605.06,
+            "1.818": 13747.8,
+            "2.000": 14787.69,
+            "2.618": 18318.75
           },
           "goldenPocket": {
             "low": 3399.53,
@@ -9388,7 +9915,7 @@
           "swingHigh": 9074.0,
           "swingLow": 1025.11,
           "extSwingHigh": 9074.0,
-          "extSwingLow": 5711.0
+          "extSwingLow": 3360.31
         },
         "isFriday": false,
         "hasWeekly": true
@@ -9467,7 +9994,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 44.56 boven signaal 31.90 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -9476,18 +10003,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 90/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -9508,11 +10035,21 @@
           "detail": "MACD: 25.324 | Signaal: 20.164"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 17,
+      "overall": "CAUTION (overextended)",
+      "buyWeight": 11,
       "sellWeight": 0,
+      "baseOverall": "STERK KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Overextensie: ver boven 8-EMA {'weekly': 3.1, 'monthly': 18.5} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 471.7,
         "rsiDaily": 53.5,
@@ -9547,12 +10084,12 @@
           },
           "extensions": {
             "1.000": 497.36,
-            "1.272": 506.95,
-            "1.414": 511.96,
-            "1.618": 519.16,
-            "1.818": 526.21,
-            "2.000": 532.63,
-            "2.618": 554.43
+            "1.272": 538.4,
+            "1.414": 559.83,
+            "1.618": 590.62,
+            "1.818": 620.8,
+            "2.000": 648.26,
+            "2.618": 741.51
           },
           "goldenPocket": {
             "low": 271.97,
@@ -9561,7 +10098,7 @@
           "swingHigh": 497.36,
           "swingLow": 177.66,
           "extSwingHigh": 497.36,
-          "extSwingLow": 462.09
+          "extSwingLow": 346.46
         },
         "isFriday": false,
         "hasWeekly": true
@@ -9650,7 +10187,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 72.18 boven signaal 39.27 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -9659,18 +10196,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 70/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -9684,11 +10221,21 @@
           "detail": "MACD: 45.952 | Signaal: 46.922"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 17,
+      "overall": "CAUTION (overextended)",
+      "buyWeight": 11,
       "sellWeight": 2,
+      "baseOverall": "STERK KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 3 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 3 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Overextensie: ver boven 8-EMA {'weekly': -5.0, 'monthly': 49.4} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 369.09,
         "rsiDaily": 44.1,
@@ -9723,12 +10270,12 @@
           },
           "extensions": {
             "1.000": 487.91,
-            "1.272": 522.15,
-            "1.414": 540.03,
-            "1.618": 565.72,
-            "1.818": 590.9,
-            "2.000": 613.81,
-            "2.618": 691.62
+            "1.272": 566.47,
+            "1.414": 607.48,
+            "1.618": 666.39,
+            "1.818": 724.16,
+            "2.000": 776.72,
+            "2.618": 955.2
           },
           "goldenPocket": {
             "low": 190.11,
@@ -9737,7 +10284,7 @@
           "swingHigh": 487.91,
           "swingLow": 65.5,
           "extSwingHigh": 487.91,
-          "extSwingLow": 362.01
+          "extSwingLow": 199.1
         },
         "isFriday": false,
         "hasWeekly": true
@@ -9818,7 +10365,7 @@
           "type": "SELL",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🔴",
           "title": "MACD bearish (MONTHLY) ⭐⭐",
           "detail": "MACD 6.98 onder signaal 27.57 op maandbasis — zwaarste momentum-tegenwind. Hoogste timeframe."
@@ -9827,18 +10374,18 @@
           "type": "SELL",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📉",
-          "title": "Downtrend (WEEKLY) ⭐",
+          "title": "Downtrend (WEEKLY)",
           "detail": "Weekly trendscore 10/100 — structureel dalend. Weegt zwaarder dan daily koopsignalen."
         },
         {
           "type": "SELL",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📉",
-          "title": "Downtrend (MONTHLY) ⭐⭐",
+          "title": "Downtrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 20/100 — dalend op de hoogste timeframe. Zwaarste trendsignaal."
         }
       ],
@@ -9861,9 +10408,19 @@
       ],
       "overall": "STERK VERKOOP",
       "buyWeight": 0,
-      "sellWeight": 17,
+      "sellWeight": 11,
+      "baseOverall": "STERK VERKOOP",
+      "confluence": {
+        "monthlyState": "light_bear",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": true,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Confluence VERKOOP: weekly bearish draai + daily downtrend",
       "indicators": {
         "last": 426.01,
         "rsiDaily": 56.5,
@@ -9897,13 +10454,13 @@
             "1.000": 180.07
           },
           "extensions": {
-            "1.000": 616.0,
-            "1.272": 675.66,
-            "1.414": 706.8,
-            "1.618": 751.54,
-            "1.818": 795.4,
-            "2.000": 835.32,
-            "2.618": 970.86
+            "1.000": 603.88,
+            "1.272": 660.24,
+            "1.414": 689.66,
+            "1.618": 731.93,
+            "1.818": 773.37,
+            "2.000": 811.08,
+            "2.618": 939.13
           },
           "goldenPocket": {
             "low": 308.67,
@@ -9911,7 +10468,7 @@
           },
           "swingHigh": 616.0,
           "swingLow": 180.07,
-          "extSwingHigh": 616.0,
+          "extSwingHigh": 603.88,
           "extSwingLow": 396.68
         },
         "isFriday": false,
@@ -9993,7 +10550,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 4.63 boven signaal 0.48 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -10002,18 +10559,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 90/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -10034,11 +10591,21 @@
           "detail": "MACD: 6.037 | Signaal: 5.487"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 17,
+      "overall": "CAUTION (overextended)",
+      "buyWeight": 11,
       "sellWeight": 0,
+      "baseOverall": "STERK KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Overextensie: ver boven 8-EMA {'weekly': 5.4, 'monthly': 30.8} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 67.8,
         "rsiDaily": 54.8,
@@ -10073,12 +10640,12 @@
           },
           "extensions": {
             "1.000": 72.88,
-            "1.272": 74.66,
-            "1.414": 75.59,
-            "1.618": 76.93,
-            "1.818": 78.24,
-            "2.000": 79.43,
-            "2.618": 83.48
+            "1.272": 82.88,
+            "1.414": 88.11,
+            "1.618": 95.61,
+            "1.818": 102.97,
+            "2.000": 109.66,
+            "2.618": 132.39
           },
           "goldenPocket": {
             "low": 37.33,
@@ -10087,7 +10654,7 @@
           "swingHigh": 72.88,
           "swingLow": 22.46,
           "extSwingHigh": 72.88,
-          "extSwingLow": 66.33
+          "extSwingLow": 36.1
         },
         "isFriday": false,
         "hasWeekly": true
@@ -10172,7 +10739,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD -2.13 boven signaal -6.70 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -10181,18 +10748,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 90/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 80/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -10213,11 +10780,21 @@
           "detail": "MACD: 9.493 | Signaal: 7.220"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 19,
+      "overall": "CAUTION (overextended)",
+      "buyWeight": 13,
       "sellWeight": 0,
+      "baseOverall": "STERK KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Overextensie: ver boven 8-EMA {'weekly': 4.6, 'monthly': 16.2} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 161.72,
         "rsiDaily": 55.9,
@@ -10252,12 +10829,12 @@
           },
           "extensions": {
             "1.000": 171.85,
-            "1.272": 178.07,
-            "1.414": 181.32,
-            "1.618": 185.98,
-            "1.818": 190.56,
-            "2.000": 194.72,
-            "2.618": 208.85
+            "1.272": 188.62,
+            "1.414": 197.37,
+            "1.618": 209.95,
+            "1.818": 222.28,
+            "2.000": 233.5,
+            "2.618": 271.6
           },
           "goldenPocket": {
             "low": 119.98,
@@ -10266,7 +10843,7 @@
           "swingHigh": 171.85,
           "swingLow": 98.27,
           "extSwingHigh": 171.85,
-          "extSwingLow": 148.98
+          "extSwingLow": 110.2
         },
         "isFriday": false,
         "hasWeekly": true
@@ -10367,7 +10944,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 8.75 boven signaal 8.26 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -10376,18 +10953,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 69/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -10408,11 +10985,23 @@
           "title": "Nadert Bollinger onderband ($47.68)"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 17,
+      "overall": "KOOP",
+      "buyWeight": 11,
       "sellWeight": 0,
+      "baseOverall": "STERK KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 1,
+        "supportFlags": [
+          "200-MA-steun (stijgende MA + oversold)"
+        ]
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Confluence KOOP: weekly bullish draai + 200-MA-steun (stijgende MA + oversold)",
       "indicators": {
         "last": 49.12,
         "rsiDaily": 41.0,
@@ -10446,13 +11035,13 @@
             "1.000": 3.04
           },
           "extensions": {
-            "1.000": 84.64,
-            "1.272": 100.62,
-            "1.414": 108.96,
-            "1.618": 120.95,
-            "1.818": 132.7,
-            "2.000": 143.39,
-            "2.618": 179.7
+            "1.000": 73.65,
+            "1.272": 86.64,
+            "1.414": 93.42,
+            "1.618": 103.17,
+            "1.818": 112.72,
+            "2.000": 121.41,
+            "2.618": 150.93
           },
           "goldenPocket": {
             "low": 27.11,
@@ -10460,7 +11049,7 @@
           },
           "swingHigh": 84.64,
           "swingLow": 3.04,
-          "extSwingHigh": 84.64,
+          "extSwingHigh": 73.65,
           "extSwingLow": 25.89
         },
         "isFriday": false,
@@ -10561,7 +11150,7 @@
           "type": "SELL",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🔴",
           "title": "MACD bearish (MONTHLY) ⭐⭐",
           "detail": "MACD 3.95 onder signaal 4.34 op maandbasis — zwaarste momentum-tegenwind. Hoogste timeframe."
@@ -10570,18 +11159,18 @@
           "type": "SELL",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📉",
-          "title": "Downtrend (WEEKLY) ⭐",
+          "title": "Downtrend (WEEKLY)",
           "detail": "Weekly trendscore 35/100 — structureel dalend. Weegt zwaarder dan daily koopsignalen."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 65/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -10609,11 +11198,21 @@
           "title": "Nadert Fib 0.705 steunzone: $17.41 (3.0% weg)"
         }
       ],
-      "overall": "VERKOOP",
-      "buyWeight": 6,
-      "sellWeight": 11,
+      "overall": "LICHT VERKOOP",
+      "buyWeight": 4,
+      "sellWeight": 7,
+      "baseOverall": "LICHT VERKOOP",
+      "confluence": {
+        "monthlyState": "light_bear",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 1,
+        "fibZone": "0.618",
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 1 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 1 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 17.94,
         "rsiDaily": 41.1,
@@ -10647,13 +11246,13 @@
             "1.000": 0.36
           },
           "extensions": {
-            "1.000": 58.15,
-            "1.272": 70.56,
-            "1.414": 77.04,
-            "1.618": 86.34,
-            "1.818": 95.47,
-            "2.000": 103.77,
-            "2.618": 131.96
+            "1.000": 28.06,
+            "1.272": 32.28,
+            "1.414": 34.49,
+            "1.618": 37.66,
+            "1.818": 40.76,
+            "2.000": 43.59,
+            "2.618": 53.19
           },
           "goldenPocket": {
             "low": 17.41,
@@ -10661,7 +11260,7 @@
           },
           "swingHigh": 58.15,
           "swingLow": 0.36,
-          "extSwingHigh": 58.15,
+          "extSwingHigh": 28.06,
           "extSwingLow": 12.53
         },
         "isFriday": false,
@@ -10763,7 +11362,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 4.95 boven signaal 4.66 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -10772,18 +11371,18 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📈",
-          "title": "Uptrend (WEEKLY) ⭐",
+          "title": "Uptrend (WEEKLY)",
           "detail": "Weekly trendscore 85/100 — structureel stijgend."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -10797,11 +11396,21 @@
           "detail": "MACD: 0.705 | Signaal: 0.354"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 17,
+      "overall": "KOOP",
+      "buyWeight": 11,
       "sellWeight": 0,
+      "baseOverall": "STERK KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": true,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 22.53,
         "rsiDaily": 45.7,
@@ -10835,13 +11444,13 @@
             "1.000": 0.4
           },
           "extensions": {
-            "1.000": 46.75,
-            "1.272": 56.0,
-            "1.414": 60.83,
-            "1.618": 67.76,
-            "1.818": 74.56,
-            "2.000": 80.75,
-            "2.618": 101.76
+            "1.000": 32.15,
+            "1.272": 37.43,
+            "1.414": 40.19,
+            "1.618": 44.15,
+            "1.818": 48.03,
+            "2.000": 51.56,
+            "2.618": 63.55
           },
           "goldenPocket": {
             "low": 14.07,
@@ -10849,7 +11458,7 @@
           },
           "swingHigh": 46.75,
           "swingLow": 0.4,
-          "extSwingHigh": 46.75,
+          "extSwingHigh": 32.15,
           "extSwingLow": 12.75
         },
         "isFriday": false,
@@ -10947,18 +11556,18 @@
           "type": "SELL",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📉",
-          "title": "Downtrend (WEEKLY) ⭐",
+          "title": "Downtrend (WEEKLY)",
           "detail": "Weekly trendscore 15/100 — structureel dalend. Weegt zwaarder dan daily koopsignalen."
         },
         {
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 69/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -10973,10 +11582,20 @@
         }
       ],
       "overall": "LICHT KOOP",
-      "buyWeight": 6,
-      "sellWeight": 5,
+      "buyWeight": 4,
+      "sellWeight": 3,
+      "baseOverall": "LICHT KOOP",
+      "confluence": {
+        "monthlyState": "neutral",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": true,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": true,
-      "conflictNote": "⚠️ CONFLICT: 1 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging.",
+      "conflictNote": "⚠️ CONFLICT: 1 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 108.9,
         "rsiDaily": 53.2,
@@ -11010,13 +11629,13 @@
             "1.000": 40.8
           },
           "extensions": {
-            "1.000": 161.0,
-            "1.272": 181.78,
-            "1.414": 192.63,
-            "1.618": 208.22,
-            "1.818": 223.5,
-            "2.000": 237.4,
-            "2.618": 284.62
+            "1.000": 156.4,
+            "1.272": 175.93,
+            "1.414": 186.13,
+            "1.618": 200.77,
+            "1.818": 215.13,
+            "2.000": 228.2,
+            "2.618": 272.57
           },
           "goldenPocket": {
             "low": 76.26,
@@ -11024,7 +11643,7 @@
           },
           "swingHigh": 161.0,
           "swingLow": 40.8,
-          "extSwingHigh": 161.0,
+          "extSwingHigh": 156.4,
           "extSwingLow": 84.6
         },
         "isFriday": false,
@@ -11128,7 +11747,7 @@
           "type": "SELL",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🔴",
           "title": "MACD bearish (MONTHLY) ⭐⭐",
           "detail": "MACD 5.92 onder signaal 7.03 op maandbasis — zwaarste momentum-tegenwind. Hoogste timeframe."
@@ -11137,9 +11756,9 @@
           "type": "SELL",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📉",
-          "title": "Downtrend (WEEKLY) ⭐",
+          "title": "Downtrend (WEEKLY)",
           "detail": "Weekly trendscore 10/100 — structureel dalend. Weegt zwaarder dan daily koopsignalen."
         }
       ],
@@ -11155,9 +11774,19 @@
       ],
       "overall": "STERK VERKOOP",
       "buyWeight": 0,
-      "sellWeight": 11,
+      "sellWeight": 7,
+      "baseOverall": "VERKOOP",
+      "confluence": {
+        "monthlyState": "light_bear",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": true,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Confluence VERKOOP: weekly bearish draai + daily downtrend",
       "indicators": {
         "last": 42.74,
         "rsiDaily": 45.7,
@@ -11191,13 +11820,13 @@
             "1.000": 8.75
           },
           "extensions": {
-            "1.000": 87.88,
-            "1.272": 101.4,
-            "1.414": 108.45,
-            "1.618": 118.59,
-            "1.818": 128.53,
-            "2.000": 137.57,
-            "2.618": 168.29
+            "1.000": 73.97,
+            "1.272": 83.7,
+            "1.414": 88.78,
+            "1.618": 96.09,
+            "1.818": 103.24,
+            "2.000": 109.76,
+            "2.618": 131.87
           },
           "goldenPocket": {
             "low": 32.09,
@@ -11205,7 +11834,7 @@
           },
           "swingHigh": 87.88,
           "swingLow": 8.75,
-          "extSwingHigh": 87.88,
+          "extSwingHigh": 73.97,
           "extSwingLow": 38.19
         },
         "isFriday": false,
@@ -11306,9 +11935,9 @@
           "type": "SELL",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📉",
-          "title": "Downtrend (WEEKLY) ⭐",
+          "title": "Downtrend (WEEKLY)",
           "detail": "Weekly trendscore 10/100 — structureel dalend. Weegt zwaarder dan daily koopsignalen."
         }
       ],
@@ -11338,9 +11967,21 @@
       ],
       "overall": "VERKOOP",
       "buyWeight": 0,
-      "sellWeight": 5,
+      "sellWeight": 3,
+      "baseOverall": "LICHT VERKOOP",
+      "confluence": {
+        "monthlyState": "neutral",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": true,
+        "fibBuyDepth": 3,
+        "fibZone": "0.786",
+        "supportCount": 1,
+        "supportFlags": [
+          "onderste weekly-Bollinger (oversold bounce)"
+        ]
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Confluence VERKOOP: weekly bearish draai + daily downtrend",
       "indicators": {
         "last": 6.31,
         "rsiDaily": 38.3,
@@ -11374,13 +12015,13 @@
             "1.000": 1.77
           },
           "extensions": {
-            "1.000": 24.35,
-            "1.272": 29.71,
-            "1.414": 32.5,
-            "1.618": 36.52,
-            "1.818": 40.46,
-            "2.000": 44.04,
-            "2.618": 56.21
+            "1.000": 16.08,
+            "1.272": 18.88,
+            "1.414": 20.35,
+            "1.618": 22.45,
+            "1.818": 24.51,
+            "2.000": 26.38,
+            "2.618": 32.75
           },
           "goldenPocket": {
             "low": 8.43,
@@ -11388,8 +12029,8 @@
           },
           "swingHigh": 24.35,
           "swingLow": 1.77,
-          "extSwingHigh": 24.35,
-          "extSwingLow": 4.66
+          "extSwingHigh": 16.08,
+          "extSwingLow": 5.78
         },
         "isFriday": false,
         "hasWeekly": true
@@ -11490,18 +12131,18 @@
           "type": "SELL",
           "cat": "TREND",
           "tf": "1W",
-          "weight": 5,
+          "weight": 3,
           "icon": "📉",
-          "title": "Downtrend (WEEKLY) ⭐",
+          "title": "Downtrend (WEEKLY)",
           "detail": "Weekly trendscore 10/100 — structureel dalend. Weegt zwaarder dan daily koopsignalen."
         },
         {
           "type": "SELL",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📉",
-          "title": "Downtrend (MONTHLY) ⭐⭐",
+          "title": "Downtrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 10/100 — dalend op de hoogste timeframe. Zwaarste trendsignaal."
         }
       ],
@@ -11529,11 +12170,21 @@
           "detail": "MACD: -0.268 | Signaal: -0.241"
         }
       ],
-      "overall": "STERK VERKOOP",
+      "overall": "VERKOOP",
       "buyWeight": 0,
-      "sellWeight": 11,
+      "sellWeight": 7,
+      "baseOverall": "VERKOOP",
+      "confluence": {
+        "monthlyState": "neutral",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": true,
+        "fibBuyDepth": 2,
+        "fibZone": "0.705",
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Confluence VERKOOP: weekly bearish draai + daily downtrend",
       "indicators": {
         "last": 1.96,
         "rsiDaily": 38.5,
@@ -11567,13 +12218,13 @@
             "1.000": 0.3
           },
           "extensions": {
-            "1.000": 7.43,
-            "1.272": 8.96,
-            "1.414": 9.76,
-            "1.618": 10.9,
-            "1.818": 12.03,
-            "2.000": 13.05,
-            "2.618": 16.52
+            "1.000": 5.6,
+            "1.272": 6.63,
+            "1.414": 7.17,
+            "1.618": 7.94,
+            "1.818": 8.7,
+            "2.000": 9.39,
+            "2.618": 11.73
           },
           "goldenPocket": {
             "low": 2.4,
@@ -11581,7 +12232,7 @@
           },
           "swingHigh": 7.43,
           "swingLow": 0.3,
-          "extSwingHigh": 7.43,
+          "extSwingHigh": 5.6,
           "extSwingLow": 1.81
         },
         "isFriday": false,
@@ -11679,7 +12330,7 @@
           "type": "BUY",
           "cat": "MACD",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "🟢",
           "title": "MACD bullish (MONTHLY) ⭐⭐",
           "detail": "MACD 8.60 boven signaal 5.33 op maandbasis — zwaarste momentum-rugwind. Hoogste timeframe."
@@ -11688,9 +12339,9 @@
           "type": "BUY",
           "cat": "TREND",
           "tf": "1M",
-          "weight": 6,
+          "weight": 4,
           "icon": "📈",
-          "title": "Uptrend (MONTHLY) ⭐⭐",
+          "title": "Uptrend (MONTHLY) ⭐",
           "detail": "Monthly trendscore 90/100 — stijgend op de hoogste timeframe."
         }
       ],
@@ -11704,11 +12355,21 @@
           "detail": "MACD: 2.954 | Signaal: 4.750"
         }
       ],
-      "overall": "STERK KOOP",
-      "buyWeight": 12,
+      "overall": "KOOP",
+      "buyWeight": 8,
       "sellWeight": 0,
+      "baseOverall": "STERK KOOP",
+      "confluence": {
+        "monthlyState": "bull",
+        "weeklyBullTurn": false,
+        "weeklyBearTurn": false,
+        "fibBuyDepth": 0,
+        "fibZone": null,
+        "supportCount": 0,
+        "supportFlags": []
+      },
       "conflict": false,
-      "conflictNote": "",
+      "conflictNote": "Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 31.38,
         "rsiDaily": 45.9,
@@ -11743,12 +12404,12 @@
           },
           "extensions": {
             "1.000": 51.76,
-            "1.272": 58.96,
-            "1.414": 62.71,
-            "1.618": 68.11,
-            "1.818": 73.4,
-            "2.000": 78.22,
-            "2.618": 94.57
+            "1.272": 60.68,
+            "1.414": 65.33,
+            "1.618": 72.02,
+            "1.818": 78.58,
+            "2.000": 84.55,
+            "2.618": 104.81
           },
           "goldenPocket": {
             "low": 16.45,
@@ -11757,7 +12418,7 @@
           "swingHigh": 51.76,
           "swingLow": 1.67,
           "extSwingHigh": 51.76,
-          "extSwingLow": 25.3
+          "extSwingLow": 18.97
         },
         "isFriday": false,
         "hasWeekly": true
@@ -13218,8 +13879,8 @@
     "methodNote": "Score op omzetgroei, groei-versnelling, brutomarge-trend (operating leverage) en relatieve sterkte vs markt. Risico-flags bepalen positiegrootte-advies."
   },
   "weekly": {
-    "generatedAt": "2026-07-05T11:24:10.015792+02:00",
-    "generatedAtHuman": "Sunday 05 July 2026 om 11:24",
+    "generatedAt": "2026-07-05T12:54:14.863818+02:00",
+    "generatedAtHuman": "Sunday 05 July 2026 om 12:54",
     "periodLabel": "sinds ~1 week geleden",
     "changes": [
       {
@@ -13238,8 +13899,8 @@
           },
           {
             "type": "signal",
-            "dir": "up",
-            "text": "Signaal: NEUTRAAL → STERK KOOP"
+            "dir": "neutral",
+            "text": "Signaal: NEUTRAAL → CAUTION (overextended)"
           },
           {
             "type": "rsi",
@@ -13265,7 +13926,7 @@
           {
             "type": "signal",
             "dir": "neutral",
-            "text": "Signaal: LICHT KOOP → STERK KOOP"
+            "text": "Signaal: LICHT KOOP → CAUTION (overextended)"
           }
         ]
       },
@@ -13286,7 +13947,7 @@
           {
             "type": "signal",
             "dir": "neutral",
-            "text": "Signaal: LICHT KOOP → STERK KOOP"
+            "text": "Signaal: LICHT KOOP → KOOP"
           }
         ]
       },
@@ -13307,7 +13968,7 @@
           {
             "type": "signal",
             "dir": "up",
-            "text": "Signaal: NEUTRAAL → STERK KOOP"
+            "text": "Signaal: NEUTRAAL → KOOP"
           }
         ]
       },
@@ -13328,7 +13989,7 @@
           {
             "type": "signal",
             "dir": "neutral",
-            "text": "Signaal: VERKOOP → STERK KOOP"
+            "text": "Signaal: VERKOOP → CAUTION (overextended)"
           }
         ]
       },
@@ -13344,7 +14005,7 @@
           {
             "type": "signal",
             "dir": "neutral",
-            "text": "Signaal: VERKOOP → STERK KOOP"
+            "text": "Signaal: VERKOOP → CAUTION (overextended)"
           }
         ]
       },
@@ -13360,7 +14021,7 @@
           {
             "type": "signal",
             "dir": "neutral",
-            "text": "Signaal: VERKOOP → STERK KOOP"
+            "text": "Signaal: VERKOOP → CAUTION (overextended)"
           }
         ]
       },
@@ -13376,7 +14037,7 @@
           {
             "type": "signal",
             "dir": "neutral",
-            "text": "Signaal: LICHT KOOP → STERK KOOP"
+            "text": "Signaal: LICHT KOOP → KOOP"
           }
         ]
       },
@@ -13391,8 +14052,8 @@
           },
           {
             "type": "signal",
-            "dir": "up",
-            "text": "Signaal: NEUTRAAL → STERK KOOP"
+            "dir": "neutral",
+            "text": "Signaal: NEUTRAAL → CAUTION (overextended)"
           }
         ]
       },
@@ -13403,7 +14064,7 @@
           {
             "type": "signal",
             "dir": "down",
-            "text": "Signaal: LICHT KOOP → LICHT VERKOOP"
+            "text": "Signaal: LICHT KOOP → VERKOOP"
           }
         ]
       },
@@ -13436,18 +14097,7 @@
           {
             "type": "signal",
             "dir": "neutral",
-            "text": "Signaal: LICHT VERKOOP → STERK KOOP"
-          }
-        ]
-      },
-      {
-        "ticker": "TDG",
-        "daysAgo": 3,
-        "changes": [
-          {
-            "type": "signal",
-            "dir": "neutral",
-            "text": "Signaal: LICHT KOOP → KOOP"
+            "text": "Signaal: LICHT VERKOOP → KOOP"
           }
         ]
       },
@@ -13479,24 +14129,13 @@
         "changes": [
           {
             "type": "signal",
-            "dir": "up",
-            "text": "Signaal: NEUTRAAL → KOOP"
-          }
-        ]
-      },
-      {
-        "ticker": "BNGO",
-        "daysAgo": 3,
-        "changes": [
-          {
-            "type": "signal",
-            "dir": "up",
-            "text": "Signaal: NEUTRAAL → LICHT VERKOOP"
+            "dir": "neutral",
+            "text": "Signaal: NEUTRAAL → CAUTION (overextended)"
           }
         ]
       }
     ],
-    "changedCount": 18,
+    "changedCount": 16,
     "note": "Toont enkel wat veranderde t.o.v. ~7 dagen geleden. Geen wijzigingen = stabiele week."
   },
   "trackSummary": {

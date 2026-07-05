@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-05T11:24:10.015792+02:00",
-  "generatedAtHuman": "Sunday 05 July 2026 om 11:24",
+  "generatedAt": "2026-07-05T12:54:14.863818+02:00",
+  "generatedAtHuman": "Sunday 05 July 2026 om 12:54",
   "periodLabel": "sinds ~1 week geleden",
   "changes": [
     {
@@ -19,8 +19,8 @@
         },
         {
           "type": "signal",
-          "dir": "up",
-          "text": "Signaal: NEUTRAAL → STERK KOOP"
+          "dir": "neutral",
+          "text": "Signaal: NEUTRAAL → CAUTION (overextended)"
         },
         {
           "type": "rsi",
@@ -46,7 +46,7 @@
         {
           "type": "signal",
           "dir": "neutral",
-          "text": "Signaal: LICHT KOOP → STERK KOOP"
+          "text": "Signaal: LICHT KOOP → CAUTION (overextended)"
         }
       ]
     },
@@ -67,7 +67,7 @@
         {
           "type": "signal",
           "dir": "neutral",
-          "text": "Signaal: LICHT KOOP → STERK KOOP"
+          "text": "Signaal: LICHT KOOP → KOOP"
         }
       ]
     },
@@ -88,7 +88,7 @@
         {
           "type": "signal",
           "dir": "up",
-          "text": "Signaal: NEUTRAAL → STERK KOOP"
+          "text": "Signaal: NEUTRAAL → KOOP"
         }
       ]
     },
@@ -109,7 +109,7 @@
         {
           "type": "signal",
           "dir": "neutral",
-          "text": "Signaal: VERKOOP → STERK KOOP"
+          "text": "Signaal: VERKOOP → CAUTION (overextended)"
         }
       ]
     },
@@ -125,7 +125,7 @@
         {
           "type": "signal",
           "dir": "neutral",
-          "text": "Signaal: VERKOOP → STERK KOOP"
+          "text": "Signaal: VERKOOP → CAUTION (overextended)"
         }
       ]
     },
@@ -141,7 +141,7 @@
         {
           "type": "signal",
           "dir": "neutral",
-          "text": "Signaal: VERKOOP → STERK KOOP"
+          "text": "Signaal: VERKOOP → CAUTION (overextended)"
         }
       ]
     },
@@ -157,7 +157,7 @@
         {
           "type": "signal",
           "dir": "neutral",
-          "text": "Signaal: LICHT KOOP → STERK KOOP"
+          "text": "Signaal: LICHT KOOP → KOOP"
         }
       ]
     },
@@ -172,8 +172,8 @@
         },
         {
           "type": "signal",
-          "dir": "up",
-          "text": "Signaal: NEUTRAAL → STERK KOOP"
+          "dir": "neutral",
+          "text": "Signaal: NEUTRAAL → CAUTION (overextended)"
         }
       ]
     },
@@ -184,7 +184,7 @@
         {
           "type": "signal",
           "dir": "down",
-          "text": "Signaal: LICHT KOOP → LICHT VERKOOP"
+          "text": "Signaal: LICHT KOOP → VERKOOP"
         }
       ]
     },
@@ -217,18 +217,7 @@
         {
           "type": "signal",
           "dir": "neutral",
-          "text": "Signaal: LICHT VERKOOP → STERK KOOP"
-        }
-      ]
-    },
-    {
-      "ticker": "TDG",
-      "daysAgo": 3,
-      "changes": [
-        {
-          "type": "signal",
-          "dir": "neutral",
-          "text": "Signaal: LICHT KOOP → KOOP"
+          "text": "Signaal: LICHT VERKOOP → KOOP"
         }
       ]
     },
@@ -260,23 +249,12 @@
       "changes": [
         {
           "type": "signal",
-          "dir": "up",
-          "text": "Signaal: NEUTRAAL → KOOP"
-        }
-      ]
-    },
-    {
-      "ticker": "BNGO",
-      "daysAgo": 3,
-      "changes": [
-        {
-          "type": "signal",
-          "dir": "up",
-          "text": "Signaal: NEUTRAAL → LICHT VERKOOP"
+          "dir": "neutral",
+          "text": "Signaal: NEUTRAAL → CAUTION (overextended)"
         }
       ]
     }
   ],
-  "changedCount": 18,
+  "changedCount": 16,
   "note": "Toont enkel wat veranderde t.o.v. ~7 dagen geleden. Geen wijzigingen = stabiele week."
 }
