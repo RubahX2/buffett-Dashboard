@@ -722,7 +722,7 @@ function IndicatorGrid({ ind, cur="$" }) {
     {l:"MACD (W)",     v:ind.macdLineW?.toFixed(3),   c:ind.macdLineW>ind.macdSigW?C.green:C.red},
     {l:"Boll. Hoog",   v:`${cur}${ind.bollUpper?.toFixed(2)}`, c:C.text},
     {l:"Boll. Laag",   v:`${cur}${ind.bollLower?.toFixed(2)}`, c:C.text},
-    {l:"Volume ratio", v:`${ind.volRatio?.toFixed(2)}x${ind.volNote?` (${ind.volNote.replace(/[✓]/g,"").trim()})`:""}`, c:ind.highVolume?C.green:C.text},
+    {l:"Volume ratio", v:`${ind.volRatio?.toFixed(2)}x${ind.volNote?` (${ind.volNote.split("✓").join("").trim()})`:""}`, c:ind.highVolume?C.green:C.text},
     {l:"Weekly eval.", v:ind.isFriday?"Vrijdag ✓":"Weekdag (W signalen vrijdag)", c:ind.isFriday?C.green:C.orange},
   ];
   return (
