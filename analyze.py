@@ -793,28 +793,43 @@ def generate_signals(name: str, daily: pd.DataFrame, weekly: pd.DataFrame, month
         last_rsi_w = last_ema8w = last_ema21w = None
         last_macd_wl = last_macd_ws = None
 
-    # ── Twee fib-swings (optie 3: grote meerjarige swing) ──
-    # Retracement (entry): diepste bodem in de VOLLEDIGE dataperiode (~5 jaar) →
-    #   hoogste top SINDSDIEN. Zo vangen we de hele bull-cyclus (bv. NFLX $16→$130),
-    #   niet slechts het laatste jaar. Aanname: die top is (net) gezet, prijs zoekt steun.
-    lo_idx   = daily["Low"].idxmin()                     # diepste punt in ~5j
-    since_lo = daily[daily.index >= lo_idx]
-    swing_lo = float(since_lo["Low"].min())
-    swing_hi = float(since_lo["High"].max())             # hoogste top ná de bodem
-    # Extensie (TP): projecteer de LAATSTE grote impuls omhoog. We nemen de meest
-    # recente betekenisvolle swing-low (laagste punt in de recentste ~26 weken) naar
-    # de top. Zo liggen de TP-zones op een zinvolle afstand boven de prijs, óók als
-    # het aandeel nu op zijn top staat (dan is er geen "correctie ná de top").
-    recent_cut = daily.index[-1] - pd.DateOffset(weeks=26)
-    recent = daily[daily.index >= recent_cut]
-    if len(recent) >= 20:
-        ext_lo = float(recent["Low"].min())
-        ext_hi = float(recent["High"].max())
-        if ext_hi - ext_lo < (swing_hi - swing_lo) * 0.15:
-            # Te kleine recente swing → gebruik de volledige grote swing als basis
-            ext_lo, ext_hi = swing_lo, swing_hi
+    # ── Fib-swings volgens de meerjarige structuur (log-schaal) ──
+    # KERN: de diepste bodem in ~5 jaar is het draaipunt. Daaromheen liggen twee tops:
+    #   - de HISTORISCHE TOP VÓÓR de bodem (waar de grote daling begon)
+    #   - de HERSTEL-TOP NÁ de bodem (de nieuwe stijging sindsdien)
+    #
+    # TP-METING (extensie): van de historische top VÓÓR de bodem, omlaag naar de bodem,
+    #   omhoog geprojecteerd. Bij PL: top $12.37 (2021) → bodem $1.67 (2024) → 1.618 ≈ $50.
+    #   Dit geeft de take-profit-zones voor de huidige uptrend.
+    # ENTRY-METING (retracement): van de bodem naar de herstel-top erná. Bij een
+    #   sterk hersteld aandeel is de golden pocket daarvan de interessante instapzone.
+    lo_idx   = daily["Low"].idxmin()                     # diepste punt in ~5j = draaipunt
+    swing_lo = float(daily["Low"].min())
+
+    # Historische top VÓÓR de bodem (chronologisch eerder dan de bodem)
+    before_lo = daily[daily.index < lo_idx]
+    if len(before_lo) >= 10:
+        hist_top = float(before_lo["High"].max())        # bv. PL $12.37 van 2021
     else:
-        ext_lo, ext_hi = swing_lo, swing_hi
+        # Geen geschiedenis vóór de bodem (bodem ligt helemaal aan het begin) →
+        # gebruik de herstel-top als terugval voor de TP-meting.
+        hist_top = None
+
+    # Herstel-top NÁ de bodem (de nieuwe stijging)
+    since_lo = daily[daily.index >= lo_idx]
+    recovery_top = float(since_lo["High"].max())         # bv. PL $51.76 van 2026
+
+    # ENTRY-swing (retracement): bodem → herstel-top
+    swing_hi = recovery_top
+
+    # TP-swing (extensie): historische top → bodem, omhoog geprojecteerd.
+    # calc_fibonacci projecteert ext van ext_low omhoog; we willen de 1.618 boven de
+    # HISTORISCHE top uitkomen. Dus ext_low = bodem, ext_high = historische top.
+    if hist_top is not None and hist_top > swing_lo:
+        ext_lo, ext_hi = swing_lo, hist_top
+    else:
+        # Terugval: geen historische top → gebruik de herstel-swing
+        ext_lo, ext_hi = swing_lo, recovery_top
     fib      = calc_fibonacci(swing_lo, swing_hi, ext_low=ext_lo, ext_high=ext_hi)
 
     vol_note = " ✓ hoog volume" if high_volume else (" (laag volume)" if vol_known else "")
