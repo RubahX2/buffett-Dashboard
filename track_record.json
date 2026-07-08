@@ -1,7 +1,7 @@
 {
   "_meta": {
     "created": "2026-07-02T21:36:20.214972+02:00",
-    "lastUpdate": "2026-07-08T14:10:12.759663+02:00"
+    "lastUpdate": "2026-07-08T15:37:51.778432+02:00"
   },
   "records": {
     "monthly_pick:MU:2026-07-02": {
@@ -1085,6 +1085,21 @@
         "overall": "STERK VERKOOP",
         "composite": 30,
         "timing": 31
+      },
+      "outcomes": {}
+    },
+    "strong_signal:BABA:2026-07-08": {
+      "ticker": "BABA",
+      "type": "strong_signal",
+      "direction": "SELL",
+      "date": "2026-07-08",
+      "entryPrice": 106.16,
+      "benchEntry": 7465.56982421875,
+      "currency": "$",
+      "snapshot": {
+        "overall": "STERK VERKOOP",
+        "composite": 55,
+        "timing": 36
       },
       "outcomes": {}
     }
