@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-08T21:10:29.131965+02:00",
-  "generatedAtHuman": "Wednesday 08 July 2026 om 21:10",
+  "generatedAt": "2026-07-08T21:18:51.666342+02:00",
+  "generatedAtHuman": "Wednesday 08 July 2026 om 21:18",
   "periodLabel": "sinds ~1 week geleden",
   "changes": [
     {
@@ -135,7 +135,7 @@
         {
           "type": "price",
           "dir": "down",
-          "text": "Koers -17.8% deze week ($100\u2192$83)"
+          "text": "Koers -17.5% deze week ($100\u2192$83)"
         }
       ]
     },
@@ -177,7 +177,7 @@
         {
           "type": "price",
           "dir": "up",
-          "text": "Koers +13.9% deze week ($96\u2192$109)"
+          "text": "Koers +13.8% deze week ($96\u2192$109)"
         }
       ]
     },
@@ -305,7 +305,7 @@
         {
           "type": "price",
           "dir": "up",
-          "text": "Koers +12.1% deze week ($242\u2192$272)"
+          "text": "Koers +11.9% deze week ($242\u2192$271)"
         }
       ]
     },
@@ -385,7 +385,7 @@
         {
           "type": "price",
           "dir": "down",
-          "text": "Koers -8.7% deze week ($162\u2192$148)"
+          "text": "Koers -8.6% deze week ($162\u2192$148)"
         }
       ]
     },
@@ -401,7 +401,7 @@
         {
           "type": "price",
           "dir": "down",
-          "text": "Koers -13.2% deze week ($31\u2192$27)"
+          "text": "Koers -13.1% deze week ($31\u2192$27)"
         }
       ]
     },
@@ -483,17 +483,6 @@
       ]
     },
     {
-      "ticker": "SNAP",
-      "daysAgo": 3,
-      "changes": [
-        {
-          "type": "composite",
-          "dir": "up",
-          "text": "Composiet 39 \u2191 44"
-        }
-      ]
-    },
-    {
       "ticker": "AIR",
       "daysAgo": 3,
       "changes": [
@@ -538,17 +527,6 @@
       ]
     },
     {
-      "ticker": "ROK",
-      "daysAgo": 3,
-      "changes": [
-        {
-          "type": "signal",
-          "dir": "up",
-          "text": "Signaal: CAUTION (overextended) \u2192 KOOP"
-        }
-      ]
-    },
-    {
       "ticker": "CGNX",
       "daysAgo": 3,
       "changes": [
@@ -566,7 +544,7 @@
         {
           "type": "price",
           "dir": "down",
-          "text": "Koers -9.1% deze week ($49\u2192$45)"
+          "text": "Koers -9.0% deze week ($49\u2192$45)"
         }
       ]
     },
@@ -577,7 +555,7 @@
         {
           "type": "price",
           "dir": "down",
-          "text": "Koers -9.2% deze week ($23\u2192$20)"
+          "text": "Koers -9.1% deze week ($23\u2192$20)"
         }
       ]
     },
@@ -599,11 +577,11 @@
         {
           "type": "price",
           "dir": "down",
-          "text": "Koers -8.2% deze week ($2\u2192$2)"
+          "text": "Koers -8.7% deze week ($2\u2192$2)"
         }
       ]
     }
   ],
-  "changedCount": 40,
+  "changedCount": 38,
   "note": "Toont enkel wat veranderde t.o.v. ~7 dagen geleden. Geen wijzigingen = stabiele week."
 }
