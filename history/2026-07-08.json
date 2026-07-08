@@ -1,7 +1,7 @@
 {
   "meta": {
-    "generatedAt": "2026-07-08T10:36:03.978756+02:00",
-    "generatedAtHuman": "Wednesday 08 July 2026 om 10:36",
+    "generatedAt": "2026-07-08T12:48:30.274341+02:00",
+    "generatedAtHuman": "Wednesday 08 July 2026 om 12:48",
     "isFriday": false,
     "isWeekend": false,
     "version": "5.0",
@@ -168,32 +168,33 @@
         "fib": {
           "retracements": {
             "0.000": 247.15,
-            "0.236": 219.42,
-            "0.382": 202.27,
-            "0.500": 188.4,
-            "0.618": 174.54,
-            "0.705": 164.32,
-            "0.786": 154.8,
-            "0.886": 143.05,
+            "0.236": 212.24,
+            "0.382": 193.17,
+            "0.500": 179.01,
+            "0.618": 165.89,
+            "0.705": 156.83,
+            "0.786": 148.85,
+            "0.886": 139.55,
             "1.000": 129.66
           },
           "extensions": {
             "1.000": 247.15,
-            "1.272": 257.22,
-            "1.414": 262.48,
-            "1.618": 270.03,
-            "1.818": 277.44,
-            "2.000": 284.17,
-            "2.618": 307.06
+            "1.272": 258.3,
+            "1.414": 264.32,
+            "1.618": 273.22,
+            "1.818": 282.24,
+            "2.000": 290.7,
+            "2.618": 321.37
           },
           "goldenPocket": {
-            "low": 164.32,
-            "high": 174.54
+            "low": 156.83,
+            "high": 165.89
           },
           "swingHigh": 247.15,
           "swingLow": 129.66,
           "extSwingHigh": 247.15,
-          "extSwingLow": 210.12
+          "extSwingLow": 210.12,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -297,13 +298,6 @@
           "icon": "\u2139\ufe0f",
           "title": "MACD weekly momenteel bearish (crossover enkel vrijdag ge\u00ebvalueerd)",
           "detail": "MACD: -7.710 | Signaal: -6.135"
-        },
-        {
-          "type": "WATCH",
-          "cat": "FIB",
-          "tf": "1D",
-          "icon": "\ud83d\udcd0",
-          "title": "Nadert Fib 0.382 steunzone: $130.51 (2.9% weg)"
         }
       ],
       "overall": "STERK VERKOOP",
@@ -344,32 +338,33 @@
         "fib": {
           "retracements": {
             "0.000": 207.52,
-            "0.236": 159.94,
-            "0.382": 130.51,
-            "0.500": 106.72,
-            "0.618": 82.93,
-            "0.705": 65.39,
-            "0.786": 49.06,
-            "0.886": 28.9,
+            "0.236": 89.64,
+            "0.382": 53.33,
+            "0.500": 35.05,
+            "0.618": 23.04,
+            "0.705": 16.91,
+            "0.786": 12.67,
+            "0.886": 8.88,
             "1.000": 5.92
           },
           "extensions": {
             "1.000": 187.28,
-            "1.272": 209.29,
-            "1.414": 220.78,
-            "1.618": 237.28,
-            "1.818": 253.46,
-            "2.000": 268.19,
-            "2.618": 318.19
+            "1.272": 218.43,
+            "1.414": 236.7,
+            "1.618": 265.65,
+            "1.818": 297.48,
+            "2.000": 329.73,
+            "2.618": 467.72
           },
           "goldenPocket": {
-            "low": 65.39,
-            "high": 82.93
+            "low": 16.91,
+            "high": 23.04
           },
           "swingHigh": 207.52,
           "swingLow": 5.92,
           "extSwingHigh": 187.28,
-          "extSwingLow": 106.37
+          "extSwingLow": 106.37,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -529,32 +524,33 @@
         "fib": {
           "retracements": {
             "0.000": 1073.46,
-            "0.236": 855.74,
-            "0.382": 721.06,
-            "0.500": 612.2,
-            "0.618": 503.34,
-            "0.705": 423.08,
-            "0.786": 348.35,
-            "0.886": 256.1,
+            "0.236": 675.64,
+            "0.382": 507.37,
+            "0.500": 402.52,
+            "0.618": 319.34,
+            "0.705": 269.23,
+            "0.786": 229.68,
+            "0.886": 188.76,
             "1.000": 150.93
           },
           "extensions": {
             "1.000": 1073.46,
-            "1.272": 1204.51,
-            "1.414": 1272.93,
-            "1.618": 1371.21,
-            "1.818": 1467.58,
-            "2.000": 1555.26,
-            "2.618": 1853.02
+            "1.272": 1262.28,
+            "1.414": 1373.71,
+            "1.618": 1551.22,
+            "1.818": 1747.49,
+            "2.000": 1947.61,
+            "2.618": 2814.42
           },
           "goldenPocket": {
-            "low": 423.08,
-            "high": 503.34
+            "low": 269.23,
+            "high": 319.34
           },
           "swingHigh": 1073.46,
           "swingLow": 150.93,
           "extSwingHigh": 1073.46,
-          "extSwingLow": 591.66
+          "extSwingLow": 591.66,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -577,14 +573,14 @@
         "lastUpdated": "2026-07 (geverifieerd)"
       },
       "valuation": {
-        "currentPE": 54.9,
-        "peg": 4.58,
+        "currentPE": 54.3,
+        "peg": 4.52,
         "pePercentile": null,
         "peMin": null,
         "peMedian": null,
         "peMax": null,
         "peSource": null,
-        "priceRangePosition": 85.3,
+        "priceRangePosition": 84.1,
         "verdict": "Duur (PEG > 3.5)",
         "verdictColor": "red",
         "notes": [
@@ -682,7 +678,7 @@
           "cat": "BB",
           "tf": "1D",
           "icon": "\ud83d\udcca",
-          "title": "Nadert Bollinger onderband ($1507.75)"
+          "title": "Nadert Bollinger onderband ($1504.01)"
         }
       ],
       "overall": "CAUTION (overextended)",
@@ -701,54 +697,55 @@
       "conflict": true,
       "conflictNote": "\u26a0\ufe0f CONFLICT: 3 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Overextensie: ver boven 8-EMA {'weekly': 7.5, 'monthly': 36.8} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
-        "last": 1525.2,
-        "rsiDaily": 47.4,
+        "last": 1508.8,
+        "rsiDaily": 46.0,
         "rsiWeekly": 73.9,
-        "ema8d": 1581.43,
-        "ema21d": 1572.57,
+        "ema8d": 1577.79,
+        "ema21d": 1571.08,
         "ema8w": 1520.29,
         "ema21w": 1351.68,
-        "ma50": 1458.7,
-        "ma200": 1148.04,
-        "macdLine": 29.5049,
-        "macdSignal": 50.2746,
+        "ma50": 1458.37,
+        "ma200": 1147.96,
+        "macdLine": 28.1967,
+        "macdSignal": 50.0129,
         "macdLineW": 155.5505,
         "macdSigW": 129.8529,
-        "bollUpper": 1712.49,
-        "bollLower": 1507.75,
-        "volRatio": 0.08,
+        "bollUpper": 1714.59,
+        "bollLower": 1504.01,
+        "volRatio": 0.19,
         "volKnown": true,
         "highVolume": false,
         "volNote": "(laag volume)",
         "fib": {
           "retracements": {
             "0.000": 1741.0,
-            "0.236": 1415.83,
-            "0.382": 1214.66,
-            "0.500": 1052.07,
-            "0.618": 889.48,
-            "0.705": 769.61,
-            "0.786": 658.0,
-            "0.886": 520.22,
+            "0.236": 1202.67,
+            "0.382": 956.67,
+            "0.500": 795.13,
+            "0.618": 660.86,
+            "0.705": 576.62,
+            "0.786": 507.87,
+            "0.886": 434.19,
             "1.000": 363.14
           },
           "extensions": {
             "1.000": 1741.0,
-            "1.272": 1940.91,
-            "1.414": 2045.28,
-            "1.618": 2195.22,
-            "1.818": 2342.21,
-            "2.000": 2475.98,
-            "2.618": 2930.19
+            "1.272": 2021.1,
+            "1.414": 2184.79,
+            "1.618": 2443.44,
+            "1.818": 2726.71,
+            "2.000": 3012.94,
+            "2.618": 4228.56
           },
           "goldenPocket": {
-            "low": 769.61,
-            "high": 889.48
+            "low": 576.62,
+            "high": 660.86
           },
           "swingHigh": 1741.0,
           "swingLow": 363.14,
           "extSwingHigh": 1741.0,
-          "extSwingLow": 1006.02
+          "extSwingLow": 1006.02,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -771,14 +768,14 @@
         "lastUpdated": "2026-06"
       },
       "valuation": {
-        "currentPE": 37.5,
+        "currentPE": 37.4,
         "peg": 3.12,
         "pePercentile": null,
         "peMin": null,
         "peMedian": null,
         "peMax": null,
         "peSource": null,
-        "priceRangePosition": 78.8,
+        "priceRangePosition": 78.6,
         "verdict": "Aan de dure kant (PEG 2.5\u20133.5)",
         "verdictColor": "orange",
         "notes": [
@@ -786,11 +783,11 @@
         ]
       },
       "timing": {
-        "score": 50,
+        "score": 47,
         "label": "Neutrale setup",
         "color": "neutral",
         "trendScore": 76,
-        "entryScore": 78,
+        "entryScore": 70,
         "trendDaily": 20,
         "trendWeekly": 90,
         "trendMonthly": 90,
@@ -804,7 +801,7 @@
           "daily",
           "weekly"
         ],
-        "baseTimin": 77
+        "baseTimin": 74
       },
       "scores": {
         "quality": 89,
@@ -816,24 +813,15 @@
         ],
         "qualityFails": [],
         "valuation": 30,
-        "timing": 50,
+        "timing": 47,
         "marketAdj": 5,
-        "timingEffective": 55,
-        "composite": 58
+        "timingEffective": 52,
+        "composite": 56
       },
       "bagger": null,
       "isBagger": false,
       "currency": "\u20ac",
       "signals": [
-        {
-          "type": "BUY",
-          "cat": "FIB",
-          "tf": "1D",
-          "weight": 3,
-          "icon": "\ud83d\udcd0",
-          "title": "Fib 0.236 \u2014 steunzone: $879.41 (1.3% weg)",
-          "detail": "Prijs $891.40 raakt Fibonacci 0.236. Potenti\u00eble koopzone."
-        },
         {
           "type": "BUY",
           "cat": "MACD",
@@ -883,11 +871,11 @@
           "cat": "BB",
           "tf": "1D",
           "icon": "\ud83d\udcca",
-          "title": "Nadert Bollinger onderband ($889.53)"
+          "title": "Nadert Bollinger onderband ($889.04)"
         }
       ],
       "overall": "CAUTION (overextended)",
-      "buyWeight": 14,
+      "buyWeight": 11,
       "sellWeight": 0,
       "baseOverall": "STERK KOOP",
       "confluence": {
@@ -902,54 +890,55 @@
       "conflict": false,
       "conflictNote": "Overextensie: ver boven 8-EMA {'weekly': 3.8, 'monthly': 30.3} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
-        "last": 891.4,
-        "rsiDaily": 42.0,
+        "last": 889.4,
+        "rsiDaily": 41.8,
         "rsiWeekly": 65.6,
-        "ema8d": 943.09,
-        "ema21d": 956.42,
+        "ema8d": 942.64,
+        "ema21d": 956.24,
         "ema8w": 940.21,
         "ema21w": 835.21,
-        "ma50": 919.09,
-        "ma200": 692.21,
-        "macdLine": 2.2635,
-        "macdSignal": 19.28,
+        "ma50": 919.05,
+        "ma200": 692.2,
+        "macdLine": 2.104,
+        "macdSignal": 19.2481,
         "macdLineW": 100.2037,
         "macdSigW": 88.6412,
-        "bollUpper": 1090.08,
-        "bollLower": 889.53,
-        "volRatio": 0.11,
+        "bollUpper": 1090.37,
+        "bollLower": 889.04,
+        "volRatio": 0.2,
         "volKnown": true,
         "highVolume": false,
         "volNote": "(laag volume)",
         "fib": {
           "retracements": {
             "0.000": 1092.5,
-            "0.236": 879.41,
-            "0.382": 747.58,
-            "0.500": 641.04,
-            "0.618": 534.49,
-            "0.705": 455.94,
-            "0.786": 382.8,
-            "0.886": 292.51,
+            "0.236": 722.62,
+            "0.382": 559.57,
+            "0.500": 455.1,
+            "0.618": 370.12,
+            "0.705": 317.81,
+            "0.786": 275.78,
+            "0.886": 231.47,
             "1.000": 189.58
           },
           "extensions": {
             "1.000": 1092.5,
-            "1.272": 1230.56,
-            "1.414": 1302.64,
-            "1.618": 1406.18,
-            "1.818": 1507.7,
-            "2.000": 1600.08,
-            "2.618": 1913.76
+            "1.272": 1294.86,
+            "1.414": 1414.98,
+            "1.618": 1607.31,
+            "1.818": 1821.23,
+            "2.000": 2040.54,
+            "2.618": 3002.08
           },
           "goldenPocket": {
-            "low": 455.94,
-            "high": 534.49
+            "low": 317.81,
+            "high": 370.12
           },
           "swingHigh": 1092.5,
           "swingLow": 189.58,
           "extSwingHigh": 1092.5,
-          "extSwingLow": 584.92
+          "extSwingLow": 584.92,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -1110,32 +1099,33 @@
         "fib": {
           "retracements": {
             "0.000": 1254.81,
-            "0.236": 969.89,
-            "0.382": 793.62,
-            "0.500": 651.16,
-            "0.618": 508.7,
-            "0.705": 403.67,
-            "0.786": 305.88,
-            "0.886": 185.15,
+            "0.236": 579.5,
+            "0.382": 359.32,
+            "0.500": 244.19,
+            "0.618": 165.94,
+            "0.705": 124.82,
+            "0.786": 95.75,
+            "0.886": 69.02,
             "1.000": 47.52
           },
           "extensions": {
             "1.000": 1254.81,
-            "1.272": 1511.4,
-            "1.414": 1645.36,
-            "1.618": 1837.81,
-            "1.818": 2026.48,
-            "2.000": 2198.17,
-            "2.618": 2781.17
+            "1.272": 1833.12,
+            "1.414": 2234.24,
+            "1.618": 2968.86,
+            "1.818": 3923.11,
+            "2.000": 5055.64,
+            "2.618": 11961.62
           },
           "goldenPocket": {
-            "low": 403.67,
-            "high": 508.7
+            "low": 124.82,
+            "high": 165.94
           },
           "swingHigh": 1254.81,
           "swingLow": 47.52,
           "extSwingHigh": 1254.81,
-          "extSwingLow": 311.44
+          "extSwingLow": 311.44,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -1288,32 +1278,33 @@
         "fib": {
           "retracements": {
             "0.000": 408.37,
-            "0.236": 331.49,
-            "0.382": 283.93,
-            "0.500": 245.49,
-            "0.618": 207.05,
-            "0.705": 178.71,
-            "0.786": 152.32,
-            "0.886": 119.74,
+            "0.236": 280.06,
+            "0.382": 221.78,
+            "0.500": 183.67,
+            "0.618": 152.1,
+            "0.705": 132.36,
+            "0.786": 116.29,
+            "0.886": 99.11,
             "1.000": 82.61
           },
           "extensions": {
             "1.000": 408.37,
-            "1.272": 445.47,
-            "1.414": 464.84,
-            "1.618": 492.67,
-            "1.818": 519.96,
-            "2.000": 544.78,
-            "2.618": 629.09
+            "1.272": 456.12,
+            "1.414": 483.22,
+            "1.618": 525.01,
+            "1.818": 569.48,
+            "2.000": 613.22,
+            "2.618": 788.37
           },
           "goldenPocket": {
-            "low": 178.71,
-            "high": 207.05
+            "low": 132.36,
+            "high": 152.1
           },
           "swingHigh": 408.37,
           "swingLow": 82.61,
           "extSwingHigh": 408.37,
-          "extSwingLow": 271.95
+          "extSwingLow": 271.95,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -1464,32 +1455,33 @@
         "fib": {
           "retracements": {
             "0.000": 278.56,
-            "0.236": 232.04,
-            "0.382": 203.26,
-            "0.500": 179.99,
-            "0.618": 156.73,
-            "0.705": 139.58,
-            "0.786": 123.62,
-            "0.886": 103.9,
+            "0.236": 208.38,
+            "0.382": 174.13,
+            "0.500": 150.61,
+            "0.618": 130.26,
+            "0.705": 117.05,
+            "0.786": 105.95,
+            "0.886": 93.69,
             "1.000": 81.43
           },
           "extensions": {
             "1.000": 278.56,
-            "1.272": 301.02,
-            "1.414": 312.74,
-            "1.618": 329.58,
-            "1.818": 346.09,
-            "2.000": 361.12,
-            "2.618": 412.14
+            "1.272": 306.51,
+            "1.414": 322.2,
+            "1.618": 346.15,
+            "1.818": 371.36,
+            "2.000": 395.9,
+            "2.618": 491.96
           },
           "goldenPocket": {
-            "low": 139.58,
-            "high": 156.73
+            "low": 117.05,
+            "high": 130.26
           },
           "swingHigh": 278.56,
           "swingLow": 81.43,
           "extSwingHigh": 278.56,
-          "extSwingLow": 196.0
+          "extSwingLow": 196.0,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -1581,8 +1573,8 @@
           "tf": "1D",
           "weight": 3,
           "icon": "\ud83d\udcd0",
-          "title": "Fib 0.705 \u2014 steunzone: $142.01 (0.3% weg)",
-          "detail": "Prijs $141.60 raakt Fibonacci 0.705. Potenti\u00eble koopzone."
+          "title": "Fib 0.500 \u2014 steunzone: $140.94 (0.5% weg)",
+          "detail": "Prijs $141.60 raakt Fibonacci 0.500. Potenti\u00eble koopzone."
         },
         {
           "type": "SELL",
@@ -1628,8 +1620,8 @@
         "monthlyState": "light_bear",
         "weeklyBullTurn": false,
         "weeklyBearTurn": true,
-        "fibBuyDepth": 2,
-        "fibZone": "0.705",
+        "fibBuyDepth": 0,
+        "fibZone": null,
         "supportCount": 0,
         "supportFlags": []
       },
@@ -1658,32 +1650,33 @@
         "fib": {
           "retracements": {
             "0.000": 343.01,
-            "0.236": 275.73,
-            "0.382": 234.1,
-            "0.500": 200.46,
-            "0.618": 166.82,
-            "0.705": 142.01,
-            "0.786": 118.92,
-            "0.886": 90.41,
+            "0.236": 225.42,
+            "0.382": 173.86,
+            "0.500": 140.94,
+            "0.618": 114.25,
+            "0.705": 97.87,
+            "0.786": 84.74,
+            "0.886": 70.93,
             "1.000": 57.91
           },
           "extensions": {
             "1.000": 250.25,
-            "1.272": 281.71,
-            "1.414": 298.14,
-            "1.618": 321.74,
-            "1.818": 344.88,
-            "2.000": 365.93,
-            "2.618": 437.42
+            "1.272": 296.25,
+            "1.414": 323.53,
+            "1.618": 367.18,
+            "1.818": 415.69,
+            "2.000": 465.37,
+            "2.618": 682.82
           },
           "goldenPocket": {
-            "low": 142.01,
-            "high": 166.82
+            "low": 97.87,
+            "high": 114.25
           },
           "swingHigh": 343.01,
           "swingLow": 57.91,
           "extSwingHigh": 250.25,
-          "extSwingLow": 134.57
+          "extSwingLow": 134.57,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -1867,32 +1860,33 @@
         "fib": {
           "retracements": {
             "0.000": 85.68,
-            "0.236": 76.21,
-            "0.382": 70.35,
-            "0.500": 65.61,
-            "0.618": 60.87,
-            "0.705": 57.38,
-            "0.786": 54.13,
-            "0.886": 50.11,
+            "0.236": 73.81,
+            "0.382": 67.3,
+            "0.500": 62.46,
+            "0.618": 57.97,
+            "0.705": 54.87,
+            "0.786": 52.13,
+            "0.886": 48.94,
             "1.000": 45.54
           },
           "extensions": {
             "1.000": 85.68,
-            "1.272": 90.93,
-            "1.414": 93.67,
-            "1.618": 97.61,
-            "1.818": 101.47,
-            "2.000": 104.98,
-            "2.618": 116.9
+            "1.272": 91.84,
+            "1.414": 95.23,
+            "1.618": 100.32,
+            "1.818": 105.57,
+            "2.000": 110.59,
+            "2.618": 129.48
           },
           "goldenPocket": {
-            "low": 57.38,
-            "high": 60.87
+            "low": 54.87,
+            "high": 57.97
           },
           "swingHigh": 85.68,
           "swingLow": 45.54,
           "extSwingHigh": 85.68,
-          "extSwingLow": 66.38
+          "extSwingLow": 66.38,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -1934,11 +1928,11 @@
         ]
       },
       "timing": {
-        "score": 45,
-        "label": "Neutrale setup",
-        "color": "neutral",
+        "score": 41,
+        "label": "Zwakke setup",
+        "color": "orange",
         "trendScore": 49,
-        "entryScore": 63,
+        "entryScore": 55,
         "trendDaily": 35,
         "trendWeekly": 10,
         "trendMonthly": 85,
@@ -1952,7 +1946,7 @@
           "daily",
           "monthly"
         ],
-        "baseTimin": 55
+        "baseTimin": 51
       },
       "scores": {
         "quality": 61,
@@ -1962,10 +1956,10 @@
           "ROE < 12%"
         ],
         "valuation": 50,
-        "timing": 45,
+        "timing": 41,
         "marketAdj": 5,
-        "timingEffective": 50,
-        "composite": 53
+        "timingEffective": 46,
+        "composite": 52
       },
       "bagger": {
         "score": 17,
@@ -1983,15 +1977,6 @@
       "isBagger": true,
       "currency": "$",
       "signals": [
-        {
-          "type": "BUY",
-          "cat": "FIB",
-          "tf": "1D",
-          "weight": 3,
-          "icon": "\ud83d\udcd0",
-          "title": "Fib 0.382 \u2014 steunzone: $291.85 (1.2% weg)",
-          "detail": "Prijs $295.40 raakt Fibonacci 0.382. Potenti\u00eble koopzone."
-        },
         {
           "type": "BUY",
           "cat": "MACD",
@@ -2031,9 +2016,9 @@
         }
       ],
       "overall": "KOOP",
-      "buyWeight": 11,
+      "buyWeight": 8,
       "sellWeight": 3,
-      "baseOverall": "STERK KOOP",
+      "baseOverall": "KOOP",
       "confluence": {
         "monthlyState": "bull",
         "weeklyBullTurn": false,
@@ -2044,7 +2029,7 @@
         "supportFlags": []
       },
       "conflict": true,
-      "conflictNote": "\u26a0\ufe0f CONFLICT: 3 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Geen duidelijke confluence - signaal getemperd",
+      "conflictNote": "\u26a0\ufe0f CONFLICT: 2 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 295.4,
         "rsiDaily": 45.7,
@@ -2068,32 +2053,33 @@
         "fib": {
           "retracements": {
             "0.000": 377.91,
-            "0.236": 324.74,
-            "0.382": 291.85,
-            "0.500": 265.27,
-            "0.618": 238.68,
-            "0.705": 219.08,
-            "0.786": 200.83,
-            "0.886": 178.3,
+            "0.236": 305.11,
+            "0.382": 267.28,
+            "0.500": 240.16,
+            "0.618": 215.79,
+            "0.705": 199.42,
+            "0.786": 185.3,
+            "0.886": 169.24,
             "1.000": 152.62
           },
           "extensions": {
             "1.000": 377.91,
-            "1.272": 403.89,
-            "1.414": 417.45,
-            "1.618": 436.93,
-            "1.818": 456.04,
-            "2.000": 473.42,
-            "2.618": 532.44
+            "1.272": 409.08,
+            "1.414": 426.35,
+            "1.618": 452.46,
+            "1.818": 479.6,
+            "2.000": 505.71,
+            "2.618": 605.47
           },
           "goldenPocket": {
-            "low": 219.08,
-            "high": 238.68
+            "low": 199.42,
+            "high": 215.79
           },
           "swingHigh": 377.91,
           "swingLow": 152.62,
           "extSwingHigh": 377.91,
-          "extSwingLow": 282.41
+          "extSwingLow": 282.41,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -2276,32 +2262,33 @@
         "fib": {
           "retracements": {
             "0.000": 430.52,
-            "0.236": 344.33,
-            "0.382": 291.01,
-            "0.500": 247.92,
-            "0.618": 204.82,
-            "0.705": 173.05,
-            "0.786": 143.47,
-            "0.886": 106.95,
+            "0.236": 275.87,
+            "0.382": 209.48,
+            "0.500": 167.68,
+            "0.618": 134.23,
+            "0.705": 113.92,
+            "0.786": 97.78,
+            "0.886": 80.98,
             "1.000": 65.31
           },
           "extensions": {
             "1.000": 430.52,
-            "1.272": 480.18,
-            "1.414": 506.11,
-            "1.618": 543.36,
-            "1.818": 579.88,
-            "2.000": 613.11,
-            "2.618": 725.95
+            "1.272": 500.24,
+            "1.414": 541.02,
+            "1.618": 605.48,
+            "1.818": 676.14,
+            "2.000": 747.57,
+            "2.618": 1051.39
           },
           "goldenPocket": {
-            "low": 173.05,
-            "high": 204.82
+            "low": 113.92,
+            "high": 134.23
           },
           "swingHigh": 430.52,
           "swingLow": 65.31,
           "extSwingHigh": 430.52,
-          "extSwingLow": 247.93
+          "extSwingLow": 247.93,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -2469,32 +2456,33 @@
         "fib": {
           "retracements": {
             "0.000": 1519.36,
-            "0.236": 1258.88,
-            "0.382": 1097.74,
-            "0.500": 967.5,
-            "0.618": 837.26,
-            "0.705": 741.23,
-            "0.786": 651.83,
-            "0.886": 541.46,
+            "0.236": 1118.93,
+            "0.382": 926.01,
+            "0.500": 794.67,
+            "0.618": 681.96,
+            "0.705": 609.23,
+            "0.786": 548.51,
+            "0.886": 481.83,
             "1.000": 415.64
           },
           "extensions": {
             "1.000": 1463.03,
-            "1.272": 1555.35,
-            "1.414": 1603.55,
-            "1.618": 1672.79,
-            "1.818": 1740.68,
-            "2.000": 1802.45,
-            "2.618": 2012.21
+            "1.272": 1571.94,
+            "1.414": 1631.97,
+            "1.618": 1722.26,
+            "1.818": 1815.63,
+            "2.000": 1904.98,
+            "2.618": 2242.52
           },
           "goldenPocket": {
-            "low": 741.23,
-            "high": 837.26
+            "low": 609.23,
+            "high": 681.96
           },
           "swingHigh": 1519.36,
           "swingLow": 415.64,
           "extSwingHigh": 1463.03,
-          "extSwingLow": 1123.61
+          "extSwingLow": 1123.61,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -2536,11 +2524,11 @@
         ]
       },
       "timing": {
-        "score": 41,
+        "score": 34,
         "label": "Zwakke setup",
         "color": "orange",
         "trendScore": 32,
-        "entryScore": 80,
+        "entryScore": 62,
         "trendDaily": 30,
         "trendWeekly": 10,
         "trendMonthly": 49,
@@ -2554,7 +2542,7 @@
           "daily",
           "monthly"
         ],
-        "baseTimin": 51
+        "baseTimin": 44
       },
       "scores": {
         "quality": 45,
@@ -2568,10 +2556,10 @@
           "marge < 8%"
         ],
         "valuation": 18,
-        "timing": 41,
+        "timing": 34,
         "marketAdj": 5,
-        "timingEffective": 46,
-        "composite": 37
+        "timingEffective": 39,
+        "composite": 34
       },
       "bagger": {
         "score": 38,
@@ -2628,8 +2616,8 @@
         "monthlyState": "light_bear",
         "weeklyBullTurn": false,
         "weeklyBearTurn": true,
-        "fibBuyDepth": 1,
-        "fibZone": "0.618",
+        "fibBuyDepth": 0,
+        "fibZone": null,
         "supportCount": 0,
         "supportFlags": []
       },
@@ -2658,32 +2646,33 @@
         "fib": {
           "retracements": {
             "0.000": 134.0,
-            "0.236": 104.48,
-            "0.382": 86.21,
-            "0.500": 71.45,
-            "0.618": 56.69,
-            "0.705": 45.8,
-            "0.786": 35.67,
-            "0.886": 23.16,
+            "0.236": 70.66,
+            "0.382": 47.56,
+            "0.500": 34.53,
+            "0.618": 25.08,
+            "0.705": 19.81,
+            "0.786": 15.9,
+            "0.886": 12.12,
             "1.000": 8.9
           },
           "extensions": {
             "1.000": 134.0,
-            "1.272": 157.93,
-            "1.414": 170.43,
-            "1.618": 188.38,
-            "1.818": 205.98,
-            "2.000": 221.99,
-            "2.618": 276.37
+            "1.272": 179.22,
+            "1.414": 208.6,
+            "1.618": 259.43,
+            "1.818": 321.26,
+            "2.000": 390.26,
+            "2.618": 755.55
           },
           "goldenPocket": {
-            "low": 45.8,
-            "high": 56.69
+            "low": 19.81,
+            "high": 25.08
           },
           "swingHigh": 134.0,
           "swingLow": 8.9,
           "extSwingHigh": 134.0,
-          "extSwingLow": 46.01
+          "extSwingLow": 46.01,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -2870,32 +2859,33 @@
         "fib": {
           "retracements": {
             "0.000": 151.0,
-            "0.236": 116.18,
-            "0.382": 94.64,
-            "0.500": 77.24,
-            "0.618": 59.83,
-            "0.705": 46.99,
-            "0.786": 35.04,
-            "0.886": 20.29,
+            "0.236": 61.98,
+            "0.382": 35.73,
+            "0.500": 22.89,
+            "0.618": 14.67,
+            "0.705": 10.56,
+            "0.786": 7.78,
+            "0.886": 5.34,
             "1.000": 3.47
           },
           "extensions": {
             "1.000": 151.0,
-            "1.272": 176.8,
-            "1.414": 190.28,
-            "1.618": 209.63,
-            "1.818": 228.6,
-            "2.000": 245.87,
-            "2.618": 304.5
+            "1.272": 197.64,
+            "1.414": 227.46,
+            "1.618": 278.34,
+            "1.818": 339.25,
+            "2.000": 406.2,
+            "2.618": 748.75
           },
           "goldenPocket": {
-            "low": 46.99,
-            "high": 59.83
+            "low": 10.56,
+            "high": 14.67
           },
           "swingHigh": 151.0,
           "swingLow": 3.47,
           "extSwingHigh": 151.0,
-          "extSwingLow": 56.13
+          "extSwingLow": 56.13,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -3067,32 +3057,33 @@
         "fib": {
           "retracements": {
             "0.000": 10.87,
-            "0.236": 8.42,
-            "0.382": 6.91,
-            "0.500": 5.69,
-            "0.618": 4.47,
-            "0.705": 3.56,
-            "0.786": 2.73,
-            "0.886": 1.69,
+            "0.236": 5.28,
+            "0.382": 3.37,
+            "0.500": 2.35,
+            "0.618": 1.64,
+            "0.705": 1.25,
+            "0.786": 0.98,
+            "0.886": 0.72,
             "1.000": 0.51
           },
           "extensions": {
             "1.000": 7.92,
-            "1.272": 8.96,
-            "1.414": 9.51,
-            "1.618": 10.29,
-            "1.818": 11.06,
-            "2.000": 11.76,
-            "2.618": 14.13
+            "1.272": 9.49,
+            "1.414": 10.42,
+            "1.618": 11.93,
+            "1.818": 13.63,
+            "2.000": 15.37,
+            "2.618": 23.16
           },
           "goldenPocket": {
-            "low": 3.56,
-            "high": 4.47
+            "low": 1.25,
+            "high": 1.64
           },
           "swingHigh": 10.87,
           "swingLow": 0.51,
           "extSwingHigh": 7.92,
-          "extSwingLow": 4.08
+          "extSwingLow": 4.08,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -3132,11 +3123,11 @@
         "notes": []
       },
       "timing": {
-        "score": 41,
+        "score": 38,
         "label": "Zwakke setup",
         "color": "orange",
         "trendScore": 63,
-        "entryScore": 51,
+        "entryScore": 43,
         "trendDaily": 90,
         "trendWeekly": 90,
         "trendMonthly": 30,
@@ -3149,7 +3140,7 @@
         "macdTurning": [
           "daily"
         ],
-        "baseTimin": 58
+        "baseTimin": 55
       },
       "scores": {
         "quality": 40,
@@ -3163,10 +3154,10 @@
           "marge < 8%"
         ],
         "valuation": 50,
-        "timing": 41,
+        "timing": 38,
         "marketAdj": 5,
-        "timingEffective": 46,
-        "composite": 45
+        "timingEffective": 43,
+        "composite": 44
       },
       "bagger": {
         "score": 49,
@@ -3230,13 +3221,6 @@
           "icon": "\u2139\ufe0f",
           "title": "MACD weekly momenteel bullish (crossover enkel vrijdag ge\u00ebvalueerd)",
           "detail": "MACD: 0.022 | Signaal: -0.748"
-        },
-        {
-          "type": "WATCH",
-          "cat": "FIB",
-          "tf": "1D",
-          "icon": "\ud83d\udcd0",
-          "title": "Nadert Fib 0.236 steunzone: $16.20 (1.8% weg)"
         }
       ],
       "overall": "CAUTION (overextended)",
@@ -3277,32 +3261,33 @@
         "fib": {
           "retracements": {
             "0.000": 17.82,
-            "0.236": 16.2,
-            "0.382": 15.19,
-            "0.500": 14.38,
-            "0.618": 13.57,
-            "0.705": 12.97,
-            "0.786": 12.42,
-            "0.886": 11.73,
+            "0.236": 15.88,
+            "0.382": 14.79,
+            "0.500": 13.97,
+            "0.618": 13.19,
+            "0.705": 12.64,
+            "0.786": 12.15,
+            "0.886": 11.57,
             "1.000": 10.94
           },
           "extensions": {
             "1.000": 19.58,
-            "1.272": 21.93,
-            "1.414": 23.15,
-            "1.618": 24.92,
-            "1.818": 26.64,
-            "2.000": 28.22,
-            "2.618": 33.55
+            "1.272": 22.94,
+            "1.414": 24.91,
+            "1.618": 28.05,
+            "1.818": 31.51,
+            "2.000": 35.03,
+            "2.618": 50.18
           },
           "goldenPocket": {
-            "low": 12.97,
-            "high": 13.57
+            "low": 12.64,
+            "high": 13.19
           },
           "swingHigh": 17.82,
           "swingLow": 10.94,
           "extSwingHigh": 19.58,
-          "extSwingLow": 10.94
+          "extSwingLow": 10.94,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -3406,7 +3391,7 @@
           "tf": "1D",
           "weight": 3,
           "icon": "\ud83d\udcd0",
-          "title": "Fib 0.786 \u2014 steunzone: $1.15 (0.9% weg)",
+          "title": "Fib 0.786 \u2014 steunzone: $1.14 (0.0% weg)",
           "detail": "Prijs $1.14 raakt Fibonacci 0.786. Potenti\u00eble koopzone."
         },
         {
@@ -3458,7 +3443,7 @@
           "cat": "FIB",
           "tf": "1D",
           "icon": "\ud83d\udcd0",
-          "title": "Nadert Fib 0.886 steunzone: $1.11 (2.6% weg)"
+          "title": "Nadert Fib 0.705 steunzone: $1.17 (2.6% weg)"
         }
       ],
       "overall": "NEUTRAAL",
@@ -3499,32 +3484,33 @@
         "fib": {
           "retracements": {
             "0.000": 1.47,
-            "0.236": 1.37,
-            "0.382": 1.31,
-            "0.500": 1.26,
-            "0.618": 1.22,
-            "0.705": 1.18,
-            "0.786": 1.15,
-            "0.886": 1.11,
+            "0.236": 1.36,
+            "0.382": 1.3,
+            "0.500": 1.25,
+            "0.618": 1.2,
+            "0.705": 1.17,
+            "0.786": 1.14,
+            "0.886": 1.1,
             "1.000": 1.06
           },
           "extensions": {
             "1.000": 1.75,
-            "1.272": 1.94,
-            "1.414": 2.04,
-            "1.618": 2.18,
-            "1.818": 2.31,
-            "2.000": 2.44,
-            "2.618": 2.87
+            "1.272": 2.01,
+            "1.414": 2.15,
+            "1.618": 2.39,
+            "1.818": 2.64,
+            "2.000": 2.89,
+            "2.618": 3.94
           },
           "goldenPocket": {
-            "low": 1.18,
-            "high": 1.22
+            "low": 1.17,
+            "high": 1.2
           },
           "swingHigh": 1.47,
           "swingLow": 1.06,
           "extSwingHigh": 1.75,
-          "extSwingLow": 1.06
+          "extSwingLow": 1.06,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -3547,14 +3533,14 @@
         "lastUpdated": "2026-01"
       },
       "valuation": {
-        "currentPE": 32.5,
-        "peg": 2.71,
+        "currentPE": 32.3,
+        "peg": 2.69,
         "pePercentile": null,
         "peMin": null,
         "peMedian": null,
         "peMax": null,
         "peSource": null,
-        "priceRangePosition": 88.8,
+        "priceRangePosition": 88.3,
         "verdict": "Aan de dure kant (PEG 2.5\u20133.5)",
         "verdictColor": "orange",
         "notes": [
@@ -3662,54 +3648,55 @@
       "conflict": false,
       "conflictNote": "Overextensie: ver boven 8-EMA {'weekly': 3.6, 'monthly': 14.1} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
-        "last": 20120.0,
-        "rsiDaily": 43.8,
+        "last": 20040.0,
+        "rsiDaily": 42.9,
         "rsiWeekly": 61.7,
-        "ema8d": 20893.55,
-        "ema21d": 20716.93,
+        "ema8d": 20875.78,
+        "ema21d": 20709.66,
         "ema8w": 20401.19,
         "ema21w": 19391.21,
-        "ma50": 20027.65,
-        "ma200": 18068.2,
-        "macdLine": 308.1054,
-        "macdSignal": 441.5802,
+        "ma50": 20026.05,
+        "ma200": 18067.8,
+        "macdLine": 301.7237,
+        "macdSignal": 440.3039,
         "macdLineW": 930.6794,
-        "macdSigW": 773.2686,
-        "bollUpper": 22341.48,
-        "bollLower": 19272.21,
-        "volRatio": 0.08,
+        "macdSigW": 773.2685,
+        "bollUpper": 22345.02,
+        "bollLower": 19260.68,
+        "volRatio": 0.14,
         "volKnown": true,
         "highVolume": false,
         "volNote": "(laag volume)",
         "fib": {
           "retracements": {
             "0.000": 23539.02,
-            "0.236": 19295.22,
-            "0.382": 16669.82,
-            "0.500": 14547.92,
-            "0.618": 12426.02,
-            "0.705": 10861.57,
-            "0.786": 9405.01,
-            "0.886": 7606.79,
+            "0.236": 16742.69,
+            "0.382": 13560.91,
+            "0.500": 11436.88,
+            "0.618": 9645.53,
+            "0.705": 8507.07,
+            "0.786": 7568.26,
+            "0.886": 6550.89,
             "1.000": 5556.82
           },
           "extensions": {
             "1.000": 23539.02,
-            "1.272": 25486.84,
-            "1.414": 26503.71,
-            "1.618": 27964.58,
-            "1.818": 29396.8,
-            "2.000": 30700.12,
-            "2.618": 35125.69
+            "1.272": 25979.84,
+            "1.414": 27353.04,
+            "1.618": 29453.83,
+            "1.818": 31669.97,
+            "2.000": 33831.26,
+            "2.618": 42332.27
           },
           "goldenPocket": {
-            "low": 10861.57,
-            "high": 12426.02
+            "low": 8507.07,
+            "high": 9645.53
           },
           "swingHigh": 23539.02,
           "swingLow": 5556.82,
           "extSwingHigh": 23539.02,
-          "extSwingLow": 16377.91
+          "extSwingLow": 16377.91,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -3900,32 +3887,33 @@
         "fib": {
           "retracements": {
             "0.000": 99.15,
-            "0.236": 84.22,
-            "0.382": 74.98,
-            "0.500": 67.52,
-            "0.618": 60.06,
-            "0.705": 54.55,
-            "0.786": 49.43,
-            "0.886": 43.1,
+            "0.236": 78.01,
+            "0.382": 67.25,
+            "0.500": 59.65,
+            "0.618": 52.91,
+            "0.705": 48.44,
+            "0.786": 44.61,
+            "0.886": 40.3,
             "1.000": 35.89
           },
           "extensions": {
             "1.000": 99.15,
-            "1.272": 106.84,
-            "1.414": 110.86,
-            "1.618": 116.63,
-            "1.818": 122.29,
-            "2.000": 127.44,
-            "2.618": 144.92
+            "1.272": 108.64,
+            "1.414": 113.94,
+            "1.618": 122.03,
+            "1.818": 130.51,
+            "2.000": 138.73,
+            "2.618": 170.74
           },
           "goldenPocket": {
-            "low": 54.55,
-            "high": 60.06
+            "low": 48.44,
+            "high": 52.91
           },
           "swingHigh": 99.15,
           "swingLow": 35.89,
           "extSwingHigh": 99.15,
-          "extSwingLow": 70.86
+          "extSwingLow": 70.86,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -4097,32 +4085,33 @@
         "fib": {
           "retracements": {
             "0.000": 372.57,
-            "0.236": 324.67,
-            "0.382": 295.04,
-            "0.500": 271.09,
-            "0.618": 247.14,
-            "0.705": 229.49,
-            "0.786": 213.05,
-            "0.886": 192.75,
+            "0.236": 309.42,
+            "0.382": 275.84,
+            "0.500": 251.38,
+            "0.618": 229.09,
+            "0.705": 213.93,
+            "0.786": 200.72,
+            "0.886": 185.53,
             "1.000": 169.62
           },
           "extensions": {
             "1.000": 365.02,
-            "1.272": 384.53,
-            "1.414": 394.72,
-            "1.618": 409.35,
-            "1.818": 423.7,
-            "2.000": 436.76,
-            "2.618": 481.09
+            "1.272": 387.4,
+            "1.414": 399.63,
+            "1.618": 417.87,
+            "1.818": 436.57,
+            "2.000": 454.31,
+            "2.618": 520.09
           },
           "goldenPocket": {
-            "low": 229.49,
-            "high": 247.14
+            "low": 213.93,
+            "high": 229.09
           },
           "swingHigh": 372.57,
           "swingLow": 169.62,
           "extSwingHigh": 365.02,
-          "extSwingLow": 293.28
+          "extSwingLow": 293.28,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -4259,8 +4248,8 @@
         "monthlyState": "strong_bear",
         "weeklyBullTurn": false,
         "weeklyBearTurn": false,
-        "fibBuyDepth": 4,
-        "fibZone": "0.886",
+        "fibBuyDepth": 3,
+        "fibZone": "0.786",
         "supportCount": 0,
         "supportFlags": []
       },
@@ -4289,32 +4278,33 @@
         "fib": {
           "retracements": {
             "0.000": 13.6,
-            "0.236": 11.09,
-            "0.382": 9.53,
-            "0.500": 8.28,
-            "0.618": 7.02,
-            "0.705": 6.1,
-            "0.786": 5.24,
-            "0.886": 4.17,
+            "0.236": 9.49,
+            "0.382": 7.59,
+            "0.500": 6.34,
+            "0.618": 5.3,
+            "0.705": 4.64,
+            "0.786": 4.1,
+            "0.886": 3.52,
             "1.000": 2.96
           },
           "extensions": {
             "1.000": 8.7,
-            "1.272": 10.16,
-            "1.414": 10.91,
-            "1.618": 12.01,
-            "1.818": 13.08,
-            "2.000": 14.05,
-            "2.618": 17.36
+            "1.272": 11.28,
+            "1.414": 12.92,
+            "1.618": 15.69,
+            "1.818": 18.99,
+            "2.000": 22.59,
+            "2.618": 40.75
           },
           "goldenPocket": {
-            "low": 6.1,
-            "high": 7.02
+            "low": 4.64,
+            "high": 5.3
           },
           "swingHigh": 13.6,
           "swingLow": 2.96,
           "extSwingHigh": 8.7,
-          "extSwingLow": 3.35
+          "extSwingLow": 3.35,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -4337,14 +4327,14 @@
         "lastUpdated": "2026-01"
       },
       "valuation": {
-        "currentPE": 22.5,
-        "peg": 1.88,
+        "currentPE": 22.7,
+        "peg": 1.89,
         "pePercentile": null,
         "peMin": null,
         "peMedian": null,
         "peMax": null,
         "peSource": null,
-        "priceRangePosition": 96.4,
+        "priceRangePosition": 98.0,
         "verdict": "Neutraal (PEG 1.5\u20132.5)",
         "verdictColor": "neutral",
         "notes": [
@@ -4352,11 +4342,11 @@
         ]
       },
       "timing": {
-        "score": 51,
+        "score": 48,
         "label": "Neutrale setup",
         "color": "neutral",
         "trendScore": 90,
-        "entryScore": 33,
+        "entryScore": 25,
         "trendDaily": 90,
         "trendWeekly": 90,
         "trendMonthly": 90,
@@ -4369,7 +4359,7 @@
         "macdTurning": [
           "daily"
         ],
-        "baseTimin": 67
+        "baseTimin": 64
       },
       "scores": {
         "quality": 88,
@@ -4380,10 +4370,10 @@
         ],
         "qualityFails": [],
         "valuation": 62,
-        "timing": 51,
+        "timing": 48,
         "marketAdj": 5,
-        "timingEffective": 56,
-        "composite": 67
+        "timingEffective": 53,
+        "composite": 66
       },
       "bagger": null,
       "isBagger": false,
@@ -4423,7 +4413,7 @@
           "cat": "RSI",
           "tf": "1D",
           "icon": "\u26a0\ufe0f",
-          "title": "RSI daily nadert overbought (63)"
+          "title": "RSI daily nadert overbought (65)"
         },
         {
           "type": "WATCH",
@@ -4445,14 +4435,14 @@
           "cat": "FIB",
           "tf": "1D",
           "icon": "\ud83d\udcd0",
-          "title": "Nadert Fib 0.000 steunzone: $3710.03 (2.9% weg)"
+          "title": "Nadert Fib 0.000 steunzone: $3710.03 (2.0% weg)"
         },
         {
           "type": "WATCH",
           "cat": "FIB",
           "tf": "1D",
           "icon": "\ud83d\udcd0",
-          "title": "Nadert Fib 1.000 take-profit zone: $3710.03 (2.9% weg)"
+          "title": "Nadert Fib 1.000 take-profit zone: $3710.03 (2.0% weg)"
         }
       ],
       "overall": "KOOP",
@@ -4471,54 +4461,55 @@
       "conflict": false,
       "conflictNote": "Geen duidelijke confluence - signaal getemperd",
       "indicators": {
-        "last": 3606.0,
-        "rsiDaily": 62.9,
+        "last": 3638.0,
+        "rsiDaily": 65.4,
         "rsiWeekly": 61.7,
-        "ema8d": 3586.75,
-        "ema21d": 3504.85,
+        "ema8d": 3593.86,
+        "ema21d": 3507.76,
         "ema8w": 3432.23,
         "ema21w": 3308.38,
-        "ma50": 3391.11,
-        "ma200": 3191.17,
-        "macdLine": 73.9802,
-        "macdSignal": 60.4298,
+        "ma50": 3391.75,
+        "ma200": 3191.33,
+        "macdLine": 76.5329,
+        "macdSignal": 60.9404,
         "macdLineW": 97.7037,
         "macdSigW": 63.2248,
-        "bollUpper": 3712.23,
-        "bollLower": 3268.37,
-        "volRatio": 0.05,
+        "bollUpper": 3717.58,
+        "bollLower": 3266.22,
+        "volRatio": 0.11,
         "volKnown": true,
         "highVolume": false,
         "volNote": "(laag volume)",
         "fib": {
           "retracements": {
             "0.000": 3710.03,
-            "0.236": 3232.73,
-            "0.382": 2937.45,
-            "0.500": 2698.8,
-            "0.618": 2460.15,
-            "0.705": 2284.2,
-            "0.786": 2120.38,
-            "0.886": 1918.14,
+            "0.236": 3080.62,
+            "0.382": 2745.93,
+            "0.500": 2502.19,
+            "0.618": 2280.08,
+            "0.705": 2129.06,
+            "0.786": 1997.45,
+            "0.886": 1846.14,
             "1.000": 1687.58
           },
           "extensions": {
             "1.000": 3710.03,
-            "1.272": 4005.62,
-            "1.414": 4159.94,
-            "1.618": 4381.64,
-            "1.818": 4598.98,
-            "2.000": 4796.77,
-            "2.618": 5468.37
+            "1.272": 4076.82,
+            "1.414": 4282.5,
+            "1.618": 4596.27,
+            "1.818": 4926.2,
+            "2.000": 5246.97,
+            "2.618": 6500.34
           },
           "goldenPocket": {
-            "low": 2284.2,
-            "high": 2460.15
+            "low": 2129.06,
+            "high": 2280.08
           },
           "swingHigh": 3710.03,
           "swingLow": 1687.58,
           "extSwingHigh": 3710.03,
-          "extSwingLow": 2623.29
+          "extSwingLow": 2623.29,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -4556,11 +4547,11 @@
         ]
       },
       "timing": {
-        "score": 40,
+        "score": 37,
         "label": "Zwakke setup",
         "color": "orange",
         "trendScore": 53,
-        "entryScore": 33,
+        "entryScore": 25,
         "trendDaily": 90,
         "trendWeekly": 80,
         "trendMonthly": 15,
@@ -4571,7 +4562,7 @@
           "monthly": 0.0
         },
         "macdTurning": [],
-        "baseTimin": 45
+        "baseTimin": 42
       },
       "scores": {
         "quality": 68,
@@ -4581,10 +4572,10 @@
         ],
         "qualityFails": [],
         "valuation": 40,
-        "timing": 40,
+        "timing": 37,
         "marketAdj": 5,
-        "timingEffective": 45,
-        "composite": 50
+        "timingEffective": 42,
+        "composite": 49
       },
       "bagger": null,
       "isBagger": false,
@@ -4598,15 +4589,6 @@
           "icon": "\ud83c\udfaf",
           "title": "Prijs raakt Bollinger bovenband ($358.17) (laag volume)",
           "detail": "Statistische overbought conditie."
-        },
-        {
-          "type": "BUY",
-          "cat": "FIB",
-          "tf": "1D",
-          "weight": 3,
-          "icon": "\ud83d\udcd0",
-          "title": "Fib 0.236 \u2014 steunzone: $364.19 (1.2% weg)",
-          "detail": "Prijs $359.82 raakt Fibonacci 0.236. Potenti\u00eble koopzone."
         },
         {
           "type": "SELL",
@@ -4657,11 +4639,18 @@
           "cat": "FIB",
           "tf": "1D",
           "icon": "\ud83d\udcd0",
+          "title": "Nadert Fib 0.236 steunzone: $352.32 (2.1% weg)"
+        },
+        {
+          "type": "WATCH",
+          "cat": "FIB",
+          "tf": "1D",
+          "icon": "\ud83d\udcd0",
           "title": "Nadert Fib 1.000 take-profit zone: $366.45 (1.8% weg)"
         }
       ],
       "overall": "LICHT VERKOOP",
-      "buyWeight": 6,
+      "buyWeight": 3,
       "sellWeight": 10,
       "baseOverall": "VERKOOP",
       "confluence": {
@@ -4674,7 +4663,7 @@
         "supportFlags": []
       },
       "conflict": true,
-      "conflictNote": "\u26a0\ufe0f CONFLICT: 2 koop vs 3 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Monthly sterk bearish (EMA-kruising + MACD bearish & dalend) - koop geblokkeerd",
+      "conflictNote": "\u26a0\ufe0f CONFLICT: 1 koop vs 3 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Monthly sterk bearish (EMA-kruising + MACD bearish & dalend) - koop geblokkeerd",
       "indicators": {
         "last": 359.82,
         "rsiDaily": 69.8,
@@ -4698,32 +4687,33 @@
         "fib": {
           "retracements": {
             "0.000": 410.16,
-            "0.236": 364.19,
-            "0.382": 335.76,
-            "0.500": 312.77,
-            "0.618": 289.79,
-            "0.705": 272.85,
-            "0.786": 257.07,
-            "0.886": 237.59,
+            "0.236": 352.32,
+            "0.382": 320.7,
+            "0.500": 297.23,
+            "0.618": 275.47,
+            "0.705": 260.46,
+            "0.786": 247.22,
+            "0.886": 231.8,
             "1.000": 215.39
           },
           "extensions": {
             "1.000": 366.45,
-            "1.272": 383.49,
-            "1.414": 392.39,
-            "1.618": 405.17,
-            "1.818": 417.71,
-            "2.000": 429.11,
-            "2.618": 467.84
+            "1.272": 385.63,
+            "1.414": 396.03,
+            "1.618": 411.48,
+            "1.818": 427.2,
+            "2.000": 442.04,
+            "2.618": 496.35
           },
           "goldenPocket": {
-            "low": 272.85,
-            "high": 289.79
+            "low": 260.46,
+            "high": 275.47
           },
           "swingHigh": 410.16,
           "swingLow": 215.39,
           "extSwingHigh": 366.45,
-          "extSwingLow": 303.79
+          "extSwingLow": 303.79,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -4845,7 +4835,7 @@
           "cat": "FIB",
           "tf": "1D",
           "icon": "\ud83d\udcd0",
-          "title": "Nadert Fib 0.382 steunzone: $1864.21 (2.8% weg)"
+          "title": "Nadert Fib 0.236 steunzone: $1864.32 (2.8% weg)"
         }
       ],
       "overall": "VERKOOP",
@@ -4886,32 +4876,33 @@
         "fib": {
           "retracements": {
             "0.000": 2645.22,
-            "0.236": 2162.71,
-            "0.382": 1864.21,
-            "0.500": 1622.95,
-            "0.618": 1381.69,
-            "0.705": 1203.82,
-            "0.786": 1038.21,
-            "0.886": 833.76,
+            "0.236": 1864.32,
+            "0.382": 1501.49,
+            "0.500": 1260.53,
+            "0.618": 1058.23,
+            "0.705": 930.19,
+            "0.786": 824.94,
+            "0.886": 711.28,
             "1.000": 600.68
           },
           "extensions": {
             "1.000": 2342.0,
-            "1.272": 2572.38,
-            "1.414": 2692.66,
-            "1.618": 2865.45,
-            "1.818": 3034.85,
-            "2.000": 3189.0,
-            "2.618": 3712.45
+            "1.272": 2646.14,
+            "1.414": 2820.29,
+            "1.618": 3090.75,
+            "1.818": 3381.06,
+            "2.000": 3668.87,
+            "2.618": 4841.82
           },
           "goldenPocket": {
-            "low": 1203.82,
-            "high": 1381.69
+            "low": 930.19,
+            "high": 1058.23
           },
           "swingHigh": 2645.22,
           "swingLow": 600.68,
           "extSwingHigh": 2342.0,
-          "extSwingLow": 1495.0
+          "extSwingLow": 1495.0,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -4941,7 +4932,7 @@
         "peMedian": null,
         "peMax": null,
         "peSource": null,
-        "priceRangePosition": 46.0,
+        "priceRangePosition": 45.4,
         "verdict": "Aantrekkelijk (PEG < 1)",
         "verdictColor": "green",
         "notes": [
@@ -4949,11 +4940,11 @@
         ]
       },
       "timing": {
-        "score": 22,
+        "score": 25,
         "label": "Slechte instap (wachten)",
         "color": "red",
         "trendScore": 35,
-        "entryScore": 25,
+        "entryScore": 33,
         "trendDaily": 90,
         "trendWeekly": 35,
         "trendMonthly": 10,
@@ -4966,7 +4957,7 @@
         "macdTurning": [
           "daily"
         ],
-        "baseTimin": 31
+        "baseTimin": 34
       },
       "scores": {
         "quality": 95,
@@ -4979,15 +4970,24 @@
         ],
         "qualityFails": [],
         "valuation": 90,
-        "timing": 22,
+        "timing": 25,
         "marketAdj": 5,
-        "timingEffective": 27,
-        "composite": 66
+        "timingEffective": 30,
+        "composite": 68
       },
       "bagger": null,
       "isBagger": false,
       "currency": "p",
       "signals": [
+        {
+          "type": "BUY",
+          "cat": "FIB",
+          "tf": "1D",
+          "weight": 3,
+          "icon": "\ud83d\udcd0",
+          "title": "Fib 0.382 \u2014 steunzone: $2570.81 (1.2% weg)",
+          "detail": "Prijs $2602.00 raakt Fibonacci 0.382. Potenti\u00eble koopzone."
+        },
         {
           "type": "SELL",
           "cat": "MACD",
@@ -5022,7 +5022,7 @@
           "cat": "RSI",
           "tf": "1D",
           "icon": "\u26a0\ufe0f",
-          "title": "RSI daily nadert overbought (68)"
+          "title": "RSI daily nadert overbought (66)"
         },
         {
           "type": "INFO",
@@ -5034,7 +5034,7 @@
         }
       ],
       "overall": "VERKOOP",
-      "buyWeight": 0,
+      "buyWeight": 3,
       "sellWeight": 11,
       "baseOverall": "STERK VERKOOP",
       "confluence": {
@@ -5046,57 +5046,58 @@
         "supportCount": 0,
         "supportFlags": []
       },
-      "conflict": false,
-      "conflictNote": "Monthly sterk bearish (EMA-kruising + MACD bearish & dalend) - koop geblokkeerd",
+      "conflict": true,
+      "conflictNote": "\u26a0\ufe0f CONFLICT: 1 koop vs 3 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Monthly sterk bearish (EMA-kruising + MACD bearish & dalend) - koop geblokkeerd",
       "indicators": {
-        "last": 2622.0,
-        "rsiDaily": 68.4,
+        "last": 2602.0,
+        "rsiDaily": 65.6,
         "rsiWeekly": 46.0,
-        "ema8d": 2564.41,
-        "ema21d": 2455.9,
+        "ema8d": 2562.52,
+        "ema21d": 2455.51,
         "ema8w": 2439.98,
         "ema21w": 2653.32,
-        "ma50": 2366.34,
+        "ma50": 2366.32,
         "ma200": 3126.79,
-        "macdLine": 82.4665,
-        "macdSignal": 50.8599,
+        "macdLine": 81.7573,
+        "macdSignal": 51.0993,
         "macdLineW": -257.9215,
         "macdSigW": -292.4725,
-        "bollUpper": 2720.85,
-        "bollLower": 2110.51,
-        "volRatio": 0.05,
+        "bollUpper": 2720.78,
+        "bollLower": 2110.49,
+        "volRatio": 0.15,
         "volKnown": true,
         "highVolume": false,
         "volNote": "(laag volume)",
         "fib": {
           "retracements": {
             "0.000": 4495.56,
-            "0.236": 3680.26,
-            "0.382": 3175.88,
-            "0.500": 2768.23,
-            "0.618": 2360.58,
-            "0.705": 2060.02,
-            "0.786": 1780.19,
-            "0.886": 1434.73,
+            "0.236": 3182.99,
+            "0.382": 2570.81,
+            "0.500": 2163.19,
+            "0.618": 1820.21,
+            "0.705": 1602.67,
+            "0.786": 1423.57,
+            "0.886": 1229.81,
             "1.000": 1040.89
           },
           "extensions": {
             "1.000": 3625.24,
-            "1.272": 4115.01,
-            "1.414": 4370.7,
-            "1.618": 4738.03,
-            "1.818": 5098.16,
-            "2.000": 5425.87,
-            "2.618": 6538.66
+            "1.272": 4369.56,
+            "1.414": 4817.01,
+            "1.618": 5541.19,
+            "1.818": 6356.77,
+            "2.000": 7202.81,
+            "2.618": 11009.51
           },
           "goldenPocket": {
-            "low": 2060.02,
-            "high": 2360.58
+            "low": 1602.67,
+            "high": 1820.21
           },
           "swingHigh": 4495.56,
           "swingLow": 1040.89,
           "extSwingHigh": 3625.24,
-          "extSwingLow": 1824.62
+          "extSwingLow": 1824.62,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -5134,11 +5135,11 @@
         ]
       },
       "timing": {
-        "score": 40,
+        "score": 37,
         "label": "Zwakke setup",
         "color": "orange",
         "trendScore": 58,
-        "entryScore": 33,
+        "entryScore": 25,
         "trendDaily": 90,
         "trendWeekly": 51,
         "trendMonthly": 49,
@@ -5151,7 +5152,7 @@
         "macdTurning": [
           "monthly"
         ],
-        "baseTimin": 48
+        "baseTimin": 45
       },
       "scores": {
         "quality": 69,
@@ -5162,24 +5163,15 @@
         ],
         "qualityFails": [],
         "valuation": 30,
-        "timing": 40,
+        "timing": 37,
         "marketAdj": 5,
-        "timingEffective": 45,
-        "composite": 48
+        "timingEffective": 42,
+        "composite": 46
       },
       "bagger": null,
       "isBagger": false,
       "currency": "$",
       "signals": [
-        {
-          "type": "BUY",
-          "cat": "FIB",
-          "tf": "1D",
-          "weight": 3,
-          "icon": "\ud83d\udcd0",
-          "title": "Fib 0.382 \u2014 steunzone: $121.62 (0.2% weg)",
-          "detail": "Prijs $121.88 raakt Fibonacci 0.382. Potenti\u00eble koopzone."
-        },
         {
           "type": "SELL",
           "cat": "MACD",
@@ -5214,10 +5206,10 @@
           "title": "Nadert Bollinger bovenband ($122.26)"
         }
       ],
-      "overall": "LICHT VERKOOP",
-      "buyWeight": 3,
+      "overall": "VERKOOP",
+      "buyWeight": 0,
       "sellWeight": 4,
-      "baseOverall": "LICHT VERKOOP",
+      "baseOverall": "VERKOOP",
       "confluence": {
         "monthlyState": "light_bear",
         "weeklyBullTurn": false,
@@ -5227,8 +5219,8 @@
         "supportCount": 0,
         "supportFlags": []
       },
-      "conflict": true,
-      "conflictNote": "\u26a0\ufe0f CONFLICT: 1 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Geen duidelijke confluence - signaal getemperd",
+      "conflict": false,
+      "conflictNote": "Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 121.88,
         "rsiDaily": 60.3,
@@ -5252,32 +5244,33 @@
         "fib": {
           "retracements": {
             "0.000": 182.19,
-            "0.236": 144.77,
-            "0.382": 121.62,
-            "0.500": 102.91,
-            "0.618": 84.2,
-            "0.705": 70.41,
-            "0.786": 57.56,
-            "0.886": 41.71,
+            "0.236": 112.51,
+            "0.382": 83.5,
+            "0.500": 65.61,
+            "0.618": 51.56,
+            "0.705": 43.17,
+            "0.786": 36.58,
+            "0.886": 29.83,
             "1.000": 23.63
           },
           "extensions": {
             "1.000": 170.9,
-            "1.272": 191.82,
-            "1.414": 202.74,
-            "1.618": 218.42,
-            "1.818": 233.8,
-            "2.000": 247.8,
-            "2.618": 295.32
+            "1.272": 201.07,
+            "1.414": 218.89,
+            "1.618": 247.28,
+            "1.818": 278.68,
+            "2.000": 310.71,
+            "2.618": 449.57
           },
           "goldenPocket": {
-            "low": 70.41,
-            "high": 84.2
+            "low": 43.17,
+            "high": 51.56
           },
           "swingHigh": 182.19,
           "swingLow": 23.63,
           "extSwingHigh": 170.9,
-          "extSwingLow": 94.0
+          "extSwingLow": 94.0,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -5458,32 +5451,33 @@
         "fib": {
           "retracements": {
             "0.000": 276.82,
-            "0.236": 220.31,
-            "0.382": 185.35,
-            "0.500": 157.09,
-            "0.618": 128.84,
-            "0.705": 108.01,
-            "0.786": 88.61,
-            "0.886": 64.67,
+            "0.236": 172.56,
+            "0.382": 128.82,
+            "0.500": 101.71,
+            "0.618": 80.3,
+            "0.705": 67.46,
+            "0.786": 57.36,
+            "0.886": 46.95,
             "1.000": 37.37
           },
           "extensions": {
             "1.000": 276.82,
-            "1.272": 308.91,
-            "1.414": 325.66,
-            "1.618": 349.73,
-            "1.818": 373.33,
-            "2.000": 394.8,
-            "2.618": 467.71
+            "1.272": 321.97,
+            "1.414": 348.39,
+            "1.618": 390.2,
+            "1.818": 436.05,
+            "2.000": 482.44,
+            "2.618": 680.05
           },
           "goldenPocket": {
-            "low": 108.01,
-            "high": 128.84
+            "low": 67.46,
+            "high": 80.3
           },
           "swingHigh": 276.82,
           "swingLow": 37.37,
           "extSwingHigh": 276.82,
-          "extSwingLow": 158.83
+          "extSwingLow": 158.83,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -5523,11 +5517,11 @@
         "notes": []
       },
       "timing": {
-        "score": 53,
+        "score": 46,
         "label": "Neutrale setup",
         "color": "neutral",
         "trendScore": 32,
-        "entryScore": 98,
+        "entryScore": 80,
         "trendDaily": 10,
         "trendWeekly": 44,
         "trendMonthly": null,
@@ -5539,7 +5533,7 @@
         "macdTurning": [
           "weekly"
         ],
-        "baseTimin": 58
+        "baseTimin": 51
       },
       "scores": {
         "quality": 20,
@@ -5553,10 +5547,10 @@
           "schuld te hoog (D/E > 4)"
         ],
         "valuation": 50,
-        "timing": 53,
+        "timing": 46,
         "marketAdj": 5,
-        "timingEffective": 58,
-        "composite": 44
+        "timingEffective": 51,
+        "composite": 41
       },
       "bagger": {
         "score": 46,
@@ -5609,8 +5603,8 @@
         "monthlyState": "neutral",
         "weeklyBullTurn": false,
         "weeklyBearTurn": false,
-        "fibBuyDepth": 1,
-        "fibZone": "0.618",
+        "fibBuyDepth": 0,
+        "fibZone": null,
         "supportCount": 0,
         "supportFlags": []
       },
@@ -5639,32 +5633,33 @@
         "fib": {
           "retracements": {
             "0.000": 187.0,
-            "0.236": 150.78,
-            "0.382": 128.37,
-            "0.500": 110.26,
-            "0.618": 92.15,
-            "0.705": 78.79,
-            "0.786": 66.36,
-            "0.886": 51.01,
+            "0.236": 124.64,
+            "0.382": 96.97,
+            "0.500": 79.17,
+            "0.618": 64.63,
+            "0.705": 55.65,
+            "0.786": 48.42,
+            "0.886": 40.77,
             "1.000": 33.51
           },
           "extensions": {
             "1.000": 138.25,
-            "1.272": 157.59,
-            "1.414": 167.69,
-            "1.618": 182.19,
-            "1.818": 196.41,
-            "2.000": 209.35,
-            "2.618": 253.29
+            "1.272": 168.26,
+            "1.414": 186.42,
+            "1.618": 216.01,
+            "1.818": 249.58,
+            "2.000": 284.63,
+            "2.618": 444.73
           },
           "goldenPocket": {
-            "low": 78.79,
-            "high": 92.15
+            "low": 55.65,
+            "high": 64.63
           },
           "swingHigh": 187.0,
           "swingLow": 33.51,
           "extSwingHigh": 138.25,
-          "extSwingLow": 67.15
+          "extSwingLow": 67.15,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -5783,7 +5778,7 @@
           "cat": "FIB",
           "tf": "1D",
           "icon": "\ud83d\udcd0",
-          "title": "Nadert Fib 0.500 steunzone: $378.99 (2.5% weg)"
+          "title": "Nadert Fib 0.382 steunzone: $379.06 (2.5% weg)"
         }
       ],
       "overall": "VERKOOP",
@@ -5813,7 +5808,7 @@
         "ma200": 442.6,
         "macdLine": -7.3471,
         "macdSignal": -9.7839,
-        "macdLineW": -13.8178,
+        "macdLineW": -13.8177,
         "macdSigW": -13.8225,
         "bollUpper": 411.94,
         "bollLower": 355.06,
@@ -5824,32 +5819,33 @@
         "fib": {
           "retracements": {
             "0.000": 551.05,
-            "0.236": 469.84,
-            "0.382": 419.6,
-            "0.500": 378.99,
-            "0.618": 338.39,
-            "0.705": 308.45,
-            "0.786": 280.58,
-            "0.886": 246.17,
+            "0.236": 437.33,
+            "0.382": 379.06,
+            "0.500": 337.69,
+            "0.618": 300.83,
+            "0.705": 276.26,
+            "0.786": 255.19,
+            "0.886": 231.38,
             "1.000": 206.94
           },
           "extensions": {
             "1.000": 487.53,
-            "1.272": 525.15,
-            "1.414": 544.8,
-            "1.618": 573.02,
-            "1.818": 600.68,
-            "2.000": 625.86,
-            "2.618": 711.35
+            "1.272": 533.85,
+            "1.414": 559.76,
+            "1.618": 599.19,
+            "1.818": 640.55,
+            "2.000": 680.65,
+            "2.618": 836.55
           },
           "goldenPocket": {
-            "low": 308.45,
-            "high": 338.39
+            "low": 276.26,
+            "high": 300.83
           },
           "swingHigh": 551.05,
           "swingLow": 206.94,
           "extSwingHigh": 487.53,
-          "extSwingLow": 349.2
+          "extSwingLow": 349.2,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -6002,32 +5998,33 @@
         "fib": {
           "retracements": {
             "0.000": 7.5,
-            "0.236": 6.66,
-            "0.382": 6.14,
-            "0.500": 5.72,
-            "0.618": 5.29,
-            "0.705": 4.98,
-            "0.786": 4.69,
-            "0.886": 4.34,
+            "0.236": 6.44,
+            "0.382": 5.86,
+            "0.500": 5.43,
+            "0.618": 5.03,
+            "0.705": 4.76,
+            "0.786": 4.51,
+            "0.886": 4.23,
             "1.000": 3.93
           },
           "extensions": {
             "1.000": 7.5,
-            "1.272": 8.24,
-            "1.414": 8.63,
-            "1.618": 9.18,
-            "1.818": 9.72,
-            "2.000": 10.22,
-            "2.618": 11.9
+            "1.272": 8.48,
+            "1.414": 9.04,
+            "1.618": 9.91,
+            "1.818": 10.84,
+            "2.000": 11.77,
+            "2.618": 15.55
           },
           "goldenPocket": {
-            "low": 4.98,
-            "high": 5.29
+            "low": 4.76,
+            "high": 5.03
           },
           "swingHigh": 7.5,
           "swingLow": 3.93,
           "extSwingHigh": 7.5,
-          "extSwingLow": 4.78
+          "extSwingLow": 4.78,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -6063,11 +6060,11 @@
         "notes": []
       },
       "timing": {
-        "score": 40,
+        "score": 36,
         "label": "Zwakke setup",
         "color": "orange",
         "trendScore": 30,
-        "entryScore": 80,
+        "entryScore": 70,
         "trendDaily": 30,
         "trendWeekly": 30,
         "trendMonthly": 30,
@@ -6081,7 +6078,7 @@
           "weekly",
           "monthly"
         ],
-        "baseTimin": 50
+        "baseTimin": 46
       },
       "scores": {
         "quality": 33,
@@ -6092,15 +6089,24 @@
           "marge < 8%"
         ],
         "valuation": 50,
-        "timing": 40,
+        "timing": 36,
         "marketAdj": 5,
-        "timingEffective": 45,
-        "composite": 43
+        "timingEffective": 41,
+        "composite": 41
       },
       "bagger": null,
       "isBagger": false,
       "currency": "$",
       "signals": [
+        {
+          "type": "BUY",
+          "cat": "FIB",
+          "tf": "1D",
+          "weight": 3,
+          "icon": "\ud83d\udcd0",
+          "title": "Fib 0.618 \u2014 steunzone: $4.63 (0.4% weg)",
+          "detail": "Prijs $4.65 raakt Fibonacci 0.618. Potenti\u00eble koopzone."
+        },
         {
           "type": "BUY",
           "cat": "MACD",
@@ -6137,37 +6143,23 @@
           "icon": "\u2139\ufe0f",
           "title": "MACD weekly momenteel bullish (crossover enkel vrijdag ge\u00ebvalueerd)",
           "detail": "MACD: -0.482 | Signaal: -0.493"
-        },
-        {
-          "type": "WATCH",
-          "cat": "FIB",
-          "tf": "1D",
-          "icon": "\ud83d\udcd0",
-          "title": "Nadert Fib 0.618 steunzone: $4.78 (2.8% weg)"
-        },
-        {
-          "type": "WATCH",
-          "cat": "FIB",
-          "tf": "1D",
-          "icon": "\ud83d\udcd0",
-          "title": "Nadert Fib 0.705 steunzone: $4.56 (1.9% weg)"
         }
       ],
-      "overall": "LICHT VERKOOP",
-      "buyWeight": 4,
+      "overall": "NEUTRAAL",
+      "buyWeight": 7,
       "sellWeight": 7,
-      "baseOverall": "LICHT VERKOOP",
+      "baseOverall": "NEUTRAAL",
       "confluence": {
         "monthlyState": "light_bear",
         "weeklyBullTurn": false,
         "weeklyBearTurn": false,
-        "fibBuyDepth": 2,
-        "fibZone": "0.705",
+        "fibBuyDepth": 1,
+        "fibZone": "0.618",
         "supportCount": 0,
         "supportFlags": []
       },
       "conflict": true,
-      "conflictNote": "\u26a0\ufe0f CONFLICT: 1 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Geen duidelijke confluence - signaal getemperd",
+      "conflictNote": "\u26a0\ufe0f CONFLICT: 2 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 4.65,
         "rsiDaily": 41.1,
@@ -6191,32 +6183,33 @@
         "fib": {
           "retracements": {
             "0.000": 6.36,
-            "0.236": 5.75,
-            "0.382": 5.38,
-            "0.500": 5.08,
-            "0.618": 4.78,
-            "0.705": 4.56,
-            "0.786": 4.35,
-            "0.886": 4.1,
+            "0.236": 5.63,
+            "0.382": 5.23,
+            "0.500": 4.92,
+            "0.618": 4.63,
+            "0.705": 4.43,
+            "0.786": 4.25,
+            "0.886": 4.04,
             "1.000": 3.81
           },
           "extensions": {
             "1.000": 9.07,
-            "1.272": 10.5,
-            "1.414": 11.25,
-            "1.618": 12.32,
-            "1.818": 13.37,
-            "2.000": 14.33,
-            "2.618": 17.58
+            "1.272": 11.48,
+            "1.414": 12.99,
+            "1.618": 15.5,
+            "1.818": 18.44,
+            "2.000": 21.59,
+            "2.618": 36.9
           },
           "goldenPocket": {
-            "low": 4.56,
-            "high": 4.78
+            "low": 4.43,
+            "high": 4.63
           },
           "swingHigh": 6.36,
           "swingLow": 3.81,
           "extSwingHigh": 9.07,
-          "extSwingLow": 3.81
+          "extSwingLow": 3.81,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -6363,32 +6356,33 @@
         "fib": {
           "retracements": {
             "0.000": 236.54,
-            "0.236": 183.27,
-            "0.382": 150.31,
-            "0.500": 123.67,
-            "0.618": 97.03,
-            "0.705": 77.39,
-            "0.786": 59.11,
-            "0.886": 36.53,
+            "0.236": 114.17,
+            "0.382": 72.75,
+            "0.500": 50.54,
+            "0.618": 35.11,
+            "0.705": 26.84,
+            "0.786": 20.9,
+            "0.886": 15.35,
             "1.000": 10.8
           },
           "extensions": {
             "1.000": 236.54,
-            "1.272": 256.2,
-            "1.414": 266.46,
-            "1.618": 281.2,
-            "1.818": 295.66,
-            "2.000": 308.81,
-            "2.618": 353.47
+            "1.272": 261.2,
+            "1.414": 275.08,
+            "1.618": 296.32,
+            "1.818": 318.74,
+            "2.000": 340.6,
+            "2.618": 426.69
           },
           "goldenPocket": {
-            "low": 77.39,
-            "high": 97.03
+            "low": 26.84,
+            "high": 35.11
           },
           "swingHigh": 236.54,
           "swingLow": 10.8,
           "extSwingHigh": 236.54,
-          "extSwingLow": 164.27
+          "extSwingLow": 164.27,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -6469,7 +6463,7 @@
           "tf": "1D",
           "weight": 3,
           "icon": "\ud83d\udcd0",
-          "title": "Fib 0.236 \u2014 steunzone: $43.85 (1.5% weg)",
+          "title": "Fib 0.236 \u2014 steunzone: $43.80 (1.4% weg)",
           "detail": "Prijs $43.21 raakt Fibonacci 0.236. Potenti\u00eble koopzone."
         },
         {
@@ -6478,7 +6472,7 @@
           "tf": "1D",
           "weight": 3,
           "icon": "\ud83d\udcd0",
-          "title": "Fib 0.382 \u2014 steunzone: $43.11 (0.2% weg)",
+          "title": "Fib 0.382 \u2014 steunzone: $43.04 (0.4% weg)",
           "detail": "Prijs $43.21 raakt Fibonacci 0.382. Potenti\u00eble koopzone."
         },
         {
@@ -6523,14 +6517,7 @@
           "cat": "FIB",
           "tf": "1D",
           "icon": "\ud83d\udcd0",
-          "title": "Nadert Fib 0.500 steunzone: $42.52 (1.6% weg)"
-        },
-        {
-          "type": "WATCH",
-          "cat": "FIB",
-          "tf": "1D",
-          "icon": "\ud83d\udcd0",
-          "title": "Nadert Fib 0.618 steunzone: $41.93 (3.0% weg)"
+          "title": "Nadert Fib 0.500 steunzone: $42.45 (1.8% weg)"
         }
       ],
       "overall": "VERKOOP",
@@ -6571,32 +6558,33 @@
         "fib": {
           "retracements": {
             "0.000": 45.04,
-            "0.236": 43.85,
-            "0.382": 43.11,
-            "0.500": 42.52,
-            "0.618": 41.93,
-            "0.705": 41.49,
-            "0.786": 41.08,
-            "0.886": 40.57,
+            "0.236": 43.8,
+            "0.382": 43.04,
+            "0.500": 42.45,
+            "0.618": 41.86,
+            "0.705": 41.43,
+            "0.786": 41.03,
+            "0.886": 40.54,
             "1.000": 40.0
           },
           "extensions": {
             "1.000": 68.04,
-            "1.272": 75.66,
-            "1.414": 79.65,
-            "1.618": 85.37,
-            "1.818": 90.97,
-            "2.000": 96.08,
-            "2.618": 113.4
+            "1.272": 78.61,
+            "1.414": 84.77,
+            "1.618": 94.48,
+            "1.818": 105.07,
+            "2.000": 115.73,
+            "2.618": 160.7
           },
           "goldenPocket": {
-            "low": 41.49,
-            "high": 41.93
+            "low": 41.43,
+            "high": 41.86
           },
           "swingHigh": 45.04,
           "swingLow": 40.0,
           "extSwingHigh": 68.04,
-          "extSwingLow": 40.0
+          "extSwingLow": 40.0,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -6619,14 +6607,14 @@
         "lastUpdated": "2026-01"
       },
       "valuation": {
-        "currentPE": 11.2,
-        "peg": 1.6,
+        "currentPE": 11.1,
+        "peg": 1.59,
         "pePercentile": null,
         "peMin": null,
         "peMedian": null,
         "peMax": null,
         "peSource": null,
-        "priceRangePosition": 84.1,
+        "priceRangePosition": 83.0,
         "verdict": "Neutraal (PEG 1.5\u20132.5)",
         "verdictColor": "neutral",
         "notes": [
@@ -6634,11 +6622,11 @@
         ]
       },
       "timing": {
-        "score": 51,
+        "score": 54,
         "label": "Neutrale setup",
         "color": "neutral",
         "trendScore": 80,
-        "entryScore": 43,
+        "entryScore": 50,
         "trendDaily": 85,
         "trendWeekly": 90,
         "trendMonthly": 70,
@@ -6652,7 +6640,7 @@
           "daily",
           "monthly"
         ],
-        "baseTimin": 65
+        "baseTimin": 68
       },
       "scores": {
         "quality": 57,
@@ -6662,10 +6650,10 @@
         ],
         "qualityFails": [],
         "valuation": 62,
-        "timing": 51,
+        "timing": 54,
         "marketAdj": 5,
-        "timingEffective": 56,
-        "composite": 58
+        "timingEffective": 59,
+        "composite": 59
       },
       "bagger": null,
       "isBagger": false,
@@ -6725,54 +6713,55 @@
       "conflict": true,
       "conflictNote": "\u26a0\ufe0f CONFLICT: 2 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
-        "last": 174.0,
-        "rsiDaily": 54.3,
+        "last": 172.5,
+        "rsiDaily": 52.0,
         "rsiWeekly": 56.5,
-        "ema8d": 175.67,
-        "ema21d": 172.09,
+        "ema8d": 175.34,
+        "ema21d": 171.96,
         "ema8w": 170.44,
         "ema21w": 169.5,
-        "ma50": 169.17,
-        "ma200": 165.34,
-        "macdLine": 2.8968,
-        "macdSignal": 1.9989,
+        "ma50": 169.14,
+        "ma200": 165.33,
+        "macdLine": 2.7771,
+        "macdSignal": 1.975,
         "macdLineW": 0.9395,
         "macdSigW": 0.8509,
-        "bollUpper": 181.92,
-        "bollLower": 160.0,
-        "volRatio": 0.09,
+        "bollUpper": 181.78,
+        "bollLower": 159.99,
+        "volRatio": 0.14,
         "volKnown": true,
         "highVolume": false,
         "volNote": "(laag volume)",
         "fib": {
           "retracements": {
             "0.000": 197.42,
-            "0.236": 165.06,
-            "0.382": 145.04,
-            "0.500": 128.86,
-            "0.618": 112.68,
-            "0.705": 100.76,
-            "0.786": 89.65,
-            "0.886": 75.94,
+            "0.236": 149.23,
+            "0.382": 125.5,
+            "0.500": 109.12,
+            "0.618": 94.87,
+            "0.705": 85.57,
+            "0.786": 77.73,
+            "0.886": 69.04,
             "1.000": 60.31
           },
           "extensions": {
             "1.000": 197.42,
-            "1.272": 209.85,
-            "1.414": 216.35,
-            "1.618": 225.67,
-            "1.818": 234.82,
-            "2.000": 243.14,
-            "2.618": 271.4
+            "1.272": 212.08,
+            "1.414": 220.17,
+            "1.618": 232.32,
+            "1.818": 244.89,
+            "2.000": 256.92,
+            "2.618": 302.35
           },
           "goldenPocket": {
-            "low": 100.76,
-            "high": 112.68
+            "low": 85.57,
+            "high": 94.87
           },
           "swingHigh": 197.42,
           "swingLow": 60.31,
           "extSwingHigh": 197.42,
-          "extSwingLow": 151.69
+          "extSwingLow": 151.69,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -6802,7 +6791,7 @@
         "peMedian": null,
         "peMax": null,
         "peSource": null,
-        "priceRangePosition": 25.4,
+        "priceRangePosition": 25.5,
         "verdict": "Neutraal (PEG 1.5\u20132.5)",
         "verdictColor": "neutral",
         "notes": [
@@ -6810,11 +6799,11 @@
         ]
       },
       "timing": {
-        "score": 35,
+        "score": 39,
         "label": "Zwakke setup",
         "color": "orange",
         "trendScore": 42,
-        "entryScore": 43,
+        "entryScore": 51,
         "trendDaily": 85,
         "trendWeekly": 51,
         "trendMonthly": 15,
@@ -6827,7 +6816,7 @@
         "macdTurning": [
           "daily"
         ],
-        "baseTimin": 42
+        "baseTimin": 46
       },
       "scores": {
         "quality": 53,
@@ -6840,15 +6829,24 @@
           "ROE < 12%"
         ],
         "valuation": 50,
-        "timing": 35,
+        "timing": 39,
         "marketAdj": 5,
-        "timingEffective": 40,
-        "composite": 47
+        "timingEffective": 44,
+        "composite": 48
       },
       "bagger": null,
       "isBagger": false,
       "currency": "\u20ac",
       "signals": [
+        {
+          "type": "BUY",
+          "cat": "FIB",
+          "tf": "1D",
+          "weight": 3,
+          "icon": "\ud83d\udcd0",
+          "title": "Fib 0.382 \u2014 steunzone: $226.33 (0.6% weg)",
+          "detail": "Prijs $225.00 raakt Fibonacci 0.382. Potenti\u00eble koopzone."
+        },
         {
           "type": "SELL",
           "cat": "MACD",
@@ -6876,19 +6874,12 @@
           "icon": "\u2139\ufe0f",
           "title": "MACD weekly momenteel bullish (crossover enkel vrijdag ge\u00ebvalueerd)",
           "detail": "MACD: -4.095 | Signaal: -5.775"
-        },
-        {
-          "type": "WATCH",
-          "cat": "FIB",
-          "tf": "1D",
-          "icon": "\ud83d\udcd0",
-          "title": "Nadert Fib 0.500 steunzone: $220.22 (2.0% weg)"
         }
       ],
       "overall": "VERKOOP",
-      "buyWeight": 0,
+      "buyWeight": 3,
       "sellWeight": 8,
-      "baseOverall": "STERK VERKOOP",
+      "baseOverall": "VERKOOP",
       "confluence": {
         "monthlyState": "strong_bear",
         "weeklyBullTurn": false,
@@ -6898,57 +6889,58 @@
         "supportCount": 0,
         "supportFlags": []
       },
-      "conflict": false,
-      "conflictNote": "Monthly sterk bearish (EMA-kruising + MACD bearish & dalend) - koop geblokkeerd",
+      "conflict": true,
+      "conflictNote": "\u26a0\ufe0f CONFLICT: 1 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Monthly sterk bearish (EMA-kruising + MACD bearish & dalend) - koop geblokkeerd",
       "indicators": {
-        "last": 224.8,
-        "rsiDaily": 53.5,
+        "last": 225.0,
+        "rsiDaily": 53.8,
         "rsiWeekly": 53.3,
-        "ema8d": 226.51,
-        "ema21d": 223.6,
+        "ema8d": 226.55,
+        "ema21d": 223.62,
         "ema8w": 221.61,
         "ema21w": 224.06,
-        "ma50": 219.21,
+        "ma50": 219.22,
         "ma200": 231.83,
-        "macdLine": 2.5705,
-        "macdSignal": 2.0528,
+        "macdLine": 2.5864,
+        "macdSignal": 2.0559,
         "macdLineW": -4.0948,
         "macdSigW": -5.7755,
-        "bollUpper": 232.3,
+        "bollUpper": 232.32,
         "bollLower": 213.16,
-        "volRatio": 0.12,
+        "volRatio": 0.16,
         "volKnown": true,
         "highVolume": false,
         "volNote": "(laag volume)",
         "fib": {
           "retracements": {
             "0.000": 280.56,
-            "0.236": 252.08,
-            "0.382": 234.46,
-            "0.500": 220.22,
-            "0.618": 205.98,
-            "0.705": 195.48,
-            "0.786": 185.71,
-            "0.886": 173.64,
+            "0.236": 245.69,
+            "0.382": 226.33,
+            "0.500": 211.8,
+            "0.618": 198.2,
+            "0.705": 188.73,
+            "0.786": 180.33,
+            "0.886": 170.47,
             "1.000": 159.88
           },
           "extensions": {
             "1.000": 261.28,
-            "1.272": 277.87,
-            "1.414": 286.53,
-            "1.618": 298.97,
-            "1.818": 311.17,
-            "2.000": 322.27,
-            "2.618": 359.96
+            "1.272": 280.87,
+            "1.414": 291.68,
+            "1.618": 307.93,
+            "1.818": 324.75,
+            "2.000": 340.84,
+            "2.618": 401.7
           },
           "goldenPocket": {
-            "low": 195.48,
-            "high": 205.98
+            "low": 188.73,
+            "high": 198.2
           },
           "swingHigh": 280.56,
           "swingLow": 159.88,
           "extSwingHigh": 261.28,
-          "extSwingLow": 200.29
+          "extSwingLow": 200.29,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -6971,14 +6963,14 @@
         "lastUpdated": "2026-01"
       },
       "valuation": {
-        "currentPE": 31.2,
-        "peg": 2.6,
+        "currentPE": 31.1,
+        "peg": 2.59,
         "pePercentile": null,
         "peMin": null,
         "peMedian": null,
         "peMax": null,
         "peSource": null,
-        "priceRangePosition": 87.7,
+        "priceRangePosition": 87.3,
         "verdict": "Aan de dure kant (PEG 2.5\u20133.5)",
         "verdictColor": "orange",
         "notes": [
@@ -6986,11 +6978,11 @@
         ]
       },
       "timing": {
-        "score": 46,
+        "score": 50,
         "label": "Neutrale setup",
         "color": "neutral",
         "trendScore": 81,
-        "entryScore": 33,
+        "entryScore": 43,
         "trendDaily": 90,
         "trendWeekly": 90,
         "trendMonthly": 70,
@@ -7003,7 +6995,7 @@
         "macdTurning": [
           "daily"
         ],
-        "baseTimin": 62
+        "baseTimin": 66
       },
       "scores": {
         "quality": 69,
@@ -7016,10 +7008,10 @@
           "marge < 8%"
         ],
         "valuation": 40,
-        "timing": 46,
+        "timing": 50,
         "marketAdj": 5,
-        "timingEffective": 51,
-        "composite": 53
+        "timingEffective": 55,
+        "composite": 55
       },
       "bagger": null,
       "isBagger": false,
@@ -7057,13 +7049,6 @@
         {
           "type": "WATCH",
           "cat": "RSI",
-          "tf": "1D",
-          "icon": "\u26a0\ufe0f",
-          "title": "RSI daily nadert overbought (60)"
-        },
-        {
-          "type": "WATCH",
-          "cat": "RSI",
           "tf": "1W",
           "icon": "\u26a0\ufe0f",
           "title": "RSI weekly nadert overbought (65)"
@@ -7093,54 +7078,55 @@
       "conflict": true,
       "conflictNote": "\u26a0\ufe0f CONFLICT: 2 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
-        "last": 199.66,
-        "rsiDaily": 60.5,
+        "last": 199.22,
+        "rsiDaily": 59.9,
         "rsiWeekly": 65.1,
-        "ema8d": 200.9,
-        "ema21d": 193.8,
+        "ema8d": 200.8,
+        "ema21d": 193.76,
         "ema8w": 187.01,
         "ema21w": 181.91,
-        "ma50": 182.12,
+        "ma50": 182.11,
         "ma200": 187.51,
-        "macdLine": 6.8784,
-        "macdSignal": 6.2278,
+        "macdLine": 6.8433,
+        "macdSignal": 6.2208,
         "macdLineW": 2.039,
         "macdSigW": -1.7656,
-        "bollUpper": 210.39,
-        "bollLower": 176.02,
-        "volRatio": 0.15,
+        "bollUpper": 210.34,
+        "bollLower": 176.03,
+        "volRatio": 0.29,
         "volKnown": true,
         "highVolume": false,
         "volNote": "(laag volume)",
         "fib": {
           "retracements": {
             "0.000": 217.29,
-            "0.236": 185.01,
-            "0.382": 165.04,
-            "0.500": 148.9,
-            "0.618": 132.76,
-            "0.705": 120.86,
-            "0.786": 109.78,
-            "0.886": 96.11,
+            "0.236": 171.9,
+            "0.382": 148.71,
+            "0.500": 132.27,
+            "0.618": 117.65,
+            "0.705": 107.91,
+            "0.786": 99.57,
+            "0.886": 90.16,
             "1.000": 80.51
           },
           "extensions": {
             "1.000": 217.29,
-            "1.272": 234.35,
-            "1.414": 243.25,
-            "1.618": 256.05,
-            "1.818": 268.59,
-            "2.000": 280.01,
-            "2.618": 318.77
+            "1.272": 238.38,
+            "1.414": 250.19,
+            "1.618": 268.19,
+            "1.818": 287.1,
+            "2.000": 305.46,
+            "2.618": 377.02
           },
           "goldenPocket": {
-            "low": 120.86,
-            "high": 132.76
+            "low": 107.91,
+            "high": 117.65
           },
           "swingHigh": 217.29,
           "swingLow": 80.51,
           "extSwingHigh": 217.29,
-          "extSwingLow": 154.56
+          "extSwingLow": 154.56,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -7163,14 +7149,14 @@
         "lastUpdated": "2026-01"
       },
       "valuation": {
-        "currentPE": 24.7,
+        "currentPE": 24.5,
         "peg": null,
         "pePercentile": null,
         "peMin": null,
         "peMedian": null,
         "peMax": null,
         "peSource": null,
-        "priceRangePosition": 4.8,
+        "priceRangePosition": 4.7,
         "verdict": "Gemiddelde P/E (absoluut)",
         "verdictColor": "neutral",
         "notes": [
@@ -7223,7 +7209,7 @@
           "tf": "1D",
           "weight": 2,
           "icon": "\ud83c\udfaf",
-          "title": "Prijs raakt Bollinger onderband ($13.63) (laag volume)",
+          "title": "Prijs raakt Bollinger onderband ($13.59) (laag volume)",
           "detail": "Statistische oversold conditie."
         },
         {
@@ -7260,7 +7246,7 @@
           "cat": "RSI",
           "tf": "1D",
           "icon": "\ud83d\udc40",
-          "title": "RSI daily nadert oversold (38)"
+          "title": "RSI daily nadert oversold (37)"
         },
         {
           "type": "INFO",
@@ -7269,13 +7255,6 @@
           "icon": "\u2139\ufe0f",
           "title": "MACD weekly momenteel bullish (crossover enkel vrijdag ge\u00ebvalueerd)",
           "detail": "MACD: 1.407 | Signaal: 1.081"
-        },
-        {
-          "type": "WATCH",
-          "cat": "FIB",
-          "tf": "1D",
-          "icon": "\ud83d\udcd0",
-          "title": "Nadert Fib 0.500 steunzone: $13.97 (2.9% weg)"
         }
       ],
       "overall": "CAUTION (overextended)",
@@ -7294,54 +7273,55 @@
       "conflict": true,
       "conflictNote": "\u26a0\ufe0f CONFLICT: 3 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Overextensie: ver boven 8-EMA {'weekly': -0.3, 'monthly': 22.7} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
-        "last": 13.58,
-        "rsiDaily": 37.8,
+        "last": 13.45,
+        "rsiDaily": 37.0,
         "rsiWeekly": 59.1,
-        "ema8d": 14.49,
-        "ema21d": 14.98,
+        "ema8d": 14.46,
+        "ema21d": 14.97,
         "ema8w": 14.71,
         "ema21w": 13.07,
         "ma50": 14.85,
         "ma200": 11.26,
-        "macdLine": -0.2306,
-        "macdSignal": 0.0491,
+        "macdLine": -0.241,
+        "macdSignal": 0.047,
         "macdLineW": 1.4074,
         "macdSigW": 1.0812,
-        "bollUpper": 16.72,
-        "bollLower": 13.63,
-        "volRatio": 0.22,
+        "bollUpper": 16.75,
+        "bollLower": 13.59,
+        "volRatio": 0.38,
         "volKnown": true,
         "highVolume": false,
         "volNote": "(laag volume)",
         "fib": {
           "retracements": {
             "0.000": 19.9,
-            "0.236": 17.1,
-            "0.382": 15.37,
-            "0.500": 13.97,
-            "0.618": 12.58,
-            "0.705": 11.55,
-            "0.786": 10.59,
-            "0.886": 9.4,
+            "0.236": 16.07,
+            "0.382": 14.08,
+            "0.500": 12.66,
+            "0.618": 11.37,
+            "0.705": 10.51,
+            "0.786": 9.77,
+            "0.886": 8.92,
             "1.000": 8.05
           },
           "extensions": {
             "1.000": 19.9,
-            "1.272": 23.12,
-            "1.414": 24.81,
-            "1.618": 27.22,
-            "1.818": 29.59,
-            "2.000": 31.75,
-            "2.618": 39.07
+            "1.272": 25.45,
+            "1.414": 28.95,
+            "1.618": 34.81,
+            "1.818": 41.72,
+            "2.000": 49.19,
+            "2.618": 86.06
           },
           "goldenPocket": {
-            "low": 11.55,
-            "high": 12.58
+            "low": 10.51,
+            "high": 11.37
           },
           "swingHigh": 19.9,
           "swingLow": 8.05,
           "extSwingHigh": 19.9,
-          "extSwingLow": 8.05
+          "extSwingLow": 8.05,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -7364,14 +7344,14 @@
         "lastUpdated": "2026-01"
       },
       "valuation": {
-        "currentPE": 53.2,
-        "peg": 4.84,
+        "currentPE": 53.1,
+        "peg": 4.83,
         "pePercentile": null,
         "peMin": null,
         "peMedian": null,
         "peMax": null,
         "peSource": null,
-        "priceRangePosition": 85.1,
+        "priceRangePosition": 84.9,
         "verdict": "Duur (PEG > 3.5)",
         "verdictColor": "red",
         "notes": [
@@ -7479,54 +7459,55 @@
       "conflict": true,
       "conflictNote": "\u26a0\ufe0f CONFLICT: 3 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Overextensie: ver boven 8-EMA {'weekly': 5.0, 'monthly': 15.0} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
-        "last": 11180.0,
-        "rsiDaily": 47.1,
+        "last": 11160.0,
+        "rsiDaily": 46.6,
         "rsiWeekly": 71.3,
-        "ema8d": 11416.4,
-        "ema21d": 11344.97,
+        "ema8d": 11411.96,
+        "ema21d": 11343.15,
         "ema8w": 11218.63,
         "ema21w": 10505.12,
-        "ma50": 11006.31,
-        "ma200": 9364.0,
-        "macdLine": 120.4071,
-        "macdSignal": 164.4686,
+        "ma50": 11005.91,
+        "ma200": 9363.9,
+        "macdLine": 118.8116,
+        "macdSignal": 164.1495,
         "macdLineW": 673.6287,
         "macdSigW": 589.4319,
-        "bollUpper": 11840.75,
-        "bollLower": 10991.25,
-        "volRatio": 0.13,
+        "bollUpper": 11842.06,
+        "bollLower": 10987.94,
+        "volRatio": 0.17,
         "volKnown": true,
         "highVolume": false,
         "volNote": "(laag volume)",
         "fib": {
           "retracements": {
             "0.000": 12367.04,
-            "0.236": 10459.91,
-            "0.382": 9280.07,
-            "0.500": 8326.5,
-            "0.618": 7372.94,
-            "0.705": 6669.88,
-            "0.786": 6015.32,
-            "0.886": 5207.21,
+            "0.236": 9630.63,
+            "0.382": 8250.17,
+            "0.500": 7280.44,
+            "0.618": 6424.68,
+            "0.705": 5858.86,
+            "0.786": 5376.94,
+            "0.886": 4836.31,
             "1.000": 4285.97
           },
           "extensions": {
             "1.000": 11860.0,
-            "1.272": 12774.38,
-            "1.414": 13251.74,
-            "1.618": 13937.52,
-            "1.818": 14609.86,
-            "2.000": 15221.68,
-            "2.618": 17299.2
+            "1.272": 12985.45,
+            "1.414": 13614.82,
+            "1.618": 14572.74,
+            "1.818": 15577.28,
+            "2.000": 16551.46,
+            "2.618": 20337.28
           },
           "goldenPocket": {
-            "low": 6669.88,
-            "high": 7372.94
+            "low": 5858.86,
+            "high": 6424.68
           },
           "swingHigh": 12367.04,
           "swingLow": 4285.97,
           "extSwingHigh": 11860.0,
-          "extSwingLow": 8498.32
+          "extSwingLow": 8498.32,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -7660,8 +7641,8 @@
         "monthlyState": "strong_bear",
         "weeklyBullTurn": false,
         "weeklyBearTurn": true,
-        "fibBuyDepth": 3,
-        "fibZone": "0.786",
+        "fibBuyDepth": 0,
+        "fibZone": null,
         "supportCount": 0,
         "supportFlags": []
       },
@@ -7690,32 +7671,33 @@
         "fib": {
           "retracements": {
             "0.000": 543.0,
-            "0.236": 417.98,
-            "0.382": 340.64,
-            "0.500": 278.13,
-            "0.618": 215.62,
-            "0.705": 169.53,
-            "0.786": 126.62,
-            "0.886": 73.65,
+            "0.236": 226.09,
+            "0.382": 131.48,
+            "0.500": 84.84,
+            "0.618": 54.74,
+            "0.705": 39.63,
+            "0.786": 29.34,
+            "0.886": 20.24,
             "1.000": 13.26
           },
           "extensions": {
             "1.000": 197.0,
-            "1.272": 228.33,
-            "1.414": 244.69,
-            "1.618": 268.19,
-            "1.818": 291.23,
-            "2.000": 312.19,
-            "2.618": 383.38
+            "1.272": 250.19,
+            "1.414": 283.45,
+            "1.618": 339.1,
+            "1.818": 404.26,
+            "2.000": 474.38,
+            "2.618": 816.57
           },
           "goldenPocket": {
-            "low": 169.53,
-            "high": 215.62
+            "low": 39.63,
+            "high": 54.74
           },
           "swingHigh": 543.0,
           "swingLow": 13.26,
           "extSwingHigh": 197.0,
-          "extSwingLow": 81.81
+          "extSwingLow": 81.81,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -7901,32 +7883,33 @@
         "fib": {
           "retracements": {
             "0.000": 317.4,
-            "0.236": 271.31,
-            "0.382": 242.79,
-            "0.500": 219.75,
-            "0.618": 196.7,
-            "0.705": 179.71,
-            "0.786": 163.89,
-            "0.886": 144.36,
+            "0.236": 253.33,
+            "0.382": 220.35,
+            "0.500": 196.86,
+            "0.618": 175.87,
+            "0.705": 161.85,
+            "0.786": 149.79,
+            "0.886": 136.15,
             "1.000": 122.1
           },
           "extensions": {
             "1.000": 317.4,
-            "1.272": 337.65,
-            "1.414": 348.21,
-            "1.618": 363.4,
-            "1.818": 378.28,
-            "2.000": 391.83,
-            "2.618": 437.83
+            "1.272": 341.33,
+            "1.414": 354.53,
+            "1.618": 374.39,
+            "1.818": 394.95,
+            "2.000": 414.63,
+            "2.618": 489.09
           },
           "goldenPocket": {
-            "low": 179.71,
-            "high": 196.7
+            "low": 161.85,
+            "high": 175.87
           },
           "swingHigh": 317.4,
           "swingLow": 122.1,
           "extSwingHigh": 317.4,
-          "extSwingLow": 242.97
+          "extSwingLow": 242.97,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -7964,11 +7947,11 @@
         ]
       },
       "timing": {
-        "score": 31,
+        "score": 28,
         "label": "Slechte instap (wachten)",
         "color": "red",
         "trendScore": 18,
-        "entryScore": 63,
+        "entryScore": 55,
         "trendDaily": 30,
         "trendWeekly": 10,
         "trendMonthly": 20,
@@ -7981,7 +7964,7 @@
         "macdTurning": [
           "monthly"
         ],
-        "baseTimin": 36
+        "baseTimin": 33
       },
       "scores": {
         "quality": 83,
@@ -7992,24 +7975,15 @@
         ],
         "qualityFails": [],
         "valuation": 90,
-        "timing": 31,
+        "timing": 28,
         "marketAdj": 5,
-        "timingEffective": 36,
-        "composite": 66
+        "timingEffective": 33,
+        "composite": 65
       },
       "bagger": null,
       "isBagger": false,
       "currency": "$",
       "signals": [
-        {
-          "type": "BUY",
-          "cat": "FIB",
-          "tf": "1D",
-          "weight": 3,
-          "icon": "\ud83d\udcd0",
-          "title": "Fib 0.500 \u2014 steunzone: $75.19 (1.3% weg)",
-          "detail": "Prijs $76.18 raakt Fibonacci 0.500. Potenti\u00eble koopzone."
-        },
         {
           "type": "SELL",
           "cat": "MACD",
@@ -8056,7 +8030,7 @@
         }
       ],
       "overall": "STERK VERKOOP",
-      "buyWeight": 3,
+      "buyWeight": 0,
       "sellWeight": 11,
       "baseOverall": "STERK VERKOOP",
       "confluence": {
@@ -8068,8 +8042,8 @@
         "supportCount": 0,
         "supportFlags": []
       },
-      "conflict": true,
-      "conflictNote": "\u26a0\ufe0f CONFLICT: 1 koop vs 3 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Confluence VERKOOP: weekly bearish draai + daily downtrend",
+      "conflict": false,
+      "conflictNote": "Confluence VERKOOP: weekly bearish draai + daily downtrend",
       "indicators": {
         "last": 76.18,
         "rsiDaily": 44.2,
@@ -8093,32 +8067,33 @@
         "fib": {
           "retracements": {
             "0.000": 134.12,
-            "0.236": 106.3,
-            "0.382": 89.1,
-            "0.500": 75.19,
-            "0.618": 61.29,
-            "0.705": 51.03,
-            "0.786": 41.49,
-            "0.886": 29.71,
+            "0.236": 81.52,
+            "0.382": 59.92,
+            "0.500": 46.71,
+            "0.618": 36.42,
+            "0.705": 30.31,
+            "0.786": 25.55,
+            "0.886": 20.69,
             "1.000": 16.27
           },
           "extensions": {
             "1.000": 108.95,
-            "1.272": 119.31,
-            "1.414": 124.72,
-            "1.618": 132.49,
-            "1.818": 140.11,
-            "2.000": 147.04,
-            "2.618": 170.58
+            "1.272": 122.47,
+            "1.414": 130.19,
+            "1.618": 142.13,
+            "1.818": 154.9,
+            "2.000": 167.51,
+            "2.618": 218.53
           },
           "goldenPocket": {
-            "low": 51.03,
-            "high": 61.29
+            "low": 30.31,
+            "high": 36.42
           },
           "swingHigh": 134.12,
           "swingLow": 16.27,
           "extSwingHigh": 108.95,
-          "extSwingLow": 70.86
+          "extSwingLow": 70.86,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -8156,11 +8131,11 @@
         ]
       },
       "timing": {
-        "score": 26,
+        "score": 29,
         "label": "Slechte instap (wachten)",
         "color": "red",
         "trendScore": 19,
-        "entryScore": 62,
+        "entryScore": 70,
         "trendDaily": 10,
         "trendWeekly": 35,
         "trendMonthly": 10,
@@ -8174,7 +8149,7 @@
           "weekly",
           "monthly"
         ],
-        "baseTimin": 36
+        "baseTimin": 39
       },
       "scores": {
         "quality": 46,
@@ -8186,15 +8161,24 @@
           "ROE < 12%"
         ],
         "valuation": 8,
-        "timing": 26,
+        "timing": 29,
         "marketAdj": 5,
-        "timingEffective": 31,
-        "composite": 29
+        "timingEffective": 34,
+        "composite": 30
       },
       "bagger": null,
       "isBagger": false,
       "currency": "$",
       "signals": [
+        {
+          "type": "BUY",
+          "cat": "FIB",
+          "tf": "1D",
+          "weight": 3,
+          "icon": "\ud83d\udcd0",
+          "title": "Fib 0.500 \u2014 steunzone: $96.86 (0.6% weg)",
+          "detail": "Prijs $97.48 raakt Fibonacci 0.500. Potenti\u00eble koopzone."
+        },
         {
           "type": "SELL",
           "cat": "MACD",
@@ -8231,17 +8215,10 @@
           "icon": "\u2139\ufe0f",
           "title": "MACD weekly momenteel bullish (crossover enkel vrijdag ge\u00ebvalueerd)",
           "detail": "MACD: -1.732 | Signaal: -1.803"
-        },
-        {
-          "type": "WATCH",
-          "cat": "FIB",
-          "tf": "1D",
-          "icon": "\ud83d\udcd0",
-          "title": "Nadert Fib 0.500 steunzone: $99.62 (2.2% weg)"
         }
       ],
       "overall": "VERKOOP",
-      "buyWeight": 0,
+      "buyWeight": 3,
       "sellWeight": 11,
       "baseOverall": "STERK VERKOOP",
       "confluence": {
@@ -8253,8 +8230,8 @@
         "supportCount": 0,
         "supportFlags": []
       },
-      "conflict": false,
-      "conflictNote": "Monthly sterk bearish (EMA-kruising + MACD bearish & dalend) - koop geblokkeerd",
+      "conflict": true,
+      "conflictNote": "\u26a0\ufe0f CONFLICT: 1 koop vs 3 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Monthly sterk bearish (EMA-kruising + MACD bearish & dalend) - koop geblokkeerd",
       "indicators": {
         "last": 97.48,
         "rsiDaily": 44.5,
@@ -8278,32 +8255,33 @@
         "fib": {
           "retracements": {
             "0.000": 122.91,
-            "0.236": 111.92,
-            "0.382": 105.12,
-            "0.500": 99.62,
-            "0.618": 94.13,
-            "0.705": 90.07,
-            "0.786": 86.3,
-            "0.886": 81.64,
+            "0.236": 109.84,
+            "0.382": 102.46,
+            "0.500": 96.86,
+            "0.618": 91.57,
+            "0.705": 87.85,
+            "0.786": 84.53,
+            "0.886": 80.59,
             "1.000": 76.33
           },
           "extensions": {
             "1.000": 115.1,
-            "1.272": 121.52,
-            "1.414": 124.87,
-            "1.618": 129.69,
-            "1.818": 134.41,
-            "2.000": 138.71,
-            "2.618": 153.3
+            "1.272": 122.51,
+            "1.414": 126.57,
+            "1.618": 132.64,
+            "1.818": 138.87,
+            "2.000": 144.8,
+            "2.618": 166.87
           },
           "goldenPocket": {
-            "low": 90.07,
-            "high": 94.13
+            "low": 87.85,
+            "high": 91.57
           },
           "swingHigh": 122.91,
           "swingLow": 76.33,
           "extSwingHigh": 115.1,
-          "extSwingLow": 91.49
+          "extSwingLow": 91.49,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -8415,13 +8393,6 @@
           "icon": "\u2139\ufe0f",
           "title": "MACD weekly momenteel bearish (crossover enkel vrijdag ge\u00ebvalueerd)",
           "detail": "MACD: -10.314 | Signaal: -6.818"
-        },
-        {
-          "type": "WATCH",
-          "cat": "FIB",
-          "tf": "1D",
-          "icon": "\ud83d\udcd0",
-          "title": "Nadert Fib 0.236 steunzone: $1031.47 (2.2% weg)"
         }
       ],
       "overall": "STERK VERKOOP",
@@ -8462,32 +8433,33 @@
         "fib": {
           "retracements": {
             "0.000": 1207.31,
-            "0.236": 1031.47,
-            "0.382": 922.69,
-            "0.500": 834.78,
-            "0.618": 746.86,
-            "0.705": 682.04,
-            "0.786": 621.69,
-            "0.886": 547.18,
+            "0.236": 962.54,
+            "0.382": 836.65,
+            "0.500": 747.04,
+            "0.618": 667.03,
+            "0.705": 613.58,
+            "0.786": 567.67,
+            "0.886": 515.71,
             "1.000": 462.24
           },
           "extensions": {
             "1.000": 1174.82,
-            "1.272": 1244.84,
-            "1.414": 1281.4,
-            "1.618": 1333.91,
-            "1.818": 1385.4,
-            "2.000": 1432.25,
-            "2.618": 1591.34
+            "1.272": 1256.58,
+            "1.414": 1301.49,
+            "1.618": 1368.85,
+            "1.818": 1438.26,
+            "2.000": 1504.49,
+            "2.618": 1752.96
           },
           "goldenPocket": {
-            "low": 682.04,
-            "high": 746.86
+            "low": 613.58,
+            "high": 667.03
           },
           "swingHigh": 1207.31,
           "swingLow": 462.24,
           "extSwingHigh": 1174.82,
-          "extSwingLow": 917.39
+          "extSwingLow": 917.39,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -8525,11 +8497,11 @@
         ]
       },
       "timing": {
-        "score": 47,
-        "label": "Neutrale setup",
-        "color": "neutral",
+        "score": 44,
+        "label": "Zwakke setup",
+        "color": "orange",
         "trendScore": 29,
-        "entryScore": 100,
+        "entryScore": 92,
         "trendDaily": 30,
         "trendWeekly": 10,
         "trendMonthly": 44,
@@ -8543,7 +8515,7 @@
           "weekly",
           "monthly"
         ],
-        "baseTimin": 57
+        "baseTimin": 54
       },
       "scores": {
         "quality": 67,
@@ -8555,10 +8527,10 @@
           "ROE < 12%"
         ],
         "valuation": 62,
-        "timing": 47,
+        "timing": 44,
         "marketAdj": 5,
-        "timingEffective": 52,
-        "composite": 60
+        "timingEffective": 49,
+        "composite": 58
       },
       "bagger": null,
       "isBagger": false,
@@ -8626,8 +8598,8 @@
         "monthlyState": "light_bear",
         "weeklyBullTurn": false,
         "weeklyBearTurn": true,
-        "fibBuyDepth": 1,
-        "fibZone": "0.618",
+        "fibBuyDepth": 0,
+        "fibZone": null,
         "supportCount": 1,
         "supportFlags": [
           "onderste weekly-Bollinger (oversold bounce)"
@@ -8658,32 +8630,33 @@
         "fib": {
           "retracements": {
             "0.000": 190.92,
-            "0.236": 158.74,
-            "0.382": 138.84,
-            "0.500": 122.75,
-            "0.618": 106.67,
-            "0.705": 94.81,
-            "0.786": 83.76,
-            "0.886": 70.13,
+            "0.236": 142.08,
+            "0.382": 118.34,
+            "0.500": 102.09,
+            "0.618": 88.07,
+            "0.705": 78.98,
+            "0.786": 71.36,
+            "0.886": 62.97,
             "1.000": 54.59
           },
           "extensions": {
             "1.000": 179.45,
-            "1.272": 203.24,
-            "1.414": 215.66,
-            "1.618": 233.5,
-            "1.818": 251.0,
-            "2.000": 266.91,
-            "2.618": 320.97
+            "1.272": 215.22,
+            "1.414": 236.64,
+            "1.618": 271.2,
+            "1.818": 309.98,
+            "2.000": 350.07,
+            "2.618": 529.06
           },
           "goldenPocket": {
-            "low": 94.81,
-            "high": 106.67
+            "low": 78.98,
+            "high": 88.07
           },
           "swingHigh": 190.92,
           "swingLow": 54.59,
           "extSwingHigh": 179.45,
-          "extSwingLow": 91.99
+          "extSwingLow": 91.99,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -8844,32 +8817,33 @@
         "fib": {
           "retracements": {
             "0.000": 6063.88,
-            "0.236": 5063.35,
-            "0.382": 4444.38,
-            "0.500": 3944.11,
-            "0.618": 3443.85,
-            "0.705": 3075.01,
-            "0.786": 2731.61,
-            "0.886": 2307.66,
+            "0.236": 4567.12,
+            "0.382": 3832.51,
+            "0.500": 3326.05,
+            "0.618": 2886.53,
+            "0.705": 2600.12,
+            "0.786": 2359.06,
+            "0.886": 2092.07,
             "1.000": 1824.35
           },
           "extensions": {
             "1.000": 6063.88,
-            "1.272": 6699.83,
-            "1.414": 7031.83,
-            "1.618": 7508.8,
-            "1.818": 7976.41,
-            "2.000": 8401.93,
-            "2.618": 9846.85
+            "1.272": 6922.87,
+            "1.414": 7418.62,
+            "1.618": 8193.61,
+            "1.818": 9031.94,
+            "2.000": 9869.13,
+            "2.618": 13335.33
           },
           "goldenPocket": {
-            "low": 3075.01,
-            "high": 3443.85
+            "low": 2600.12,
+            "high": 2886.53
           },
           "swingHigh": 6063.88,
           "swingLow": 1824.35,
           "extSwingHigh": 6063.88,
-          "extSwingLow": 3725.82
+          "extSwingLow": 3725.82,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -9000,13 +8974,6 @@
           "icon": "\u2139\ufe0f",
           "title": "MACD weekly momenteel bullish (crossover enkel vrijdag ge\u00ebvalueerd)",
           "detail": "MACD: 1130.805 | Signaal: 870.188"
-        },
-        {
-          "type": "WATCH",
-          "cat": "FIB",
-          "tf": "1D",
-          "icon": "\ud83d\udcd0",
-          "title": "Nadert Fib 0.236 steunzone: $7402.96 (2.5% weg)"
         }
       ],
       "overall": "CAUTION (overextended)",
@@ -9037,7 +9004,7 @@
         "macdLine": 343.9425,
         "macdSignal": 365.6484,
         "macdLineW": 1130.8051,
-        "macdSigW": 870.1877,
+        "macdSigW": 870.1878,
         "bollUpper": 9053.2,
         "bollLower": 6309.8,
         "volRatio": 1.15,
@@ -9047,32 +9014,33 @@
         "fib": {
           "retracements": {
             "0.000": 9150.0,
-            "0.236": 7402.96,
-            "0.382": 6322.16,
-            "0.500": 5448.64,
-            "0.618": 4575.12,
-            "0.705": 3931.09,
-            "0.786": 3331.47,
-            "0.886": 2591.19,
+            "0.236": 6190.47,
+            "0.382": 4861.17,
+            "0.500": 3998.46,
+            "0.618": 3288.85,
+            "0.705": 2847.64,
+            "0.786": 2490.24,
+            "0.886": 2110.26,
             "1.000": 1747.29
           },
           "extensions": {
             "1.000": 9150.0,
-            "1.272": 10750.19,
-            "1.414": 11585.59,
-            "1.618": 12785.73,
-            "1.818": 13962.34,
-            "2.000": 15033.06,
-            "2.618": 18668.79
+            "1.272": 12108.24,
+            "1.414": 14015.05,
+            "1.618": 17291.78,
+            "1.818": 21246.91,
+            "2.000": 25627.17,
+            "2.618": 48430.54
           },
           "goldenPocket": {
-            "low": 3931.09,
-            "high": 4575.12
+            "low": 2847.64,
+            "high": 3288.85
           },
           "swingHigh": 9150.0,
           "swingLow": 1747.29,
           "extSwingHigh": 9150.0,
-          "extSwingLow": 3266.94
+          "extSwingLow": 3266.94,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -9110,11 +9078,11 @@
         ]
       },
       "timing": {
-        "score": 51,
+        "score": 47,
         "label": "Neutrale setup",
         "color": "neutral",
         "trendScore": 81,
-        "entryScore": 70,
+        "entryScore": 62,
         "trendDaily": 44,
         "trendWeekly": 90,
         "trendMonthly": 90,
@@ -9128,7 +9096,7 @@
           "daily",
           "weekly"
         ],
-        "baseTimin": 77
+        "baseTimin": 73
       },
       "scores": {
         "quality": 74,
@@ -9139,10 +9107,10 @@
         ],
         "qualityFails": [],
         "valuation": 18,
-        "timing": 51,
+        "timing": 47,
         "marketAdj": 5,
-        "timingEffective": 56,
-        "composite": 50
+        "timingEffective": 52,
+        "composite": 48
       },
       "bagger": null,
       "isBagger": false,
@@ -9156,15 +9124,6 @@
           "icon": "\ud83d\udd34",
           "title": "MACD bearish crossover (daily) (laag volume)",
           "detail": "MACD 846.362 kruist onder signaal 1092.955."
-        },
-        {
-          "type": "BUY",
-          "cat": "FIB",
-          "tf": "1D",
-          "weight": 3,
-          "icon": "\ud83d\udcd0",
-          "title": "Fib 0.236 \u2014 steunzone: $74633.91 (0.1% weg)",
-          "detail": "Prijs $74700.00 raakt Fibonacci 0.236. Potenti\u00eble koopzone."
         },
         {
           "type": "BUY",
@@ -9212,7 +9171,7 @@
         }
       ],
       "overall": "CAUTION (overextended)",
-      "buyWeight": 14,
+      "buyWeight": 11,
       "sellWeight": 2,
       "baseOverall": "STERK KOOP",
       "confluence": {
@@ -9225,7 +9184,7 @@
         "supportFlags": []
       },
       "conflict": true,
-      "conflictNote": "\u26a0\ufe0f CONFLICT: 4 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Overextensie: ver boven 8-EMA {'weekly': 4.7, 'monthly': 18.2} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
+      "conflictNote": "\u26a0\ufe0f CONFLICT: 3 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Overextensie: ver boven 8-EMA {'weekly': 4.7, 'monthly': 18.2} - rijp voor terugval. Geen duidelijke confluence - signaal getemperd",
       "indicators": {
         "last": 74700.0,
         "rsiDaily": 43.0,
@@ -9249,32 +9208,33 @@
         "fib": {
           "retracements": {
             "0.000": 84170.0,
-            "0.236": 74633.91,
-            "0.382": 68734.47,
-            "0.500": 63966.42,
-            "0.618": 59198.38,
-            "0.705": 55682.96,
-            "0.786": 52409.98,
-            "0.886": 48369.26,
-            "1.000": 43762.85
+            "0.236": 72130.86,
+            "0.382": 65561.6,
+            "0.500": 60692.0,
+            "0.618": 56184.09,
+            "0.705": 53076.32,
+            "0.786": 50337.61,
+            "0.886": 47150.62,
+            "1.000": 43762.84
           },
           "extensions": {
             "1.000": 84170.0,
-            "1.272": 93107.44,
-            "1.414": 97773.3,
-            "1.618": 104476.38,
-            "1.818": 111048.02,
-            "2.000": 117028.22,
-            "2.618": 137334.6
+            "1.272": 96298.84,
+            "1.414": 103310.05,
+            "1.618": 114285.3,
+            "1.818": 126176.49,
+            "2.000": 138069.44,
+            "2.618": 187469.49
           },
           "goldenPocket": {
-            "low": 55682.96,
-            "high": 59198.38
+            "low": 53076.32,
+            "high": 56184.09
           },
           "swingHigh": 84170.0,
-          "swingLow": 43762.85,
+          "swingLow": 43762.84,
           "extSwingHigh": 84170.0,
-          "extSwingLow": 51311.78
+          "extSwingLow": 51311.78,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -9312,11 +9272,11 @@
         ]
       },
       "timing": {
-        "score": 49,
+        "score": 46,
         "label": "Neutrale setup",
         "color": "neutral",
         "trendScore": 67,
-        "entryScore": 88,
+        "entryScore": 80,
         "trendDaily": 10,
         "trendWeekly": 70,
         "trendMonthly": 90,
@@ -9331,7 +9291,7 @@
           "weekly",
           "monthly"
         ],
-        "baseTimin": 75
+        "baseTimin": 72
       },
       "scores": {
         "quality": 52,
@@ -9343,10 +9303,10 @@
           "ROE < 12%"
         ],
         "valuation": 8,
-        "timing": 49,
+        "timing": 46,
         "marketAdj": 5,
-        "timingEffective": 54,
-        "composite": 40
+        "timingEffective": 51,
+        "composite": 38
       },
       "bagger": null,
       "isBagger": false,
@@ -9360,15 +9320,6 @@
           "icon": "\ud83c\udfaf",
           "title": "Prijs raakt Bollinger onderband ($6720.23) (laag volume)",
           "detail": "Statistische oversold conditie."
-        },
-        {
-          "type": "BUY",
-          "cat": "FIB",
-          "tf": "1D",
-          "weight": 3,
-          "icon": "\ud83d\udcd0",
-          "title": "Fib 0.382 \u2014 steunzone: $6623.36 (1.1% weg)",
-          "detail": "Prijs $6700.00 raakt Fibonacci 0.382. Potenti\u00eble koopzone."
         },
         {
           "type": "BUY",
@@ -9413,10 +9364,17 @@
           "icon": "\u2139\ufe0f",
           "title": "MACD weekly momenteel bearish (crossover enkel vrijdag ge\u00ebvalueerd)",
           "detail": "MACD: 482.404 | Signaal: 509.466"
+        },
+        {
+          "type": "WATCH",
+          "cat": "FIB",
+          "tf": "1D",
+          "icon": "\ud83d\udcd0",
+          "title": "Nadert Fib 0.236 steunzone: $6858.77 (2.4% weg)"
         }
       ],
       "overall": "KOOP",
-      "buyWeight": 16,
+      "buyWeight": 13,
       "sellWeight": 0,
       "baseOverall": "STERK KOOP",
       "confluence": {
@@ -9453,32 +9411,33 @@
         "fib": {
           "retracements": {
             "0.000": 8880.0,
-            "0.236": 7485.84,
-            "0.382": 6623.36,
-            "0.500": 5926.28,
-            "0.618": 5229.2,
-            "0.705": 4715.25,
-            "0.786": 4236.75,
-            "0.886": 3646.0,
+            "0.236": 6858.77,
+            "0.382": 5845.95,
+            "0.500": 5137.73,
+            "0.618": 4515.32,
+            "0.705": 4105.24,
+            "0.786": 3756.99,
+            "0.886": 3367.54,
             "1.000": 2972.56
           },
           "extensions": {
             "1.000": 8880.0,
-            "1.272": 9866.82,
-            "1.414": 10381.99,
-            "1.618": 11122.1,
-            "1.818": 11847.7,
-            "2.000": 12508.0,
-            "2.618": 14750.1
+            "1.272": 10243.61,
+            "1.414": 11036.76,
+            "1.618": 12284.9,
+            "1.818": 13645.49,
+            "2.000": 15014.17,
+            "2.618": 20771.11
           },
           "goldenPocket": {
-            "low": 4715.25,
-            "high": 5229.2
+            "low": 4105.24,
+            "high": 4515.32
           },
           "swingHigh": 8880.0,
           "swingLow": 2972.56,
           "extSwingHigh": 8880.0,
-          "extSwingLow": 5252.0
+          "extSwingLow": 5252.0,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -9516,11 +9475,11 @@
         ]
       },
       "timing": {
-        "score": 51,
+        "score": 48,
         "label": "Neutrale setup",
         "color": "neutral",
         "trendScore": 82,
-        "entryScore": 70,
+        "entryScore": 62,
         "trendDaily": 49,
         "trendWeekly": 90,
         "trendMonthly": 90,
@@ -9533,7 +9492,7 @@
         "macdTurning": [
           "daily"
         ],
-        "baseTimin": 77
+        "baseTimin": 74
       },
       "scores": {
         "quality": 56,
@@ -9545,24 +9504,15 @@
           "ROE < 12%"
         ],
         "valuation": 8,
-        "timing": 51,
+        "timing": 48,
         "marketAdj": 5,
-        "timingEffective": 56,
-        "composite": 42
+        "timingEffective": 53,
+        "composite": 40
       },
       "bagger": null,
       "isBagger": false,
       "currency": "\u00a5",
       "signals": [
-        {
-          "type": "BUY",
-          "cat": "FIB",
-          "tf": "1D",
-          "weight": 3,
-          "icon": "\ud83d\udcd0",
-          "title": "Fib 0.236 \u2014 steunzone: $6645.74 (0.1% weg)",
-          "detail": "Prijs $6636.00 raakt Fibonacci 0.236. Potenti\u00eble koopzone."
-        },
         {
           "type": "BUY",
           "cat": "MACD",
@@ -9609,7 +9559,7 @@
         }
       ],
       "overall": "CAUTION (overextended)",
-      "buyWeight": 14,
+      "buyWeight": 11,
       "sellWeight": 0,
       "baseOverall": "STERK KOOP",
       "confluence": {
@@ -9646,32 +9596,33 @@
         "fib": {
           "retracements": {
             "0.000": 7915.0,
-            "0.236": 6645.74,
-            "0.382": 5860.53,
-            "0.500": 5225.9,
-            "0.618": 4591.27,
-            "0.705": 4123.37,
-            "0.786": 3687.73,
-            "0.886": 3149.91,
+            "0.236": 6051.01,
+            "0.382": 5124.84,
+            "0.500": 4480.93,
+            "0.618": 3917.93,
+            "0.705": 3548.66,
+            "0.786": 3236.21,
+            "0.886": 2888.16,
             "1.000": 2536.8
           },
           "extensions": {
             "1.000": 7915.0,
-            "1.272": 8983.42,
-            "1.414": 9541.19,
-            "1.618": 10342.5,
-            "1.818": 11128.1,
-            "2.000": 11843.0,
-            "2.618": 14270.5
+            "1.272": 9537.92,
+            "1.414": 10513.37,
+            "1.618": 12091.89,
+            "1.818": 13869.32,
+            "2.000": 15712.87,
+            "2.618": 24004.84
           },
           "goldenPocket": {
-            "low": 4123.37,
-            "high": 4591.27
+            "low": 3548.66,
+            "high": 3917.93
           },
           "swingHigh": 7915.0,
           "swingLow": 2536.8,
           "extSwingHigh": 7915.0,
-          "extSwingLow": 3987.0
+          "extSwingLow": 3987.0,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -9843,32 +9794,33 @@
         "fib": {
           "retracements": {
             "0.000": 9074.0,
-            "0.236": 7174.46,
-            "0.382": 5999.32,
-            "0.500": 5049.55,
-            "0.618": 4099.78,
-            "0.705": 3399.53,
-            "0.786": 2747.57,
-            "0.886": 1942.68,
+            "0.236": 5423.75,
+            "0.382": 3944.88,
+            "0.500": 3049.89,
+            "0.618": 2357.95,
+            "0.705": 1950.49,
+            "0.786": 1634.68,
+            "0.886": 1314.41,
             "1.000": 1025.11
           },
           "extensions": {
             "1.000": 9074.0,
-            "1.272": 10628.12,
-            "1.414": 11439.47,
-            "1.618": 12605.06,
-            "1.818": 13747.8,
-            "2.000": 14787.69,
-            "2.618": 18318.75
+            "1.272": 11888.99,
+            "1.414": 13690.09,
+            "1.618": 16765.48,
+            "1.818": 20450.31,
+            "2.000": 24502.94,
+            "2.618": 45272.6
           },
           "goldenPocket": {
-            "low": 3399.53,
-            "high": 4099.78
+            "low": 1950.49,
+            "high": 2357.95
           },
           "swingHigh": 9074.0,
           "swingLow": 1025.11,
           "extSwingHigh": 9074.0,
-          "extSwingLow": 3360.31
+          "extSwingLow": 3360.31,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -10035,32 +9987,33 @@
         "fib": {
           "retracements": {
             "0.000": 497.36,
-            "0.236": 421.91,
-            "0.382": 375.23,
-            "0.500": 337.51,
-            "0.618": 299.78,
-            "0.705": 271.97,
-            "0.786": 246.08,
-            "0.886": 214.11,
+            "0.236": 390.08,
+            "0.382": 335.65,
+            "0.500": 297.26,
+            "0.618": 263.25,
+            "0.705": 240.7,
+            "0.786": 221.44,
+            "0.886": 199.78,
             "1.000": 177.66
           },
           "extensions": {
             "1.000": 497.36,
-            "1.272": 538.4,
-            "1.414": 559.83,
-            "1.618": 590.62,
-            "1.818": 620.8,
-            "2.000": 648.26,
-            "2.618": 741.51
+            "1.272": 548.76,
+            "1.414": 577.66,
+            "1.618": 621.88,
+            "1.818": 668.51,
+            "2.000": 713.98,
+            "2.618": 892.74
           },
           "goldenPocket": {
-            "low": 271.97,
-            "high": 299.78
+            "low": 240.7,
+            "high": 263.25
           },
           "swingHigh": 497.36,
           "swingLow": 177.66,
           "extSwingHigh": 497.36,
-          "extSwingLow": 346.46
+          "extSwingLow": 346.46,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -10228,32 +10181,33 @@
         "fib": {
           "retracements": {
             "0.000": 487.91,
-            "0.236": 388.22,
-            "0.382": 326.55,
-            "0.500": 276.71,
-            "0.618": 226.86,
-            "0.705": 190.11,
-            "0.786": 155.9,
-            "0.886": 113.66,
+            "0.236": 303.76,
+            "0.382": 226.57,
+            "0.500": 178.77,
+            "0.618": 141.06,
+            "0.705": 118.45,
+            "0.786": 100.67,
+            "0.886": 82.35,
             "1.000": 65.5
           },
           "extensions": {
             "1.000": 487.91,
-            "1.272": 562.83,
-            "1.414": 601.94,
-            "1.618": 658.13,
-            "1.818": 713.22,
-            "2.000": 763.35,
-            "2.618": 933.57
+            "1.272": 611.71,
+            "1.414": 688.35,
+            "1.618": 815.57,
+            "1.818": 963.1,
+            "2.000": 1120.42,
+            "2.618": 1872.85
           },
           "goldenPocket": {
-            "low": 190.11,
-            "high": 226.86
+            "low": 118.45,
+            "high": 141.06
           },
           "swingHigh": 487.91,
           "swingLow": 65.5,
           "extSwingHigh": 487.91,
-          "extSwingLow": 212.47
+          "extSwingLow": 212.47,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -10413,32 +10367,33 @@
         "fib": {
           "retracements": {
             "0.000": 616.0,
-            "0.236": 513.12,
-            "0.382": 449.47,
-            "0.500": 398.04,
-            "0.618": 346.6,
-            "0.705": 308.67,
-            "0.786": 273.36,
-            "0.886": 229.77,
+            "0.236": 460.81,
+            "0.382": 385.07,
+            "0.500": 333.05,
+            "0.618": 288.06,
+            "0.705": 258.83,
+            "0.786": 234.29,
+            "0.886": 207.17,
             "1.000": 180.07
           },
           "extensions": {
             "1.000": 603.88,
-            "1.272": 660.24,
-            "1.414": 689.66,
-            "1.618": 731.93,
-            "1.818": 773.37,
-            "2.000": 811.08,
-            "2.618": 939.13
+            "1.272": 677.01,
+            "1.414": 718.64,
+            "1.618": 782.96,
+            "1.818": 851.62,
+            "2.000": 919.31,
+            "2.618": 1191.93
           },
           "goldenPocket": {
-            "low": 308.67,
-            "high": 346.6
+            "low": 258.83,
+            "high": 288.06
           },
           "swingHigh": 616.0,
           "swingLow": 180.07,
           "extSwingHigh": 603.88,
-          "extSwingLow": 396.68
+          "extSwingLow": 396.68,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -10607,32 +10562,33 @@
         "fib": {
           "retracements": {
             "0.000": 72.88,
-            "0.236": 60.98,
-            "0.382": 53.62,
-            "0.500": 47.67,
-            "0.618": 41.72,
-            "0.705": 37.33,
-            "0.786": 33.25,
-            "0.886": 28.21,
+            "0.236": 55.2,
+            "0.382": 46.49,
+            "0.500": 40.46,
+            "0.618": 35.21,
+            "0.705": 31.78,
+            "0.786": 28.89,
+            "0.886": 25.68,
             "1.000": 22.46
           },
           "extensions": {
             "1.000": 72.88,
-            "1.272": 82.6,
-            "1.414": 87.67,
-            "1.618": 94.96,
-            "1.818": 102.1,
-            "2.000": 108.61,
-            "2.618": 130.68
+            "1.272": 87.54,
+            "1.414": 96.33,
+            "1.618": 110.52,
+            "1.818": 126.46,
+            "2.000": 142.96,
+            "2.618": 216.78
           },
           "goldenPocket": {
-            "low": 37.33,
-            "high": 41.72
+            "low": 31.78,
+            "high": 35.21
           },
           "swingHigh": 72.88,
           "swingLow": 22.46,
           "extSwingHigh": 72.88,
-          "extSwingLow": 37.15
+          "extSwingLow": 37.15,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -10670,11 +10626,11 @@
         ]
       },
       "timing": {
-        "score": 49,
+        "score": 52,
         "label": "Neutrale setup",
         "color": "neutral",
         "trendScore": 76,
-        "entryScore": 70,
+        "entryScore": 78,
         "trendDaily": 44,
         "trendWeekly": 90,
         "trendMonthly": 80,
@@ -10688,7 +10644,7 @@
           "daily",
           "weekly"
         ],
-        "baseTimin": 74
+        "baseTimin": 77
       },
       "scores": {
         "quality": 50,
@@ -10696,10 +10652,10 @@
         "qualityReasons": [],
         "qualityFails": [],
         "valuation": 8,
-        "timing": 49,
+        "timing": 52,
         "marketAdj": 5,
-        "timingEffective": 54,
-        "composite": 39
+        "timingEffective": 57,
+        "composite": 40
       },
       "bagger": null,
       "isBagger": false,
@@ -10772,7 +10728,7 @@
           "cat": "FIB",
           "tf": "1D",
           "icon": "\ud83d\udcd0",
-          "title": "Nadert Fib 0.382 steunzone: $143.74 (2.8% weg)"
+          "title": "Nadert Fib 0.236 steunzone: $150.61 (1.9% weg)"
         }
       ],
       "overall": "CAUTION (overextended)",
@@ -10813,32 +10769,33 @@
         "fib": {
           "retracements": {
             "0.000": 171.85,
-            "0.236": 154.49,
-            "0.382": 143.74,
-            "0.500": 135.06,
-            "0.618": 126.38,
-            "0.705": 119.98,
-            "0.786": 114.02,
-            "0.886": 106.66,
+            "0.236": 150.61,
+            "0.382": 138.81,
+            "0.500": 129.95,
+            "0.618": 121.66,
+            "0.705": 115.88,
+            "0.786": 110.76,
+            "0.886": 104.74,
             "1.000": 98.27
           },
           "extensions": {
             "1.000": 171.85,
-            "1.272": 188.62,
-            "1.414": 197.37,
-            "1.618": 209.95,
-            "1.818": 222.28,
-            "2.000": 233.5,
-            "2.618": 271.6
+            "1.272": 193.93,
+            "1.414": 206.56,
+            "1.618": 226.15,
+            "1.818": 247.17,
+            "2.000": 267.99,
+            "2.618": 352.67
           },
           "goldenPocket": {
-            "low": 119.98,
-            "high": 126.38
+            "low": 115.88,
+            "high": 121.66
           },
           "swingHigh": 171.85,
           "swingLow": 98.27,
           "extSwingHigh": 171.85,
-          "extSwingLow": 110.2
+          "extSwingLow": 110.2,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -11028,32 +10985,33 @@
         "fib": {
           "retracements": {
             "0.000": 84.64,
-            "0.236": 65.38,
-            "0.382": 53.47,
-            "0.500": 43.84,
-            "0.618": 34.21,
-            "0.705": 27.11,
-            "0.786": 20.5,
-            "0.886": 12.34,
+            "0.236": 38.6,
+            "0.382": 23.75,
+            "0.500": 16.04,
+            "0.618": 10.83,
+            "0.705": 8.11,
+            "0.786": 6.19,
+            "0.886": 4.44,
             "1.000": 3.04
           },
           "extensions": {
             "1.000": 73.65,
-            "1.272": 86.64,
-            "1.414": 93.42,
-            "1.618": 103.17,
-            "1.818": 112.72,
-            "2.000": 121.41,
-            "2.618": 150.93
+            "1.272": 97.88,
+            "1.414": 113.54,
+            "1.618": 140.53,
+            "1.818": 173.21,
+            "2.000": 209.51,
+            "2.618": 399.77
           },
           "goldenPocket": {
-            "low": 27.11,
-            "high": 34.21
+            "low": 8.11,
+            "high": 10.83
           },
           "swingHigh": 84.64,
           "swingLow": 3.04,
           "extSwingHigh": 73.65,
-          "extSwingLow": 25.89
+          "extSwingLow": 25.89,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -11211,8 +11169,8 @@
         "monthlyState": "light_bear",
         "weeklyBullTurn": false,
         "weeklyBearTurn": false,
-        "fibBuyDepth": 2,
-        "fibZone": "0.705",
+        "fibBuyDepth": 0,
+        "fibZone": null,
         "supportCount": 0,
         "supportFlags": []
       },
@@ -11241,32 +11199,33 @@
         "fib": {
           "retracements": {
             "0.000": 58.15,
-            "0.236": 44.51,
-            "0.382": 36.07,
-            "0.500": 29.26,
-            "0.618": 22.44,
-            "0.705": 17.41,
-            "0.786": 12.73,
-            "0.886": 6.95,
+            "0.236": 17.51,
+            "0.382": 8.34,
+            "0.500": 4.58,
+            "0.618": 2.51,
+            "0.705": 1.61,
+            "0.786": 1.07,
+            "0.886": 0.64,
             "1.000": 0.36
           },
           "extensions": {
             "1.000": 28.06,
-            "1.272": 32.28,
-            "1.414": 34.49,
-            "1.618": 37.66,
-            "1.818": 40.76,
-            "2.000": 43.59,
-            "2.618": 53.19
+            "1.272": 34.94,
+            "1.414": 39.18,
+            "1.618": 46.18,
+            "1.818": 54.26,
+            "2.000": 62.84,
+            "2.618": 103.42
           },
           "goldenPocket": {
-            "low": 17.41,
-            "high": 22.44
+            "low": 1.61,
+            "high": 2.51
           },
           "swingHigh": 58.15,
           "swingLow": 0.36,
           "extSwingHigh": 28.06,
-          "extSwingLow": 12.53
+          "extSwingLow": 12.53,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -11448,32 +11407,33 @@
         "fib": {
           "retracements": {
             "0.000": 46.75,
-            "0.236": 35.81,
-            "0.382": 29.04,
-            "0.500": 23.57,
-            "0.618": 18.1,
-            "0.705": 14.07,
-            "0.786": 10.32,
-            "0.886": 5.68,
+            "0.236": 15.16,
+            "0.382": 7.56,
+            "0.500": 4.3,
+            "0.618": 2.45,
+            "0.705": 1.62,
+            "0.786": 1.1,
+            "0.886": 0.68,
             "1.000": 0.4
           },
           "extensions": {
             "1.000": 32.15,
-            "1.272": 37.43,
-            "1.414": 40.19,
-            "1.618": 44.15,
-            "1.818": 48.03,
-            "2.000": 51.56,
-            "2.618": 63.55
+            "1.272": 41.35,
+            "1.414": 47.16,
+            "1.618": 56.95,
+            "1.818": 68.53,
+            "2.000": 81.09,
+            "2.618": 143.64
           },
           "goldenPocket": {
-            "low": 14.07,
-            "high": 18.1
+            "low": 1.62,
+            "high": 2.45
           },
           "swingHigh": 46.75,
           "swingLow": 0.4,
           "extSwingHigh": 32.15,
-          "extSwingLow": 12.75
+          "extSwingLow": 12.75,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -11513,11 +11473,11 @@
         "notes": []
       },
       "timing": {
-        "score": 47,
-        "label": "Neutrale setup",
-        "color": "neutral",
+        "score": 44,
+        "label": "Zwakke setup",
+        "color": "orange",
         "trendScore": 38,
-        "entryScore": 78,
+        "entryScore": 70,
         "trendDaily": 10,
         "trendWeekly": 15,
         "trendMonthly": 69,
@@ -11530,7 +11490,7 @@
         "macdTurning": [
           "daily"
         ],
-        "baseTimin": 54
+        "baseTimin": 51
       },
       "scores": {
         "quality": 34,
@@ -11543,10 +11503,10 @@
           "marge < 8%"
         ],
         "valuation": 50,
-        "timing": 47,
+        "timing": 44,
         "marketAdj": 5,
-        "timingEffective": 52,
-        "composite": 46
+        "timingEffective": 49,
+        "composite": 45
       },
       "bagger": {
         "score": 46,
@@ -11602,13 +11562,6 @@
           "tf": "1D",
           "icon": "\ud83d\udcca",
           "title": "Nadert Bollinger onderband ($85.70)"
-        },
-        {
-          "type": "WATCH",
-          "cat": "FIB",
-          "tf": "1D",
-          "icon": "\ud83d\udcd0",
-          "title": "Nadert Fib 0.618 steunzone: $86.72 (1.8% weg)"
         }
       ],
       "overall": "LICHT KOOP",
@@ -11619,8 +11572,8 @@
         "monthlyState": "neutral",
         "weeklyBullTurn": false,
         "weeklyBearTurn": true,
-        "fibBuyDepth": 1,
-        "fibZone": "0.618",
+        "fibBuyDepth": 0,
+        "fibZone": null,
         "supportCount": 0,
         "supportFlags": []
       },
@@ -11649,32 +11602,33 @@
         "fib": {
           "retracements": {
             "0.000": 161.0,
-            "0.236": 132.63,
-            "0.382": 115.08,
-            "0.500": 100.9,
-            "0.618": 86.72,
-            "0.705": 76.26,
-            "0.786": 66.52,
-            "0.886": 54.5,
+            "0.236": 116.45,
+            "0.382": 95.3,
+            "0.500": 81.05,
+            "0.618": 68.93,
+            "0.705": 61.17,
+            "0.786": 54.73,
+            "0.886": 47.71,
             "1.000": 40.8
           },
           "extensions": {
             "1.000": 156.4,
-            "1.272": 175.93,
-            "1.414": 186.13,
-            "1.618": 200.77,
-            "1.818": 215.13,
-            "2.000": 228.2,
-            "2.618": 272.57
+            "1.272": 184.85,
+            "1.414": 201.71,
+            "1.618": 228.64,
+            "1.818": 258.54,
+            "2.000": 289.14,
+            "2.618": 422.69
           },
           "goldenPocket": {
-            "low": 76.26,
-            "high": 86.72
+            "low": 61.17,
+            "high": 68.93
           },
           "swingHigh": 161.0,
           "swingLow": 40.8,
           "extSwingHigh": 156.4,
-          "extSwingLow": 84.6
+          "extSwingLow": 84.6,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -11840,32 +11794,33 @@
         "fib": {
           "retracements": {
             "0.000": 87.88,
-            "0.236": 69.21,
-            "0.382": 57.65,
-            "0.500": 48.31,
-            "0.618": 38.98,
-            "0.705": 32.09,
-            "0.786": 25.68,
-            "0.886": 17.77,
+            "0.236": 50.99,
+            "0.382": 36.41,
+            "0.500": 27.73,
+            "0.618": 21.12,
+            "0.705": 17.28,
+            "0.786": 14.34,
+            "0.886": 11.38,
             "1.000": 8.75
           },
           "extensions": {
             "1.000": 73.97,
-            "1.272": 83.7,
-            "1.414": 88.78,
-            "1.618": 96.09,
-            "1.818": 103.24,
-            "2.000": 109.76,
-            "2.618": 131.87
+            "1.272": 88.54,
+            "1.414": 97.26,
+            "1.618": 111.31,
+            "1.818": 127.04,
+            "2.000": 143.29,
+            "2.618": 215.62
           },
           "goldenPocket": {
-            "low": 32.09,
-            "high": 38.98
+            "low": 17.28,
+            "high": 21.12
           },
           "swingHigh": 87.88,
           "swingLow": 8.75,
           "extSwingHigh": 73.97,
-          "extSwingLow": 38.19
+          "extSwingLow": 38.19,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -12004,8 +11959,8 @@
         "monthlyState": "neutral",
         "weeklyBullTurn": false,
         "weeklyBearTurn": true,
-        "fibBuyDepth": 3,
-        "fibZone": "0.786",
+        "fibBuyDepth": 0,
+        "fibZone": null,
         "supportCount": 1,
         "supportFlags": [
           "onderste weekly-Bollinger (oversold bounce)"
@@ -12036,32 +11991,33 @@
         "fib": {
           "retracements": {
             "0.000": 24.35,
-            "0.236": 19.02,
-            "0.382": 15.72,
-            "0.500": 13.06,
-            "0.618": 10.4,
-            "0.705": 8.43,
-            "0.786": 6.6,
-            "0.886": 4.34,
+            "0.236": 13.12,
+            "0.382": 8.95,
+            "0.500": 6.57,
+            "0.618": 4.82,
+            "0.705": 3.84,
+            "0.786": 3.1,
+            "0.886": 2.39,
             "1.000": 1.77
           },
           "extensions": {
             "1.000": 16.08,
-            "1.272": 18.88,
-            "1.414": 20.35,
-            "1.618": 22.45,
-            "1.818": 24.51,
-            "2.000": 26.38,
-            "2.618": 32.75
+            "1.272": 21.24,
+            "1.414": 24.57,
+            "1.618": 30.28,
+            "1.818": 37.16,
+            "2.000": 44.77,
+            "2.618": 84.31
           },
           "goldenPocket": {
-            "low": 8.43,
-            "high": 10.4
+            "low": 3.84,
+            "high": 4.82
           },
           "swingHigh": 24.35,
           "swingLow": 1.77,
           "extSwingHigh": 16.08,
-          "extSwingLow": 5.78
+          "extSwingLow": 5.78,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -12101,11 +12057,11 @@
         "notes": []
       },
       "timing": {
-        "score": 34,
-        "label": "Zwakke setup",
-        "color": "orange",
+        "score": 30,
+        "label": "Slechte instap (wachten)",
+        "color": "red",
         "trendScore": 14,
-        "entryScore": 88,
+        "entryScore": 80,
         "trendDaily": 30,
         "trendWeekly": 10,
         "trendMonthly": 10,
@@ -12119,7 +12075,7 @@
           "daily",
           "weekly"
         ],
-        "baseTimin": 44
+        "baseTimin": 40
       },
       "scores": {
         "quality": 40,
@@ -12133,10 +12089,10 @@
           "marge < 8%"
         ],
         "valuation": 50,
-        "timing": 34,
+        "timing": 30,
         "marketAdj": 5,
-        "timingEffective": 39,
-        "composite": 43
+        "timingEffective": 35,
+        "composite": 41
       },
       "bagger": {
         "score": 50,
@@ -12159,15 +12115,6 @@
       "isBagger": true,
       "currency": "$",
       "signals": [
-        {
-          "type": "BUY",
-          "cat": "FIB",
-          "tf": "1D",
-          "weight": 3,
-          "icon": "\ud83d\udcd0",
-          "title": "Fib 0.786 \u2014 steunzone: $1.83 (0.3% weg)",
-          "detail": "Prijs $1.83 raakt Fibonacci 0.786. Potenti\u00eble koopzone."
-        },
         {
           "type": "SELL",
           "cat": "TREND",
@@ -12219,20 +12166,20 @@
         }
       ],
       "overall": "VERKOOP",
-      "buyWeight": 3,
+      "buyWeight": 0,
       "sellWeight": 7,
       "baseOverall": "VERKOOP",
       "confluence": {
         "monthlyState": "neutral",
         "weeklyBullTurn": false,
         "weeklyBearTurn": true,
-        "fibBuyDepth": 3,
-        "fibZone": "0.786",
+        "fibBuyDepth": 0,
+        "fibZone": null,
         "supportCount": 0,
         "supportFlags": []
       },
-      "conflict": true,
-      "conflictNote": "\u26a0\ufe0f CONFLICT: 1 koop vs 2 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Confluence VERKOOP: weekly bearish draai + daily downtrend",
+      "conflict": false,
+      "conflictNote": "Confluence VERKOOP: weekly bearish draai + daily downtrend",
       "indicators": {
         "last": 1.83,
         "rsiDaily": 36.7,
@@ -12256,32 +12203,33 @@
         "fib": {
           "retracements": {
             "0.000": 7.43,
-            "0.236": 5.75,
-            "0.382": 4.71,
-            "0.500": 3.87,
-            "0.618": 3.02,
-            "0.705": 2.4,
-            "0.786": 1.83,
-            "0.886": 1.11,
+            "0.236": 3.49,
+            "0.382": 2.19,
+            "0.500": 1.5,
+            "0.618": 1.03,
+            "0.705": 0.78,
+            "0.786": 0.6,
+            "0.886": 0.44,
             "1.000": 0.3
           },
           "extensions": {
             "1.000": 5.6,
-            "1.272": 6.63,
-            "1.414": 7.17,
-            "1.618": 7.94,
-            "1.818": 8.7,
-            "2.000": 9.39,
-            "2.618": 11.73
+            "1.272": 7.61,
+            "1.414": 8.94,
+            "1.618": 11.25,
+            "1.818": 14.11,
+            "2.000": 17.33,
+            "2.618": 34.82
           },
           "goldenPocket": {
-            "low": 2.4,
-            "high": 3.02
+            "low": 0.78,
+            "high": 1.03
           },
           "swingHigh": 7.43,
           "swingLow": 0.3,
           "extSwingHigh": 5.6,
-          "extSwingLow": 1.81
+          "extSwingLow": 1.81,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -12442,32 +12390,33 @@
         "fib": {
           "retracements": {
             "0.000": 51.76,
-            "0.236": 39.94,
-            "0.382": 32.63,
-            "0.500": 26.71,
-            "0.618": 20.8,
-            "0.705": 16.45,
-            "0.786": 12.39,
-            "0.886": 7.38,
+            "0.236": 23.02,
+            "0.382": 13.94,
+            "0.500": 9.3,
+            "0.618": 6.2,
+            "0.705": 4.6,
+            "0.786": 3.48,
+            "0.886": 2.47,
             "1.000": 1.67
           },
           "extensions": {
             "1.000": 51.76,
-            "1.272": 60.4,
-            "1.414": 64.92,
-            "1.618": 71.4,
-            "1.818": 77.76,
-            "2.000": 83.54,
-            "2.618": 103.18
+            "1.272": 67.06,
+            "1.414": 76.76,
+            "1.618": 93.21,
+            "1.818": 112.76,
+            "2.000": 134.09,
+            "2.618": 241.48
           },
           "goldenPocket": {
-            "low": 16.45,
-            "high": 20.8
+            "low": 4.6,
+            "high": 6.2
           },
           "swingHigh": 51.76,
           "swingLow": 1.67,
           "extSwingHigh": 51.76,
-          "extSwingLow": 19.98
+          "extSwingLow": 19.98,
+          "logScale": true
         },
         "isFriday": false,
         "hasWeekly": true
@@ -12605,38 +12554,38 @@
         "marketAdj": 5
       },
       {
-        "ticker": "ADM",
-        "name": "ADM",
-        "composite": 67,
-        "quality": 88,
-        "valuation": 62,
-        "timing": 51,
-        "valuationVerdict": "Neutraal (PEG 1.5\u20132.5)",
-        "timingLabel": "Neutrale setup",
-        "price": 3606.0,
+        "ticker": "III",
+        "name": "III",
+        "composite": 68,
+        "quality": 95,
+        "valuation": 90,
+        "timing": 25,
+        "valuationVerdict": "Aantrekkelijk (PEG < 1)",
+        "timingLabel": "Slechte instap (wachten)",
+        "price": 2602.0,
         "currency": "p",
         "marketAdj": 5
       },
       {
-        "ticker": "III",
-        "name": "III",
+        "ticker": "ADM",
+        "name": "ADM",
         "composite": 66,
-        "quality": 95,
-        "valuation": 90,
-        "timing": 22,
-        "valuationVerdict": "Aantrekkelijk (PEG < 1)",
-        "timingLabel": "Slechte instap (wachten)",
-        "price": 2622.0,
+        "quality": 88,
+        "valuation": 62,
+        "timing": 48,
+        "valuationVerdict": "Neutraal (PEG 1.5\u20132.5)",
+        "timingLabel": "Neutrale setup",
+        "price": 3638.0,
         "currency": "p",
         "marketAdj": 5
       },
       {
         "ticker": "NFLX",
         "name": "NFLX",
-        "composite": 66,
+        "composite": 65,
         "quality": 83,
         "valuation": 90,
-        "timing": 31,
+        "timing": 28,
         "valuationVerdict": "Aantrekkelijk (PEG < 1)",
         "timingLabel": "Slechte instap (wachten)",
         "price": 76.18,
@@ -12691,7 +12640,7 @@
         "timing": 50,
         "valuationVerdict": "Aan de dure kant (PEG 2.5\u20133.5)",
         "timingLabel": "Neutrale setup",
-        "price": 20120.0,
+        "price": 20040.0,
         "currency": "p",
         "marketAdj": 5
       },
@@ -12735,6 +12684,19 @@
         "marketAdj": 5
       },
       {
+        "ticker": "DIE",
+        "name": "DIE",
+        "composite": 59,
+        "quality": 57,
+        "valuation": 62,
+        "timing": 54,
+        "valuationVerdict": "Neutraal (PEG 1.5\u20132.5)",
+        "timingLabel": "Neutrale setup",
+        "price": 172.5,
+        "currency": "\u20ac",
+        "marketAdj": 5
+      },
+      {
         "ticker": "PLTR",
         "name": "PLTR",
         "composite": 58,
@@ -12745,19 +12707,6 @@
         "timingLabel": "Zwakke setup",
         "price": 134.37,
         "currency": "$",
-        "marketAdj": 5
-      },
-      {
-        "ticker": "ASMI",
-        "name": "ASMI",
-        "composite": 58,
-        "quality": 89,
-        "valuation": 30,
-        "timing": 50,
-        "valuationVerdict": "Aan de dure kant (PEG 2.5\u20133.5)",
-        "timingLabel": "Neutrale setup",
-        "price": 891.4,
-        "currency": "\u20ac",
         "marketAdj": 5
       },
       {
@@ -12774,19 +12723,6 @@
         "marketAdj": 5
       },
       {
-        "ticker": "DIE",
-        "name": "DIE",
-        "composite": 58,
-        "quality": 57,
-        "valuation": 62,
-        "timing": 51,
-        "valuationVerdict": "Neutraal (PEG 1.5\u20132.5)",
-        "timingLabel": "Neutrale setup",
-        "price": 174.0,
-        "currency": "\u20ac",
-        "marketAdj": 5
-      },
-      {
         "ticker": "BLK",
         "name": "BLK",
         "composite": 57,
@@ -12797,6 +12733,19 @@
         "timingLabel": "Zwakke setup",
         "price": 1009.43,
         "currency": "$",
+        "marketAdj": 5
+      },
+      {
+        "ticker": "ASMI",
+        "name": "ASMI",
+        "composite": 56,
+        "quality": 89,
+        "valuation": 30,
+        "timing": 47,
+        "valuationVerdict": "Aan de dure kant (PEG 2.5\u20133.5)",
+        "timingLabel": "Neutrale setup",
+        "price": 889.4,
+        "currency": "\u20ac",
         "marketAdj": 5
       },
       {
@@ -12815,39 +12764,13 @@
       {
         "ticker": "AON",
         "name": "AON",
-        "composite": 50,
+        "composite": 49,
         "quality": 68,
         "valuation": 40,
-        "timing": 40,
+        "timing": 37,
         "valuationVerdict": "Aan de dure kant (PEG 2.5\u20133.5)",
         "timingLabel": "Zwakke setup",
         "price": 359.82,
-        "currency": "$",
-        "marketAdj": 5
-      },
-      {
-        "ticker": "KEYENCE",
-        "name": "KEYENCE",
-        "composite": 50,
-        "quality": 74,
-        "valuation": 18,
-        "timing": 51,
-        "valuationVerdict": "Duur (PEG > 3.5)",
-        "timingLabel": "Neutrale setup",
-        "price": 74700.0,
-        "currency": "\u00a5",
-        "marketAdj": 5
-      },
-      {
-        "ticker": "SHOP",
-        "name": "SHOP",
-        "composite": 48,
-        "quality": 69,
-        "valuation": 30,
-        "timing": 40,
-        "valuationVerdict": "Aan de dure kant (PEG 2.5\u20133.5)",
-        "timingLabel": "Zwakke setup",
-        "price": 121.88,
         "currency": "$",
         "marketAdj": 5
       },
@@ -12873,8 +12796,21 @@
         "timing": 51,
         "valuationVerdict": "Duur (PEG > 3.5)",
         "timingLabel": "Neutrale setup",
-        "price": 11180.0,
+        "price": 11160.0,
         "currency": "\u20ac",
+        "marketAdj": 5
+      },
+      {
+        "ticker": "KEYENCE",
+        "name": "KEYENCE",
+        "composite": 48,
+        "quality": 74,
+        "valuation": 18,
+        "timing": 47,
+        "valuationVerdict": "Duur (PEG > 3.5)",
+        "timingLabel": "Neutrale setup",
+        "price": 74700.0,
+        "currency": "\u00a5",
         "marketAdj": 5
       },
       {
@@ -12886,7 +12822,7 @@
         "timing": 43,
         "valuationVerdict": "Duur (PEG > 3.5)",
         "timingLabel": "Zwakke setup",
-        "price": 1525.2,
+        "price": 1508.8,
         "currency": "\u20ac",
         "marketAdj": 5
       },
@@ -12913,6 +12849,19 @@
         "valuationVerdict": "Duur (PEG > 3.5)",
         "timingLabel": "Neutrale setup",
         "price": 84.05,
+        "currency": "$",
+        "marketAdj": 5
+      },
+      {
+        "ticker": "SHOP",
+        "name": "SHOP",
+        "composite": 46,
+        "quality": 69,
+        "valuation": 30,
+        "timing": 37,
+        "valuationVerdict": "Aan de dure kant (PEG 2.5\u20133.5)",
+        "timingLabel": "Zwakke setup",
+        "price": 121.88,
         "currency": "$",
         "marketAdj": 5
       },
@@ -12984,10 +12933,10 @@
       {
         "ticker": "NOVT",
         "name": "NOVT",
-        "composite": 39,
+        "composite": 40,
         "quality": 50,
         "valuation": 8,
-        "timing": 49,
+        "timing": 52,
         "valuationVerdict": "Duur (PEG > 3.5)",
         "timingLabel": "Neutrale setup",
         "price": 147.85,
@@ -13012,12 +12961,12 @@
       {
         "ticker": "LHX",
         "name": "LHX",
-        "composite": 53,
+        "composite": 52,
         "quality": 61,
         "valuation": 50,
-        "timing": 45,
+        "timing": 41,
         "valuationVerdict": "Neutraal (PEG 1.5\u20132.5)",
-        "timingLabel": "Neutrale setup",
+        "timingLabel": "Zwakke setup",
         "price": 295.4,
         "currency": "$",
         "marketAdj": 5,
@@ -13060,10 +13009,10 @@
       {
         "ticker": "KTOS",
         "name": "KTOS",
-        "composite": 37,
+        "composite": 34,
         "quality": 45,
         "valuation": 18,
-        "timing": 41,
+        "timing": 34,
         "valuationVerdict": "Duur (PEG > 3.5)",
         "timingLabel": "Zwakke setup",
         "price": 50.34,
@@ -13111,10 +13060,10 @@
       {
         "ticker": "SDGR",
         "name": "SDGR",
-        "composite": 45,
+        "composite": 44,
         "quality": 40,
         "valuation": 50,
-        "timing": 41,
+        "timing": 38,
         "valuationVerdict": "Onvoldoende data",
         "timingLabel": "Zwakke setup",
         "price": 16.49,
@@ -13162,10 +13111,10 @@
       {
         "ticker": "CRWV",
         "name": "CRWV",
-        "composite": 44,
+        "composite": 41,
         "quality": 20,
         "valuation": 50,
-        "timing": 53,
+        "timing": 46,
         "valuationVerdict": "Onvoldoende data",
         "timingLabel": "Neutrale setup",
         "price": 83.53,
@@ -13197,10 +13146,10 @@
       {
         "ticker": "SNAP",
         "name": "SNAP",
-        "composite": 43,
+        "composite": 41,
         "quality": 33,
         "valuation": 50,
-        "timing": 40,
+        "timing": 36,
         "valuationVerdict": "Onvoldoende data",
         "timingLabel": "Zwakke setup",
         "price": 4.65,
@@ -13214,13 +13163,13 @@
       {
         "ticker": "SOF",
         "name": "SOF",
-        "composite": 47,
+        "composite": 48,
         "quality": 53,
         "valuation": 50,
-        "timing": 35,
+        "timing": 39,
         "valuationVerdict": "Neutraal (PEG 1.5\u20132.5)",
         "timingLabel": "Zwakke setup",
-        "price": 224.8,
+        "price": 225.0,
         "currency": "\u20ac",
         "marketAdj": 5,
         "fails": [
@@ -13230,13 +13179,13 @@
       {
         "ticker": "AIR",
         "name": "AIR",
-        "composite": 53,
+        "composite": 55,
         "quality": 69,
         "valuation": 40,
-        "timing": 46,
+        "timing": 50,
         "valuationVerdict": "Aan de dure kant (PEG 2.5\u20133.5)",
         "timingLabel": "Neutrale setup",
-        "price": 199.66,
+        "price": 199.22,
         "currency": "\u20ac",
         "marketAdj": 5,
         "fails": [
@@ -13252,7 +13201,7 @@
         "timing": 35,
         "valuationVerdict": "Gemiddelde P/E (absoluut)",
         "timingLabel": "Zwakke setup",
-        "price": 13.58,
+        "price": 13.45,
         "currency": "\u20ac",
         "marketAdj": 5,
         "fails": [
@@ -13280,10 +13229,10 @@
       {
         "ticker": "DIS",
         "name": "DIS",
-        "composite": 29,
+        "composite": 30,
         "quality": 46,
         "valuation": 8,
-        "timing": 26,
+        "timing": 29,
         "valuationVerdict": "Duur (PEG > 3.5)",
         "timingLabel": "Slechte instap (wachten)",
         "price": 97.48,
@@ -13296,12 +13245,12 @@
       {
         "ticker": "BABA",
         "name": "BABA",
-        "composite": 60,
+        "composite": 58,
         "quality": 67,
         "valuation": 62,
-        "timing": 47,
+        "timing": 44,
         "valuationVerdict": "Neutraal (PEG 1.5\u20132.5)",
-        "timingLabel": "Neutrale setup",
+        "timingLabel": "Zwakke setup",
         "price": 98.14,
         "currency": "$",
         "marketAdj": 5,
@@ -13345,10 +13294,10 @@
       {
         "ticker": "FANUC",
         "name": "FANUC",
-        "composite": 40,
+        "composite": 38,
         "quality": 52,
         "valuation": 8,
-        "timing": 49,
+        "timing": 46,
         "valuationVerdict": "Duur (PEG > 3.5)",
         "timingLabel": "Neutrale setup",
         "price": 6700.0,
@@ -13361,10 +13310,10 @@
       {
         "ticker": "YASKAWA",
         "name": "YASKAWA",
-        "composite": 42,
+        "composite": 40,
         "quality": 56,
         "valuation": 8,
-        "timing": 51,
+        "timing": 48,
         "valuationVerdict": "Duur (PEG > 3.5)",
         "timingLabel": "Neutrale setup",
         "price": 6636.0,
@@ -13444,12 +13393,12 @@
       {
         "ticker": "UBTECH",
         "name": "UBTECH",
-        "composite": 46,
+        "composite": 45,
         "quality": 34,
         "valuation": 50,
-        "timing": 47,
+        "timing": 44,
         "valuationVerdict": "Onvoldoende data",
-        "timingLabel": "Neutrale setup",
+        "timingLabel": "Zwakke setup",
         "price": 88.3,
         "currency": "HK$",
         "marketAdj": 5,
@@ -13495,12 +13444,12 @@
       {
         "ticker": "RR",
         "name": "RR",
-        "composite": 43,
+        "composite": 41,
         "quality": 40,
         "valuation": 50,
-        "timing": 34,
+        "timing": 30,
         "valuationVerdict": "Onvoldoende data",
-        "timingLabel": "Zwakke setup",
+        "timingLabel": "Slechte instap (wachten)",
         "price": 1.83,
         "currency": "$",
         "marketAdj": 5,
@@ -13929,8 +13878,8 @@
     "methodNote": "Score op omzetgroei, groei-versnelling, brutomarge-trend (operating leverage) en relatieve sterkte vs markt. Risico-flags bepalen positiegrootte-advies."
   },
   "weekly": {
-    "generatedAt": "2026-07-08T10:36:03.978756+02:00",
-    "generatedAtHuman": "Wednesday 08 July 2026 om 10:36",
+    "generatedAt": "2026-07-08T12:48:30.274341+02:00",
+    "generatedAtHuman": "Wednesday 08 July 2026 om 12:48",
     "periodLabel": "sinds ~1 week geleden",
     "changes": [
       {
@@ -13960,7 +13909,7 @@
           {
             "type": "price",
             "dir": "down",
-            "text": "Koers -13.8% deze week ($1769\u2192$1525)"
+            "text": "Koers -14.7% deze week ($1769\u2192$1509)"
           }
         ]
       },
@@ -13971,7 +13920,7 @@
           {
             "type": "composite",
             "dir": "down",
-            "text": "Composiet 63 \u2193 58"
+            "text": "Composiet 63 \u2193 56"
           },
           {
             "type": "valuation",
@@ -14150,6 +14099,22 @@
         ]
       },
       {
+        "ticker": "ALFEN",
+        "daysAgo": 3,
+        "changes": [
+          {
+            "type": "valuation",
+            "dir": "neutral",
+            "text": "Waardering: Hoge P/E (absoluut) \u2192 Gemiddelde P/E (absoluut)"
+          },
+          {
+            "type": "price",
+            "dir": "down",
+            "text": "Koers -8.3% deze week ($15\u2192$13)"
+          }
+        ]
+      },
+      {
         "ticker": "WM",
         "daysAgo": 6,
         "changes": [
@@ -14216,17 +14181,6 @@
         ]
       },
       {
-        "ticker": "SHOP",
-        "daysAgo": 3,
-        "changes": [
-          {
-            "type": "signal",
-            "dir": "neutral",
-            "text": "Signaal: VERKOOP \u2192 LICHT VERKOOP"
-          }
-        ]
-      },
-      {
         "ticker": "NET",
         "daysAgo": 3,
         "changes": [
@@ -14249,17 +14203,6 @@
         ]
       },
       {
-        "ticker": "SNAP",
-        "daysAgo": 3,
-        "changes": [
-          {
-            "type": "signal",
-            "dir": "up",
-            "text": "Signaal: NEUTRAAL \u2192 LICHT VERKOOP"
-          }
-        ]
-      },
-      {
         "ticker": "AIR",
         "daysAgo": 3,
         "changes": [
@@ -14267,17 +14210,6 @@
             "type": "signal",
             "dir": "up",
             "text": "Signaal: NEUTRAAL \u2192 LICHT KOOP"
-          }
-        ]
-      },
-      {
-        "ticker": "ALFEN",
-        "daysAgo": 3,
-        "changes": [
-          {
-            "type": "valuation",
-            "dir": "neutral",
-            "text": "Waardering: Hoge P/E (absoluut) \u2192 Gemiddelde P/E (absoluut)"
           }
         ]
       },
@@ -14299,7 +14231,7 @@
           {
             "type": "composite",
             "dir": "up",
-            "text": "Composiet 43 \u2191 50"
+            "text": "Composiet 43 \u2191 48"
           }
         ]
       },
@@ -14359,7 +14291,7 @@
         ]
       }
     ],
-    "changedCount": 30,
+    "changedCount": 28,
     "note": "Toont enkel wat veranderde t.o.v. ~7 dagen geleden. Geen wijzigingen = stabiele week."
   },
   "trackSummary": {
