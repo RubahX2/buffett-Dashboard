@@ -186,7 +186,7 @@ FUNDAMENTALS = {
     "ASMI":  {"pe":44.9,  "roe":21.6, "fcfYield":2.9,  "debtEquity":0.01, "netMargin":23.9, "divYield":0.3,  "revenueGrowth":12.0,  "eps":23.75, "mktCap":"$52B",   "beta":1.50, "lastUpdated":"2026-06"},
     "MU":    {"pe":25.3,  "roe":66.6, "fcfYield":2.1,  "debtEquity":0.06, "netMargin":55.9, "divYield":0.05, "revenueGrowth":125.0, "eps":44.80, "mktCap":"$1280B", "beta":2.17, "lastUpdated":"2026-06"},
     "GOOGL": {"pe":19.8,  "roe":31.5, "fcfYield":4.2,  "debtEquity":0.07, "netMargin":28.6, "divYield":0.5,  "revenueGrowth":14.0,  "eps":9.15,  "mktCap":"$2200B", "beta":1.05, "lastUpdated":"2026-06"},
-    "ANET":  {"pe":54.0,  "roe":31.5, "fcfYield":2.7,  "debtEquity":0.0,  "netMargin":38.3, "divYield":0,    "revenueGrowth":35.0,  "eps":3.15,  "mktCap":"$155B",  "beta":1.61, "lastUpdated":"2026-06"},
+    "ANET":  {"pe":54.0,  "roe":31.5, "fcfYield":2.7,  "debtEquity":0.0,  "netMargin":38.3, "divYield":0,    "revenueGrowth":35.0, "revenueGrowthPrev":42.0,  "eps":3.15,  "mktCap":"$155B",  "beta":1.61, "lastUpdated":"2026-06"},
     "HOOD":  {"pe":44.0,  "roe":21.5, "fcfYield":2.5,  "debtEquity":1.40, "netMargin":35.0, "divYield":0,    "revenueGrowth":15.0,  "eps":2.07,  "mktCap":"$101B",  "beta":2.35, "lastUpdated":"2026-06"},
     "TSCO":  {"pe":14.6,  "roe":45.5, "fcfYield":3.6,  "debtEquity":0.70, "netMargin":6.9,  "divYield":2.5,  "revenueGrowth":4.3,   "eps":2.03,  "mktCap":"$16B",   "beta":0.75, "lastUpdated":"2026-07"},
     "ODFL":  {"pe":40.0,  "roe":23.9, "fcfYield":1.9,  "debtEquity":0.03, "netMargin":18.5, "divYield":0.6,  "revenueGrowth":4.2,   "eps":4.85,  "mktCap":"$50B",   "beta":1.22, "lastUpdated":"2026-07"},
@@ -252,9 +252,9 @@ FUNDAMENTALS = {
     "YASKAWA":{"pe":26.0, "roe":11.0,"fcfYield":2.0, "debtEquity":0.20, "netMargin":8.5,  "divYield":1.6, "revenueGrowth":6.0,  "eps":165,   "mktCap":"¥1.1T",  "beta":1.20, "lastUpdated":"2026-01"},
     "SOFTBANK":{"pe":14.0,"roe":14.0,"fcfYield":0.5, "debtEquity":1.60, "netMargin":18.0, "divYield":0.4, "revenueGrowth":8.0,  "eps":1300,  "mktCap":"¥17T",   "beta":2.20, "lastUpdated":"2026-01"},
     "ROK":   {"pe":31.0, "roe":33.0, "fcfYield":3.0, "debtEquity":1.00, "netMargin":13.5, "divYield":1.5, "revenueGrowth":4.0,  "eps":10.5,  "mktCap":"$37B",   "beta":1.20, "lastUpdated":"2026-01"},
-    "TER":   {"pe":36.0, "roe":21.0, "fcfYield":2.2, "debtEquity":0.05, "netMargin":19.0, "divYield":0.4, "revenueGrowth":12.0, "eps":3.6,   "mktCap":"$21B",   "beta":1.50, "lastUpdated":"2026-01"},
+    "TER":   {"pe":36.0, "roe":21.0, "fcfYield":2.2, "debtEquity":0.05, "netMargin":19.0, "divYield":0.4, "revenueGrowth":12.0, "revenueGrowthPrev":4.0, "eps":3.6,   "mktCap":"$21B",   "beta":1.50, "lastUpdated":"2026-01"},
     "ISRG":  {"pe":66.0, "roe":17.5, "fcfYield":1.4, "debtEquity":0.00, "netMargin":28.5, "divYield":0,   "revenueGrowth":16.0, "eps":8.2,   "mktCap":"$190B",  "beta":1.30, "lastUpdated":"2026-01"},
-    "CGNX":  {"pe":44.0, "roe":11.0, "fcfYield":2.0, "debtEquity":0.05, "netMargin":13.0, "divYield":0.8, "revenueGrowth":7.0,  "eps":0.95,  "mktCap":"$7B",    "beta":1.50, "lastUpdated":"2026-01"},
+    "CGNX":  {"pe":44.0, "roe":11.0, "fcfYield":2.0, "debtEquity":0.05, "netMargin":13.0, "divYield":0.8, "revenueGrowth":7.0, "revenueGrowthPrev":1.0,  "eps":0.95,  "mktCap":"$7B",    "beta":1.50, "lastUpdated":"2026-01"},
     "NOVT":  {"pe":42.0, "roe":13.0, "fcfYield":2.3, "debtEquity":0.50, "netMargin":11.0, "divYield":0,   "revenueGrowth":6.0,  "eps":3.3,   "mktCap":"$5B",    "beta":1.30, "lastUpdated":"2026-01"},
     # Quantum baggers (waardering irrelevant; bagger-velden leidend)
     "IONQ":  {"pe":None, "roe":-35.0,"fcfYield":-8.0, "debtEquity":0.10, "netMargin":-180.0,"divYield":0, "revenueGrowth":85.0, "eps":-1.4,  "mktCap":"$12B",   "beta":3.50, "lastUpdated":"2026-01",
@@ -1808,6 +1808,82 @@ def compute_quality(fund: dict) -> dict:
 
     return {"score": score, "gate": gate, "reasons": reasons, "gateFails": fails}
 
+def compute_acceleration(fund: dict) -> dict:
+    """
+    Omzetgroei-VERSNELLING voor kwaliteitsaandelen: meet of het groeitempo TOENEEMT
+    t.o.v. een jaar eerder. Het doel is vroege structurele stijgers vangen — kwaliteit
+    die net op een steilere groeicurve komt (zoals robotica/AI-namen aan het begin van
+    een hausse), vóór de grote koersbeweging.
+
+    Twee outputs, bewust met verschillende strengheid:
+      • Een APARTE score/label (SOEPEL): al bij een eerste duidelijke versnelling zichtbaar,
+        puur informatief voor Rubens allocatie-oordeel. Verandert niets automatisch.
+      • Een COMPOSIET-bonus (STRENG): alleen bij een FORSE, ondubbelzinnige versnelling,
+        en klein begrensd (max +6/-4), zodat versnelling een kwaliteitsbedrijf een duwtje
+        geeft maar nooit een katapult is. De kwaliteitspoort blijft de baas.
+
+    Kernmaat (zelfde logica als het baggerspoor): accel = groei_nu - groei_vorig (in pp).
+    Vereist het veld 'revenueGrowthPrev' (omzetgroei van ~1 jaar geleden). Ontbreekt dat,
+    dan is er geen versnellingsoordeel (label "onbekend", geen bonus) — eerlijk i.p.v. gokken.
+
+    Let op: dit is de RUWE versnelling op basis van de handmatig bijgehouden jaargroei.
+    Een "bestendigheids"-idee (meerdere periodes) vergt kwartaalhistorie; met de huidige
+    jaarcijfers benaderen we dat door de composiet-drempel HOOG te leggen (alleen forse
+    versnelling telt), wat eenmalige kleine uitschieters uitfiltert.
+    """
+    growth = fund.get("revenueGrowth")
+    prev   = fund.get("revenueGrowthPrev")
+
+    # Geen historie → geen oordeel (niet gokken)
+    if growth is None or prev is None:
+        return {"accel": None, "label": "onbekend", "color": "gray",
+                "score": None, "composite_bonus": 0, "reason": None,
+                "ratio": None, "growthNow": None, "growthPrev": None}
+
+    accel = growth - prev   # positief = versnelt, negatief = vertraagt (in procentpunten)
+
+    # De "x"-verhouding: hoeveel het groeitempo vermenigvuldigde (bv. 4%->12% = 3x).
+    # Dit is het sprekende getal dat de DRAMATIEK van de omslag vangt. Maar het is
+    # wiskundig fragiel: bij een lage of negatieve startwaarde ontspoort het (0,1%->5%
+    # zou "50x" zijn, en van krimp naar groei is de verhouding onzin). Daarom berekenen
+    # we de ratio ALLEEN als de vorige groei betekenisvol positief was (>= 3%), en beide
+    # richtingen positief zijn. Anders: geen ratio (badge toont dan enkel "X%->Y%").
+    ratio = None
+    if prev >= 3.0 and growth > 0:
+        r = growth / prev
+        if r >= 1.15 or r <= 0.87:   # alleen tonen als de verandering betekenisvol is
+            ratio = round(r, 1)
+
+    # APARTE score (SOEPEL, informatief) — 0-100 schaal voor de aandeelkaart.
+    # Vangt ook milde versnelling zodat Ruben vroege signalen ziet.
+    if   accel >= 20: a_score, label, color = 95, "Versnelt zeer sterk", "green"
+    elif accel >= 10: a_score, label, color = 82, "Versnelt sterk",      "green"
+    elif accel >= 4:  a_score, label, color = 68, "Versnelt",            "green"
+    elif accel >= 1:  a_score, label, color = 56, "Versnelt licht",      "green"
+    elif accel > -1:  a_score, label, color = 50, "Stabiel",             "gray"
+    elif accel > -4:  a_score, label, color = 40, "Vertraagt licht",     "orange"
+    elif accel > -10: a_score, label, color = 28, "Vertraagt",           "orange"
+    else:             a_score, label, color = 15, "Vertraagt sterk",     "red"
+
+    # COMPOSIET-bonus (STRENG) — alleen forse, ondubbelzinnige versnelling telt,
+    # en klein begrensd zodat het de ranglijst nooit domineert.
+    #   +6: zeer sterke versnelling (≥15pp) — zeldzaam, echt omslagpunt
+    #   +4: sterke versnelling (≥8pp)
+    #   +2: duidelijke versnelling (≥4pp)
+    #    0: milde beweging (ruis-zone, telt NIET mee in composiet)
+    #   -2: duidelijke vertraging (≤-8pp) — lichte malus
+    #   -4: forse vertraging (≤-15pp) — het momentum draait echt
+    if   accel >= 15: bonus, reason = 6, f"Groei versnelt zeer sterk (+{accel:.0f}pp)"
+    elif accel >= 8:  bonus, reason = 4, f"Groei versnelt sterk (+{accel:.0f}pp)"
+    elif accel >= 4:  bonus, reason = 2, f"Groei versnelt (+{accel:.0f}pp)"
+    elif accel <= -15: bonus, reason = -4, f"Groei vertraagt fors ({accel:.0f}pp)"
+    elif accel <= -8:  bonus, reason = -2, f"Groei vertraagt ({accel:.0f}pp)"
+    else:             bonus, reason = 0, None   # ruis-zone: geen composiet-invloed
+
+    return {"accel": round(accel, 1), "label": label, "color": color,
+            "score": a_score, "composite_bonus": bonus, "reason": reason,
+            "ratio": ratio, "growthNow": round(growth, 1), "growthPrev": round(prev, 1)}
+
 def valuation_to_score(valuation: dict) -> int:
     """Zet waardering om naar 0-100 (goedkoper = hoger). PEG primair, percentiel verfijnt."""
     peg = valuation.get("peg")
@@ -1827,12 +1903,16 @@ def valuation_to_score(valuation: dict) -> int:
         score = round(0.6 * score + 0.4 * pct_score) if peg is not None else round(pct_score)
     return int(max(0, min(100, score)))
 
-def compute_composite(quality_score, valuation_score, timing_score) -> int:
+def compute_composite(quality_score, valuation_score, timing_score, accel_bonus=0) -> int:
     """
     Composietscore voor de maandelijkse allocatie.
     Gewichten: timing 40% (Rubens nadruk), kwaliteit 30%, waardering 30%.
+    Plus een KLEINE, begrensde versnellingsbonus (+6/-4): kwaliteit die net op een
+    steilere groeicurve komt krijgt een duwtje, maar het domineert nooit — de
+    kwaliteitspoort en de drie hoofdpijlers blijven de basis.
     """
-    return round(0.30 * quality_score + 0.30 * valuation_score + 0.40 * timing_score)
+    base = 0.30 * quality_score + 0.30 * valuation_score + 0.40 * timing_score
+    return round(max(0, min(100, base + accel_bonus)))
 
 # ── BAGGER-SPOOR (apart raamwerk; waardering speelt GEEN rol) ─────────────────
 # Zoekt kenmerken van vroege multibaggers: hoge groei, groei-versnelling, operating
@@ -2374,9 +2454,14 @@ def main():
             timing = compute_timing(entry["daily"], entry["weekly"], entry["monthly"], fib_daily)
             quality = compute_quality(fund)
             val_score = valuation_to_score(valuation)
+            # Omzetgroei-versnelling: aparte score (soepel, informatief) + composiet-bonus
+            # (streng, klein). De bonus telt alleen mee bij kwaliteit die de poort haalt —
+            # versnelling zonder kwaliteit is het baggerspoor, niet de kern.
+            accel = compute_acceleration(fund)
+            accel_bonus = accel["composite_bonus"] if quality["gate"] else 0
             # Marktregime past de timing mild aan (begrensd, apart zichtbaar)
             timing_eff = max(0, min(100, timing["score"] + market_adj))
-            composite = compute_composite(quality["score"], val_score, timing_eff)
+            composite = compute_composite(quality["score"], val_score, timing_eff, accel_bonus)
 
             scores = {
                 "quality": quality["score"], "qualityGate": quality["gate"],
@@ -2384,6 +2469,11 @@ def main():
                 "valuation": val_score, "timing": timing["score"],
                 "marketAdj": market_adj, "timingEffective": timing_eff,
                 "composite": composite,
+                "acceleration": accel["score"], "accelLabel": accel["label"],
+                "accelColor": accel["color"], "accelValue": accel["accel"],
+                "accelReason": accel["reason"], "accelBonus": accel_bonus,
+                "accelRatio": accel["ratio"], "accelGrowthNow": accel["growthNow"],
+                "accelGrowthPrev": accel["growthPrev"],
             }
 
             # Bagger-spoor (apart): alleen voor aangewezen tickers

@@ -764,7 +764,7 @@ function usePortfolio() {
   };
   return {
     portfolio:p,
-    add:(ticker,shares,buyPrice,date)=>save([...p,{ticker,shares:+shares,buyPrice:+buyPrice,date}]),
+    add:(ticker,shares,buyPrice,date,reason,risk,note)=>save([...p,{ticker,shares:+shares,buyPrice:+buyPrice,date,reason:reason||"",risk:risk||"",note:note||""}]),
     remove:i=>save(p.filter((_,j)=>j!==i)),
     syncLink,
   };
@@ -776,6 +776,9 @@ function Detail({ ticker, data, onClose, portfolio, add }) {
   const [sh,setSh]   = useState("");
   const [pr,setPr]   = useState(data?.indicators?.last?.toFixed(2)||"");
   const [dt,setDt]   = useState(new Date().toISOString().slice(0,10));
+  const [rsn,setRsn] = useState("");   // dagboek: waarom gekocht
+  const [rsk,setRsk] = useState("");   // dagboek: gevaar / wat kan de thesis breken
+  const [nt,setNt]   = useState("");   // dagboek: bijkomende opmerking
 
   const fund  = data?.fund || FALLBACK_FUND[ticker] || {};
   const ind   = data?.indicators || {};
@@ -995,7 +998,25 @@ function Detail({ ticker, data, onClose, portfolio, add }) {
                 <input type="date" value={dt} onChange={e=>setDt(e.target.value)}
                   style={{background:C.bg,border:`1px solid ${C.border}`,color:C.text,borderRadius:5,padding:"6px 8px",fontSize:12}}/>
               </div>
-              <button onClick={()=>{if(sh&&pr){add(ticker,sh,pr,dt);setSh("")}}}
+              <div style={{borderTop:`1px solid ${C.border}`,margin:"10px 0 8px",paddingTop:8}}>
+                <div style={{color:C.accent,fontSize:11,fontWeight:700,marginBottom:6}}>📓 Beleggingsdagboek</div>
+                <div style={{marginBottom:6}}>
+                  <div style={{color:C.green,fontSize:11,marginBottom:3}}>Waarom kocht ik?</div>
+                  <textarea value={rsn} onChange={e=>setRsn(e.target.value)} placeholder="Thesis: moat, koopsignaal, waardering..."
+                    rows={2} style={{width:"100%",background:C.bg,border:`1px solid ${C.border}`,color:C.text,borderRadius:5,padding:"6px 8px",fontSize:12,boxSizing:"border-box",resize:"vertical",fontFamily:"inherit"}}/>
+                </div>
+                <div style={{marginBottom:6}}>
+                  <div style={{color:C.orange,fontSize:11,marginBottom:3}}>Gevaar — wat kan de thesis breken?</div>
+                  <textarea value={rsk} onChange={e=>setRsk(e.target.value)} placeholder="Het risico dat je erkent op dit moment..."
+                    rows={2} style={{width:"100%",background:C.bg,border:`1px solid ${C.orange}55`,color:C.text,borderRadius:5,padding:"6px 8px",fontSize:12,boxSizing:"border-box",resize:"vertical",fontFamily:"inherit"}}/>
+                </div>
+                <div style={{marginBottom:8}}>
+                  <div style={{color:C.textDim,fontSize:11,marginBottom:3}}>Bijkomende opmerking</div>
+                  <textarea value={nt} onChange={e=>setNt(e.target.value)} placeholder="Optioneel..."
+                    rows={2} style={{width:"100%",background:C.bg,border:`1px solid ${C.border}`,color:C.text,borderRadius:5,padding:"6px 8px",fontSize:12,boxSizing:"border-box",resize:"vertical",fontFamily:"inherit"}}/>
+                </div>
+              </div>
+              <button onClick={()=>{if(sh&&pr){add(ticker,sh,pr,dt,rsn,rsk,nt);setSh("");setRsn("");setRsk("");setNt("")}}}
                 style={{background:C.accent,color:C.bg,border:"none",borderRadius:5,padding:"8px 16px",fontWeight:700,fontSize:12,cursor:"pointer"}}>
                 + Toevoegen
               </button>
@@ -1011,6 +1032,22 @@ function Detail({ ticker, data, onClose, portfolio, add }) {
                     </span>
                   </div>
                   <div style={{color:C.textDim,fontSize:10,marginTop:2}}>{p.date}</div>
+                  {(p.reason||p.risk||p.note)&&(
+                    <div style={{marginTop:8,paddingTop:8,borderTop:`1px solid ${C.border}`,display:"flex",flexDirection:"column",gap:6}}>
+                      {p.reason&&<div>
+                        <div style={{color:C.green,fontSize:10,fontWeight:700,marginBottom:2}}>Waarom gekocht</div>
+                        <div style={{color:C.text,fontSize:11,lineHeight:1.4,whiteSpace:"pre-wrap"}}>{p.reason}</div>
+                      </div>}
+                      {p.risk&&<div>
+                        <div style={{color:C.orange,fontSize:10,fontWeight:700,marginBottom:2}}>⚠ Gevaar</div>
+                        <div style={{color:C.text,fontSize:11,lineHeight:1.4,whiteSpace:"pre-wrap"}}>{p.risk}</div>
+                      </div>}
+                      {p.note&&<div>
+                        <div style={{color:C.textDim,fontSize:10,fontWeight:700,marginBottom:2}}>Opmerking</div>
+                        <div style={{color:C.text,fontSize:11,lineHeight:1.4,whiteSpace:"pre-wrap"}}>{p.note}</div>
+                      </div>}
+                    </div>
+                  )}
                 </div>
               );
             })}
@@ -1121,6 +1158,7 @@ function App() {
         sortBy==="buyWeight"  ? (stocks[t]?.buyWeight||0) :
         sortBy==="sellWeight" ? (stocks[t]?.sellWeight||0) :
         sortBy==="valuation"  ? valScore(t) :
+        sortBy==="acceleration" ? (stocks[t]?.scores?.acceleration ?? -1) :
         sortBy==="rsi"        ? (stocks[t]?.indicators?.rsiDaily||50) :
         sortBy==="alerts"     ? (stocks[t]?.alerts?.length||0) :
                                 bScore(stocks[t]?.fund||FALLBACK_FUND[t]||{});
@@ -1384,7 +1422,7 @@ function App() {
         <div style={{padding:"14px 16px"}}>
           <div style={{display:"flex",gap:4,flexWrap:"wrap",marginBottom:14,alignItems:"center"}}>
             <span style={{color:C.textDim,fontSize:10}}>Sorteer:</span>
-            {[["action","Actie 🎯"],["composite","Composiet ★"],["timing","Timing ⏱"],["valuation","Waardering 💰"],["buyWeight","Koop 🟢"],["alerts","Alerts ⚠"],["score","Buffett"]].map(([k,l])=><SBtn key={k} k={k} l={l}/>)}
+            {[["action","Actie 🎯"],["composite","Composiet ★"],["timing","Timing ⏱"],["valuation","Waardering 💰"],["acceleration","Versnelt 🚀"],["buyWeight","Koop 🟢"],["alerts","Alerts ⚠"],["score","Buffett"]].map(([k,l])=><SBtn key={k} k={k} l={l}/>)}
           </div>
 
           {/* Als geen live data: toon alle tickers met fallback fundamentals */}
@@ -1457,6 +1495,25 @@ function App() {
                           ★ {data.scores.composite}
                         </span>
                       )}
+                      {data?.scores?.accelLabel&&data.scores.accelLabel!=="onbekend"&&data.scores.accelLabel!=="Stabiel"&&(()=>{
+                        const s=data.scores, ac=s.accelColor;
+                        const cmap={green:{bg:"#052e16",fg:"#4ade80",bd:"#166534",ic:"🚀"},
+                                    orange:{bg:"#1c1a06",fg:C.orange,bd:"#854d0e",ic:"🐢"},
+                                    red:{bg:"#450a0a",fg:C.red,bd:"#991b1b",ic:"🐢"},
+                                    gray:{bg:C.panel2,fg:C.textDim,bd:C.border,ic:""}}[ac]||{bg:C.panel2,fg:C.textDim,bd:C.border,ic:""};
+                        // Van→naar cijfers + de "x"-verhouding (alleen als betrouwbaar)
+                        let detail="";
+                        if(s.accelGrowthPrev!=null&&s.accelGrowthNow!=null){
+                          detail=` (${s.accelGrowthPrev}%→${s.accelGrowthNow}%${s.accelRatio!=null?`, ${s.accelRatio}x`:""})`;
+                        }
+                        return (
+                          <span title={`Omzetgroei ${s.accelValue>=0?"+":""}${s.accelValue}pp t.o.v. vorig jaar`}
+                            style={{background:cmap.bg,color:cmap.fg,border:`1px solid ${cmap.bd}`,
+                            borderRadius:4,padding:"2px 7px",fontSize:10,fontWeight:700}}>
+                            {cmap.ic} {s.accelLabel}{detail}
+                          </span>
+                        );
+                      })()}
                       {data?.conflict&&<span style={{color:C.orange,fontSize:10,alignSelf:"center"}}>⚡ conflict</span>}
                     </div>
 
