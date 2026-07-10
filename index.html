@@ -69,6 +69,8 @@ const STOCK_NAMES = {
   CGNX:"Cognex", NOVT:"Novanta", IONQ:"IonQ", RGTI:"Rigetti Computing",
   QBTS:"D-Wave Quantum", UBTECH:"UBTECH Robotics", SYM:"Symbotic",
   SERV:"Serve Robotics", RR:"Richtech Robotics", PL:"Planet Labs",
+  ANET:"Arista Networks", HOOD:"Robinhood Markets", TSCO:"Tractor Supply",
+  ODFL:"Old Dominion Freight", HWM:"Howmet Aerospace", SNDK:"Sandisk",
 };
 
 const TV_LINKS = {
@@ -741,26 +743,47 @@ function IndicatorGrid({ ind, cur="$" }) {
 function usePortfolio() {
   const [p,setP] = useState(()=>{try{return JSON.parse(localStorage.getItem("bplus_v9")||"[]")}catch{return[]}});
   const save = v=>{setP(v);try{localStorage.setItem("bplus_v9",JSON.stringify(v))}catch{}};
-  // Sync tussen apparaten: een #sync=... link importeert een portfolio op dít apparaat.
+  // Sync tussen apparaten: een #sync=... link importeert je gegevens op dít apparaat.
   // Het #-deel van een URL wordt nooit naar een server gestuurd — dit blijft volledig lokaal.
+  // De sync neemt zowel je POSITIES als je NOTITIES mee. Nieuw formaat is een pakketje
+  // {portfolio:[...], notes:{...}}; een oude link (kale lijst) blijft ook werken.
   useEffect(()=>{
     const m = window.location.hash.match(/^#sync=(.+)$/);
     if(!m) return;
     try{
       const data = JSON.parse(decodeURIComponent(escape(atob(m[1]))));
+      let posCount=0, noteCount=0;
       if(Array.isArray(data)&&data.every(x=>x&&x.ticker)){
-        save(data);
-        alert(`✓ Portfolio gesynchroniseerd: ${data.length} positie(s) overgenomen op dit apparaat.`);
+        // Oud formaat: kale positielijst
+        save(data); posCount=data.length;
+      } else if(data&&typeof data==="object"&&Array.isArray(data.portfolio)){
+        // Nieuw formaat: pakketje met posities + notities
+        save(data.portfolio); posCount=data.portfolio.length;
+        if(data.notes&&typeof data.notes==="object"){
+          try{localStorage.setItem("bplus_notes_v1",JSON.stringify(data.notes));}catch{}
+          noteCount=Object.keys(data.notes).length;
+        }
+      } else {
+        throw new Error("onbekend formaat");
       }
+      const notePart = noteCount>0 ? ` en ${noteCount} notitie(s)` : "";
+      alert(`✓ Gesynchroniseerd: ${posCount} positie(s)${notePart} overgenomen op dit apparaat.`+
+            (noteCount>0?" Herlaad de pagina om je notities te zien.":""));
     }catch(e){ alert("Sync-link kon niet gelezen worden."); }
     history.replaceState(null,"",window.location.pathname+window.location.search);
   },[]);
   const syncLink = ()=>{
-    const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(p))));
+    // Neem posities én notities mee in het sync-pakketje
+    let notesObj={};
+    try{notesObj=JSON.parse(localStorage.getItem("bplus_notes_v1")||"{}");}catch{}
+    const payload = {portfolio:p, notes:notesObj};
+    const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
     const url = window.location.origin + window.location.pathname + "#sync=" + b64;
-    if(navigator.share){ navigator.share({title:"BUFFETT+ portfolio",url}).catch(()=>{}); }
-    else if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(url); alert("Sync-link gekopieerd — open hem in Safari op je andere apparaat."); }
-    else { prompt("Kopieer deze sync-link en open hem op je andere apparaat:", url); }
+    const nP=p.length, nN=Object.keys(notesObj).length;
+    const summary = `${nP} positie(s)`+(nN>0?` + ${nN} notitie(s)`:"");
+    if(navigator.share){ navigator.share({title:"BUFFETT+ sync",text:summary,url}).catch(()=>{}); }
+    else if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(url); alert(`Sync-link gekopieerd (${summary}) — open hem in Safari op je andere apparaat.`); }
+    else { prompt(`Kopieer deze sync-link (${summary}) en open hem op je andere apparaat:`, url); }
   };
   return {
     portfolio:p,
@@ -770,8 +793,22 @@ function usePortfolio() {
   };
 }
 
+// Watchlist-notities per aandeel (los van posities): "waar vond ik dit", losse gedachten.
+// Bewaard per ticker in een aparte localStorage-sleutel, werkt voor de hele watchlist —
+// ook aandelen die je niet bezit.
+function useNotes() {
+  const [notes,setNotes] = useState(()=>{try{return JSON.parse(localStorage.getItem("bplus_notes_v1")||"{}")}catch{return{}}});
+  const saveNote = (ticker,text)=>{
+    const next = {...notes};
+    if(text&&text.trim()) next[ticker]=text; else delete next[ticker];
+    setNotes(next);
+    try{localStorage.setItem("bplus_notes_v1",JSON.stringify(next))}catch{}
+  };
+  return { notes, saveNote };
+}
+
 // ── DETAIL MODAL ──────────────────────────────────────────────────────────────
-function Detail({ ticker, data, onClose, portfolio, add }) {
+function Detail({ ticker, data, onClose, portfolio, add, notes, saveNote }) {
   const [tab,setTab] = useState("signalen");
   const [sh,setSh]   = useState("");
   const [pr,setPr]   = useState(data?.indicators?.last?.toFixed(2)||"");
@@ -835,6 +872,22 @@ function Detail({ ticker, data, onClose, portfolio, add }) {
               {lb}
             </button>
           ))}
+        </div>
+
+        {/* WATCHLIST-NOTITIE — altijd zichtbaar, los van posities.
+            Voor "waar vond ik dit aandeel" + losse gedachten. Werkt voor de hele
+            watchlist, ook aandelen die je niet bezit. */}
+        <div style={{background:C.bg,borderRadius:8,padding:"10px 12px",marginBottom:14,
+          border:`1px solid ${notes[ticker]?C.accent+"66":C.border}`}}>
+          <div style={{display:"flex",alignItems:"center",gap:6,marginBottom:6}}>
+            <span style={{fontSize:12}}>📝</span>
+            <span style={{color:C.accent,fontSize:11,fontWeight:700}}>Mijn notitie</span>
+            <span style={{color:C.muted,fontSize:10}}>· waar vond je dit, losse gedachten</span>
+          </div>
+          <textarea value={notes[ticker]||""} onChange={e=>saveNote(ticker,e.target.value)}
+            placeholder="Bijv. getipt via robotica-research, podcast X, vriend noemde dit..."
+            rows={2} style={{width:"100%",background:C.panel,border:`1px solid ${C.border}`,color:C.text,
+              borderRadius:5,padding:"6px 8px",fontSize:12,boxSizing:"border-box",resize:"vertical",fontFamily:"inherit"}}/>
         </div>
 
         {/* BAGGER */}
@@ -1072,10 +1125,12 @@ function App() {
   const [loadState, setLoadState] = useState("loading"); // loading | ok | error | unconfigured
   const [selected,  setSelected]  = useState(null);
   const [view,      setView]      = useState("allocatie");
+  const [search,    setSearch]    = useState("");   // zoekbalk screener
   const [sortBy,    setSortBy]    = useState("action");
   const [sortDir,   setSortDir]   = useState("desc");
   const [filterType,setFilter]    = useState("ALL");
   const { portfolio, add, remove, syncLink } = usePortfolio();
+  const { notes, saveNote } = useNotes();
 
   // Cache-busting: voeg timestamp toe aan URL
   useEffect(()=>{
@@ -1134,6 +1189,13 @@ function App() {
 
   const sorted = [...TICKER_ORDER]
     .filter(t=>stocks[t])
+    .filter(t=>{
+      // Zoekfilter: match op ticker of bedrijfsnaam (hoofdletterongevoelig)
+      if(!search.trim()) return true;
+      const q = search.trim().toLowerCase();
+      const nm = (STOCK_NAMES[t]||"").toLowerCase();
+      return t.toLowerCase().includes(q) || nm.includes(q);
+    })
     .sort((a,b)=>{
       const valScore = t => {
         const c = stocks[t]?.valuation?.verdictColor;
@@ -1198,7 +1260,7 @@ function App() {
           <span style={{color:C.textDim,fontSize:11,marginLeft:10}}>Kwaliteit × Timing</span>
         </div>
         <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
-          {[["allocatie","🎯 Allocatie"],["baggers","🚀 Baggers"],["signalen","🚦 Signalen"],["screener","📊 Screener"],["trackrecord","📈 Trackrecord"],["portfolio","💼 Portfolio"]].map(([v,l])=>(
+          {[["allocatie","🎯 Allocatie"],["baggers","🚀 Baggers"],["signalen","🚦 Signalen"],["screener","📊 Screener"],["sectoren","🗂 Sectoren"],["trackrecord","📈 Trackrecord"],["portfolio","💼 Portfolio"]].map(([v,l])=>(
             <button key={v} onClick={()=>setView(v)} style={{
               background:view===v?C.accent:"none",color:view===v?C.bg:C.textDim,
               border:`1px solid ${view===v?C.accent:C.border}`,borderRadius:5,
@@ -1420,6 +1482,18 @@ function App() {
       {/* SCREENER VIEW */}
       {view==="screener"&&(
         <div style={{padding:"14px 16px"}}>
+          <div style={{marginBottom:12,position:"relative"}}>
+            <input value={search} onChange={e=>setSearch(e.target.value)}
+              placeholder="🔍 Zoek aandeel op ticker of naam (bijv. ANET, tractor, keyence)..."
+              style={{width:"100%",background:C.panel,border:`1px solid ${C.border}`,color:C.text,
+                borderRadius:8,padding:"9px 12px",fontSize:13,boxSizing:"border-box",fontFamily:"inherit"}}/>
+            {search&&(
+              <button onClick={()=>setSearch("")}
+                style={{position:"absolute",right:8,top:"50%",transform:"translateY(-50%)",
+                  background:C.panel2,color:C.textDim,border:`1px solid ${C.border}`,borderRadius:4,
+                  padding:"2px 8px",fontSize:12,cursor:"pointer"}}>✕</button>
+            )}
+          </div>
           <div style={{display:"flex",gap:4,flexWrap:"wrap",marginBottom:14,alignItems:"center"}}>
             <span style={{color:C.textDim,fontSize:10}}>Sorteer:</span>
             {[["action","Actie 🎯"],["composite","Composiet ★"],["timing","Timing ⏱"],["valuation","Waardering 💰"],["acceleration","Versnelt 🚀"],["buyWeight","Koop 🟢"],["alerts","Alerts ⚠"],["score","Buffett"]].map(([k,l])=><SBtn key={k} k={k} l={l}/>)}
@@ -1469,7 +1543,10 @@ function App() {
 
                     <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:8}}>
                       <div>
-                        <div style={{color:C.accent,fontWeight:700,fontSize:15}}>{ticker}</div>
+                        <div style={{display:"flex",alignItems:"center",gap:5}}>
+                          <span style={{color:C.accent,fontWeight:700,fontSize:15}}>{ticker}</span>
+                          {notes[ticker]&&<span title={notes[ticker]} style={{fontSize:11,opacity:0.8}}>📝</span>}
+                        </div>
                         <div style={{color:C.textDim,fontSize:10}}>{STOCK_NAMES[ticker]}</div>
                       </div>
                       <div style={{textAlign:"right"}}>
@@ -1546,6 +1623,82 @@ function App() {
         </div>
       )}
 
+      {/* SECTOREN VIEW */}
+      {view==="sectoren"&&(
+        <div style={{padding:"14px 16px"}}>
+          <div style={{color:C.textDim,fontSize:12,marginBottom:14,lineHeight:1.5}}>
+            Je aandelen per sector, elk gerangschikt op composietscore — de sterkste bovenaan.
+            Zo weeg je binnen elke sector af wie er wint. Het getal naast elke sector toont hoeveel aandelen je erin volgt.
+          </div>
+          {(()=>{
+            // Groepeer alle aandelen met data per sector
+            const bySector = {};
+            [...TICKER_ORDER].filter(t=>stocks[t]).forEach(t=>{
+              const sec = stocks[t]?.sector || "Industrie & diversen";
+              (bySector[sec] ||= []).push(t);
+            });
+            // Sorteer sectoren op grootte (grootste eerst), aandelen binnen sector op composiet
+            const secOrder = Object.keys(bySector).sort((a,b)=>bySector[b].length-bySector[a].length);
+            const compOf = t => stocks[t]?.scores?.composite ?? -1;
+            return secOrder.map(sec=>{
+              const tickers = bySector[sec].sort((a,b)=>compOf(b)-compOf(a));
+              return (
+                <div key={sec} style={{marginBottom:22}}>
+                  <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:10,
+                    borderBottom:`1px solid ${C.border}`,paddingBottom:6}}>
+                    <span style={{color:C.accent,fontSize:15,fontWeight:700}}>{sec}</span>
+                    <span style={{background:C.panel2,color:C.textDim,borderRadius:10,
+                      padding:"1px 9px",fontSize:11,fontWeight:700}}>{tickers.length}</span>
+                  </div>
+                  <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(220px,1fr))",gap:8}}>
+                    {tickers.map((t,idx)=>{
+                      const d=stocks[t], ind=d?.indicators||{};
+                      const comp=compOf(t);
+                      const isWinner=idx===0&&comp>=0;   // hoogste composiet in de sector
+                      return (
+                        <div key={t} onClick={()=>setSelected(t)}
+                          style={{background:C.panel,borderRadius:8,padding:"11px",cursor:"pointer",
+                            border:`1px solid ${isWinner?C.accent:C.border}`,
+                            borderLeft:`3px solid ${(d?.buyWeight||0)>(d?.sellWeight||0)?C.green:(d?.sellWeight||0)>(d?.buyWeight||0)?C.red:C.border}`,
+                            transition:"transform 0.1s,border-color 0.12s"}}
+                          onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-2px)";}}
+                          onMouseLeave={e=>{e.currentTarget.style.transform="";}}>
+                          <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start"}}>
+                            <div>
+                              <div style={{display:"flex",alignItems:"center",gap:5}}>
+                                <span style={{color:C.accent,fontWeight:700,fontSize:14}}>{t}</span>
+                                {isWinner&&<span title="Hoogste composietscore in deze sector"
+                                  style={{fontSize:10}}>👑</span>}
+                              </div>
+                              <div style={{color:C.textDim,fontSize:9}}>{STOCK_NAMES[t]}</div>
+                            </div>
+                            <div style={{textAlign:"right"}}>
+                              <div style={{color:C.text,fontWeight:700,fontSize:12}}>
+                                {ind.last?`${d?.currency||"$"}${ind.last.toFixed(2)}`:"—"}</div>
+                              {d?.overall&&<div style={{marginTop:2}}><OverallBadge signal={d.overall}/></div>}
+                            </div>
+                          </div>
+                          <div style={{display:"flex",gap:5,marginTop:8,alignItems:"center",flexWrap:"wrap"}}>
+                            <span style={{background:C.panel2,color:C.accent,border:`1px solid ${C.accent}`,
+                              borderRadius:4,padding:"1px 6px",fontSize:9,fontWeight:700}}>★ {comp>=0?comp:"—"}</span>
+                            {d?.scores?.accelLabel&&d.scores.accelLabel!=="onbekend"&&d.scores.accelLabel!=="Stabiel"&&(
+                              <span style={{color:d.scores.accelColor==="green"?C.green:d.scores.accelColor==="orange"?C.orange:C.textDim,
+                                fontSize:9,fontWeight:700}}>
+                                {d.scores.accelColor==="green"?"🚀":"🐢"}{d.scores.accelValue>0?"+":""}{d.scores.accelValue}pp</span>
+                            )}
+                            {d?.isBagger&&<span style={{color:C.textDim,fontSize:9}}>bagger</span>}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            });
+          })()}
+        </div>
+      )}
+
       {/* BAGGERS VIEW */}
       {view==="baggers"&&(
         <div style={{padding:"14px 16px"}}>
@@ -1616,7 +1769,8 @@ function App() {
 
       {selected&&(
         <Detail ticker={selected} data={getStockData(selected)}
-          onClose={()=>setSelected(null)} portfolio={portfolio} add={add}/>
+          onClose={()=>setSelected(null)} portfolio={portfolio} add={add}
+          notes={notes} saveNote={saveNote}/>
       )}
 
       <div style={{borderTop:`1px solid ${C.border}`,padding:"8px 16px",textAlign:"center",color:C.muted,fontSize:10}}>
