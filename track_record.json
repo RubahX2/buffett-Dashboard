@@ -1,7 +1,7 @@
 {
   "_meta": {
     "created": "2026-07-02T21:36:20.214972+02:00",
-    "lastUpdate": "2026-07-10T18:09:46.887831+02:00"
+    "lastUpdate": "2026-07-12T15:42:09.950199+02:00"
   },
   "records": {
     "monthly_pick:MU:2026-07-02": {
@@ -1658,6 +1658,217 @@
         "overall": "STERK VERKOOP",
         "composite": 55,
         "timing": 47
+      },
+      "outcomes": {}
+    },
+    "monthly_pick:MU:2026-07-12": {
+      "ticker": "MU",
+      "type": "monthly_pick",
+      "direction": "BUY",
+      "date": "2026-07-12",
+      "entryPrice": 979.3,
+      "benchEntry": 7575.39013671875,
+      "currency": "$",
+      "snapshot": {
+        "composite": 74,
+        "quality": 95,
+        "valuation": 90,
+        "timing": 41
+      },
+      "outcomes": {}
+    },
+    "strong_signal:PLTR:2026-07-12": {
+      "ticker": "PLTR",
+      "type": "strong_signal",
+      "direction": "SELL",
+      "date": "2026-07-12",
+      "entryPrice": 126.79,
+      "benchEntry": 7575.39013671875,
+      "currency": "$",
+      "snapshot": {
+        "overall": "STERK VERKOOP",
+        "composite": 58,
+        "timing": 26
+      },
+      "outcomes": {}
+    },
+    "strong_signal:CAT:2026-07-12": {
+      "ticker": "CAT",
+      "type": "strong_signal",
+      "direction": "SELL",
+      "date": "2026-07-12",
+      "entryPrice": 952.41,
+      "benchEntry": 7575.39013671875,
+      "currency": "$",
+      "snapshot": {
+        "overall": "STERK VERKOOP",
+        "composite": 40,
+        "timing": 41
+      },
+      "outcomes": {}
+    },
+    "strong_signal:MU:2026-07-12": {
+      "ticker": "MU",
+      "type": "strong_signal",
+      "direction": "SELL",
+      "date": "2026-07-12",
+      "entryPrice": 979.3,
+      "benchEntry": 7575.39013671875,
+      "currency": "$",
+      "snapshot": {
+        "overall": "STERK VERKOOP",
+        "composite": 74,
+        "timing": 41
+      },
+      "outcomes": {}
+    },
+    "strong_signal:GOOGL:2026-07-12": {
+      "ticker": "GOOGL",
+      "type": "strong_signal",
+      "direction": "SELL",
+      "date": "2026-07-12",
+      "entryPrice": 357.18,
+      "benchEntry": 7575.39013671875,
+      "currency": "$",
+      "snapshot": {
+        "overall": "STERK VERKOOP",
+        "composite": 57,
+        "timing": 36
+      },
+      "outcomes": {}
+    },
+    "strong_signal:ORCL:2026-07-12": {
+      "ticker": "ORCL",
+      "type": "strong_signal",
+      "direction": "SELL",
+      "date": "2026-07-12",
+      "entryPrice": 140.64,
+      "benchEntry": 7575.39013671875,
+      "currency": "$",
+      "snapshot": {
+        "overall": "STERK VERKOOP",
+        "composite": 57,
+        "timing": 31
+      },
+      "outcomes": {}
+    },
+    "strong_signal:KTOS:2026-07-12": {
+      "ticker": "KTOS",
+      "type": "strong_signal",
+      "direction": "SELL",
+      "date": "2026-07-12",
+      "entryPrice": 48.19,
+      "benchEntry": 7575.39013671875,
+      "currency": "$",
+      "snapshot": {
+        "overall": "STERK VERKOOP",
+        "composite": 36,
+        "timing": 37
+      },
+      "outcomes": {}
+    },
+    "strong_signal:III:2026-07-12": {
+      "ticker": "III",
+      "type": "strong_signal",
+      "direction": "SELL",
+      "date": "2026-07-12",
+      "entryPrice": 2704.0,
+      "benchEntry": 7575.39013671875,
+      "currency": "p",
+      "snapshot": {
+        "overall": "STERK VERKOOP",
+        "composite": 64,
+        "timing": 14
+      },
+      "outcomes": {}
+    },
+    "strong_signal:NVDA:2026-07-12": {
+      "ticker": "NVDA",
+      "type": "strong_signal",
+      "direction": "SELL",
+      "date": "2026-07-12",
+      "entryPrice": 210.96,
+      "benchEntry": 7575.39013671875,
+      "currency": "$",
+      "snapshot": {
+        "overall": "STERK VERKOOP",
+        "composite": 72,
+        "timing": 35
+      },
+      "outcomes": {}
+    },
+    "strong_signal:NFLX:2026-07-12": {
+      "ticker": "NFLX",
+      "type": "strong_signal",
+      "direction": "SELL",
+      "date": "2026-07-12",
+      "entryPrice": 73.37,
+      "benchEntry": 7575.39013671875,
+      "currency": "$",
+      "snapshot": {
+        "overall": "STERK VERKOOP",
+        "composite": 66,
+        "timing": 29
+      },
+      "outcomes": {}
+    },
+    "strong_signal:BABA:2026-07-12": {
+      "ticker": "BABA",
+      "type": "strong_signal",
+      "direction": "SELL",
+      "date": "2026-07-12",
+      "entryPrice": 112.33,
+      "benchEntry": 7575.39013671875,
+      "currency": "$",
+      "snapshot": {
+        "overall": "STERK VERKOOP",
+        "composite": 52,
+        "timing": 28
+      },
+      "outcomes": {}
+    },
+    "strong_signal:SOFTBANK:2026-07-12": {
+      "ticker": "SOFTBANK",
+      "type": "strong_signal",
+      "direction": "SELL",
+      "date": "2026-07-12",
+      "entryPrice": 6370.0,
+      "benchEntry": 7575.39013671875,
+      "currency": "\u00a5",
+      "snapshot": {
+        "overall": "STERK VERKOOP",
+        "composite": 60,
+        "timing": 38
+      },
+      "outcomes": {}
+    },
+    "strong_signal:ISRG:2026-07-12": {
+      "ticker": "ISRG",
+      "type": "strong_signal",
+      "direction": "SELL",
+      "date": "2026-07-12",
+      "entryPrice": 406.78,
+      "benchEntry": 7575.39013671875,
+      "currency": "$",
+      "snapshot": {
+        "overall": "STERK VERKOOP",
+        "composite": 46,
+        "timing": 23
+      },
+      "outcomes": {}
+    },
+    "strong_signal:SYM:2026-07-12": {
+      "ticker": "SYM",
+      "type": "strong_signal",
+      "direction": "SELL",
+      "date": "2026-07-12",
+      "entryPrice": 43.64,
+      "benchEntry": 7575.39013671875,
+      "currency": "$",
+      "snapshot": {
+        "overall": "STERK VERKOOP",
+        "composite": 31,
+        "timing": 32
       },
       "outcomes": {}
     }
