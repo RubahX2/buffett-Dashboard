@@ -1,7 +1,7 @@
 {
   "meta": {
-    "generatedAt": "2026-07-12T15:47:02.477810+02:00",
-    "generatedAtHuman": "Sunday 12 July 2026 om 15:47",
+    "generatedAt": "2026-07-12T16:38:26.131500+02:00",
+    "generatedAtHuman": "Sunday 12 July 2026 om 16:38",
     "isFriday": false,
     "isWeekend": true,
     "version": "5.0",
@@ -3991,7 +3991,7 @@
           "tf": "1D",
           "weight": 3,
           "icon": "\ud83d\udcd0",
-          "title": "Fib 1.618 \u2014 take-profit zone: $20064.10 (0.0% weg)",
+          "title": "Fib 1.618 \u2014 take-profit zone: $20064.11 (0.0% weg)",
           "detail": "Prijs $20060.00 raakt Fibonacci 1.618. Overweeg winstneming."
         },
         {
@@ -4028,7 +4028,7 @@
           "weight": 0,
           "icon": "\u26a0\ufe0f",
           "title": "Bij 1.618 TP-zone \u2014 overextended",
-          "detail": "Prijs $20060.00 bij de 1.618-extensie ($20064.10). Kern-winstzone, maar kwaliteitsaandelen breken hier vaak dwars doorheen. Voorzichtig (overextended), geen automatisch verkoopsignaal."
+          "detail": "Prijs $20060.00 bij de 1.618-extensie ($20064.11). Kern-winstzone, maar kwaliteitsaandelen breken hier vaak dwars doorheen. Voorzichtig (overextended), geen automatisch verkoopsignaal."
         },
         {
           "type": "SELL",
@@ -4076,7 +4076,7 @@
         "ma50": 20052.77,
         "ma200": 18121.04,
         "macdLine": 143.6804,
-        "macdSignal": 344.9534,
+        "macdSignal": 344.9535,
         "macdLineW": 864.1852,
         "macdSigW": 791.4519,
         "bollUpper": 22232.74,
@@ -4101,13 +4101,13 @@
           },
           "extensions": {
             "0.000": 5556.82,
-            "1.000": 12286.98,
-            "1.272": 15246.9,
-            "1.414": 17065.44,
-            "1.618": 20064.1,
-            "1.818": 23514.92,
-            "2.000": 27168.4,
-            "2.618": 44364.8
+            "1.000": 12286.99,
+            "1.272": 15246.91,
+            "1.414": 17065.45,
+            "1.618": 20064.11,
+            "1.818": 23514.93,
+            "2.000": 27168.42,
+            "2.618": 44364.83
           },
           "goldenPocket": {
             "low": 8507.07,
@@ -4115,7 +4115,7 @@
           },
           "swingHigh": 23539.02,
           "swingLow": 5556.82,
-          "extSwingHigh": 12286.98,
+          "extSwingHigh": 12286.99,
           "extSwingLow": 5556.82,
           "logScale": true
         },
@@ -5477,8 +5477,8 @@
           "tf": "1D",
           "weight": 3,
           "icon": "\ud83d\udcc8",
-          "title": "RSI daily overbought (72) (laag volume)",
-          "detail": "RSI 71.7 \u2014 overbought."
+          "title": "RSI daily overbought (71) (laag volume)",
+          "detail": "RSI 71.3 \u2014 overbought."
         },
         {
           "type": "SELL",
@@ -5486,7 +5486,7 @@
           "tf": "1D",
           "weight": 3,
           "icon": "\ud83d\udcd0",
-          "title": "Fib 2.618 \u2014 take-profit zone: $2735.47 (1.2% weg)",
+          "title": "Fib 2.618 \u2014 take-profit zone: $2735.46 (1.2% weg)",
           "detail": "Prijs $2704.00 raakt Fibonacci 2.618. Overweeg winstneming."
         },
         {
@@ -5514,7 +5514,7 @@
           "weight": 8,
           "icon": "\ud83c\udfaf",
           "title": "Bij 2.618 TP-zone \u2b50\u2b50\u2b50 (uitzonderlijk \u2014 winst nemen)",
-          "detail": "Prijs $2704.00 bij de 2.618-extensie ($2735.47). Zelfs voor kwaliteit uitzonderlijk ver \u2014 sterk verkooppunt."
+          "detail": "Prijs $2704.00 bij de 2.618-extensie ($2735.46). Zelfs voor kwaliteit uitzonderlijk ver \u2014 sterk verkooppunt."
         }
       ],
       "alerts": [
@@ -5531,7 +5531,7 @@
           "cat": "BB",
           "tf": "1D",
           "icon": "\ud83d\udcca",
-          "title": "Nadert Bollinger bovenband ($2778.42)"
+          "title": "Nadert Bollinger bovenband ($2781.29)"
         }
       ],
       "overall": "STERK VERKOOP",
@@ -5551,21 +5551,21 @@
       "conflictNote": "Prijs bij/terug van de 2.618-TP-zone (uitzonderlijk ver in winst) - sterk verkoop, ongeacht trendsignalen. Monthly sterk bearish (EMA-kruising + MACD bearish & dalend) - koop geblokkeerd",
       "indicators": {
         "last": 2704.0,
-        "rsiDaily": 71.7,
+        "rsiDaily": 71.3,
         "rsiWeekly": 48.5,
-        "ema8d": 2609.05,
-        "ema21d": 2493.73,
+        "ema8d": 2610.6,
+        "ema21d": 2494.91,
         "ema8w": 2498.65,
         "ema21w": 2657.92,
-        "ma50": 2370.68,
-        "ma200": 3114.49,
-        "macdLine": 92.8634,
-        "macdSignal": 64.7087,
+        "ma50": 2371.06,
+        "ma200": 3114.59,
+        "macdLine": 93.3273,
+        "macdSignal": 65.2635,
         "macdLineW": -221.5524,
         "macdSigW": -278.2885,
-        "bollUpper": 2778.42,
-        "bollLower": 2133.94,
-        "volRatio": 0.97,
+        "bollUpper": 2781.29,
+        "bollLower": 2132.96,
+        "volRatio": 0.93,
         "volKnown": true,
         "highVolume": false,
         "volNote": "(laag volume)",
@@ -5579,28 +5579,28 @@
             "0.705": 1602.67,
             "0.786": 1423.57,
             "0.886": 1229.82,
-            "1.000": 1040.89,
+            "1.000": 1040.9,
             "1.272": 699.17,
             "1.618": 421.45
           },
           "extensions": {
-            "0.000": 1040.89,
+            "0.000": 1040.9,
             "1.000": 1505.54,
             "1.272": 1664.52,
             "1.414": 1754.08,
             "1.618": 1891.24,
             "1.818": 2036.12,
             "2.000": 2177.59,
-            "2.618": 2735.47
+            "2.618": 2735.46
           },
           "goldenPocket": {
             "low": 1602.67,
             "high": 1820.21
           },
           "swingHigh": 4495.56,
-          "swingLow": 1040.89,
+          "swingLow": 1040.9,
           "extSwingHigh": 1505.54,
-          "extSwingLow": 1040.89,
+          "extSwingLow": 1040.9,
           "logScale": true
         },
         "isFriday": false,
@@ -7987,7 +7987,7 @@
             "0.618": 6424.68,
             "0.705": 5858.86,
             "0.786": 5376.94,
-            "0.886": 4836.3,
+            "0.886": 4836.31,
             "1.000": 4285.97,
             "1.272": 3212.7,
             "1.618": 2226.56
@@ -7997,7 +7997,7 @@
             "1.000": 5849.31,
             "1.272": 6365.61,
             "1.414": 6653.01,
-            "1.618": 7088.75,
+            "1.618": 7088.74,
             "1.818": 7543.63,
             "2.000": 7982.9,
             "2.618": 9674.43
@@ -9465,7 +9465,7 @@
             "1.272": 5485.43,
             "1.414": 6202.75,
             "1.618": 7400.49,
-            "1.818": 8799.02,
+            "1.818": 8799.01,
             "2.000": 10300.11,
             "2.618": 17584.39
           },
@@ -9662,12 +9662,12 @@
           "extensions": {
             "0.000": 1747.29,
             "1.000": 6552.37,
-            "1.272": 9387.2,
+            "1.272": 9387.19,
             "1.414": 11325.28,
-            "1.618": 14830.37,
+            "1.618": 14830.36,
             "1.818": 19317.85,
             "2.000": 24571.58,
-            "2.618": 55614.31
+            "2.618": 55614.3
           },
           "goldenPocket": {
             "low": 2847.64,
@@ -9861,13 +9861,13 @@
           },
           "extensions": {
             "0.000": 43762.85,
-            "1.000": 74072.69,
-            "1.272": 85472.11,
-            "1.414": 92104.08,
-            "1.618": 102542.43,
-            "1.818": 113923.7,
-            "2.000": 125374.92,
-            "2.618": 173562.59
+            "1.000": 74072.68,
+            "1.272": 85472.1,
+            "1.414": 92104.07,
+            "1.618": 102542.41,
+            "1.818": 113923.68,
+            "2.000": 125374.89,
+            "2.618": 173562.54
           },
           "goldenPocket": {
             "low": 53076.32,
@@ -9875,7 +9875,7 @@
           },
           "swingHigh": 84170.0,
           "swingLow": 43762.85,
-          "extSwingHigh": 74072.69,
+          "extSwingHigh": 74072.68,
           "extSwingLow": 43762.85,
           "logScale": true
         },
@@ -15853,8 +15853,8 @@
     "methodNote": "Score op omzetgroei, groei-versnelling, brutomarge-trend (operating leverage) en relatieve sterkte vs markt. Risico-flags bepalen positiegrootte-advies."
   },
   "weekly": {
-    "generatedAt": "2026-07-12T15:47:02.477810+02:00",
-    "generatedAtHuman": "Sunday 12 July 2026 om 15:47",
+    "generatedAt": "2026-07-12T16:38:26.131500+02:00",
+    "generatedAtHuman": "Sunday 12 July 2026 om 16:38",
     "periodLabel": "sinds ~1 week geleden",
     "changes": [
       {
