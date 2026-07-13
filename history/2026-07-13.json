@@ -1,7 +1,7 @@
 {
   "meta": {
-    "generatedAt": "2026-07-13T22:23:49.594186+02:00",
-    "generatedAtHuman": "Monday 13 July 2026 om 22:23",
+    "generatedAt": "2026-07-13T22:56:15.651708+02:00",
+    "generatedAtHuman": "Monday 13 July 2026 om 22:56",
     "isFriday": false,
     "isWeekend": false,
     "version": "5.0",
@@ -9,8 +9,7 @@
   },
   "stocks": {
     "WM": {
-      "name": "WM",
-      "ticker": "WM",
+      "error": "WM: data ophalen mislukt",
       "fund": {
         "pe": 29.2,
         "roe": 29.9,
@@ -24,206 +23,7 @@
         "beta": 0.46,
         "lastUpdated": "2026-06"
       },
-      "valuation": {
-        "currentPE": 30.7,
-        "peg": 5.03,
-        "pePercentile": null,
-        "peMin": null,
-        "peMedian": null,
-        "peMax": null,
-        "peSource": null,
-        "priceRangePosition": 93.2,
-        "verdict": "Duur (PEG > 3.5)",
-        "verdictColor": "red",
-        "notes": [
-          "P/E live: koers \u00f7 laatst bekende EPS"
-        ]
-      },
-      "timing": {
-        "score": 47,
-        "label": "Neutrale setup",
-        "color": "neutral",
-        "trendScore": 79,
-        "entryScore": 5,
-        "trendDaily": 90,
-        "trendWeekly": 90,
-        "trendMonthly": 65,
-        "hasMonthly": true,
-        "overextPenalty": 2,
-        "overextDetail": {
-          "weekly": 3.8,
-          "monthly": 0.3
-        },
-        "macdTurning": [],
-        "baseTimin": 49
-      },
-      "scores": {
-        "quality": 54,
-        "qualityGate": true,
-        "qualityReasons": [
-          "ROE 30% (sterk)"
-        ],
-        "qualityFails": [],
-        "valuation": 8,
-        "timing": 47,
-        "marketAdj": 6,
-        "timingEffective": 53,
-        "composite": 40,
-        "opportunity": 23,
-        "opportunityLabel": "Zwakke kans",
-        "opportunityColor": "gray",
-        "opportunityWarning": null,
-        "acceleration": null,
-        "accelLabel": "onbekend",
-        "accelColor": "gray",
-        "accelValue": null,
-        "accelReason": null,
-        "accelBonus": 0,
-        "accelRatio": null,
-        "accelGrowthNow": null,
-        "accelGrowthPrev": null
-      },
-      "bagger": null,
-      "isBagger": false,
-      "isETF": false,
-      "sector": "Industrie & diversen",
-      "currency": "$",
-      "signals": [
-        {
-          "type": "SELL",
-          "cat": "MACD",
-          "tf": "1M",
-          "weight": 4,
-          "icon": "\ud83d\udd34",
-          "title": "MACD bearish (MONTHLY) \u2b50\u2b50",
-          "detail": "MACD 8.52 onder signaal 10.71 op maandbasis \u2014 zwaarste momentum-tegenwind. Hoogste timeframe."
-        },
-        {
-          "type": "BUY",
-          "cat": "TREND",
-          "tf": "1W",
-          "weight": 3,
-          "icon": "\ud83d\udcc8",
-          "title": "Uptrend (WEEKLY)",
-          "detail": "Weekly trendscore 90/100 \u2014 structureel stijgend."
-        },
-        {
-          "type": "BUY",
-          "cat": "TREND",
-          "tf": "1M",
-          "weight": 4,
-          "icon": "\ud83d\udcc8",
-          "title": "Uptrend (MONTHLY) \u2b50",
-          "detail": "Monthly trendscore 65/100 \u2014 stijgend op de hoogste timeframe."
-        },
-        {
-          "type": "BUY",
-          "cat": "EMA",
-          "tf": "1W",
-          "weight": 8,
-          "icon": "\ud83d\udcc8",
-          "title": "Weekly 8/21-EMA goudkruis \u2b50\u2b50",
-          "detail": "De 8-EMA kruist boven de 21-EMA op weekly (RSI 56.9) \u2014 een sterk momentum-omslagsignaal. Weegt zwaar mee."
-        }
-      ],
-      "alerts": [
-        {
-          "type": "WATCH",
-          "cat": "RSI",
-          "tf": "1D",
-          "icon": "\u26a0\ufe0f",
-          "title": "RSI daily nadert overbought (65)"
-        },
-        {
-          "type": "INFO",
-          "cat": "MACD",
-          "tf": "1W",
-          "icon": "\u2139\ufe0f",
-          "title": "MACD weekly momenteel bullish (crossover enkel vrijdag ge\u00ebvalueerd)",
-          "detail": "MACD: 0.660 | Signaal: -0.001"
-        },
-        {
-          "type": "WATCH",
-          "cat": "BB",
-          "tf": "1D",
-          "icon": "\ud83d\udcca",
-          "title": "Nadert Bollinger bovenband ($239.02)"
-        }
-      ],
-      "overall": "KOOP",
-      "buyWeight": 15,
-      "sellWeight": 4,
-      "baseOverall": "STERK KOOP",
-      "confluence": {
-        "monthlyState": "light_bear",
-        "weeklyBullTurn": true,
-        "weeklyBearTurn": false,
-        "fibBuyDepth": 0,
-        "fibZone": null,
-        "supportCount": 0,
-        "supportFlags": []
-      },
-      "conflict": true,
-      "conflictNote": "\u26a0\ufe0f CONFLICT: 3 koop vs 1 verkoop. Gebruik hogere timeframe als beslissend of wacht op bevestiging. Geen duidelijke confluence - signaal getemperd",
-      "nearTP": false,
-      "pctOffHigh": 3.8,
-      "indicators": {
-        "last": 236.71,
-        "rsiDaily": 65.3,
-        "rsiWeekly": 56.9,
-        "ema8d": 231.9,
-        "ema21d": 226.67,
-        "ema8w": 224.87,
-        "ema21w": 223.71,
-        "ma50": 220.92,
-        "ma200": 220.44,
-        "macdLine": 4.214,
-        "macdSignal": 2.8692,
-        "macdLineW": 0.6602,
-        "macdSigW": -0.0012,
-        "bollUpper": 239.02,
-        "bollLower": 210.18,
-        "volRatio": 0.55,
-        "volKnown": true,
-        "highVolume": false,
-        "volNote": "(laag volume)",
-        "fib": {
-          "retracements": {
-            "0.000": 246.08,
-            "0.236": 211.33,
-            "0.382": 192.33,
-            "0.500": 178.24,
-            "0.618": 165.17,
-            "0.705": 156.16,
-            "0.786": 148.21,
-            "0.886": 138.95,
-            "1.000": 129.1,
-            "1.272": 108.32,
-            "1.618": 86.65
-          },
-          "extensions": {
-            "0.000": 129.1,
-            "1.000": 156.14,
-            "1.272": 164.43,
-            "1.414": 168.93,
-            "1.618": 175.61,
-            "1.818": 182.42,
-            "2.000": 188.85,
-            "2.618": 212.4
-          },
-          "goldenPocket": {
-            "low": 156.16,
-            "high": 165.17
-          },
-          "swingHigh": 246.08,
-          "swingLow": 129.1,
-          "extSwingHigh": 156.14,
-          "extSwingLow": 129.1,
-          "logScale": true
-        },
-        "isFriday": false,
-        "hasWeekly": true
-      }
+      "sector": "Industrie & diversen"
     },
     "PLTR": {
       "name": "PLTR",
@@ -1911,7 +1711,7 @@
         "macdSigW": -4.486,
         "bollUpper": 195.19,
         "bollLower": 118.91,
-        "volRatio": 1.61,
+        "volRatio": 1.64,
         "volKnown": true,
         "highVolume": true,
         "volNote": "\u2713 hoog volume",
@@ -2160,7 +1960,7 @@
             "1.618": 52.37,
             "1.818": 53.28,
             "2.000": 54.13,
-            "2.618": 57.1
+            "2.618": 57.09
           },
           "goldenPocket": {
             "low": 54.87,
@@ -2888,7 +2688,7 @@
             "1.414": 649.96,
             "1.618": 693.27,
             "1.818": 738.53,
-            "2.000": 782.28,
+            "2.000": 782.27,
             "2.618": 951.1
           },
           "goldenPocket": {
@@ -5792,7 +5592,7 @@
             "0.618": 1820.21,
             "0.705": 1602.67,
             "0.786": 1423.57,
-            "0.886": 1229.82,
+            "0.886": 1229.81,
             "1.000": 1040.89,
             "1.272": 699.17,
             "1.618": 421.45
@@ -6192,7 +5992,7 @@
         "macdSigW": 9.1597,
         "bollUpper": 279.5,
         "bollLower": 206.31,
-        "volRatio": 0.64,
+        "volRatio": 0.6,
         "volKnown": true,
         "highVolume": false,
         "volNote": "(laag volume)",
@@ -7649,7 +7449,7 @@
           "tf": "1D",
           "weight": 3,
           "icon": "\ud83d\udcd0",
-          "title": "Fib 2.000 \u2014 take-profit zone: $171.11 (0.2% weg)",
+          "title": "Fib 2.000 \u2014 take-profit zone: $171.12 (0.2% weg)",
           "detail": "Prijs $171.40 raakt Fibonacci 2.000. Overweeg winstneming."
         },
         {
@@ -7686,7 +7486,7 @@
           "weight": 6,
           "icon": "\ud83c\udfaf",
           "title": "Bij 2.0 TP-zone \u2b50\u2b50 (winst nemen)",
-          "detail": "Prijs $171.40 bij de 2.0-extensie ($171.11) \u2014 diep in de winstzone."
+          "detail": "Prijs $171.40 bij de 2.0-extensie ($171.12) \u2014 diep in de winstzone."
         },
         {
           "type": "SELL",
@@ -7766,7 +7566,7 @@
             "1.414": 128.69,
             "1.618": 142.11,
             "1.818": 156.62,
-            "2.000": 171.11,
+            "2.000": 171.12,
             "2.618": 231.1
           },
           "goldenPocket": {
@@ -9452,7 +9252,7 @@
         "macdSigW": -1.8464,
         "bollUpper": 103.25,
         "bollLower": 94.02,
-        "volRatio": 0.74,
+        "volRatio": 0.76,
         "volKnown": true,
         "highVolume": false,
         "volNote": "(laag volume)",
@@ -9858,7 +9658,7 @@
         "macdSigW": -7.8406,
         "bollUpper": 117.33,
         "bollLower": 90.13,
-        "volRatio": 0.64,
+        "volRatio": 0.65,
         "volKnown": true,
         "highVolume": false,
         "volNote": "(laag volume)",
@@ -10109,8 +9909,8 @@
             "1.414": 6202.74,
             "1.618": 7400.49,
             "1.818": 8799.01,
-            "2.000": 10300.1,
-            "2.618": 17584.38
+            "2.000": 10300.11,
+            "2.618": 17584.39
           },
           "goldenPocket": {
             "low": 2600.12,
@@ -10309,12 +10109,12 @@
           "extensions": {
             "0.000": 1747.29,
             "1.000": 6552.37,
-            "1.272": 9387.2,
+            "1.272": 9387.19,
             "1.414": 11325.28,
-            "1.618": 14830.37,
+            "1.618": 14830.36,
             "1.818": 19317.85,
-            "2.000": 24571.59,
-            "2.618": 55614.32
+            "2.000": 24571.58,
+            "2.618": 55614.3
           },
           "goldenPocket": {
             "low": 2847.64,
@@ -10503,7 +10303,7 @@
             "0.382": 65561.6,
             "0.500": 60692.0,
             "0.618": 56184.09,
-            "0.705": 53076.32,
+            "0.705": 53076.33,
             "0.786": 50337.62,
             "0.886": 47150.63,
             "1.000": 43762.85,
@@ -10512,21 +10312,21 @@
           },
           "extensions": {
             "0.000": 43762.85,
-            "1.000": 74072.7,
-            "1.272": 85472.12,
-            "1.414": 92104.09,
-            "1.618": 102542.44,
-            "1.818": 113923.73,
-            "2.000": 125374.94,
-            "2.618": 173562.64
+            "1.000": 74072.69,
+            "1.272": 85472.1,
+            "1.414": 92104.08,
+            "1.618": 102542.42,
+            "1.818": 113923.7,
+            "2.000": 125374.91,
+            "2.618": 173562.57
           },
           "goldenPocket": {
-            "low": 53076.32,
+            "low": 53076.33,
             "high": 56184.09
           },
           "swingHigh": 84170.0,
           "swingLow": 43762.85,
-          "extSwingHigh": 74072.7,
+          "extSwingHigh": 74072.69,
           "extSwingLow": 43762.85,
           "logScale": true
         },
@@ -10940,10 +10740,10 @@
             "1.000": 6656.31,
             "1.272": 8653.41,
             "1.414": 9923.79,
-            "1.618": 12082.11,
+            "1.618": 12082.12,
             "1.818": 14653.2,
-            "2.000": 17465.49,
-            "2.618": 31702.27
+            "2.000": 17465.5,
+            "2.618": 31702.28
           },
           "goldenPocket": {
             "low": 3548.66,
@@ -11139,7 +10939,7 @@
           },
           "extensions": {
             "0.000": 1025.11,
-            "1.000": 1876.82,
+            "1.000": 1876.83,
             "1.272": 2212.41,
             "1.414": 2410.81,
             "1.618": 2727.37,
@@ -11153,7 +10953,7 @@
           },
           "swingHigh": 9074.0,
           "swingLow": 1025.11,
-          "extSwingHigh": 1876.82,
+          "extSwingHigh": 1876.83,
           "extSwingLow": 1025.11,
           "logScale": true
         },
@@ -12846,7 +12646,7 @@
             "0.000": 28.36,
             "1.000": 62.68,
             "1.272": 77.77,
-            "1.414": 87.04,
+            "1.414": 87.05,
             "1.618": 102.33,
             "1.818": 119.92,
             "2.000": 138.54,
@@ -14177,7 +13977,7 @@
         "macdSigW": 0.3677,
         "bollUpper": 26.39,
         "bollLower": 19.25,
-        "volRatio": 0.65,
+        "volRatio": 0.66,
         "volKnown": true,
         "highVolume": false,
         "volNote": "(laag volume)",
@@ -15512,7 +15312,7 @@
         "macdSigW": -4.6282,
         "bollUpper": 211.12,
         "bollLower": 150.34,
-        "volRatio": 0.97,
+        "volRatio": 0.9,
         "volKnown": true,
         "highVolume": false,
         "volNote": "(laag volume)",
@@ -16371,7 +16171,7 @@
         "ma200": 18.53,
         "macdLine": 0.0722,
         "macdSignal": 0.035,
-        "macdLineW": -0.0312,
+        "macdLineW": -0.0311,
         "macdSigW": -0.127,
         "bollUpper": 19.01,
         "bollLower": 17.75,
@@ -16833,7 +16633,9 @@
       }
     }
   },
-  "errors": [],
+  "errors": [
+    "WM: data ophalen mislukt"
+  ],
   "market": {
     "regimeScore": 88,
     "regimeLabel": "Risk-on \u2014 brede uptrend",
@@ -17413,19 +17215,6 @@
         "valuationVerdict": "Duur (PEG > 3.5)",
         "timingLabel": "Neutrale setup",
         "price": 460.45,
-        "currency": "$",
-        "marketAdj": 6
-      },
-      {
-        "ticker": "WM",
-        "name": "WM",
-        "composite": 40,
-        "quality": 54,
-        "valuation": 8,
-        "timing": 47,
-        "valuationVerdict": "Duur (PEG > 3.5)",
-        "timingLabel": "Neutrale setup",
-        "price": 236.71,
         "currency": "$",
         "marketAdj": 6
       },
@@ -18456,8 +18245,8 @@
     "methodNote": "Score op omzetgroei, groei-versnelling, brutomarge-trend (operating leverage) en relatieve sterkte vs markt. Risico-flags bepalen positiegrootte-advies."
   },
   "weekly": {
-    "generatedAt": "2026-07-13T22:23:49.594186+02:00",
-    "generatedAtHuman": "Monday 13 July 2026 om 22:23",
+    "generatedAt": "2026-07-13T22:56:15.651708+02:00",
+    "generatedAtHuman": "Monday 13 July 2026 om 22:56",
     "periodLabel": "sinds ~1 week geleden",
     "changes": [
       {
