@@ -365,6 +365,139 @@ function TimingBreakdown({ timing }) {
   );
 }
 
+// ── MODELDIAGNOSTIEK ──────────────────────────────────────────────────────────
+// Twee checks die VANDAAG al iets zeggen -- geen jaar forward returns nodig.
+//   1. Base rates: vuurt een signaal discriminerend, of beschrijft het de markt?
+//      Een signaal dat op 80% van je aandelen vuurt selecteert niets.
+//   2. Correlaties: meten je subscores verschillende dingen? Zo niet, dan telt het
+//      composiet hetzelfde signaal DUBBEL en doet alsof het bevestiging is.
+function ModelDiagnostics({ diag, version }) {
+  const [open,setOpen] = useState(false);
+  if (!diag || diag.error) return null;
+  const warns = diag.corrWarnings || [];
+
+  const cellColor = v => {
+    if (v==null) return C.muted;
+    const a = Math.abs(v);
+    if (a>=0.80) return C.red;
+    if (a>=0.60) return C.orange;
+    if (a>=0.35) return C.text;
+    return C.textDim;
+  };
+
+  return (
+    <div style={{marginBottom:16,background:C.panel,
+      border:`1px solid ${warns.length?C.orange+"66":C.border}`,borderRadius:8,padding:"12px 14px"}}>
+      <div onClick={()=>setOpen(!open)} style={{display:"flex",alignItems:"center",
+        justifyContent:"space-between",cursor:"pointer"}}>
+        <div>
+          <div style={{color:warns.length?C.orange:C.accent,fontSize:13,fontWeight:700}}>
+            🔬 Modeldiagnostiek {warns.length>0?`— ${warns.length} waarschuwing(en)`:""}
+          </div>
+          <div style={{color:C.muted,fontSize:10,marginTop:2}}>
+            Werkt het model, of houdt het zichzelf voor de gek? · {diag.n} aandelen
+            {version?` · model ${version}`:""}
+          </div>
+        </div>
+        <span style={{color:C.textDim,fontSize:12}}>{open?"▲":"▼"}</span>
+      </div>
+
+      {open&&(
+        <div style={{marginTop:12,display:"flex",flexDirection:"column",gap:14}}>
+
+          <div>
+            <div style={{color:C.text,fontSize:12,fontWeight:700,marginBottom:4}}>
+              Vuurt een signaal discriminerend?
+            </div>
+            <div style={{color:C.textDim,fontSize:10,lineHeight:1.5,marginBottom:7}}>
+              Een signaal dat op meer dan de helft van je aandelen vuurt <b style={{color:C.text}}>selecteert
+              niets</b> — het beschrijft de markt. Dat is geen inzicht, dat is een label op een marktbeweging.
+            </div>
+            <div style={{display:"flex",flexDirection:"column",gap:3}}>
+              {(diag.baseRates||[]).map((b,i)=>{
+                const col = b.color==="red"?C.red:b.color==="orange"?C.orange
+                          :b.color==="green"?C.green:C.muted;
+                return (
+                  <div key={i} style={{display:"flex",alignItems:"center",gap:8,fontSize:11}}>
+                    <span style={{color:C.text,minWidth:105,fontWeight:600}}>{b.action}</span>
+                    <div style={{flex:1,height:5,background:C.bg,borderRadius:3,overflow:"hidden",maxWidth:130}}>
+                      <div style={{height:"100%",width:`${Math.min(100,b.pct)}%`,background:col}}/>
+                    </div>
+                    <span style={{color:C.textDim,minWidth:60,fontSize:10}}>{b.n}× ({b.pct}%)</span>
+                    <span style={{color:col,fontSize:10}}>{b.verdict}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div>
+            <div style={{color:C.text,fontSize:12,fontWeight:700,marginBottom:4}}>
+              Meten de subscores verschillende dingen?
+            </div>
+            <div style={{color:C.textDim,fontSize:10,lineHeight:1.5,marginBottom:7}}>
+              Het composiet telt kwaliteit, waardering en timing op alsof het{" "}
+              <b style={{color:C.text}}>onafhankelijke stemmen</b> zijn. Correleren twee scores sterk
+              (|r| ≥ 0,80), dan meten ze hetzelfde en weeg je dat signaal <b style={{color:C.orange}}>dubbel</b>.
+            </div>
+            <div style={{overflowX:"auto"}}>
+              <table style={{borderCollapse:"collapse",fontSize:10}}>
+                <thead>
+                  <tr>
+                    <th style={{padding:"3px 6px"}}></th>
+                    {(diag.corrLabels||[]).map((l,i)=>(
+                      <th key={i} style={{color:C.textDim,padding:"3px 5px",fontWeight:600,
+                        writingMode:"vertical-rl",transform:"rotate(180deg)",height:58}}>{l}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {(diag.corrMatrix||[]).map((row,i)=>(
+                    <tr key={i}>
+                      <td style={{color:C.text,padding:"3px 8px 3px 0",fontWeight:600,whiteSpace:"nowrap"}}>
+                        {row.label}
+                      </td>
+                      {row.cells.map((v,j)=>(
+                        <td key={j} style={{padding:"3px 6px",textAlign:"center",
+                          color:i===j?C.muted:cellColor(v),
+                          fontWeight:(v!=null&&Math.abs(v)>=0.8&&i!==j)?700:400,
+                          background:(v!=null&&Math.abs(v)>=0.8&&i!==j)?C.red+"22":"transparent"}}>
+                          {i===j?"—":(v==null?"·":v.toFixed(2))}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {warns.length>0&&(
+            <div style={{background:"#1c1a06",border:`1px solid ${C.orange}55`,borderRadius:6,padding:"9px 11px"}}>
+              <div style={{color:C.orange,fontSize:11,fontWeight:700,marginBottom:5}}>
+                ⚠ Deze subscores meten hetzelfde
+              </div>
+              {warns.map((w,i)=>(
+                <div key={i} style={{color:C.textDim,fontSize:10,lineHeight:1.6,
+                  marginBottom:i<warns.length-1?6:0}}>
+                  <b style={{color:C.text}}>{w.a} ↔ {w.b}: r = {w.r>=0?"+":""}{w.r}</b><br/>
+                  {w.note}
+                </div>
+              ))}
+            </div>
+          )}
+
+          <div style={{color:C.muted,fontSize:9,borderTop:`1px solid ${C.border}`,paddingTop:7,lineHeight:1.6}}>
+            Dit meet het MODEL, niet je rendement. Het zegt niets over of de score
+            <i> voorspelt</i> — daarvoor is een jaar forward returns nodig, en zelfs dan
+            meet je vooral het marktregime van dat jaar.
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function TrackRecord({ track }) {
   if (!track) {
     return (
@@ -2158,6 +2291,7 @@ function App() {
       {/* TRACKRECORD VIEW */}
       {view==="trackrecord"&&(
         <div style={{padding:"14px 16px"}}>
+          <ModelDiagnostics diag={trackData?.diagnostics} version={trackData?.modelVersion}/>
           <TrackRecord track={trackData}/>
         </div>
       )}

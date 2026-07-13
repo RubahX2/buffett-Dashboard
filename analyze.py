@@ -18,6 +18,7 @@ Schrijft atomisch naar:
 """
 
 import json
+import math
 import os
 import sys
 import time
@@ -50,6 +51,13 @@ OUTPUT_FILE   = "signals.json"
 TIMELINE_FILE = "timeline.json"
 WEEKLY_FILE   = "weekly.json"
 TRACK_FILE    = "track_record.json"
+UNIVERSE_FILE = "universe.jsonl"      # append-only: elke ticker, elke handelsdag
+FILLS_FILE    = "fills.jsonl"         # wat je ECHT kocht (los van het model)
+
+# Bump dit nummer bij ELKE wijziging aan de scoring. Zonder versienummer mengen er
+# twee verschillende modellen door elkaar in hetzelfde trackrecord, en meet je in
+# december een gemiddelde van twee dingen die je nooit meer uit elkaar haalt.
+MODEL_VERSION = "v3-koopkans"         # v3: koopkans-score + afstand-tot-top
 HISTORY_DIR   = "history"
 
 # Benchmark voor relatieve return (beter dan de index?). yfinance ticker voor S&P 500.
@@ -2466,6 +2474,257 @@ def _price_on_or_after(close_series, target_date, max_gap_days=7):
 def _record_key(ticker, date_iso, rec_type):
     return f"{rec_type}:{ticker}:{date_iso}"
 
+NYSE_HOLIDAYS = {
+    # 2026
+    "2026-01-01", "2026-01-19", "2026-02-16", "2026-04-03", "2026-05-25",
+    "2026-06-19", "2026-07-03", "2026-09-07", "2026-11-26", "2026-12-25",
+    # 2027 (vast + berekend)
+    "2027-01-01", "2027-01-18", "2027-02-15", "2027-03-26", "2027-05-31",
+    "2027-06-18", "2027-07-05", "2027-09-06", "2027-11-25", "2027-12-24",
+}
+
+
+def _trading_day(d) -> bool:
+    """Handelsdag: geen weekend, geen beursvakantie."""
+    if isinstance(d, str):
+        d = date.fromisoformat(d)
+    if d.weekday() >= 5:              # zaterdag/zondag
+        return False
+    if d.isoformat() in NYSE_HOLIDAYS:
+        return False
+    return True
+
+
+# FX-koersen naar USD. Zonder dit vergelijk je ¥6364 (SOFTBANK) of p2691 (III, in
+# Britse PENCE) rechtstreeks met de S&P 500 in dollars -- dan meet je wisselkoers-
+# ruis en noemt dat alpha. Wordt bij elke run ververst uit de live data.
+FX_FALLBACK = {"$": 1.0, "€": 1.09, "p": 0.0127, "¥": 0.0064, "£": 1.27}
+
+
+def fetch_fx_rates() -> dict:
+    """
+    Haal actuele wisselkoersen op naar USD. Faalt dit, dan gebruiken we de fallback
+    -- beter een benadering dan valuta's door elkaar husselen.
+    Let op: 'p' is Britse PENCE (1/100 pond), niet pond. LSE noteert in pence.
+    """
+    rates = dict(FX_FALLBACK)
+    try:
+        fx = yf.download(["EURUSD=X", "GBPUSD=X", "JPYUSD=X"], period="5d",
+                         interval="1d", progress=False, timeout=20)
+        if fx is not None and not fx.empty:
+            close = fx["Close"] if "Close" in fx.columns else fx
+            def last(t):
+                try:
+                    v = float(close[t].dropna().iloc[-1])
+                    return v if v > 0 else None
+                except Exception:
+                    return None
+            eur, gbp, jpy = last("EURUSD=X"), last("GBPUSD=X"), last("JPYUSD=X")
+            if eur: rates["€"] = eur
+            if gbp:
+                rates["£"] = gbp
+                rates["p"] = gbp / 100.0      # pence = 1/100 pond
+            if jpy: rates["¥"] = jpy
+            print(f"  FX: EUR {rates['€']:.4f} | GBP {rates['£']:.4f} | "
+                  f"pence {rates['p']:.5f} | JPY {rates['¥']:.6f}")
+    except Exception as e:
+        print(f"  ⚠ FX ophalen faalde ({e}) — fallback-koersen gebruikt")
+    return rates
+
+
+def log_universe(today_iso, stocks, fx_rates, model_version):
+    """
+    UNIVERSUM-LOG: elke ticker, elke handelsdag, ALLE subscores apart.
+
+    Dit is het onomkeerbare deel van het trackrecord. Zonder de NIET-aanbevolen
+    aandelen is er geen controlegroep en valt er later niets te bewijzen: je kunt
+    dan niet vaststellen of een KOOP-signaal beter presteerde dan een willekeurig
+    aandeel op dezelfde dag in dezelfde sector.
+
+    Wat hier NIET in staat: returns, win-rates, percentages. Alleen ruwe feiten.
+    Reden: er komen nog bugs aan het licht. Opgeslagen returns zijn dan besmet en
+    onherstelbaar; uit ruwe prijzen herbereken je alles en is de historie meteen
+    genezen.
+
+    ~77 tickers x 250 handelsdagen = ~19k rijen/jaar. Enkele MB. Verwaarloosbaar.
+    """
+    if not _trading_day(today_iso):
+        print(f"  ⏭  {today_iso} is geen handelsdag — universum niet gelogd "
+              f"(voorkomt weekendrijen in de statistiek)")
+        return 0
+
+    rows = []
+    for name, s in stocks.items():
+        if "error" in s or not s.get("scores"):
+            continue
+        sc = s["scores"]
+        tm = s.get("timing") or {}
+        ind = s.get("indicators") or {}
+        last = ind.get("last")
+        if last is None:
+            continue
+        cur = s.get("currency", "$")
+        fx = fx_rates.get(cur, 1.0)
+
+        rows.append({
+            "d": today_iso,
+            "t": name,
+            "act": s.get("overall", "NEUTRAAL"),
+            "sec": s.get("sector", DEFAULT_SECTOR),
+            "cur": cur,
+            "px": round(float(last), 4),          # lokale valuta
+            "fx": round(float(fx), 6),            # -> USD
+            "pxu": round(float(last) * fx, 4),    # USD, direct vergelijkbaar
+            # ALLE subscores apart. In december is de vraag WELKE component het droeg;
+            # met alleen het composiet weet je dat nooit.
+            "s": {
+                "comp": sc.get("composite"),
+                "qual": sc.get("quality"),
+                "gate": bool(sc.get("qualityGate")),
+                "val":  sc.get("valuation"),
+                "tim":  sc.get("timing"),
+                "trd":  tm.get("trendScore"),
+                "ent":  tm.get("entryScore"),
+                "acc":  sc.get("acceleration"),
+                "opp":  sc.get("opportunity"),
+                "bw":   s.get("buyWeight"),
+                "sw":   s.get("sellWeight"),
+            },
+            # Point-in-time fundamentals: zoals GERAPPORTEERD op deze dag. Niet later
+            # opnieuw ophalen -- restatements zijn een onderschatte bron van nep-alpha.
+            "f": {k: s.get("fund", {}).get(k) for k in
+                  ("pe", "roe", "netMargin", "debtEquity", "revenueGrowth", "beta")},
+            "isB": bool(s.get("isBagger")),
+            "isE": bool(s.get("isETF")),
+            "mv": model_version,
+        })
+
+    # Idempotent: dedupliceren op (dag, ticker). Een run mag twee keer draaien.
+    existing = set()
+    if os.path.exists(UNIVERSE_FILE):
+        try:
+            with open(UNIVERSE_FILE, "r", encoding="utf-8") as f:
+                for line in f:
+                    try:
+                        r = json.loads(line)
+                        existing.add((r["d"], r["t"]))
+                    except Exception:
+                        continue
+        except Exception:
+            pass
+
+    fresh = [r for r in rows if (r["d"], r["t"]) not in existing]
+    if not fresh:
+        print(f"  ⏭  universum voor {today_iso} stond er al ({len(rows)} rijen) — niets toegevoegd")
+        return 0
+
+    with open(UNIVERSE_FILE, "a", encoding="utf-8") as f:
+        for r in fresh:
+            f.write(json.dumps(r, ensure_ascii=True) + "\n")
+    print(f"  ✓ universum: {len(fresh)} rijen gelogd voor {today_iso}")
+    return len(fresh)
+
+
+def diagnose_signals(stocks) -> dict:
+    """
+    DIAGNOSTIEK DIE VANDAAG AL IETS ZEGT — geen jaar wachten nodig.
+
+    Twee vragen die je nu al kunt beantwoorden, en die allebei een bias kunnen
+    blootleggen in het model zelf:
+
+    1. BASE RATES — vuurt een signaal discriminerend?
+       Een signaal dat op 80% van het universum vuurt bevat geen informatie; het
+       beschrijft de markt, het selecteert niet. "STERK VERKOOP op 60 van de 77
+       aandelen" is geen inzicht, dat is een marktbeschrijving met een label erop.
+
+    2. CORRELATIE TUSSEN SUBSCORES — meten ze verschillende dingen?
+       Het composiet telt kwaliteit + waardering + timing op alsof het onafhankelijke
+       stemmen zijn. Correleren twee subscores sterk (>0.8), dan weeg je hetzelfde
+       signaal DUBBEL en doe je alsof het bevestiging is. Dat is de meest verraderlijke
+       bias in een samengestelde score: schijnbevestiging.
+
+    Beide checks werken op EEN run. Ze hebben geen forward returns nodig.
+    """
+    rows = [(t, s) for t, s in stocks.items() if "error" not in s and s.get("scores")]
+    n = len(rows)
+    if n < 10:
+        return {"error": "te weinig data"}
+
+    # ---- 1. Base rates -----------------------------------------------------
+    from collections import Counter
+    acts = Counter(s.get("overall", "NEUTRAAL") for _, s in rows)
+    base = []
+    for act, cnt in acts.most_common():
+        pct = 100.0 * cnt / n
+        # Een signaal dat op >50% vuurt is geen selectie meer.
+        if pct >= 50:
+            verdict, color = "GEEN SIGNAAL — beschrijft de markt", "red"
+        elif pct >= 30:
+            verdict, color = "weinig discriminerend", "orange"
+        elif pct >= 3:
+            verdict, color = "discriminerend", "green"
+        else:
+            verdict, color = "zeldzaam (weinig observaties)", "gray"
+        base.append({"action": act, "n": cnt, "pct": round(pct, 1),
+                     "verdict": verdict, "color": color})
+
+    # ---- 2. Correlatiematrix van de subscores -------------------------------
+    keys = [("qual", "Kwaliteit"), ("val", "Waardering"), ("tim", "Timing"),
+            ("trd", "Trend"), ("ent", "Instap"), ("comp", "Composiet"),
+            ("opp", "Koopkans")]
+    series = {}
+    for k, _lbl in keys:
+        vals = []
+        for _t, s in rows:
+            sc = s["scores"]; tm = s.get("timing") or {}
+            v = {"qual": sc.get("quality"), "val": sc.get("valuation"),
+                 "tim": sc.get("timing"), "trd": tm.get("trendScore"),
+                 "ent": tm.get("entryScore"), "comp": sc.get("composite"),
+                 "opp": sc.get("opportunity")}[k]
+            vals.append(v)
+        series[k] = vals
+
+    def corr(a, b):
+        pairs = [(x, y) for x, y in zip(a, b)
+                 if isinstance(x, (int, float)) and isinstance(y, (int, float))]
+        if len(pairs) < 8:
+            return None
+        xs = [p[0] for p in pairs]; ys = [p[1] for p in pairs]
+        mx = sum(xs) / len(xs); my = sum(ys) / len(ys)
+        num = sum((x - mx) * (y - my) for x, y in pairs)
+        dx = math.sqrt(sum((x - mx) ** 2 for x in xs))
+        dy = math.sqrt(sum((y - my) ** 2 for y in ys))
+        if dx == 0 or dy == 0:
+            return None
+        return num / (dx * dy)
+
+    labels = {k: lbl for k, lbl in keys}
+    matrix, warnings = [], []
+    for i, (ka, la) in enumerate(keys):
+        row = {"label": la, "key": ka, "cells": []}
+        for kb, _lb in keys:
+            c = corr(series[ka], series[kb])
+            row["cells"].append(None if c is None else round(c, 2))
+        matrix.append(row)
+        # Waarschuw bij hoge correlatie tussen ONAFHANKELIJK bedoelde pijlers
+        for kb, lb in keys[i + 1:]:
+            c = corr(series[ka], series[kb])
+            if c is not None and abs(c) >= 0.80:
+                # composiet/koopkans zijn AFGELEID van de rest -- die horen te correleren
+                afgeleid = {"comp", "opp"}
+                if ka in afgeleid or kb in afgeleid:
+                    continue
+                warnings.append({
+                    "a": la, "b": lb, "r": round(c, 2),
+                    "note": (f"{la} en {lb} correleren {c:+.2f}. Ze meten grotendeels "
+                             f"hetzelfde. Het composiet telt beide mee alsof het "
+                             f"onafhankelijke stemmen zijn — dat weegt dit signaal DUBBEL.")
+                })
+
+    return {"n": n, "baseRates": base, "corrLabels": [lbl for _k, lbl in keys],
+            "corrMatrix": matrix, "corrWarnings": warnings}
+
+
 def record_recommendations(track, today_iso, allocation, stocks, prices, bench_close):
     """Leg vandaag's aanbevelingen vast (idempotent): maandpick + sterke signalen."""
     records = track.setdefault("records", {})
@@ -2881,6 +3140,30 @@ def main():
     # ── TRACKRECORD ────────────────────────────────────────────────────────────
     # Leg aanbevelingen vast + evalueer verstreken horizons vs benchmark.
     print(f"\n{'='*60}\nTrackrecord bijwerken...")
+
+    # 0. UNIVERSUM-LOG (het onomkeerbare deel). Elke ticker, elke handelsdag, alle
+    #    subscores apart. Zonder de niet-aanbevolen namen is er later geen controle-
+    #    groep en valt er niets te bewijzen. Wat vandaag niet gelogd wordt, bestaat
+    #    in december niet.
+    fx_rates = fetch_fx_rates()
+    log_universe(TODAY.isoformat(), results["stocks"], fx_rates, MODEL_VERSION)
+
+    # 0b. DIAGNOSTIEK die nu al iets zegt: base rates + correlatie tussen subscores.
+    #     Hier is geen jaar data voor nodig -- dit werkt op de run van vandaag.
+    diag = diagnose_signals(results["stocks"])
+    if "error" not in diag:
+        print("\n  ── Base rates (vuurt een signaal discriminerend?) ──")
+        for b in diag["baseRates"]:
+            mark = {"red": "✗", "orange": "⚠", "green": "✓", "gray": "·"}[b["color"]]
+            print(f"    {mark} {b['action']:22s} {b['n']:3d}x ({b['pct']:4.1f}%) — {b['verdict']}")
+        if diag["corrWarnings"]:
+            print("\n  ── ⚠ SUBSCORES DIE HETZELFDE METEN ──")
+            for w in diag["corrWarnings"]:
+                print(f"    {w['a']} <-> {w['b']}: r = {w['r']:+.2f}")
+                print(f"      {w['note']}")
+        else:
+            print("\n  ✓ Geen subscores die elkaar dubbel tellen (alle |r| < 0.80)")
+
     track = load_track_record()
     prices_today = {nm: results["stocks"][nm].get("indicators", {}).get("last")
                     for nm in results["stocks"] if "indicators" in results["stocks"][nm]}
@@ -2893,6 +3176,11 @@ def main():
     accuracy = compute_accuracy_stats(track, TRACK_MIN_OBSERVATIONS, TRACK_HORIZONS_WEEKS)
     track["_meta"]["lastUpdate"] = NOW.isoformat()
     track["accuracy"] = accuracy
+    # Diagnostiek van VANDAAG (base rates + subscore-correlaties). Dit vervangt geen
+    # forward-return-analyse, maar legt wel nu al bloot of een signaal discriminerend
+    # is en of subscores elkaar dubbel tellen.
+    track["diagnostics"] = diag
+    track["modelVersion"] = MODEL_VERSION
     track["benchmarkName"] = BENCHMARK_NAME
     track["minObservations"] = TRACK_MIN_OBSERVATIONS
     track["horizonsWeeks"] = TRACK_HORIZONS_WEEKS
