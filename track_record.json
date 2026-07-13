@@ -1,7 +1,7 @@
 {
   "_meta": {
     "created": "2026-07-02T21:36:20.214972+02:00",
-    "lastUpdate": "2026-07-13T21:46:01.622068+02:00"
+    "lastUpdate": "2026-07-13T21:58:31.641080+02:00"
   },
   "records": {
     "monthly_pick:MU:2026-07-02": {
@@ -2565,6 +2565,21 @@
         "overall": "STERK VERKOOP",
         "composite": 37,
         "timing": 37
+      },
+      "outcomes": {}
+    },
+    "strong_signal:SNDK:2026-07-13": {
+      "ticker": "SNDK",
+      "type": "strong_signal",
+      "direction": "SELL",
+      "date": "2026-07-13",
+      "entryPrice": 1675.11,
+      "benchEntry": 7520.31982421875,
+      "currency": "$",
+      "snapshot": {
+        "overall": "STERK VERKOOP",
+        "composite": 76,
+        "timing": 46
       },
       "outcomes": {}
     }
