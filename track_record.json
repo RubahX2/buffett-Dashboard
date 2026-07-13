@@ -1,7 +1,7 @@
 {
   "_meta": {
     "created": "2026-07-02T21:36:20.214972+02:00",
-    "lastUpdate": "2026-07-13T13:13:29.645211+02:00"
+    "lastUpdate": "2026-07-13T18:44:44.312429+02:00"
   },
   "records": {
     "monthly_pick:MU:2026-07-02": {
@@ -64,7 +64,15 @@
         "valuation": 90,
         "timing": 77
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 925.26,
+          "return": -5.16,
+          "relativeReturn": -5.75,
+          "success": false
+        }
+      }
     },
     "strong_signal:MNST:2026-07-05": {
       "ticker": "MNST",
@@ -79,7 +87,15 @@
         "composite": 51,
         "timing": 54
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 97.29,
+          "return": 0.32,
+          "relativeReturn": -0.28,
+          "success": false
+        }
+      }
     },
     "strong_signal:V:2026-07-05": {
       "ticker": "V",
@@ -94,7 +110,15 @@
         "composite": 57,
         "timing": 53
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 357.18,
+          "return": 1.37,
+          "relativeReturn": 0.77,
+          "success": true
+        }
+      }
     },
     "strong_signal:CAT:2026-07-05": {
       "ticker": "CAT",
@@ -109,7 +133,15 @@
         "composite": 38,
         "timing": 38
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 930.41,
+          "return": -3.44,
+          "relativeReturn": -4.03,
+          "success": false
+        }
+      }
     },
     "strong_signal:ASML:2026-07-05": {
       "ticker": "ASML",
@@ -170,7 +202,15 @@
         "composite": 77,
         "timing": 49
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 925.26,
+          "return": -5.16,
+          "relativeReturn": -5.75,
+          "success": false
+        }
+      }
     },
     "strong_signal:GOOGL:2026-07-05": {
       "ticker": "GOOGL",
@@ -185,7 +225,15 @@
         "composite": 63,
         "timing": 51
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 356.53,
+          "return": -0.94,
+          "relativeReturn": -1.53,
+          "success": false
+        }
+      }
     },
     "strong_signal:AMZN:2026-07-05": {
       "ticker": "AMZN",
@@ -200,7 +248,15 @@
         "composite": 58,
         "timing": 53
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 248.36,
+          "return": 2.34,
+          "relativeReturn": 1.75,
+          "success": true
+        }
+      }
     },
     "strong_signal:KO:2026-07-05": {
       "ticker": "KO",
@@ -215,7 +271,15 @@
         "composite": 46,
         "timing": 57
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 83.99,
+          "return": -0.18,
+          "relativeReturn": -0.78,
+          "success": false
+        }
+      }
     },
     "strong_signal:LHX:2026-07-05": {
       "ticker": "LHX",
@@ -230,7 +294,15 @@
         "composite": 54,
         "timing": 47
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 289.88,
+          "return": -4.04,
+          "relativeReturn": -4.63,
+          "success": false
+        }
+      }
     },
     "strong_signal:MOGA:2026-07-05": {
       "ticker": "MOGA",
@@ -245,7 +317,15 @@
         "composite": 34,
         "timing": 31
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 396.55,
+          "return": -5.0,
+          "relativeReturn": -5.59,
+          "success": false
+        }
+      }
     },
     "strong_signal:KTOS:2026-07-05": {
       "ticker": "KTOS",
@@ -260,7 +340,15 @@
         "composite": 36,
         "timing": 44
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 46.82,
+          "return": 15.41,
+          "relativeReturn": 14.82,
+          "success": true
+        }
+      }
     },
     "strong_signal:RKLB:2026-07-05": {
       "ticker": "RKLB",
@@ -275,7 +363,15 @@
         "composite": 43,
         "timing": 39
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 76.43,
+          "return": -23.91,
+          "relativeReturn": -24.51,
+          "success": false
+        }
+      }
     },
     "strong_signal:GAW:2026-07-05": {
       "ticker": "GAW",
@@ -359,7 +455,15 @@
         "composite": 50,
         "timing": 40
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 366.87,
+          "return": -2.63,
+          "relativeReturn": -3.23,
+          "success": false
+        }
+      }
     },
     "strong_signal:MELI:2026-07-05": {
       "ticker": "MELI",
@@ -374,7 +478,15 @@
         "composite": 59,
         "timing": 34
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 1874.32,
+          "return": -6.29,
+          "relativeReturn": -6.89,
+          "success": false
+        }
+      }
     },
     "strong_signal:III:2026-07-05": {
       "ticker": "III",
@@ -412,7 +524,15 @@
         "composite": 39,
         "timing": 57
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 271.29,
+          "return": 11.91,
+          "relativeReturn": 11.32,
+          "success": true
+        }
+      }
     },
     "strong_signal:MSFT:2026-07-05": {
       "ticker": "MSFT",
@@ -427,7 +547,15 @@
         "composite": 63,
         "timing": 35
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 392.78,
+          "return": -0.59,
+          "relativeReturn": -1.18,
+          "success": false
+        }
+      }
     },
     "strong_signal:NKE:2026-07-05": {
       "ticker": "NKE",
@@ -442,7 +570,15 @@
         "composite": 45,
         "timing": 28
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 44.28,
+          "return": -0.42,
+          "relativeReturn": -1.01,
+          "success": false
+        }
+      }
     },
     "strong_signal:SOF:2026-07-05": {
       "ticker": "SOF",
@@ -503,7 +639,15 @@
         "composite": 31,
         "timing": 25
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 91.61,
+          "return": 9.09,
+          "relativeReturn": 8.5,
+          "success": true
+        }
+      }
     },
     "strong_signal:AAPL:2026-07-05": {
       "ticker": "AAPL",
@@ -518,7 +662,15 @@
         "composite": 45,
         "timing": 48
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 316.64,
+          "return": 2.6,
+          "relativeReturn": 2.0,
+          "success": true
+        }
+      }
     },
     "strong_signal:NFLX:2026-07-05": {
       "ticker": "NFLX",
@@ -533,7 +685,15 @@
         "composite": 66,
         "timing": 31
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 74.81,
+          "return": 3.66,
+          "relativeReturn": 3.06,
+          "success": true
+        }
+      }
     },
     "strong_signal:DIS:2026-07-05": {
       "ticker": "DIS",
@@ -548,7 +708,15 @@
         "composite": 30,
         "timing": 29
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 96.41,
+          "return": 3.11,
+          "relativeReturn": 2.51,
+          "success": true
+        }
+      }
     },
     "strong_signal:BLK:2026-07-05": {
       "ticker": "BLK",
@@ -563,7 +731,15 @@
         "composite": 55,
         "timing": 30
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 1020.8,
+          "return": -2.52,
+          "relativeReturn": -3.11,
+          "success": false
+        }
+      }
     },
     "strong_signal:NABTESCO:2026-07-05": {
       "ticker": "NABTESCO",
@@ -716,7 +892,15 @@
         "composite": 42,
         "timing": 45
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 461.86,
+          "return": -2.09,
+          "relativeReturn": -2.68,
+          "success": false
+        }
+      }
     },
     "strong_signal:TER:2026-07-05": {
       "ticker": "TER",
@@ -731,7 +915,15 @@
         "composite": 47,
         "timing": 44
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 340.38,
+          "return": -7.78,
+          "relativeReturn": -8.37,
+          "success": false
+        }
+      }
     },
     "strong_signal:ISRG:2026-07-05": {
       "ticker": "ISRG",
@@ -746,7 +938,15 @@
         "composite": 45,
         "timing": 23
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 411.03,
+          "return": 3.52,
+          "relativeReturn": 2.92,
+          "success": true
+        }
+      }
     },
     "strong_signal:CGNX:2026-07-05": {
       "ticker": "CGNX",
@@ -761,7 +961,15 @@
         "composite": 40,
         "timing": 43
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 64.32,
+          "return": -5.14,
+          "relativeReturn": -5.73,
+          "success": false
+        }
+      }
     },
     "strong_signal:NOVT:2026-07-05": {
       "ticker": "NOVT",
@@ -776,7 +984,15 @@
         "composite": 39,
         "timing": 49
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 152.57,
+          "return": -5.66,
+          "relativeReturn": -6.25,
+          "success": false
+        }
+      }
     },
     "strong_signal:IONQ:2026-07-05": {
       "ticker": "IONQ",
@@ -791,7 +1007,15 @@
         "composite": 48,
         "timing": 47
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 38.95,
+          "return": -20.7,
+          "relativeReturn": -21.3,
+          "success": false
+        }
+      }
     },
     "strong_signal:QBTS:2026-07-05": {
       "ticker": "QBTS",
@@ -806,7 +1030,15 @@
         "composite": 49,
         "timing": 49
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 18.74,
+          "return": -16.84,
+          "relativeReturn": -17.44,
+          "success": false
+        }
+      }
     },
     "strong_signal:SYM:2026-07-05": {
       "ticker": "SYM",
@@ -821,7 +1053,15 @@
         "composite": 31,
         "timing": 32
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 42.52,
+          "return": 0.51,
+          "relativeReturn": -0.08,
+          "success": false
+        }
+      }
     },
     "strong_signal:RR:2026-07-05": {
       "ticker": "RR",
@@ -836,7 +1076,15 @@
         "composite": 41,
         "timing": 30
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 1.63,
+          "return": 16.58,
+          "relativeReturn": 15.99,
+          "success": true
+        }
+      }
     },
     "strong_signal:PL:2026-07-05": {
       "ticker": "PL",
@@ -851,7 +1099,15 @@
         "composite": 49,
         "timing": 49
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 26.1,
+          "return": -16.81,
+          "relativeReturn": -17.4,
+          "success": false
+        }
+      }
     },
     "monthly_pick:MU:2026-07-06": {
       "ticker": "MU",
@@ -867,7 +1123,15 @@
         "valuation": 90,
         "timing": 49
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 925.26,
+          "return": -6.48,
+          "relativeReturn": -6.45,
+          "success": false
+        }
+      }
     },
     "strong_signal:PLTR:2026-07-06": {
       "ticker": "PLTR",
@@ -882,7 +1146,15 @@
         "composite": 60,
         "timing": 38
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 129.63,
+          "return": 1.78,
+          "relativeReturn": 1.81,
+          "success": true
+        }
+      }
     },
     "strong_signal:ORCL:2026-07-06": {
       "ticker": "ORCL",
@@ -897,7 +1169,15 @@
         "composite": 63,
         "timing": 46
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 134.05,
+          "return": 7.08,
+          "relativeReturn": 7.11,
+          "success": true
+        }
+      }
     },
     "strong_signal:KTOS:2026-07-06": {
       "ticker": "KTOS",
@@ -912,7 +1192,15 @@
         "composite": 40,
         "timing": 46
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 46.82,
+          "return": 13.18,
+          "relativeReturn": 13.21,
+          "success": true
+        }
+      }
     },
     "strong_signal:NFLX:2026-07-06": {
       "ticker": "NFLX",
@@ -927,7 +1215,15 @@
         "composite": 67,
         "timing": 31
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 74.81,
+          "return": 1.81,
+          "relativeReturn": 1.84,
+          "success": true
+        }
+      }
     },
     "strong_signal:BLK:2026-07-06": {
       "ticker": "BLK",
@@ -942,7 +1238,15 @@
         "composite": 57,
         "timing": 32
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 1020.8,
+          "return": -1.56,
+          "relativeReturn": -1.53,
+          "success": false
+        }
+      }
     },
     "strong_signal:BABA:2026-07-06": {
       "ticker": "BABA",
@@ -957,7 +1261,15 @@
         "composite": 59,
         "timing": 45
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 112.88,
+          "return": -15.87,
+          "relativeReturn": -15.84,
+          "success": false
+        }
+      }
     },
     "strong_signal:ISRG:2026-07-06": {
       "ticker": "ISRG",
@@ -972,7 +1284,15 @@
         "composite": 45,
         "timing": 22
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 411.03,
+          "return": 5.91,
+          "relativeReturn": 5.94,
+          "success": true
+        }
+      }
     },
     "strong_signal:SYM:2026-07-06": {
       "ticker": "SYM",
@@ -987,7 +1307,15 @@
         "composite": 33,
         "timing": 36
       },
-      "outcomes": {}
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-13",
+          "exitPrice": 42.52,
+          "return": 3.23,
+          "relativeReturn": 3.26,
+          "success": true
+        }
+      }
     },
     "monthly_pick:MU:2026-07-07": {
       "ticker": "MU",
@@ -2209,15 +2537,30 @@
         "timing": 37
       },
       "outcomes": {}
+    },
+    "strong_signal:TDG:2026-07-13": {
+      "ticker": "TDG",
+      "type": "strong_signal",
+      "direction": "SELL",
+      "date": "2026-07-13",
+      "entryPrice": 1229.99,
+      "benchEntry": 7527.7001953125,
+      "currency": "$",
+      "snapshot": {
+        "overall": "STERK VERKOOP",
+        "composite": 60,
+        "timing": 50
+      },
+      "outcomes": {}
     }
   },
   "accuracy": {
     "monthly_pick": {
       "1w": {
-        "n": 2,
-        "avgReturn": 2.77,
-        "avgRelativeReturn": 1.78,
-        "status": "te weinig data (2/20)",
+        "n": 4,
+        "avgReturn": -1.52,
+        "avgRelativeReturn": -2.16,
+        "status": "te weinig data (4/20)",
         "accuracyShown": false
       },
       "4w": {
@@ -2238,11 +2581,12 @@
     },
     "strong_signal": {
       "1w": {
-        "n": 14,
-        "avgReturn": -5.54,
-        "avgRelativeReturn": null,
-        "status": "te weinig data (14/20)",
-        "accuracyShown": false
+        "n": 53,
+        "avgReturn": -2.3,
+        "avgRelativeReturn": -1.6,
+        "accuracy": 35.8,
+        "status": "ok",
+        "accuracyShown": true
       },
       "4w": {
         "n": 0,
