@@ -1565,11 +1565,18 @@ def generate_signals(name: str, daily: pd.DataFrame, weekly: pd.DataFrame, month
         conflict_note = (conflict_note + " " if conflict_note else "") + \
             "Ultiem EMA-koopmoment (goudkruis na downtrend + oversold + bodem + monthly-bevestiging) - overrulet naar sterk koop voor kwaliteit."
 
+    # Voor de koopkans-score: staat de koers vlak bij een TP-winstnemingszone, en hoe
+    # ver onder de langetermijntop? Een DURE naam die even ademhaalt heeft een hoge
+    # instapscore maar staat NIET ver onder zijn top -- dat onderscheid maakt dit veld.
+    near_any_tp = any(_near(l) for l in ("1.618", "1.818", "2.000", "2.618"))
+    pct_off_high = round(max(0.0, (long_high - last) / long_high * 100.0), 1) if long_high > 0 else None
+
     return {
         "signals": signals, "alerts": alerts, "overall": overall,
         "buyWeight": buy_w, "sellWeight": sell_w, "baseOverall": base_overall,
         "confluence": confl,
         "conflict": conflict, "conflictNote": conflict_note,
+        "nearTP": near_any_tp, "pctOffHigh": pct_off_high,
         "indicators": {
             "last": round(last, 2),
             "rsiDaily": round(last_rsi_d, 1),
@@ -2005,6 +2012,80 @@ def compute_composite(quality_score, valuation_score, timing_score, accel_bonus=
     """
     base = 0.30 * quality_score + 0.30 * valuation_score + 0.40 * timing_score
     return round(max(0, min(100, base + accel_bonus)))
+
+
+def compute_opportunity(quality_score, entry_score, valuation_score, trend_score,
+                        quality_gate, pct_off_high=None, near_tp=False) -> dict:
+    """
+    KOOPKANS-SCORE: kwaliteit die ECHT gevallen is en nu redelijk geprijsd staat.
+
+    Waarom naast het composiet? Het composiet laat de TIMING (0.6*trend + 0.4*instap)
+    voor 40% meewegen. Omdat de trend daarin domineert, straft het composiet precies
+    de situatie af waar een kwaliteitsbelegger op wacht: een uitstekend bedrijf dat
+    is GEVALLEN.
+
+    BELANGRIJK (correctie): een hoge instapscore alleen is NIET genoeg. Een DUUR
+    aandeel dat even ademhaalt binnen een opwaartse beweging krijgt ook een hoge
+    instapscore -- maar dat is geen koopkans, dat is een pauze in een rally. Denk aan
+    ASMI (PEG 3.0) of Monster (PEG 4.9): technisch een pullback, fundamenteel duur.
+    Een echte koopkans vraagt DRIE dingen tegelijk:
+
+      1. Goed bedrijf        (kwaliteit, poort gehaald)      -> 35%
+      2. Redelijke prijs     (waardering/PEG)                 -> 30%
+      3. ECHT gevallen       (afstand tot 52w-top + instap)   -> 35%
+
+    Plus twee remmen:
+      * TP-ZONE: staat de koers vlak onder een winstnemingszone? Dan is het geen
+        instapmoment maar een uitstapmoment. Zware aftrek.
+      * VRIJE VAL: catastrofale trend (<15) -> de markt weet mogelijk iets wat de
+        (per kwartaal bijgewerkte) fundamentals nog niet tonen. Denk aan TSCO.
+    """
+    if not quality_gate or quality_score is None or entry_score is None:
+        return {"score": None, "label": None, "color": "gray", "warning": None}
+
+    val = valuation_score if valuation_score is not None else 50
+
+    # "Echt gevallen"-component: hoe ver onder de 52w/langetermijntop staat de koers?
+    # Dit onderscheidt een GEVALLEN engel van een DURE naam die even pauzeert.
+    #   0-5% onder top   -> nauwelijks gevallen (score ~0-15)
+    #   20%              -> ~57
+    #   35%+             -> ~100 (fors gevallen)
+    if pct_off_high is None:
+        fallen = 40.0                      # onbekend: licht onder neutraal, geen gok
+    else:
+        fallen = max(0.0, min(100.0, (pct_off_high / 35.0) * 100.0))
+
+    # De daling is de KERN van een koopkans -- niet het technische instapmoment.
+    # Een aandeel dat 40% gedaald is, is vaak al hersteld uit oversold (matige
+    # instapscore), maar is juist DAAROM de kans. De instapscore verfijnt alleen.
+    entry_combined = 0.75 * fallen + 0.25 * entry_score
+
+    base = 0.32 * quality_score + 0.26 * val + 0.42 * entry_combined
+
+    warning = None
+    penalty = 0
+
+    # REM 1: vlak onder een TP-zone = winstnemingsgebied, geen instapgebied.
+    if near_tp:
+        penalty += 22
+        warning = ("Vlak bij een TP-winstnemingszone: dit is een uitstapgebied, "
+                   "geen instapgebied.")
+
+    # REM 2: vrije val -- de daling kan een structurele oorzaak hebben.
+    if trend_score is not None and trend_score < 15:
+        penalty += 12
+        w2 = ("Zeer zwakke trend ({}/100): controleer of de daling een structurele "
+              "oorzaak heeft voor je koopt.").format(trend_score)
+        warning = (warning + " " + w2) if warning else w2
+
+    score = round(max(0, min(100, base - penalty)))
+
+    if   score >= 72: label, color = "Uitstekende koopkans", "green"
+    elif score >= 60: label, color = "Goede koopkans", "green"
+    elif score >= 48: label, color = "Redelijke kans", "orange"
+    else:             label, color = "Zwakke kans", "gray"
+
+    return {"score": score, "label": label, "color": color, "warning": warning}
 
 # ── BAGGER-SPOOR (apart raamwerk; waardering speelt GEEN rol) ─────────────────
 # Zoekt kenmerken van vroege multibaggers: hoge groei, groei-versnelling, operating
@@ -2556,6 +2637,16 @@ def main():
             timing_eff = max(0, min(100, timing["score"] + market_adj))
             composite = compute_composite(quality["score"], val_score, timing_eff, accel_bonus)
 
+            # Koopkans: kwaliteit die ECHT gevallen is en redelijk geprijsd staat.
+            # Los van het composiet (dat straft gevallen engelen af via de trend), maar
+            # met de afstand-tot-top en TP-zone erbij -- anders scoort een DURE naam die
+            # even ademhaalt (hoge instapscore, maar vlak onder zijn top) net zo hoog.
+            opportunity = compute_opportunity(
+                quality["score"], timing.get("entryScore"), val_score,
+                timing.get("trendScore"), quality["gate"],
+                pct_off_high=analysis.get("pctOffHigh"),
+                near_tp=analysis.get("nearTP", False))
+
             # ETF's: een mandje aandelen heeft geen ROE, marge of schuld. De kwaliteits-
             # poort, waardering, versnelling en het composiet zijn dus betekenisloos en
             # worden op None gezet. Alleen de timing (RSI/EMA/MACD/fib) blijft over —
@@ -2568,6 +2659,7 @@ def main():
                          "accel": None, "composite_bonus": 0, "reason": None,
                          "ratio": None, "growthNow": None, "growthPrev": None}
                 accel_bonus = 0
+                opportunity = {"score": None, "label": None, "color": "gray", "warning": None}
 
             scores = {
                 "quality": quality["score"], "qualityGate": quality["gate"],
@@ -2575,6 +2667,10 @@ def main():
                 "valuation": val_score, "timing": timing["score"],
                 "marketAdj": market_adj, "timingEffective": timing_eff,
                 "composite": composite,
+                "opportunity": opportunity["score"],
+                "opportunityLabel": opportunity["label"],
+                "opportunityColor": opportunity["color"],
+                "opportunityWarning": opportunity["warning"],
                 "acceleration": accel["score"], "accelLabel": accel["label"],
                 "accelColor": accel["color"], "accelValue": accel["accel"],
                 "accelReason": accel["reason"], "accelBonus": accel_bonus,

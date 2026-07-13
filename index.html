@@ -1326,6 +1326,7 @@ function App() {
         sortBy==="action"     ? actionRank(t) :
         sortBy==="composite"  ? (stocks[t]?.scores?.composite ?? -1) :
         sortBy==="timing"     ? (stocks[t]?.scores?.timing ?? -1) :
+        sortBy==="opportunity"? (stocks[t]?.scores?.opportunity ?? -1) :
         sortBy==="entry"      ? (stocks[t]?.timing?.entryScore ?? -1) :
         sortBy==="trend"      ? (stocks[t]?.timing?.trendScore ?? -1) :
         sortBy==="buyWeight"  ? (stocks[t]?.buyWeight||0) :
@@ -1374,7 +1375,7 @@ function App() {
           <span style={{color:C.textDim,fontSize:11,marginLeft:10}}>Kwaliteit × Timing</span>
         </div>
         <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
-          {[["allocatie","🎯 Allocatie"],["baggers","🚀 Baggers"],["signalen","🚦 Signalen"],["screener","📊 Screener"],["sectoren","🗂 Sectoren"],["trackrecord","📈 Trackrecord"],["portfolio","💼 Portfolio"]].map(([v,l])=>(
+          {[["allocatie","🎯 Allocatie"],["koopkans","💎 Koopkans"],["baggers","🚀 Baggers"],["signalen","🚦 Signalen"],["screener","📊 Screener"],["sectoren","🗂 Sectoren"],["trackrecord","📈 Trackrecord"],["portfolio","💼 Portfolio"]].map(([v,l])=>(
             <button key={v} onClick={()=>setView(v)} style={{
               background:view===v?C.accent:"none",color:view===v?C.bg:C.textDim,
               border:`1px solid ${view===v?C.accent:C.border}`,borderRadius:5,
@@ -1594,8 +1595,177 @@ function App() {
       )}
 
       {/* SCREENER VIEW */}
+      {view==="koopkans"&&(
+        <div style={{padding:"14px 16px"}}>
+          <div style={{marginBottom:14}}>
+            <div style={{color:"#4ade80",fontSize:15,fontWeight:700,marginBottom:4}}>
+              💎 Koopkansen — kwaliteit die gevallen is
+            </div>
+            <div style={{color:C.textDim,fontSize:11,lineHeight:1.6,maxWidth:640}}>
+              Goede bedrijven die <b style={{color:C.text}}>écht zijn gedaald</b> en nu redelijk
+              geprijsd staan. Niet te verwarren met het composiet: dat beloont kwaliteit in een
+              stijgende trend, en straft juist de gevallen namen af.
+              <div style={{marginTop:6,paddingLeft:10,borderLeft:`2px solid ${C.border}`,color:C.muted}}>
+                afstand tot de top + instapmoment 42% · kwaliteit 32% · waardering 26%<br/>
+                Aftrek bij een TP-winstnemingszone (uitstapgebied) en bij een vrije val (trend &lt;15).
+              </div>
+            </div>
+          </div>
+
+          {loadState==="ok"&&(()=>{
+            const kansen = TICKER_ORDER
+              .filter(t=>stocks[t]?.scores?.opportunity!=null)
+              .sort((a,b)=>(stocks[b].scores.opportunity)-(stocks[a].scores.opportunity));
+            if(!kansen.length) return <div style={{color:C.textDim,fontSize:12}}>Geen koopkansen gevonden.</div>;
+            return (
+              <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))",gap:10}}>
+                {kansen.map(ticker=>{
+                  const d=stocks[ticker], s=d.scores, tm=d.timing||{};
+                  const col = s.opportunityColor==="green"?C.green
+                            : s.opportunityColor==="orange"?C.orange : C.textDim;
+                  const off = d.pctOffHigh;
+                  return (
+                    <div key={ticker} onClick={()=>setSelected(ticker)}
+                      style={{background:C.panel,borderRadius:8,padding:"13px",cursor:"pointer",
+                        border:`1px solid ${C.border}`,borderLeft:`3px solid ${col}`,
+                        transition:"transform 0.1s,border-color 0.12s"}}
+                      onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-2px)";e.currentTarget.style.borderColor=C.accent;}}
+                      onMouseLeave={e=>{e.currentTarget.style.transform="";e.currentTarget.style.borderColor=C.border;}}>
+
+                      <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:8}}>
+                        <div>
+                          <div style={{color:C.accent,fontWeight:700,fontSize:15}}>{ticker}</div>
+                          <div style={{color:C.textDim,fontSize:10}}>{STOCK_NAMES[ticker]}</div>
+                        </div>
+                        <div style={{textAlign:"right"}}>
+                          <div style={{color:col,fontWeight:900,fontSize:22,lineHeight:1}}>{s.opportunity}</div>
+                          <div style={{color:col,fontSize:9,fontWeight:700}}>{s.opportunityLabel}</div>
+                        </div>
+                      </div>
+
+                      {off!=null&&(
+                        <div style={{marginBottom:8}}>
+                          <div style={{display:"flex",justifyContent:"space-between",fontSize:10,marginBottom:3}}>
+                            <span style={{color:C.textDim}}>Onder de top</span>
+                            <span style={{color:off>=30?C.green:off>=15?C.accent:C.textDim,fontWeight:700}}>
+                              −{off.toFixed(0)}%
+                            </span>
+                          </div>
+                          <div style={{height:4,background:C.bg,borderRadius:2,overflow:"hidden"}}>
+                            <div style={{height:"100%",width:`${Math.min(100,(off/45)*100)}%`,
+                              background:off>=30?C.green:off>=15?C.accent:C.border}}/>
+                          </div>
+                        </div>
+                      )}
+
+                      <div style={{display:"flex",gap:6,flexWrap:"wrap",fontSize:10,marginBottom:6}}>
+                        <span style={{background:C.panel2,color:C.text,border:`1px solid ${C.border}`,
+                          borderRadius:4,padding:"2px 6px",fontWeight:700}}>
+                          kwal {s.quality}
+                        </span>
+                        {d.valuation?.verdictColor&&<ValuationBadge color={d.valuation.verdictColor} compact/>}
+                        <span style={{background:C.panel2,color:C.textDim,border:`1px solid ${C.border}`,
+                          borderRadius:4,padding:"2px 6px",fontWeight:700}}>
+                          📈{tm.trendScore} · 🎪{tm.entryScore}
+                        </span>
+                        {d.indicators?.last!=null&&(
+                          <span style={{color:C.text,fontWeight:700,padding:"2px 0"}}>
+                            {d.currency||"$"}{d.indicators.last.toFixed(2)}
+                          </span>
+                        )}
+                      </div>
+
+                      {s.opportunityWarning&&(
+                        <div style={{background:"#1c1a06",border:`1px solid ${C.orange}55`,borderRadius:5,
+                          padding:"6px 8px",color:C.orange,fontSize:10,lineHeight:1.5}}>
+                          ⚠ {s.opportunityWarning}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })()}
+        </div>
+      )}
+
       {view==="screener"&&(
         <div style={{padding:"14px 16px"}}>
+          {/* LEGENDE — waaruit bestaat elke score? */}
+          <details style={{marginBottom:12,background:C.panel,border:`1px solid ${C.border}`,
+            borderRadius:8,padding:"10px 12px"}}>
+            <summary style={{color:C.accent,fontSize:12,fontWeight:700,cursor:"pointer",userSelect:"none"}}>
+              ℹ Wat betekenen de scores? (klik om te openen)
+            </summary>
+            <div style={{marginTop:10,display:"flex",flexDirection:"column",gap:12}}>
+
+              <div>
+                <div style={{color:"#4ade80",fontSize:12,fontWeight:700,marginBottom:3}}>💎 Koopkans</div>
+                <div style={{color:C.textDim,fontSize:11,lineHeight:1.6}}>
+                  <b style={{color:C.text}}>Kwaliteit die ÉCHT gevallen is en redelijk geprijsd staat.</b>
+                  <div style={{marginTop:4,paddingLeft:10,borderLeft:`2px solid ${C.border}`}}>
+                    afstand tot de top + instapmoment 42% · kwaliteit 32% · waardering 26%<br/>
+                    <span style={{color:C.orange}}>Aftrek</span> bij een TP-winstnemingszone
+                    (= uitstapgebied, geen instapgebied) en bij een vrije val (trend &lt;15).
+                  </div>
+                  <div style={{marginTop:4,color:C.muted}}>
+                    De <b>afstand tot de top</b> is de kern: een duur aandeel dat even ademhaalt
+                    heeft ook een hoge instapscore, maar staat nauwelijks onder zijn top — dat is
+                    een pauze in een rally, geen koopkans. Alleen berekend voor aandelen die de
+                    kwaliteitspoort halen.
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div style={{color:C.accent,fontSize:12,fontWeight:700,marginBottom:3}}>★ Composiet</div>
+                <div style={{color:C.textDim,fontSize:11,lineHeight:1.6}}>
+                  <b style={{color:C.text}}>De maandpick-score: de beste totale setup.</b> Beloont kwaliteit in
+                  een stijgende trend die net is teruggevallen.
+                  <div style={{marginTop:4,paddingLeft:10,borderLeft:`2px solid ${C.border}`}}>
+                    timing 40% · kwaliteit 30% · waardering 30% <span style={{color:C.muted}}>(+ kleine versnellingsbonus)</span>
+                  </div>
+                  <div style={{marginTop:4,color:C.orange}}>
+                    Let op: omdat de timing de trend zwaar laat wegen, scoort een gevallen
+                    kwaliteitsaandeel hier laag — ook als het instapmoment uitstekend is. Kijk
+                    dan naar de koopkans.
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div style={{color:C.text,fontSize:12,fontWeight:700,marginBottom:3}}>📈 Trend · 🎪 Instap</div>
+                <div style={{color:C.textDim,fontSize:11,lineHeight:1.6}}>
+                  De twee helften van de timing, apart zichtbaar:
+                  <div style={{marginTop:4,paddingLeft:10,borderLeft:`2px solid ${C.border}`}}>
+                    <b style={{color:C.text}}>📈 Trend</b> — zit dit in een uptrend? (EMA's, MACD, RSI; zwaarder op weekly/monthly)<br/>
+                    <b style={{color:C.text}}>🎪 Instap</b> — is dit NU een goed moment? (oversold, pullback naar steun, fib-zone)<br/>
+                    <b style={{color:C.text}}>⏱ Timing</b> — de mix: 60% trend + 40% instap
+                  </div>
+                  <div style={{marginTop:4,color:C.muted}}>
+                    Een aandeel met lage trend + hoge instap is een gevallen engel. Hoge trend +
+                    lage instap is al gestegen.
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div style={{color:C.text,fontSize:12,fontWeight:700,marginBottom:3}}>🚀 Versnelling · 💰 Waardering</div>
+                <div style={{color:C.textDim,fontSize:11,lineHeight:1.6}}>
+                  <b style={{color:C.text}}>🚀 Versnelling</b> — verandert het groeitempo? Toont van→naar en de
+                  x-verhouding (bv. 4%→12% = 3x). Vangt bedrijven die op een steilere curve komen.<br/>
+                  <b style={{color:C.text}}>💰 Waardering</b> — PEG-gebaseerd: betaal je een redelijke prijs voor de groei?
+                </div>
+              </div>
+
+              <div style={{color:C.muted,fontSize:10,borderTop:`1px solid ${C.border}`,paddingTop:8}}>
+                De <b>kwaliteitspoort</b> (ROE ≥12%, marge ≥8%, D/E ≤4) bepaalt of een aandeel
+                überhaupt meedoet voor de maandpick. Baggers en ETF's hebben een eigen spoor.
+              </div>
+            </div>
+          </details>
+
           <div style={{marginBottom:12,position:"relative"}}>
             <input value={search} onChange={e=>setSearch(e.target.value)}
               placeholder="🔍 Zoek aandeel op ticker of naam (bijv. ANET, tractor, keyence)..."
@@ -1610,7 +1780,7 @@ function App() {
           </div>
           <div style={{display:"flex",gap:4,flexWrap:"wrap",marginBottom:14,alignItems:"center"}}>
             <span style={{color:C.textDim,fontSize:10}}>Sorteer:</span>
-            {[["action","Actie 🎯"],["composite","Composiet ★"],["entry","Instap nu 🎪"],["trend","Trend 📈"],["timing","Timing ⏱"],["valuation","Waardering 💰"],["acceleration","Versnelt 🚀"],["buyWeight","Koop 🟢"],["alerts","Alerts ⚠"],["score","Buffett"]].map(([k,l])=><SBtn key={k} k={k} l={l}/>)}
+            {[["opportunity","Koopkans 💎"],["action","Actie 🎯"],["composite","Composiet ★"],["entry","Instap nu 🎪"],["trend","Trend 📈"],["timing","Timing ⏱"],["valuation","Waardering 💰"],["acceleration","Versnelt 🚀"],["buyWeight","Koop 🟢"],["alerts","Alerts ⚠"],["score","Buffett"]].map(([k,l])=><SBtn key={k} k={k} l={l}/>)}
           </div>
 
           {/* Als geen live data: toon alle tickers met fallback fundamentals */}
@@ -1682,6 +1852,19 @@ function App() {
                       <span style={{background:"#1c1a06",color:C.orange,border:"1px solid #854d0e",borderRadius:4,padding:"2px 7px",fontSize:10,fontWeight:700}}>
                         ⚠ {data?.alerts?.length||0}
                       </span>
+                      {data?.scores?.opportunity!=null&&(()=>{
+                        const o=data.scores;
+                        const c=o.opportunityColor==="green"?{bg:"#052e16",fg:"#4ade80",bd:"#166534"}
+                               :o.opportunityColor==="orange"?{bg:"#1c1a06",fg:C.orange,bd:"#854d0e"}
+                               :{bg:C.panel2,fg:C.textDim,bd:C.border};
+                        return (
+                          <span title={`Koopkans ${o.opportunity}/100 — ${o.opportunityLabel}${o.opportunityWarning?"\n\n⚠ "+o.opportunityWarning:""}`}
+                            style={{background:c.bg,color:c.fg,border:`1px solid ${c.bd}`,borderRadius:4,
+                            padding:"2px 7px",fontSize:10,fontWeight:700}}>
+                            💎 {o.opportunity}{o.opportunityWarning?" ⚠":""}
+                          </span>
+                        );
+                      })()}
                       {data?.valuation?.verdictColor&&<ValuationBadge color={data.valuation.verdictColor} compact/>}
                       {/* Trend en instap APART. De samengestelde timing (0.6*trend + 0.4*entry)
                           verbergt het verschil: een aandeel kan een beroerde trend hebben maar
