@@ -1,7 +1,7 @@
 {
   "_meta": {
     "created": "2026-07-02T21:36:20.214972+02:00",
-    "lastUpdate": "2026-07-13T23:10:26.190457+02:00"
+    "lastUpdate": "2026-07-14T08:52:50.115356+02:00"
   },
   "records": {
     "monthly_pick:MU:2026-07-02": {
@@ -20,12 +20,29 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-09",
-          "exitPrice": 1010.73,
-          "return": 5.09,
-          "relativeReturn": 4.07,
+          "exitPrice": 991.64,
+          "return": 3.1,
+          "relativeReturn": 1.93,
           "success": true
         }
       }
+    },
+    "monthly_pick:MU:2026-07-13": {
+      "ticker": "MU",
+      "type": "monthly_pick",
+      "direction": "BUY",
+      "date": "2026-07-13",
+      "entryPrice": 937.0,
+      "benchEntry": 7515.33984375,
+      "currency": "$",
+      "snapshot": {
+        "composite": 80,
+        "quality": 95,
+        "valuation": 90,
+        "timing": 39
+      },
+      "outcomes": {},
+      "episodeDays": 1
     },
     "strong_signal:MNST:2026-07-05": {
       "ticker": "MNST",
@@ -43,10 +60,10 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 97.29,
-          "return": 0.32,
-          "relativeReturn": -0.28,
-          "success": false
+          "exitPrice": 97.07,
+          "return": 0.54,
+          "relativeReturn": 0.97,
+          "success": true
         }
       }
     },
@@ -66,9 +83,9 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 357.18,
-          "return": 1.37,
-          "relativeReturn": 0.77,
+          "exitPrice": 357.75,
+          "return": 1.21,
+          "relativeReturn": 1.64,
           "success": true
         }
       }
@@ -89,9 +106,9 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 930.41,
-          "return": -3.44,
-          "relativeReturn": -4.03,
+          "exitPrice": 931.47,
+          "return": -3.33,
+          "relativeReturn": -3.76,
           "success": false
         }
       }
@@ -112,8 +129,8 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 1550.8,
-          "return": -5.12,
+          "exitPrice": null,
+          "return": null,
           "relativeReturn": null,
           "success": false
         }
@@ -135,8 +152,8 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 902.2,
-          "return": -7.52,
+          "exitPrice": null,
+          "return": null,
           "relativeReturn": null,
           "success": false
         }
@@ -158,9 +175,9 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 925.26,
-          "return": -5.16,
-          "relativeReturn": -5.75,
+          "exitPrice": 937.0,
+          "return": -3.95,
+          "relativeReturn": -4.38,
           "success": false
         }
       }
@@ -181,9 +198,9 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 356.53,
-          "return": -0.94,
-          "relativeReturn": -1.53,
+          "exitPrice": 352.51,
+          "return": -2.06,
+          "relativeReturn": -2.49,
           "success": false
         }
       }
@@ -204,9 +221,9 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 248.36,
-          "return": 2.34,
-          "relativeReturn": 1.75,
+          "exitPrice": 247.31,
+          "return": 1.91,
+          "relativeReturn": 1.48,
           "success": true
         }
       }
@@ -227,12 +244,13 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 83.99,
-          "return": -0.18,
-          "relativeReturn": -0.78,
+          "exitPrice": 84.25,
+          "return": 0.13,
+          "relativeReturn": -0.3,
           "success": false
         }
-      }
+      },
+      "episodeDays": 2
     },
     "strong_signal:LHX:2026-07-05": {
       "ticker": "LHX",
@@ -250,9 +268,9 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 289.88,
-          "return": -4.04,
-          "relativeReturn": -4.63,
+          "exitPrice": 288.69,
+          "return": -4.43,
+          "relativeReturn": -4.86,
           "success": false
         }
       }
@@ -273,9 +291,9 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 396.55,
-          "return": -5.0,
-          "relativeReturn": -5.59,
+          "exitPrice": 392.0,
+          "return": -6.09,
+          "relativeReturn": -6.52,
           "success": false
         }
       }
@@ -296,12 +314,13 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 46.82,
-          "return": 15.41,
-          "relativeReturn": 14.82,
+          "exitPrice": 46.96,
+          "return": 15.16,
+          "relativeReturn": 15.59,
           "success": true
         }
-      }
+      },
+      "episodeDays": 2
     },
     "strong_signal:RKLB:2026-07-05": {
       "ticker": "RKLB",
@@ -319,9 +338,9 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 76.43,
-          "return": -23.91,
-          "relativeReturn": -24.51,
+          "exitPrice": 76.73,
+          "return": -23.62,
+          "relativeReturn": -24.05,
           "success": false
         }
       }
@@ -342,8 +361,8 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 20000.0,
-          "return": -5.39,
+          "exitPrice": null,
+          "return": null,
           "relativeReturn": null,
           "success": false
         }
@@ -367,7 +386,7 @@
           "exitDate": "2026-07-13",
           "exitPrice": 3.87,
           "return": 3.97,
-          "relativeReturn": null,
+          "relativeReturn": 4.4,
           "success": true
         }
       }
@@ -388,12 +407,13 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 3650.0,
-          "return": -0.44,
+          "exitPrice": null,
+          "return": null,
           "relativeReturn": null,
           "success": false
         }
-      }
+      },
+      "episodeDays": 2
     },
     "strong_signal:AON:2026-07-05": {
       "ticker": "AON",
@@ -411,9 +431,9 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 366.87,
-          "return": -2.63,
-          "relativeReturn": -3.23,
+          "exitPrice": 367.35,
+          "return": -2.77,
+          "relativeReturn": -2.34,
           "success": false
         }
       }
@@ -434,9 +454,9 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 1874.32,
-          "return": -6.29,
-          "relativeReturn": -6.89,
+          "exitPrice": 1867.3,
+          "return": -5.89,
+          "relativeReturn": -5.47,
           "success": false
         }
       }
@@ -457,12 +477,13 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 2691.0,
-          "return": -3.06,
-          "relativeReturn": null,
+          "exitPrice": 2686.0,
+          "return": -2.87,
+          "relativeReturn": -2.44,
           "success": false
         }
-      }
+      },
+      "episodeDays": 2
     },
     "strong_signal:NET:2026-07-05": {
       "ticker": "NET",
@@ -480,12 +501,13 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 271.29,
-          "return": 11.91,
-          "relativeReturn": 11.32,
+          "exitPrice": 269.53,
+          "return": 11.19,
+          "relativeReturn": 10.76,
           "success": true
         }
-      }
+      },
+      "episodeDays": 2
     },
     "strong_signal:MSFT:2026-07-05": {
       "ticker": "MSFT",
@@ -503,10 +525,10 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 392.78,
-          "return": -0.59,
-          "relativeReturn": -1.18,
-          "success": false
+          "exitPrice": 390.99,
+          "return": -0.13,
+          "relativeReturn": 0.3,
+          "success": true
         }
       }
     },
@@ -526,10 +548,10 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 44.28,
-          "return": -0.42,
-          "relativeReturn": -1.01,
-          "success": false
+          "exitPrice": 43.76,
+          "return": 0.75,
+          "relativeReturn": 1.18,
+          "success": true
         }
       }
     },
@@ -549,10 +571,10 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 227.0,
-          "return": 1.56,
+          "exitPrice": null,
+          "return": null,
           "relativeReturn": null,
-          "success": true
+          "success": false
         }
       }
     },
@@ -572,12 +594,13 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 11140.0,
-          "return": -5.43,
+          "exitPrice": null,
+          "return": null,
           "relativeReturn": null,
           "success": false
         }
-      }
+      },
+      "episodeDays": 2
     },
     "strong_signal:MSTR:2026-07-05": {
       "ticker": "MSTR",
@@ -595,9 +618,9 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 91.61,
-          "return": 9.09,
-          "relativeReturn": 8.5,
+          "exitPrice": 92.1,
+          "return": 8.6,
+          "relativeReturn": 9.03,
           "success": true
         }
       }
@@ -618,12 +641,13 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 316.64,
-          "return": 2.6,
-          "relativeReturn": 2.0,
+          "exitPrice": 317.31,
+          "return": 2.81,
+          "relativeReturn": 2.38,
           "success": true
         }
-      }
+      },
+      "episodeDays": 2
     },
     "strong_signal:NFLX:2026-07-05": {
       "ticker": "NFLX",
@@ -641,12 +665,13 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 74.81,
-          "return": 3.66,
-          "relativeReturn": 3.06,
+          "exitPrice": 73.83,
+          "return": 4.92,
+          "relativeReturn": 5.35,
           "success": true
         }
-      }
+      },
+      "episodeDays": 2
     },
     "strong_signal:DIS:2026-07-05": {
       "ticker": "DIS",
@@ -664,9 +689,9 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 96.41,
-          "return": 3.11,
-          "relativeReturn": 2.51,
+          "exitPrice": 96.0,
+          "return": 3.52,
+          "relativeReturn": 3.95,
           "success": true
         }
       }
@@ -687,9 +712,9 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 1020.8,
-          "return": -2.52,
-          "relativeReturn": -3.11,
+          "exitPrice": 1031.56,
+          "return": -3.6,
+          "relativeReturn": -3.17,
           "success": false
         }
       }
@@ -712,7 +737,7 @@
           "exitDate": "2026-07-13",
           "exitPrice": 5089.0,
           "return": -10.01,
-          "relativeReturn": null,
+          "relativeReturn": -10.44,
           "success": false
         }
       }
@@ -735,10 +760,11 @@
           "exitDate": "2026-07-13",
           "exitPrice": 7240.0,
           "return": -18.1,
-          "relativeReturn": null,
+          "relativeReturn": -18.53,
           "success": false
         }
-      }
+      },
+      "episodeDays": 2
     },
     "strong_signal:KEYENCE:2026-07-05": {
       "ticker": "KEYENCE",
@@ -758,7 +784,7 @@
           "exitDate": "2026-07-13",
           "exitPrice": 76700.0,
           "return": -4.48,
-          "relativeReturn": null,
+          "relativeReturn": -4.91,
           "success": false
         }
       }
@@ -781,7 +807,7 @@
           "exitDate": "2026-07-13",
           "exitPrice": 6957.0,
           "return": -6.48,
-          "relativeReturn": null,
+          "relativeReturn": -6.91,
           "success": false
         }
       }
@@ -804,10 +830,11 @@
           "exitDate": "2026-07-13",
           "exitPrice": 5972.0,
           "return": -20.15,
-          "relativeReturn": null,
+          "relativeReturn": -20.58,
           "success": false
         }
-      }
+      },
+      "episodeDays": 2
     },
     "strong_signal:SOFTBANK:2026-07-05": {
       "ticker": "SOFTBANK",
@@ -827,7 +854,7 @@
           "exitDate": "2026-07-13",
           "exitPrice": 6364.0,
           "return": 3.16,
-          "relativeReturn": null,
+          "relativeReturn": 2.73,
           "success": true
         }
       }
@@ -848,12 +875,13 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 461.86,
-          "return": -2.09,
-          "relativeReturn": -2.68,
+          "exitPrice": 460.45,
+          "return": -2.38,
+          "relativeReturn": -2.81,
           "success": false
         }
-      }
+      },
+      "episodeDays": 2
     },
     "strong_signal:TER:2026-07-05": {
       "ticker": "TER",
@@ -871,9 +899,9 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 340.38,
-          "return": -7.78,
-          "relativeReturn": -8.37,
+          "exitPrice": 341.11,
+          "return": -7.58,
+          "relativeReturn": -8.01,
           "success": false
         }
       }
@@ -894,12 +922,13 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 411.03,
-          "return": 3.52,
-          "relativeReturn": 2.92,
+          "exitPrice": 407.12,
+          "return": 4.43,
+          "relativeReturn": 4.86,
           "success": true
         }
-      }
+      },
+      "episodeDays": 2
     },
     "strong_signal:CGNX:2026-07-05": {
       "ticker": "CGNX",
@@ -917,12 +946,13 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 64.32,
-          "return": -5.14,
-          "relativeReturn": -5.73,
+          "exitPrice": 63.91,
+          "return": -5.74,
+          "relativeReturn": -6.17,
           "success": false
         }
-      }
+      },
+      "episodeDays": 2
     },
     "strong_signal:NOVT:2026-07-05": {
       "ticker": "NOVT",
@@ -940,12 +970,13 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 152.57,
-          "return": -5.66,
-          "relativeReturn": -6.25,
+          "exitPrice": 149.78,
+          "return": -7.38,
+          "relativeReturn": -7.81,
           "success": false
         }
-      }
+      },
+      "episodeDays": 2
     },
     "strong_signal:IONQ:2026-07-05": {
       "ticker": "IONQ",
@@ -963,9 +994,9 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 38.95,
-          "return": -20.7,
-          "relativeReturn": -21.3,
+          "exitPrice": 38.88,
+          "return": -20.85,
+          "relativeReturn": -21.28,
           "success": false
         }
       }
@@ -986,12 +1017,13 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 18.74,
-          "return": -16.84,
-          "relativeReturn": -17.44,
+          "exitPrice": 18.66,
+          "return": -17.18,
+          "relativeReturn": -17.61,
           "success": false
         }
-      }
+      },
+      "episodeDays": 2
     },
     "strong_signal:SYM:2026-07-05": {
       "ticker": "SYM",
@@ -1009,12 +1041,13 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 42.52,
-          "return": 0.51,
-          "relativeReturn": -0.08,
-          "success": false
+          "exitPrice": 42.43,
+          "return": 0.73,
+          "relativeReturn": 1.15,
+          "success": true
         }
-      }
+      },
+      "episodeDays": 2
     },
     "strong_signal:RR:2026-07-05": {
       "ticker": "RR",
@@ -1032,9 +1065,9 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 1.63,
-          "return": 16.58,
-          "relativeReturn": 15.99,
+          "exitPrice": 1.62,
+          "return": 17.35,
+          "relativeReturn": 17.78,
           "success": true
         }
       }
@@ -1055,9 +1088,9 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 26.1,
-          "return": -16.81,
-          "relativeReturn": -17.4,
+          "exitPrice": 25.96,
+          "return": -17.27,
+          "relativeReturn": -17.7,
           "success": false
         }
       }
@@ -1078,12 +1111,13 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 129.63,
-          "return": 1.78,
-          "relativeReturn": 1.81,
+          "exitPrice": 130.04,
+          "return": 1.47,
+          "relativeReturn": 1.28,
           "success": true
         }
-      }
+      },
+      "episodeDays": 2
     },
     "strong_signal:ORCL:2026-07-06": {
       "ticker": "ORCL",
@@ -1101,12 +1135,13 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 134.05,
-          "return": 7.08,
-          "relativeReturn": 7.11,
+          "exitPrice": 131.54,
+          "return": 8.82,
+          "relativeReturn": 8.62,
           "success": true
         }
-      }
+      },
+      "episodeDays": 2
     },
     "strong_signal:BABA:2026-07-06": {
       "ticker": "BABA",
@@ -1124,12 +1159,13 @@
       "outcomes": {
         "1w": {
           "exitDate": "2026-07-13",
-          "exitPrice": 112.88,
-          "return": -15.87,
-          "relativeReturn": -15.84,
+          "exitPrice": 112.35,
+          "return": -15.33,
+          "relativeReturn": -15.52,
           "success": false
         }
-      }
+      },
+      "episodeDays": 2
     },
     "strong_signal:WM:2026-07-08": {
       "ticker": "WM",
@@ -1146,51 +1182,6 @@
       },
       "outcomes": {}
     },
-    "strong_signal:CAT:2026-07-08": {
-      "ticker": "CAT",
-      "type": "strong_signal",
-      "direction": "SELL",
-      "date": "2026-07-08",
-      "entryPrice": 948.08,
-      "benchEntry": 7482.7099609375,
-      "currency": "$",
-      "snapshot": {
-        "overall": "STERK VERKOOP",
-        "composite": 36,
-        "timing": 32
-      },
-      "outcomes": {}
-    },
-    "strong_signal:MU:2026-07-08": {
-      "ticker": "MU",
-      "type": "strong_signal",
-      "direction": "SELL",
-      "date": "2026-07-08",
-      "entryPrice": 948.8,
-      "benchEntry": 7482.7099609375,
-      "currency": "$",
-      "snapshot": {
-        "overall": "STERK VERKOOP",
-        "composite": 72,
-        "timing": 35
-      },
-      "outcomes": {}
-    },
-    "strong_signal:GOOGL:2026-07-08": {
-      "ticker": "GOOGL",
-      "type": "strong_signal",
-      "direction": "SELL",
-      "date": "2026-07-08",
-      "entryPrice": 361.92,
-      "benchEntry": 7482.7099609375,
-      "currency": "$",
-      "snapshot": {
-        "overall": "STERK VERKOOP",
-        "composite": 55,
-        "timing": 33
-      },
-      "outcomes": {}
-    },
     "strong_signal:NVDA:2026-07-08": {
       "ticker": "NVDA",
       "type": "strong_signal",
@@ -1204,22 +1195,8 @@
         "composite": 70,
         "timing": 31
       },
-      "outcomes": {}
-    },
-    "strong_signal:SOFTBANK:2026-07-08": {
-      "ticker": "SOFTBANK",
-      "type": "strong_signal",
-      "direction": "SELL",
-      "date": "2026-07-08",
-      "entryPrice": 5771.0,
-      "benchEntry": 7482.7099609375,
-      "currency": "\u00a5",
-      "snapshot": {
-        "overall": "STERK VERKOOP",
-        "composite": 54,
-        "timing": 45
-      },
-      "outcomes": {}
+      "outcomes": {},
+      "episodeDays": 2
     },
     "strong_signal:HWM:2026-07-10": {
       "ticker": "HWM",
@@ -1234,7 +1211,8 @@
         "composite": 55,
         "timing": 47
       },
-      "outcomes": {}
+      "outcomes": {},
+      "episodeDays": 2
     },
     "strong_signal:GILD:2026-07-13": {
       "ticker": "GILD",
@@ -1264,22 +1242,8 @@
         "composite": 60,
         "timing": 50
       },
-      "outcomes": {}
-    },
-    "strong_signal:MOGA:2026-07-13": {
-      "ticker": "MOGA",
-      "type": "strong_signal",
-      "direction": "SELL",
-      "date": "2026-07-13",
-      "entryPrice": 393.19,
-      "benchEntry": 7514.9599609375,
-      "currency": "$",
-      "snapshot": {
-        "overall": "STERK VERKOOP",
-        "composite": 37,
-        "timing": 37
-      },
-      "outcomes": {}
+      "outcomes": {},
+      "episodeDays": 2
     },
     "strong_signal:SNDK:2026-07-13": {
       "ticker": "SNDK",
@@ -1296,11 +1260,11 @@
       },
       "outcomes": {}
     },
-    "monthly_pick:MU:2026-07-13": {
+    "monthly_pick:MU:2026-07-14": {
       "ticker": "MU",
       "type": "monthly_pick",
       "direction": "BUY",
-      "date": "2026-07-13",
+      "date": "2026-07-14",
       "entryPrice": 937.0,
       "benchEntry": 7515.33984375,
       "currency": "$",
@@ -1313,210 +1277,242 @@
       "outcomes": {},
       "episodeDays": 1
     },
-    "strong_signal:PLTR:2026-07-13": {
-      "ticker": "PLTR",
-      "type": "strong_signal",
+    "caution:ASML:2026-07-14": {
+      "ticker": "ASML",
+      "type": "caution",
       "direction": "SELL",
-      "date": "2026-07-13",
-      "entryPrice": 130.04,
+      "date": "2026-07-14",
+      "entryPrice": 1569.0,
       "benchEntry": 7515.33984375,
-      "currency": "$",
+      "currency": "\u20ac",
       "snapshot": {
-        "overall": "STERK VERKOOP",
-        "composite": 64,
-        "timing": 24
+        "overall": "CAUTION (overextended)",
+        "composite": 61,
+        "timing": 48
       },
       "outcomes": {},
       "episodeDays": 1
     },
-    "strong_signal:CAT:2026-07-13": {
-      "ticker": "CAT",
-      "type": "strong_signal",
+    "caution:ASMI:2026-07-14": {
+      "ticker": "ASMI",
+      "type": "caution",
       "direction": "SELL",
-      "date": "2026-07-13",
-      "entryPrice": 931.47,
+      "date": "2026-07-14",
+      "entryPrice": 910.4,
       "benchEntry": 7515.33984375,
-      "currency": "$",
+      "currency": "\u20ac",
       "snapshot": {
-        "overall": "STERK VERKOOP",
-        "composite": 36,
-        "timing": 33
+        "overall": "CAUTION (overextended)",
+        "composite": 59,
+        "timing": 47
       },
       "outcomes": {},
       "episodeDays": 1
     },
-    "strong_signal:MU:2026-07-13": {
+    "caution:MU:2026-07-14": {
       "ticker": "MU",
-      "type": "strong_signal",
+      "type": "caution",
       "direction": "SELL",
-      "date": "2026-07-13",
+      "date": "2026-07-14",
       "entryPrice": 937.0,
       "benchEntry": 7515.33984375,
       "currency": "$",
       "snapshot": {
-        "overall": "STERK VERKOOP",
+        "overall": "CAUTION (overextended)",
         "composite": 80,
         "timing": 39
       },
       "outcomes": {},
       "episodeDays": 1
     },
-    "strong_signal:GOOGL:2026-07-13": {
+    "caution:GOOGL:2026-07-14": {
       "ticker": "GOOGL",
-      "type": "strong_signal",
+      "type": "caution",
       "direction": "SELL",
-      "date": "2026-07-13",
+      "date": "2026-07-14",
       "entryPrice": 352.51,
       "benchEntry": 7515.33984375,
       "currency": "$",
       "snapshot": {
-        "overall": "STERK VERKOOP",
+        "overall": "CAUTION (overextended)",
         "composite": 58,
         "timing": 38
       },
       "outcomes": {},
       "episodeDays": 1
     },
-    "strong_signal:ORCL:2026-07-13": {
-      "ticker": "ORCL",
-      "type": "strong_signal",
+    "caution:RKLB:2026-07-14": {
+      "ticker": "RKLB",
+      "type": "caution",
       "direction": "SELL",
-      "date": "2026-07-13",
-      "entryPrice": 131.54,
+      "date": "2026-07-14",
+      "entryPrice": 76.73,
       "benchEntry": 7515.33984375,
       "currency": "$",
       "snapshot": {
-        "overall": "STERK VERKOOP",
-        "composite": 64,
+        "overall": "CAUTION (overextended)",
+        "composite": 40,
+        "timing": 32
+      },
+      "outcomes": {},
+      "episodeDays": 1
+    },
+    "caution:GAW:2026-07-14": {
+      "ticker": "GAW",
+      "type": "caution",
+      "direction": "SELL",
+      "date": "2026-07-14",
+      "entryPrice": 20060.0,
+      "benchEntry": 7515.33984375,
+      "currency": "p",
+      "snapshot": {
+        "overall": "CAUTION (overextended)",
+        "composite": 66,
+        "timing": 52
+      },
+      "outcomes": {},
+      "episodeDays": 1
+    },
+    "caution:MSFT:2026-07-14": {
+      "ticker": "MSFT",
+      "type": "caution",
+      "direction": "SELL",
+      "date": "2026-07-14",
+      "entryPrice": 390.99,
+      "benchEntry": 7515.33984375,
+      "currency": "$",
+      "snapshot": {
+        "overall": "CAUTION (overextended)",
+        "composite": 56,
+        "timing": 17
+      },
+      "outcomes": {},
+      "episodeDays": 1
+    },
+    "caution:BLK:2026-07-14": {
+      "ticker": "BLK",
+      "type": "caution",
+      "direction": "SELL",
+      "date": "2026-07-14",
+      "entryPrice": 1031.56,
+      "benchEntry": 7515.33984375,
+      "currency": "$",
+      "snapshot": {
+        "overall": "CAUTION (overextended)",
+        "composite": 60,
+        "timing": 37
+      },
+      "outcomes": {},
+      "episodeDays": 1
+    },
+    "caution:FANUC:2026-07-14": {
+      "ticker": "FANUC",
+      "type": "caution",
+      "direction": "SELL",
+      "date": "2026-07-14",
+      "entryPrice": 6839.0,
+      "benchEntry": 7515.33984375,
+      "currency": "\u00a5",
+      "snapshot": {
+        "overall": "CAUTION (overextended)",
+        "composite": 37,
+        "timing": 41
+      },
+      "outcomes": {},
+      "episodeDays": 1
+    },
+    "caution:SOFTBANK:2026-07-14": {
+      "ticker": "SOFTBANK",
+      "type": "caution",
+      "direction": "SELL",
+      "date": "2026-07-14",
+      "entryPrice": 6574.0,
+      "benchEntry": 7515.33984375,
+      "currency": "\u00a5",
+      "snapshot": {
+        "overall": "CAUTION (overextended)",
+        "composite": 61,
+        "timing": 40
+      },
+      "outcomes": {},
+      "episodeDays": 1
+    },
+    "caution:TER:2026-07-14": {
+      "ticker": "TER",
+      "type": "caution",
+      "direction": "SELL",
+      "date": "2026-07-14",
+      "entryPrice": 341.11,
+      "benchEntry": 7515.33984375,
+      "currency": "$",
+      "snapshot": {
+        "overall": "CAUTION (overextended)",
+        "composite": 46,
         "timing": 34
       },
       "outcomes": {},
       "episodeDays": 1
     },
-    "strong_signal:KTOS:2026-07-13": {
-      "ticker": "KTOS",
+    "strong_signal:ANET:2026-07-14": {
+      "ticker": "ANET",
       "type": "strong_signal",
-      "direction": "SELL",
-      "date": "2026-07-13",
-      "entryPrice": 46.96,
+      "direction": "BUY",
+      "date": "2026-07-14",
+      "entryPrice": 181.15,
       "benchEntry": 7515.33984375,
       "currency": "$",
       "snapshot": {
-        "overall": "STERK VERKOOP",
-        "composite": 36,
-        "timing": 38
-      },
-      "outcomes": {},
-      "episodeDays": 1
-    },
-    "strong_signal:III:2026-07-13": {
-      "ticker": "III",
-      "type": "strong_signal",
-      "direction": "SELL",
-      "date": "2026-07-13",
-      "entryPrice": 2686.0,
-      "benchEntry": 7515.33984375,
-      "currency": "p",
-      "snapshot": {
-        "overall": "STERK VERKOOP",
+        "overall": "STERK KOOP",
         "composite": 64,
-        "timing": 16
+        "timing": 37
       },
       "outcomes": {},
       "episodeDays": 1
     },
-    "strong_signal:NVDA:2026-07-13": {
-      "ticker": "NVDA",
+    "strong_signal:ODFL:2026-07-14": {
+      "ticker": "ODFL",
       "type": "strong_signal",
-      "direction": "SELL",
-      "date": "2026-07-13",
-      "entryPrice": 203.53,
+      "direction": "BUY",
+      "date": "2026-07-14",
+      "entryPrice": 232.9,
       "benchEntry": 7515.33984375,
       "currency": "$",
       "snapshot": {
-        "overall": "STERK VERKOOP",
-        "composite": 69,
-        "timing": 38
+        "overall": "STERK KOOP",
+        "composite": 43,
+        "timing": 42
       },
       "outcomes": {},
       "episodeDays": 1
     },
-    "strong_signal:NFLX:2026-07-13": {
-      "ticker": "NFLX",
-      "type": "strong_signal",
+    "caution:PL:2026-07-14": {
+      "ticker": "PL",
+      "type": "caution",
       "direction": "SELL",
-      "date": "2026-07-13",
-      "entryPrice": 73.83,
+      "date": "2026-07-14",
+      "entryPrice": 25.96,
       "benchEntry": 7515.33984375,
       "currency": "$",
       "snapshot": {
-        "overall": "STERK VERKOOP",
-        "composite": 61,
-        "timing": 29
-      },
-      "outcomes": {},
-      "episodeDays": 1
-    },
-    "strong_signal:BABA:2026-07-13": {
-      "ticker": "BABA",
-      "type": "strong_signal",
-      "direction": "SELL",
-      "date": "2026-07-13",
-      "entryPrice": 112.35,
-      "benchEntry": 7515.33984375,
-      "currency": "$",
-      "snapshot": {
-        "overall": "STERK VERKOOP",
-        "composite": 52,
-        "timing": 28
-      },
-      "outcomes": {},
-      "episodeDays": 1
-    },
-    "strong_signal:SOFTBANK:2026-07-13": {
-      "ticker": "SOFTBANK",
-      "type": "strong_signal",
-      "direction": "SELL",
-      "date": "2026-07-13",
-      "entryPrice": 6370.0,
-      "benchEntry": 7515.33984375,
-      "currency": "\u00a5",
-      "snapshot": {
-        "overall": "STERK VERKOOP",
-        "composite": 54,
-        "timing": 44
-      },
-      "outcomes": {},
-      "episodeDays": 1
-    },
-    "strong_signal:ISRG:2026-07-13": {
-      "ticker": "ISRG",
-      "type": "strong_signal",
-      "direction": "SELL",
-      "date": "2026-07-13",
-      "entryPrice": 407.12,
-      "benchEntry": 7515.33984375,
-      "currency": "$",
-      "snapshot": {
-        "overall": "STERK VERKOOP",
+        "overall": "CAUTION (overextended)",
         "composite": 46,
-        "timing": 23
+        "timing": 42
       },
       "outcomes": {},
       "episodeDays": 1
     },
-    "strong_signal:SYM:2026-07-13": {
-      "ticker": "SYM",
+    "strong_signal:ARCG:2026-07-14": {
+      "ticker": "ARCG",
       "type": "strong_signal",
-      "direction": "SELL",
-      "date": "2026-07-13",
-      "entryPrice": 42.43,
+      "direction": "BUY",
+      "date": "2026-07-14",
+      "entryPrice": 40.59,
       "benchEntry": 7515.33984375,
       "currency": "$",
       "snapshot": {
-        "overall": "STERK VERKOOP",
-        "composite": 30,
-        "timing": 28
+        "overall": "STERK KOOP",
+        "composite": null,
+        "timing": 41
       },
       "outcomes": {},
       "episodeDays": 1
@@ -1526,8 +1522,8 @@
     "monthly_pick": {
       "1w": {
         "n": 1,
-        "avgReturn": 5.09,
-        "avgRelativeReturn": 4.07,
+        "avgReturn": 3.1,
+        "avgRelativeReturn": 1.93,
         "status": "te weinig data (1/20)",
         "accuracyShown": false
       },
@@ -1550,9 +1546,9 @@
     "strong_signal": {
       "1w": {
         "n": 48,
-        "avgReturn": -3.0,
-        "avgRelativeReturn": -2.5,
-        "accuracy": 31.2,
+        "avgReturn": null,
+        "avgRelativeReturn": null,
+        "accuracy": 37.5,
         "status": "ok",
         "accuracyShown": true
       },
@@ -1585,23 +1581,37 @@
     "n": 77,
     "baseRates": [
       {
-        "action": "KOOP",
-        "n": 25,
-        "pct": 32.5,
-        "verdict": "weinig discriminerend",
-        "color": "orange"
+        "action": "VERKOOP",
+        "n": 19,
+        "pct": 24.7,
+        "verdict": "discriminerend",
+        "color": "green"
       },
       {
-        "action": "VERKOOP",
-        "n": 22,
-        "pct": 28.6,
+        "action": "STERK KOOP",
+        "n": 15,
+        "pct": 19.5,
+        "verdict": "discriminerend",
+        "color": "green"
+      },
+      {
+        "action": "CAUTION (overextended)",
+        "n": 12,
+        "pct": 15.6,
+        "verdict": "discriminerend",
+        "color": "green"
+      },
+      {
+        "action": "KOOP",
+        "n": 11,
+        "pct": 14.3,
         "verdict": "discriminerend",
         "color": "green"
       },
       {
         "action": "STERK VERKOOP",
-        "n": 16,
-        "pct": 20.8,
+        "n": 10,
+        "pct": 13.0,
         "verdict": "discriminerend",
         "color": "green"
       },
@@ -1613,21 +1623,14 @@
         "color": "green"
       },
       {
-        "action": "CAUTION (overextended)",
-        "n": 5,
-        "pct": 6.5,
+        "action": "LICHT VERKOOP",
+        "n": 3,
+        "pct": 3.9,
         "verdict": "discriminerend",
         "color": "green"
       },
       {
         "action": "NEUTRAAL",
-        "n": 2,
-        "pct": 2.6,
-        "verdict": "zeldzaam (weinig observaties)",
-        "color": "gray"
-      },
-      {
-        "action": "LICHT VERKOOP",
         "n": 2,
         "pct": 2.6,
         "verdict": "zeldzaam (weinig observaties)",
@@ -1649,64 +1652,64 @@
         "key": "qual",
         "cells": [
           1.0,
-          0.2,
-          -0.06,
-          0.26,
-          -0.49,
+          0.21,
+          -0.02,
+          0.27,
+          -0.48,
           0.73,
-          0.35
+          0.34
         ]
       },
       {
         "label": "Waardering",
         "key": "val",
         "cells": [
-          0.2,
+          0.21,
           1.0,
-          -0.23,
-          -0.36,
-          0.09,
-          0.74,
-          0.71
+          -0.17,
+          -0.29,
+          0.01,
+          0.75,
+          0.69
         ]
       },
       {
         "label": "Timing",
         "key": "tim",
         "cells": [
-          -0.06,
-          -0.23,
+          -0.02,
+          -0.17,
           1.0,
-          0.64,
-          0.07,
-          0.1,
-          -0.49
+          0.63,
+          0.13,
+          0.18,
+          -0.5
         ]
       },
       {
         "label": "Trend",
         "key": "trd",
         "cells": [
-          0.26,
-          -0.36,
-          0.64,
+          0.27,
+          -0.29,
+          0.63,
           1.0,
-          -0.52,
-          0.1,
-          -0.68
+          -0.48,
+          0.15,
+          -0.67
         ]
       },
       {
         "label": "Instap",
         "key": "ent",
         "cells": [
-          -0.49,
-          0.09,
-          0.07,
-          -0.52,
+          -0.48,
+          0.01,
+          0.13,
+          -0.48,
           1.0,
-          -0.21,
-          0.46
+          -0.23,
+          0.4
         ]
       },
       {
@@ -1714,24 +1717,24 @@
         "key": "comp",
         "cells": [
           0.73,
-          0.74,
-          0.1,
-          0.1,
-          -0.21,
+          0.75,
+          0.18,
+          0.15,
+          -0.23,
           1.0,
-          0.61
+          0.57
         ]
       },
       {
         "label": "Koopkans",
         "key": "opp",
         "cells": [
-          0.35,
-          0.71,
-          -0.49,
-          -0.68,
-          0.46,
-          0.61,
+          0.34,
+          0.69,
+          -0.5,
+          -0.67,
+          0.4,
+          0.57,
           1.0
         ]
       }
@@ -1740,82 +1743,83 @@
   },
   "modelVersion": "v3-koopkans",
   "_lastState": {
-    "MU": "sig:STERK VERKOOP",
+    "MU": "sig:caution:SELL",
     "WM": null,
-    "PLTR": "sig:STERK VERKOOP",
-    "CAT": "sig:STERK VERKOOP",
-    "ASML": null,
-    "ASMI": null,
-    "GOOGL": "sig:STERK VERKOOP",
+    "PLTR": "sig:strong_signal:SELL",
+    "CAT": null,
+    "ASML": "sig:caution:SELL",
+    "ASMI": "sig:caution:SELL",
+    "GOOGL": "sig:caution:SELL",
     "AMZN": null,
-    "ORCL": "sig:STERK VERKOOP",
-    "KO": null,
+    "ORCL": "sig:strong_signal:SELL",
+    "KO": "sig:strong_signal:BUY",
     "LHX": null,
-    "MOGA": "sig:STERK VERKOOP",
-    "TDG": "sig:STERK VERKOOP",
-    "KTOS": "sig:STERK VERKOOP",
-    "RKLB": null,
+    "MOGA": null,
+    "TDG": "sig:strong_signal:SELL",
+    "KTOS": "sig:strong_signal:SELL",
+    "RKLB": "sig:caution:SELL",
     "OPEN": null,
     "SDGR": null,
     "BNGO": null,
-    "GAW": null,
+    "GAW": "sig:caution:SELL",
     "MNST": null,
     "V": null,
     "KPG": null,
-    "ADM": null,
+    "ADM": "sig:strong_signal:BUY",
     "AON": null,
     "MELI": null,
-    "III": "sig:STERK VERKOOP",
+    "III": "sig:strong_signal:SELL",
     "SHOP": null,
-    "NET": null,
+    "NET": "sig:strong_signal:BUY",
     "CRWV": null,
-    "MSFT": null,
+    "MSFT": "sig:caution:SELL",
     "MTLS": null,
     "SNAP": null,
-    "NVDA": "sig:STERK VERKOOP",
+    "NVDA": "sig:strong_signal:SELL",
     "NKE": null,
     "DIE": null,
     "SOF": null,
     "AIR": null,
     "ALFEN": null,
-    "LOTB": null,
+    "LOTB": "sig:strong_signal:BUY",
     "MSTR": null,
-    "AAPL": null,
-    "NFLX": "sig:STERK VERKOOP",
+    "AAPL": "sig:strong_signal:BUY",
+    "NFLX": "sig:strong_signal:SELL",
     "DIS": null,
-    "BLK": null,
-    "BABA": "sig:STERK VERKOOP",
+    "BLK": "sig:caution:SELL",
+    "BABA": "sig:strong_signal:SELL",
     "NABTESCO": null,
-    "HARMONIC": null,
+    "HARMONIC": "sig:strong_signal:BUY",
     "KEYENCE": null,
-    "FANUC": null,
-    "YASKAWA": null,
-    "SOFTBANK": "sig:STERK VERKOOP",
-    "ROK": null,
-    "TER": null,
-    "ISRG": "sig:STERK VERKOOP",
-    "CGNX": null,
-    "NOVT": null,
-    "ANET": null,
+    "FANUC": "sig:caution:SELL",
+    "YASKAWA": "sig:strong_signal:BUY",
+    "SOFTBANK": "sig:caution:SELL",
+    "ROK": "sig:strong_signal:BUY",
+    "TER": "sig:caution:SELL",
+    "ISRG": "sig:strong_signal:SELL",
+    "CGNX": "sig:strong_signal:BUY",
+    "NOVT": "sig:strong_signal:BUY",
+    "ANET": "sig:strong_signal:BUY",
     "HOOD": null,
     "TSCO": null,
-    "ODFL": null,
-    "HWM": null,
-    "SNDK": "sig:STERK VERKOOP",
+    "ODFL": "sig:strong_signal:BUY",
+    "HWM": "sig:strong_signal:BUY",
+    "SNDK": null,
     "IONQ": null,
     "RGTI": null,
-    "QBTS": null,
+    "QBTS": "sig:strong_signal:BUY",
     "UBTECH": null,
-    "SYM": "sig:STERK VERKOOP",
+    "SYM": "sig:strong_signal:SELL",
     "SERV": null,
     "RR": null,
-    "PL": null,
+    "PL": "sig:caution:SELL",
     "RDDT": null,
     "NOW": null,
     "GILD": null,
     "DDOG": null,
     "ARCC": null,
     "ONON": null,
-    "ARCG": null
-  }
+    "ARCG": "sig:strong_signal:BUY"
+  },
+  "_outcomeFormulaVersion": 2
 }
