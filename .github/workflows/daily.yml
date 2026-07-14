@@ -13,6 +13,11 @@ permissions:
 jobs:
   analyze:
     runs-on: ubuntu-latest
+    # De notificatie-secret naar env tillen. Nodig omdat `secrets` niet gebruikt mag
+    # worden in een step-level `if`, maar `env` wel. Is NOTIFY_EMAIL niet ingesteld,
+    # dan is deze leeg en wordt de mailstap netjes overgeslagen.
+    env:
+      NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
     steps:
       - name: Repository ophalen
         uses: actions/checkout@v4
@@ -59,7 +64,14 @@ jobs:
           git push
 
       - name: E-mail bij fout
-        if: failure()
+        # Alleen mailen als er ECHT een adres is ingesteld. Zonder deze check faalt de
+        # mailstap zelf ("At least one of 'to' must be specified") en zie je TWEE fouten
+        # in Actions terwijl er maar EEN echt probleem is -- dat leidt af van de oorzaak.
+        #
+        # Let op: GitHub Actions staat `secrets` NIET toe in een step-level `if`.
+        # De secret wordt daarom eerst naar `env` getild (zie hierboven), en daarop
+        # testen we hier.
+        if: failure() && env.NOTIFY_EMAIL != ''
         continue-on-error: true
         uses: dawidd6/action-send-mail@v3
         with:
