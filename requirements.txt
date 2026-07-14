@@ -1,3 +1,12 @@
-yfinance>=0.2.40
-pandas>=2.0.0
-numpy>=1.24.0
+# yfinance is GEBONDEN aan een bovengrens. Reden: `>=0.2.40` zonder plafond haalde bij
+# elke run de nieuwste versie op, en yfinance breekt zijn eigen API regelmatig (Yahoo
+# verandert endpoints, yfinance rent erachteraan). Een run die gisteren werkte kon
+# vandaag omvallen zonder dat er iets aan de code veranderd was.
+#
+# De ondergrens blijft 0.2.40 (die API kennen we). De bovengrens sluit 0.3.x uit --
+# een major-bump is per definitie een breuk.
+#
+# Wil je upgraden: verhoog dit BEWUST, draai de workflow, kijk of het werkt.
+yfinance>=0.2.40,<0.3.0
+pandas>=2.0.0,<3.0.0
+numpy>=1.24.0,<3.0.0

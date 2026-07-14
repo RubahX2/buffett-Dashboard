@@ -536,6 +536,9 @@ def fetch_all(watchlist) -> dict:
     # en dat blok krijgt daarna nog een individuele herkansing per ticker.
     CHUNK = 20
     data_parts = []
+    # Houdt per ticker bij WAAROM de download faalde. Wordt gebruikt in de diagnose
+    # onderaan: een kale "mislukt" is nutteloos, "YFRateLimitError" vertelt je alles.
+    download_errors = {}
     for i in range(0, len(all_tickers), CHUNK):
         chunk = all_tickers[i:i+CHUNK]
         try:
@@ -549,7 +552,13 @@ def fetch_all(watchlist) -> dict:
             else:
                 raise ValueError("leeg resultaat")
         except Exception as e:
-            print(f"  ⚠ blok {i//CHUNK+1} faalde ({type(e).__name__}: {e}) — tickers individueel...")
+            # De ECHTE reden bewaren. Zonder dit weet je later alleen dat het misging,
+            # niet WAAROM -- en "data ophalen mislukt" helpt je niet verder. De reden
+            # (rate limit? API-wijziging? netwerk?) bepaalt wat je moet doen.
+            reden = f"{type(e).__name__}: {e}"
+            for tk in chunk:
+                download_errors.setdefault(tk, reden)
+            print(f"  ⚠ blok {i//CHUNK+1} faalde ({reden}) — tickers individueel...")
             for tk in chunk:
                 got = False
                 # Herkansing 1: normale 5-jaars periode
@@ -708,6 +717,10 @@ def fetch_all(watchlist) -> dict:
     print(f"  ✓ Markt-reeksen: {len(market)}/{len(MARKET_TICKERS)} beschikbaar")
     result["__market__"] = market
 
+    # De download-fouten meesturen onder een sleutel die NOOIT een tickernaam kan zijn.
+    # Zo hoeft de aanroeper zijn signatuur niet te veranderen, maar kan main() wel de
+    # ECHTE reden tonen ("YFRateLimitError") in plaats van een kaal "mislukt".
+    result["__download_errors__"] = download_errors
     return result
 
 # ── SIGNAAL ENGINE ────────────────────────────────────────────────────────────
@@ -1760,7 +1773,11 @@ def compute_valuation(name: str, daily: pd.DataFrame, fund: dict, hist_pe_fmp=No
 
     # Echte historische P/E-percentiel — ALLEEN met echte FMP-data
     if hist_pe_fmp and len(hist_pe_fmp) >= 8 and current_pe:
-        clean = [v for v in hist_pe_fmp if v > 0]
+        # Eerst op TYPE filteren, dan pas op waarde. `v > 0` op een None geeft een
+        # TypeError -- dezelfde klasse fout die de trackrecord-aggregatie liet crashen.
+        # De FMP-API kan null teruggeven voor kwartalen zonder winst; die horen hier
+        # weggefilterd, niet als "P/E van 0" meegeteld.
+        clean = [v for v in hist_pe_fmp if isinstance(v, (int, float)) and v > 0]
         if len(clean) >= 8:
             out["pePercentile"] = percentile_rank(clean, current_pe)
             out["peMin"]    = round(min(clean), 1)
@@ -3076,21 +3093,46 @@ def evaluate_outcomes(track, today, price_data, bench_close, horizons_weeks):
             }
 
 def compute_accuracy_stats(track, min_observations, horizons_weeks):
-    """Aggregeer afgeronde observaties — verberg percentage bij te weinig data (anti-ruis)."""
+    """
+    Aggregeer afgeronde observaties — verberg percentage bij te weinig data (anti-ruis).
+
+    ROBUUST TEGEN OUDE DATA. Dit is waar de run op GitHub crashte met:
+        TypeError: can't convert type 'NoneType' to numerator/denominator
+
+    Oorzaak: `statistics.mean([o["return"] for o in outcomes])` ging er vanuit dat elke
+    outcome een GETAL in "return" heeft. Nieuwe outcomes hebben dat ook -- maar in
+    track_record.json op GitHub stonden records die door een OUDERE versie van de code
+    geschreven waren, met "return": null. Eén zo'n record en de hele run viel om.
+
+    Lokale tests misten dit, omdat die met een LEGE track_record beginnen. De bug zat
+    dus per definitie alleen in de productie-data. Vandaar: hier filteren, niet vertrouwen.
+    """
     records = track.get("records", {})
     stats = {}
-    for rec_type in ["monthly_pick", "strong_signal"]:
-        type_recs = [r for r in records.values() if r["type"] == rec_type]
+    # "caution" hoort er ook bij: het is een falsifieerbare voorspelling ("rijp voor
+    # terugval") en moet dus net zo hard gemeten worden als de rest. Stond er niet in.
+    for rec_type in ["monthly_pick", "strong_signal", "caution"]:
+        type_recs = [r for r in records.values() if r.get("type") == rec_type]
         per_horizon = {}
         for wk in horizons_weeks:
             hkey = f"{wk}w"
-            outcomes = [r["outcomes"][hkey] for r in type_recs if hkey in r["outcomes"]]
+            raw_outcomes = [r["outcomes"][hkey] for r in type_recs
+                            if isinstance(r.get("outcomes"), dict) and hkey in r["outcomes"]]
+            # ALLEEN outcomes met een bruikbare "return" tellen mee. Een outcome met
+            # return=None is geen "return van 0" -- het is een ONBEKENDE. Die meetellen
+            # als nul zou het gemiddelde stilletjes naar beneden trekken; weglaten is
+            # het enige eerlijke.
+            outcomes = [o for o in raw_outcomes
+                        if isinstance(o, dict) and isinstance(o.get("return"), (int, float))]
             n = len(outcomes)
             if n == 0:
                 per_horizon[hkey] = {"n": 0, "status": "geen data", "accuracyShown": False}
                 continue
-            wins = sum(1 for o in outcomes if o["success"])
-            rels = [o["relativeReturn"] for o in outcomes if o["relativeReturn"] is not None]
+            # success kan in oude records ook None zijn -> expliciet op True testen,
+            # anders telt None stilzwijgend als mislukking.
+            wins = sum(1 for o in outcomes if o.get("success") is True)
+            rels = [o["relativeReturn"] for o in outcomes
+                    if isinstance(o.get("relativeReturn"), (int, float))]
             entry = {
                 "n": n,
                 "avgReturn": round(statistics.mean([o["return"] for o in outcomes]), 2),
@@ -3146,6 +3188,13 @@ def _sanitize_json(obj):
 def main():
     print(f"\n{'='*60}")
     print(f"BUFFETT+ v2 — {NOW.strftime('%A %d %B %Y %H:%M')} Brussels")
+    # De yfinance-versie staat bij ELKE run in de log. Als de analyse morgen omvalt
+    # zonder dat je iets aan de code veranderd hebt, is dit het eerste dat je wilt
+    # vergelijken met de vorige (geslaagde) run.
+    try:
+        print(f"yfinance {yf.__version__} | pandas {pd.__version__}")
+    except Exception:
+        pass
     print(f"Vrijdag (weekly signals actief): {IS_FRIDAY} | Weekend: {IS_WEEKEND}")
     print(f"{'='*60}\n")
 
@@ -3173,6 +3222,9 @@ def main():
 
     # Batch ophalen
     fetched = fetch_all(WATCHLIST)
+    # De echte download-redenen eruit halen (en meteen verwijderen, zodat de sleutel
+    # niet als "ticker" in de rest van de lus terechtkomt).
+    download_errors = fetched.pop("__download_errors__", {})
     bench_close = fetched.get("__benchmark__")
     market_series = fetched.get("__market__", {}) or {}
 
@@ -3198,7 +3250,11 @@ def main():
         print(f"\n[{name}]")
         entry = fetched.get(name)
         if entry is None:
-            msg = f"{name}: data ophalen mislukt"
+            # Toon de ECHTE reden als we die hebben. "data ophalen mislukt" vertelt je
+            # niets; "YFRateLimitError: Too Many Requests" vertelt je precies wat te doen.
+            prim = primary
+            reden = download_errors.get(prim) or download_errors.get(name)
+            msg = f"{name}: data ophalen mislukt" + (f" ({reden})" if reden else "")
             print(f"  ✗ {msg}")
             results["errors"].append(msg)
             results["stocks"][name] = {"error": msg, "fund": FUNDAMENTALS.get(name, {}),
@@ -3534,7 +3590,31 @@ def main():
     # niet rood kleuren en de commit-stap blokkeren.
     ok_count = sum(1 for s in results["stocks"].values() if "indicators" in s)
     if ok_count < max(1, round(len(WATCHLIST) * 0.3)):
-        print(f"✗ Slechts {ok_count}/{len(WATCHLIST)} aandelen gelukt — run faalt.")
+        # DIAGNOSE. Zonder dit blok stierf de run met een kale "exit code 1" en moest je
+        # in de GitHub-logs graven om te zien of het een netwerkprobleem was, een kapotte
+        # yfinance-versie, of Yahoo die je rate-limitte. Nu staat het antwoord in de log.
+        print()
+        print("=" * 60)
+        print(f"RUN GEFAALD: slechts {ok_count}/{len(WATCHLIST)} aandelen opgehaald")
+        print("=" * 60)
+        try:
+            print(f"  yfinance-versie: {yf.__version__}")
+        except Exception:
+            print("  yfinance-versie: onbekend")
+        print(f"  Fouten geregistreerd: {len(results['errors'])}")
+        print()
+        # Toon de EERSTE fouten volledig -- dat is waar de oorzaak in staat.
+        if results["errors"]:
+            print("  Eerste 5 fouten (hier staat meestal de oorzaak):")
+            for e in results["errors"][:5]:
+                print(f"    - {e}")
+            print()
+        # De meest voorkomende oorzaken, in volgorde van waarschijnlijkheid.
+        print("  Meest waarschijnlijke oorzaken:")
+        print("    1. Yahoo rate-limit  -> wacht 15 min en draai opnieuw")
+        print("    2. yfinance kapot    -> pin een oudere versie in requirements.txt")
+        print("    3. Yahoo API gewijzigd -> yfinance upgraden helpt soms")
+        print("=" * 60)
         sys.exit(1)
     if results["errors"]:
         print(f"⚠ {ok_count}/{len(WATCHLIST)} aandelen gelukt; {len(results['errors'])} fouten (zie boven) — run slaagt met waarschuwingen.")
