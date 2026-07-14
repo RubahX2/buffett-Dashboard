@@ -259,22 +259,22 @@ DEFAULT_SECTOR = "Industrie & diversen"
 
 # Fundamentals — handmatig bijgehouden per kwartaal. Laatste update: juni 2026.
 FUNDAMENTALS = {
-    "WM":    {"pe":29.2,  "roe":29.9, "fcfYield":3.0,  "debtEquity":2.28, "netMargin":11.0, "divYield":1.69, "revenueGrowth":6.1,   "eps":7.72,  "mktCap":"$90B",   "beta":0.46, "lastUpdated":"2026-06"},
+    "WM":    {"pe":29.2,  "roe":29.9, "fcfYield":3.0,  "debtEquity":2.28, "netMargin":11.0, "divYield":1.69, "revenueGrowth":6.1,   "eps":7.72,  "mktCap":"$90B",   "beta":0.46, "lastUpdated":"2026-07"},
     "PLTR":  {"pe":145.1, "roe":32.6, "fcfYield":0.8,  "debtEquity":0.02, "netMargin":43.7, "divYield":0,    "revenueGrowth":84.7,  "revenueGrowthPrev":39.0, "eps":0.95,  "mktCap":"$310B",  "beta":1.56, "lastUpdated":"2026-07"},   # P/E 145 - extreme waardering
-    "CAT":   {"pe":47.1,  "roe":51.3, "fcfYield":1.7,  "debtEquity":2.31, "netMargin":13.3, "divYield":1.1,  "revenueGrowth":11.9,  "eps":8.12,  "mktCap":"$176B",  "beta":1.60, "lastUpdated":"2026-06"},
+    "CAT":   {"pe":47.1,  "roe":51.3, "fcfYield":1.8,  "debtEquity":2.31, "netMargin":13.3, "divYield":0.63, "revenueGrowth":11.9,  "revenueGrowthPrev":4.0,  "eps":20.10, "mktCap":"$444B",  "beta":1.60, "lastUpdated":"2026-07"},
     "ASML":  {"pe":50.0,  "roe":48.0, "fcfYield":2.0,  "debtEquity":0.12, "netMargin":31.0, "divYield":0.7,  "revenueGrowth":16.0,  "revenueGrowthPrev":12.0, "eps":29.50, "mktCap":"$450B",  "beta":1.40, "lastUpdated":"2026-07"},
     "ASMI":  {"pe":48.7,  "roe":24.9, "fcfYield":1.5,  "debtEquity":0.05, "netMargin":31.0, "divYield":0.4,  "revenueGrowth":16.0,  "revenueGrowthPrev":12.0, "eps":19.50, "mktCap":"$55B",   "beta":1.55, "lastUpdated":"2026-07"},
     "MU":    {"pe":22.1,  "roe":66.6, "fcfYield":2.2,  "debtEquity":0.06, "netMargin":55.9, "divYield":0.1,  "revenueGrowth":144.0, "revenueGrowthPrev":62.0, "eps":44.6,  "mktCap":"$1.1T",  "beta":2.14, "lastUpdated":"2026-07"},   # AI-geheugencyclus op piek - extreem cyclisch
     "GOOGL": {"pe":25.7,  "roe":38.9, "fcfYield":1.6,  "debtEquity":0.20, "netMargin":37.9, "divYield":0.3,  "revenueGrowth":13.4,  "revenueGrowthPrev":14.0, "eps":13.15, "mktCap":"$4.1T",  "beta":1.24, "lastUpdated":"2026-07"},
-    "ANET":  {"pe":54.0,  "roe":31.5, "fcfYield":2.7,  "debtEquity":0.0,  "netMargin":38.3, "divYield":0,    "revenueGrowth":35.0, "revenueGrowthPrev":42.0,  "eps":3.15,  "mktCap":"$155B",  "beta":1.61, "lastUpdated":"2026-06"},
-    "HOOD":  {"pe":44.0,  "roe":21.5, "fcfYield":2.5,  "debtEquity":1.40, "netMargin":35.0, "divYield":0,    "revenueGrowth":15.0,  "eps":2.07,  "mktCap":"$101B",  "beta":2.35, "lastUpdated":"2026-06"},
+    "ANET":  {"pe":53.9,  "roe":31.5, "fcfYield":2.5,  "debtEquity":0.0,  "netMargin":38.3, "divYield":0,    "revenueGrowth":35.1,  "revenueGrowthPrev":28.9, "eps":2.95,  "mktCap":"$215B",  "beta":1.61, "lastUpdated":"2026-07"},
+    "HOOD":  {"pe":42.0,  "roe":22.5, "fcfYield":2.8,  "debtEquity":0.42, "netMargin":32.0, "divYield":0,    "revenueGrowth":15.0,  "revenueGrowthPrev":58.0, "eps":1.45,  "mktCap":"$95B",   "beta":2.15, "lastUpdated":"2026-07"},
     "TSCO":  {"pe":14.6,  "roe":45.5, "fcfYield":3.6,  "debtEquity":0.70, "netMargin":6.9,  "divYield":2.5,  "revenueGrowth":4.3,   "eps":2.03,  "mktCap":"$16B",   "beta":0.75, "lastUpdated":"2026-07"},
     "ODFL":  {"pe":40.0,  "roe":23.9, "fcfYield":1.9,  "debtEquity":0.03, "netMargin":18.5, "divYield":0.6,  "revenueGrowth":4.2,   "eps":4.85,  "mktCap":"$50B",   "beta":1.22, "lastUpdated":"2026-07"},
     "HWM":   {"pe":62.0,  "roe":33.8, "fcfYield":1.5,  "debtEquity":0.88, "netMargin":20.2, "divYield":0.2,  "revenueGrowth":19.0,  "eps":4.35,  "mktCap":"$108B",  "beta":1.19, "lastUpdated":"2026-07"},
     "SNDK":  {"pe":68.0,  "roe":39.3, "fcfYield":2.0,  "debtEquity":0.02, "netMargin":34.2, "divYield":0,    "revenueGrowth":97.0,  "eps":30.0,  "mktCap":"$300B",  "beta":2.50, "lastUpdated":"2026-07"},
     "AMZN":  {"pe":29.3,  "roe":24.3, "fcfYield":0.3,  "debtEquity":0.53, "netMargin":12.2, "divYield":0,    "revenueGrowth":14.2,  "revenueGrowthPrev":12.4, "eps":8.36,  "mktCap":"$2.6T",  "beta":1.46, "lastUpdated":"2026-07"},
     "ORCL":  {"pe":24.1,  "roe":53.4, "fcfYield":0.5,  "debtEquity":3.89, "netMargin":25.4, "divYield":1.4,  "revenueGrowth":17.4,  "revenueGrowthPrev":8.0,  "eps":5.83,  "mktCap":"$402B",  "beta":1.71, "lastUpdated":"2026-07"},   # WAARSCHUWING: S&P-rating verlaagd, D/E 3.9
-    "KO":    {"pe":25.5,  "roe":43.4, "fcfYield":3.3,  "debtEquity":1.25, "netMargin":27.8, "divYield":3.0,  "revenueGrowth":3.5,   "eps":2.91,  "mktCap":"$320B",  "beta":0.36, "lastUpdated":"2026-06"},
+    "KO":    {"pe":24.8,  "roe":47.7, "fcfYield":3.4,  "debtEquity":1.63, "netMargin":22.6, "divYield":2.95, "revenueGrowth":4.1,   "eps":2.88,  "mktCap":"$305B",  "beta":0.45, "lastUpdated":"2026-07"},
     # ── Bagger-kandidaten ── Extra velden: grossMargin, grossMarginTrend (pp YoY),
     #    revenueGrowthPrev (voor versnelling), cashRunwayMonths (None = winstgevend/n.v.t.).
     #    Cijfers indicatief per begin 2026 — VERIFIEER en werk per kwartaal bij.
@@ -282,76 +282,63 @@ FUNDAMENTALS = {
     "MOGA":  {"pe":22.0, "roe":13.5, "fcfYield":3.5, "debtEquity":0.85, "netMargin":7.5,  "divYield":1.1, "revenueGrowth":11.0,  "eps":8.60,  "mktCap":"$6B",   "beta":1.15, "lastUpdated":"2026-01",
               "grossMargin":28.5, "grossMarginTrend":1.2, "revenueGrowthPrev":8.0,  "cashRunwayMonths":None},
     "TDG":   {"pe":42.0,  "roe":20.0, "fcfYield":2.5,  "debtEquity":8.00, "netMargin":21.0, "divYield":0,    "revenueGrowth":16.0,  "revenueGrowthPrev":12.0, "eps":34.50, "mktCap":"$72B",   "beta":1.05, "lastUpdated":"2026-07"},   # ROE=ROIC-proxy: negatief eigen vermogen door schuldgefinancierde uitkeringen
-    "KTOS":  {"pe":95.0, "roe":3.5,  "fcfYield":0.4, "debtEquity":0.25, "netMargin":3.2,  "divYield":0,   "revenueGrowth":22.0,  "eps":0.55,  "mktCap":"$9B",   "beta":1.40, "lastUpdated":"2026-01",
-              "grossMargin":25.0, "grossMarginTrend":1.5, "revenueGrowthPrev":12.0, "cashRunwayMonths":None},
-    "RKLB":  {"pe":None, "roe":-18.0,"fcfYield":-3.0,"debtEquity":0.60, "netMargin":-28.0,"divYield":0,   "revenueGrowth":58.0,  "eps":-0.28, "mktCap":"$14B",  "beta":2.10, "lastUpdated":"2026-01",
-              "grossMargin":28.0, "grossMarginTrend":4.0, "revenueGrowthPrev":40.0, "cashRunwayMonths":30},
-    "OPEN":  {"pe":None, "roe":-22.0,"fcfYield":-5.0,"debtEquity":3.10, "netMargin":-6.5, "divYield":0,   "revenueGrowth":45.0,  "eps":-0.35, "mktCap":"$3B",   "beta":2.60, "lastUpdated":"2026-01",
-              "grossMargin":8.5,  "grossMarginTrend":1.0, "revenueGrowthPrev":-30.0,"cashRunwayMonths":18},
-    "SDGR":  {"pe":None, "roe":-15.0,"fcfYield":-4.0,"debtEquity":0.05, "netMargin":-32.0,"divYield":0,   "revenueGrowth":32.0,  "eps":-1.60, "mktCap":"$2B",   "beta":1.70, "lastUpdated":"2026-01",
-              "grossMargin":52.0, "grossMarginTrend":2.5, "revenueGrowthPrev":18.0, "cashRunwayMonths":36},
+    "KTOS":  {"pe":142.0, "roe":3.8,  "fcfYield":0.4,  "debtEquity":0.24, "netMargin":3.2,  "divYield":0,    "revenueGrowth":22.6,  "revenueGrowthPrev":10.0, "eps":0.34,  "mktCap":"$12B",   "beta":1.05, "lastUpdated":"2026-07"},
+    "RKLB":  {"pe":0,      "roe":-18.0,"fcfYield":-1.5, "debtEquity":0.68, "netMargin":-25.0,"divYield":0,    "revenueGrowth":63.5,  "revenueGrowthPrev":32.0, "eps":-0.42, "mktCap":"$45B",   "beta":2.10, "lastUpdated":"2026-07"},
+    "OPEN":  {"pe":0,      "roe":-42.0,"fcfYield":-6.0, "debtEquity":2.85, "netMargin":-24.0,"divYield":0,    "revenueGrowth":-37.6, "revenueGrowthPrev":-15.0,"eps":-0.24, "mktCap":"$5B",    "beta":2.75, "lastUpdated":"2026-07"},
+    "SDGR":  {"pe":0,      "roe":-22.0,"fcfYield":-6.0, "debtEquity":0.05, "netMargin":-58.0,"divYield":0,    "revenueGrowth":12.0,  "revenueGrowthPrev":8.0,  "eps":-2.40, "mktCap":"$1.5B",  "beta":1.75, "lastUpdated":"2026-07"},
     "BNGO":  {"pe":None, "roe":-85.0,"fcfYield":-40.0,"debtEquity":0.40,"netMargin":-180.0,"divYield":0,  "revenueGrowth":15.0,  "eps":-2.50, "mktCap":"$0.05B","beta":3.20, "lastUpdated":"2026-01",
               "grossMargin":32.0, "grossMarginTrend":-1.0,"revenueGrowthPrev":55.0, "cashRunwayMonths":9},
     # ── Uitbreiding juli 2026 — INDICATIEF per 2026-01 (CRWV: 2026-05), VERIFIEER per kwartaal ──
     # Let op eenheden: eps in noteringsvaluta (LSE in PENCE, Tokio in ¥, Brussel/Parijs/Adam in €, HK in HK$)
     "GAW":   {"pe":24.0, "roe":60.0, "fcfYield":4.0, "debtEquity":0.02, "netMargin":32.0, "divYield":4.2, "revenueGrowth":12.0, "eps":620,   "mktCap":"£5.2B",  "beta":0.50, "lastUpdated":"2026-01"},
-    "MNST":  {"pe":34.0, "roe":23.0, "fcfYield":2.8, "debtEquity":0.03, "netMargin":21.5, "divYield":0,   "revenueGrowth":7.0,  "eps":1.68,  "mktCap":"$56B",   "beta":0.75, "lastUpdated":"2026-01"},
+    "MNST":  {"pe":38.4,  "roe":22.3, "fcfYield":2.3,  "debtEquity":0.02, "netMargin":23.1, "divYield":0,    "revenueGrowth":18.1,  "revenueGrowthPrev":10.7, "eps":2.10,  "mktCap":"$95B",   "beta":0.82, "lastUpdated":"2026-07"},
     "V":     {"pe":28.5,  "roe":60.4, "fcfYield":3.4,  "debtEquity":0.67, "netMargin":51.7, "divYield":0.8,  "revenueGrowth":14.4,  "revenueGrowthPrev":11.6, "eps":11.70, "mktCap":"$582B",  "beta":0.76, "lastUpdated":"2026-07"},
     "KPG":   {"pe":55.0, "roe":35.0, "fcfYield":1.8, "debtEquity":2.40, "netMargin":9.0,  "divYield":1.0, "revenueGrowth":26.0, "eps":0.21,  "mktCap":"A$1.6B", "beta":0.90, "lastUpdated":"2026-01"},
     "ADM":   {"pe":13.8,  "roe":53.0, "fcfYield":5.5,  "debtEquity":1.31, "netMargin":14.8, "divYield":6.1,  "revenueGrowth":8.0,   "revenueGrowthPrev":5.0,  "eps":2.42,  "mktCap":"p10B",   "beta":0.18, "lastUpdated":"2026-07"},
     "AON":   {"pe":16.8,  "roe":39.3, "fcfYield":3.8,  "debtEquity":1.40, "netMargin":24.0, "divYield":0.9,  "revenueGrowth":7.0,   "revenueGrowthPrev":5.0,  "eps":17.07, "mktCap":"$77B",   "beta":0.90, "lastUpdated":"2026-07"},
     "MELI":  {"pe":40.0,  "roe":30.0, "fcfYield":1.0,  "debtEquity":1.80, "netMargin":6.0,  "divYield":0,    "revenueGrowth":49.0,  "revenueGrowthPrev":37.0, "eps":39.39, "mktCap":"$79B",   "beta":1.60, "lastUpdated":"2026-07"},   # marge ingestort 8.3->6.0 door capex
     "III":   {"pe":9.0,  "roe":22.0, "fcfYield":2.0, "debtEquity":0.30, "netMargin":60.0, "divYield":1.9, "revenueGrowth":16.0, "eps":450,   "mktCap":"£40B",   "beta":1.05, "lastUpdated":"2026-01"},
-    "SHOP":  {"pe":85.0, "roe":13.0, "fcfYield":1.2, "debtEquity":0.08, "netMargin":13.0, "divYield":0,   "revenueGrowth":26.0, "eps":1.45,  "mktCap":"$155B",  "beta":2.20, "lastUpdated":"2026-01"},
-    "NET":   {"pe":None, "roe":3.0,  "fcfYield":0.8, "debtEquity":0.90, "netMargin":1.5,  "divYield":0,   "revenueGrowth":28.0, "eps":0.08,  "mktCap":"$70B",   "beta":1.90, "lastUpdated":"2026-01"},
-    "CRWV":  {"pe":None, "roe":-40.7,"fcfYield":-19.0,"debtEquity":5.20,"netMargin":-25.6,"divYield":0,   "revenueGrowth":105.0,"eps":-2.72, "mktCap":"$45B",   "beta":2.80, "lastUpdated":"2026-05",
-              "grossMargin":73.0, "grossMarginTrend":-1.0, "revenueGrowthPrev":168.0, "cashRunwayMonths":None},
+    "SHOP":  {"pe":92.0,  "roe":14.5, "fcfYield":1.4,  "debtEquity":0.10, "netMargin":11.5, "divYield":0,    "revenueGrowth":31.9,  "revenueGrowthPrev":26.0, "eps":1.32,  "mktCap":"$185B",  "beta":2.35, "lastUpdated":"2026-07"},
+    "NET":   {"pe":0,      "roe":-5.9, "fcfYield":0.5,  "debtEquity":2.31, "netMargin":-3.7, "divYield":0,    "revenueGrowth":34.0,  "revenueGrowthPrev":30.0, "eps":-0.25, "mktCap":"$59B",   "beta":1.67, "lastUpdated":"2026-07"},
+    "CRWV":  {"pe":0,      "roe":-35.0,"fcfYield":-25.0,"debtEquity":3.85, "netMargin":-36.0,"divYield":0,    "revenueGrowth":112.0, "revenueGrowthPrev":737.0,"eps":-4.55, "mktCap":"$52B",   "beta":2.85, "lastUpdated":"2026-07"},
     "MSFT":  {"pe":22.9,  "roe":34.0, "fcfYield":2.5,  "debtEquity":0.30, "netMargin":39.3, "divYield":1.0,  "revenueGrowth":15.0,  "revenueGrowthPrev":16.0, "eps":16.85, "mktCap":"$2.9T",  "beta":1.13, "lastUpdated":"2026-07"},
     "MTLS":  {"pe":48.0, "roe":6.0,  "fcfYield":1.0, "debtEquity":0.15, "netMargin":4.0,  "divYield":0,   "revenueGrowth":6.0,  "eps":0.13,  "mktCap":"$0.4B",  "beta":1.30, "lastUpdated":"2026-01"},
-    "SNAP":  {"pe":None, "roe":-12.0,"fcfYield":1.5, "debtEquity":0.90, "netMargin":-8.0, "divYield":0,   "revenueGrowth":12.0, "eps":-0.30, "mktCap":"$16B",   "beta":1.90, "lastUpdated":"2026-01"},
+    "SNAP":  {"pe":0,      "roe":-8.5, "fcfYield":2.0,  "debtEquity":1.85, "netMargin":-5.5, "divYield":0,    "revenueGrowth":8.0,   "revenueGrowthPrev":14.0, "eps":-0.15, "mktCap":"$13B",   "beta":1.95, "lastUpdated":"2026-07"},
     "NVDA":  {"pe":31.1,  "roe":114.3,"fcfYield":2.4,  "debtEquity":0.07, "netMargin":63.0, "divYield":0.5,  "revenueGrowth":70.7,  "revenueGrowthPrev":114.0,"eps":6.56,  "mktCap":"$4.9T",  "beta":2.21, "lastUpdated":"2026-07"},
-    "NKE":   {"pe":32.0, "roe":28.0, "fcfYield":2.8, "debtEquity":0.65, "netMargin":8.5,  "divYield":2.1, "revenueGrowth":-3.0, "eps":2.2,   "mktCap":"$105B",  "beta":1.10, "lastUpdated":"2026-01"},
+    "NKE":   {"pe":36.5,  "roe":24.8, "fcfYield":3.1,  "debtEquity":0.87, "netMargin":6.9,  "divYield":2.35, "revenueGrowth":0.0,   "revenueGrowthPrev":-9.8, "eps":2.16,  "mktCap":"$96B",   "beta":1.12, "lastUpdated":"2026-07"},
     "DIE":   {"pe":13.0, "roe":16.0, "fcfYield":5.0, "debtEquity":1.70, "netMargin":8.0,  "divYield":1.5, "revenueGrowth":7.0,  "eps":15.5,  "mktCap":"€11B",   "beta":1.00, "lastUpdated":"2026-01"},
     "SOF":   {"pe":13.0, "roe":8.0,  "fcfYield":1.0, "debtEquity":0.10, "netMargin":40.0, "divYield":1.4, "revenueGrowth":5.0,  "eps":19.0,  "mktCap":"€8B",    "beta":0.90, "lastUpdated":"2026-01"},
     "AIR":   {"pe":20.0,  "roe":20.0, "fcfYield":3.0,  "debtEquity":1.53, "netMargin":6.9,  "divYield":1.2,  "revenueGrowth":8.0,   "revenueGrowthPrev":6.0,  "eps":6.60,  "mktCap":"E137B",  "beta":1.35, "lastUpdated":"2026-07"},
     "ALFEN": {"pe":20.0, "roe":8.0,  "fcfYield":2.0, "debtEquity":0.60, "netMargin":3.0,  "divYield":0,   "revenueGrowth":-5.0, "eps":0.55,  "mktCap":"€0.25B", "beta":1.80, "lastUpdated":"2026-01"},
     "LOTB":  {"pe":48.0, "roe":27.0, "fcfYield":1.5, "debtEquity":0.35, "netMargin":14.5, "divYield":0.9, "revenueGrowth":11.0, "eps":210.0, "mktCap":"€8.5B",  "beta":0.50, "lastUpdated":"2026-01"},
-    "MSTR":  {"pe":None, "roe":-5.0, "fcfYield":-1.0,"debtEquity":0.90, "netMargin":-30.0,"divYield":0,   "revenueGrowth":2.0,  "eps":-1.0,  "mktCap":"$80B",   "beta":3.50, "lastUpdated":"2026-01"},
+    "MSTR":  {"pe":0,      "roe":-11.1,"fcfYield":-2.0, "debtEquity":1.15, "netMargin":-4401.0,"divYield":0,  "revenueGrowth":1.9,   "revenueGrowthPrev":-3.0, "eps":-44.0, "mktCap":"$51B",   "beta":3.45, "lastUpdated":"2026-07"},
     "AAPL":  {"pe":38.0,  "roe":141.5,"fcfYield":2.1,  "debtEquity":0.80, "netMargin":27.2, "divYield":0.3,  "revenueGrowth":6.4,   "revenueGrowthPrev":4.0,  "eps":8.30,  "mktCap":"$4.6T",  "beta":1.10, "lastUpdated":"2026-07"},
     "NFLX":  {"pe":24.4,  "roe":48.5, "fcfYield":4.0,  "debtEquity":0.54, "netMargin":28.5, "divYield":0,    "revenueGrowth":15.0,  "revenueGrowthPrev":16.0, "eps":3.18,  "mktCap":"$313B",  "beta":1.52, "lastUpdated":"2026-07"},
-    "DIS":   {"pe":22.0, "roe":9.0,  "fcfYield":3.5, "debtEquity":0.45, "netMargin":9.0,  "divYield":1.0, "revenueGrowth":4.0,  "eps":5.4,   "mktCap":"$210B",  "beta":1.20, "lastUpdated":"2026-01"},
+    "DIS":   {"pe":18.5,  "roe":10.2, "fcfYield":5.2,  "debtEquity":0.42, "netMargin":9.8,  "divYield":1.0,  "revenueGrowth":7.0,   "revenueGrowthPrev":5.0,  "eps":5.45,  "mktCap":"$182B",  "beta":1.35, "lastUpdated":"2026-07"},
     "BLK":   {"pe":20.0,  "roe":15.0, "fcfYield":4.5,  "debtEquity":0.35, "netMargin":30.0, "divYield":2.2,  "revenueGrowth":10.0,  "revenueGrowthPrev":6.0,  "eps":48.09, "mktCap":"$150B",  "beta":1.35, "lastUpdated":"2026-07"},
     "BABA":  {"pe":18.0, "roe":11.0, "fcfYield":5.5, "debtEquity":0.35, "netMargin":13.0, "divYield":1.1, "revenueGrowth":7.0,  "eps":8.8,   "mktCap":"$280B",  "beta":1.30, "lastUpdated":"2026-01"},
     # Robotics moat (¥/$ — eps in noteringsvaluta)
-    "NABTESCO":{"pe":21.0,"roe":8.5, "fcfYield":3.0, "debtEquity":0.25, "netMargin":7.5,  "divYield":3.0, "revenueGrowth":5.0,  "eps":135,   "mktCap":"¥350B",  "beta":0.80, "lastUpdated":"2026-01"},
+    "NABTESCO":{"pe":28.4,  "roe":8.9,  "fcfYield":3.1,  "debtEquity":0.28, "netMargin":6.8,  "divYield":2.2,  "revenueGrowth":6.5,   "revenueGrowthPrev":4.0,  "eps":177.0, "mktCap":"Y0.6T",  "beta":1.10, "lastUpdated":"2026-07"},
     "HARMONIC":{"pe":55.0,"roe":6.0, "fcfYield":0.5, "debtEquity":0.30, "netMargin":9.0,  "divYield":0.8, "revenueGrowth":15.0, "eps":65,    "mktCap":"¥340B",  "beta":1.40, "lastUpdated":"2026-01"},
-    "KEYENCE":{"pe":37.0, "roe":13.5,"fcfYield":2.0, "debtEquity":0.00, "netMargin":37.0, "divYield":0.7, "revenueGrowth":9.0,  "eps":1850,  "mktCap":"¥16.5T", "beta":0.95, "lastUpdated":"2026-01"},
-    "FANUC": {"pe":27.0, "roe":8.0,  "fcfYield":2.5, "debtEquity":0.00, "netMargin":16.0, "divYield":2.2, "revenueGrowth":5.0,  "eps":160,   "mktCap":"¥4.3T",  "beta":0.90, "lastUpdated":"2026-01"},
-    "YASKAWA":{"pe":26.0, "roe":11.0,"fcfYield":2.0, "debtEquity":0.20, "netMargin":8.5,  "divYield":1.6, "revenueGrowth":6.0,  "eps":165,   "mktCap":"¥1.1T",  "beta":1.20, "lastUpdated":"2026-01"},
+    "KEYENCE":{"pe":42.5,  "roe":13.8, "fcfYield":2.1,  "debtEquity":0.01, "netMargin":37.0, "divYield":0.55, "revenueGrowth":10.0,  "revenueGrowthPrev":8.0,  "eps":1720.0,"mktCap":"Y17.8T", "beta":1.05, "lastUpdated":"2026-07"},
+    "FANUC": {"pe":45.8,  "roe":9.4,  "fcfYield":2.8,  "debtEquity":0.05, "netMargin":19.4, "divYield":1.35, "revenueGrowth":7.6,   "revenueGrowthPrev":2.0,  "eps":178.47,"mktCap":"Y7.6T",  "beta":0.92, "lastUpdated":"2026-07"},
+    "YASKAWA":{"pe":50.1,  "roe":7.2,  "fcfYield":1.2,  "debtEquity":0.31, "netMargin":6.5,  "divYield":1.0,  "revenueGrowth":0.8,   "revenueGrowthPrev":3.0,  "eps":136.0, "mktCap":"Y2.0T",  "beta":1.35, "lastUpdated":"2026-07"},
     "SOFTBANK":{"pe":14.0,"roe":14.0,"fcfYield":0.5, "debtEquity":1.60, "netMargin":18.0, "divYield":0.4, "revenueGrowth":8.0,  "eps":1300,  "mktCap":"¥17T",   "beta":2.20, "lastUpdated":"2026-01"},
-    "ROK":   {"pe":31.0, "roe":33.0, "fcfYield":3.0, "debtEquity":1.00, "netMargin":13.5, "divYield":1.5, "revenueGrowth":4.0,  "eps":10.5,  "mktCap":"$37B",   "beta":1.20, "lastUpdated":"2026-01"},
+    "ROK":   {"pe":44.3,  "roe":23.7, "fcfYield":2.4,  "debtEquity":0.99, "netMargin":11.5, "divYield":1.28, "revenueGrowth":12.0,  "revenueGrowthPrev":4.0,  "eps":9.84,  "mktCap":"$49B",   "beta":1.52, "lastUpdated":"2026-07"},
     "TER":   {"pe":66.6,  "roe":22.0, "fcfYield":1.2,  "debtEquity":0.10, "netMargin":17.4, "divYield":0.1,  "revenueGrowth":13.1,  "revenueGrowthPrev":5.0,  "eps":5.39,  "mktCap":"$56B",   "beta":1.45, "lastUpdated":"2026-07"},
-    "ISRG":  {"pe":66.0, "roe":17.5, "fcfYield":1.4, "debtEquity":0.00, "netMargin":28.5, "divYield":0,   "revenueGrowth":16.0, "eps":8.2,   "mktCap":"$190B",  "beta":1.30, "lastUpdated":"2026-01"},
-    "CGNX":  {"pe":44.0, "roe":11.0, "fcfYield":2.0, "debtEquity":0.05, "netMargin":13.0, "divYield":0.8, "revenueGrowth":7.0, "revenueGrowthPrev":1.0,  "eps":0.95,  "mktCap":"$7B",    "beta":1.50, "lastUpdated":"2026-01"},
-    "NOVT":  {"pe":42.0, "roe":13.0, "fcfYield":2.3, "debtEquity":0.50, "netMargin":11.0, "divYield":0,   "revenueGrowth":6.0,  "eps":3.3,   "mktCap":"$5B",    "beta":1.30, "lastUpdated":"2026-01"},
+    "ISRG":  {"pe":49.3,  "roe":17.2, "fcfYield":1.6,  "debtEquity":0.02, "netMargin":28.2, "divYield":0,    "revenueGrowth":21.4,  "revenueGrowthPrev":17.0, "eps":8.25,  "mktCap":"$144B",  "beta":1.42, "lastUpdated":"2026-07"},
+    "CGNX":  {"pe":48.5,  "roe":13.2, "fcfYield":2.5,  "debtEquity":0.02, "netMargin":14.8, "divYield":0.7,  "revenueGrowth":11.0,  "revenueGrowthPrev":3.0,  "eps":1.05,  "mktCap":"$8B",    "beta":1.45, "lastUpdated":"2026-07"},
+    "NOVT":  {"pe":58.2,  "roe":12.5, "fcfYield":2.6,  "debtEquity":0.62, "netMargin":8.4,  "divYield":0,    "revenueGrowth":9.5,   "revenueGrowthPrev":5.0,  "eps":2.35,  "mktCap":"$5.6B",  "beta":1.38, "lastUpdated":"2026-07"},
     # Quantum baggers (waardering irrelevant; bagger-velden leidend)
-    "IONQ":  {"pe":None, "roe":-35.0,"fcfYield":-8.0, "debtEquity":0.10, "netMargin":-180.0,"divYield":0, "revenueGrowth":85.0, "eps":-1.4,  "mktCap":"$12B",   "beta":3.50, "lastUpdated":"2026-01",
-              "grossMargin":55.0, "grossMarginTrend":3.0,  "revenueGrowthPrev":95.0,  "cashRunwayMonths":40},
-    "RGTI":  {"pe":None, "roe":-25.0,"fcfYield":-15.0,"debtEquity":0.15, "netMargin":-350.0,"divYield":0, "revenueGrowth":20.0, "eps":-0.15, "mktCap":"$4B",    "beta":4.00, "lastUpdated":"2026-01",
-              "grossMargin":50.0, "grossMarginTrend":-5.0, "revenueGrowthPrev":10.0,  "cashRunwayMonths":30},
-    "QBTS":  {"pe":None, "roe":-40.0,"fcfYield":-12.0,"debtEquity":0.20, "netMargin":-400.0,"divYield":0, "revenueGrowth":110.0,"eps":-0.25, "mktCap":"$3.5B",  "beta":4.20, "lastUpdated":"2026-01",
-              "grossMargin":62.0, "grossMarginTrend":5.0,  "revenueGrowthPrev":65.0,  "cashRunwayMonths":30},
+    "IONQ":  {"pe":0,      "roe":-42.0,"fcfYield":-3.5, "debtEquity":0.06, "netMargin":-380.0,"divYield":0,   "revenueGrowth":72.0,  "revenueGrowthPrev":95.0, "eps":-1.85, "mktCap":"$14B",   "beta":2.55, "lastUpdated":"2026-07"},
+    "RGTI":  {"pe":0,      "roe":-45.0,"fcfYield":-5.0, "debtEquity":0.03, "netMargin":-620.0,"divYield":0,   "revenueGrowth":30.0,  "revenueGrowthPrev":25.0, "eps":-0.35, "mktCap":"$5B",    "beta":2.95, "lastUpdated":"2026-07"},
+    "QBTS":  {"pe":0,      "roe":-38.0,"fcfYield":-4.0, "debtEquity":0.04, "netMargin":-290.0,"divYield":0,   "revenueGrowth":65.0,  "revenueGrowthPrev":88.0, "eps":-0.42, "mktCap":"$6B",    "beta":2.80, "lastUpdated":"2026-07"},
     # Robotics speculatief (baggers)
-    "UBTECH":{"pe":None, "roe":-20.0,"fcfYield":-10.0,"debtEquity":0.50, "netMargin":-30.0, "divYield":0, "revenueGrowth":32.0, "eps":-2.2,  "mktCap":"HK$55B", "beta":2.50, "lastUpdated":"2026-01",
-              "grossMargin":30.0, "grossMarginTrend":1.5,  "revenueGrowthPrev":25.0,  "cashRunwayMonths":15},
-    "SYM":   {"pe":None, "roe":2.0,  "fcfYield":1.0,  "debtEquity":0.10, "netMargin":0.5,   "divYield":0, "revenueGrowth":28.0, "eps":0.05,  "mktCap":"$23B",   "beta":2.30, "lastUpdated":"2026-01",
-              "grossMargin":17.0, "grossMarginTrend":1.5,  "revenueGrowthPrev":35.0,  "cashRunwayMonths":None},
-    "SERV":  {"pe":None, "roe":-60.0,"fcfYield":-20.0,"debtEquity":0.10, "netMargin":-900.0,"divYield":0, "revenueGrowth":150.0,"eps":-0.90, "mktCap":"$1.5B",  "beta":3.80, "lastUpdated":"2026-01",
-              "grossMargin":35.0, "grossMarginTrend":4.0,  "revenueGrowthPrev":200.0, "cashRunwayMonths":24},
-    "RR":    {"pe":None, "roe":-30.0,"fcfYield":-15.0,"debtEquity":0.05, "netMargin":-120.0,"divYield":0, "revenueGrowth":60.0, "eps":-0.10, "mktCap":"$0.4B",  "beta":3.50, "lastUpdated":"2026-01",
-              "grossMargin":45.0, "grossMarginTrend":2.0,  "revenueGrowthPrev":90.0,  "cashRunwayMonths":20},
-    "PL":    {"pe":None, "roe":-8.0, "fcfYield":-1.0, "debtEquity":0.05, "netMargin":-10.0, "divYield":0, "revenueGrowth":18.0, "eps":-0.08, "mktCap":"$3.8B",  "beta":2.30, "lastUpdated":"2026-01",
-              "grossMargin":58.0, "grossMarginTrend":4.0,  "revenueGrowthPrev":11.0,  "cashRunwayMonths":None},
+    "UBTECH":{"pe":0,      "roe":-25.0,"fcfYield":-10.0,"debtEquity":0.45, "netMargin":-55.0, "divYield":0,    "revenueGrowth":35.0,  "revenueGrowthPrev":20.0, "eps":-2.80, "mktCap":"HK$40B", "beta":2.20, "lastUpdated":"2026-07"},
+    "SYM":   {"pe":0,      "roe":2.1,  "fcfYield":3.2,  "debtEquity":0.15, "netMargin":1.3,  "divYield":0,    "revenueGrowth":23.0,  "revenueGrowthPrev":29.0, "eps":0.05,  "mktCap":"$32B",   "beta":2.35, "lastUpdated":"2026-07"},
+    "SERV":  {"pe":0,      "roe":-38.0,"fcfYield":-15.0,"debtEquity":0.12, "netMargin":-1645.0,"divYield":0,  "revenueGrowth":578.0, "revenueGrowthPrev":180.0,"eps":-2.10, "mktCap":"$0.7B",  "beta":2.90, "lastUpdated":"2026-07"},
+    "RR":    {"pe":0,      "roe":-14.3,"fcfYield":-8.0, "debtEquity":0.08, "netMargin":-95.0, "divYield":0,    "revenueGrowth":-16.1, "revenueGrowthPrev":-8.0, "eps":-0.18, "mktCap":"$0.3B",  "beta":2.60, "lastUpdated":"2026-07"},
+    "PL":    {"pe":0,      "roe":-9.5, "fcfYield":-1.0, "debtEquity":0.18, "netMargin":-12.0,"divYield":0,    "revenueGrowth":18.0,  "revenueGrowthPrev":11.0, "eps":-0.11, "mktCap":"$3B",    "beta":1.85, "lastUpdated":"2026-07"},
     # ETF: geen bedrijf, dus geen fundamentals. Alle velden None -- het systeem
     # slaat de kwaliteitspoort voor ETF's toch over (zie ETF_TICKERS).
     "ARCG":  {"pe":None, "roe":None, "fcfYield":None, "debtEquity":None, "netMargin":None,
@@ -2801,15 +2788,16 @@ def migrate_collapse_episodes(track):
         # STERK VERKOOP en VERKOOP binnen dezelfde week is geen nieuwe aanbeveling.
         groups[(r["ticker"], r["type"])].append((r["date"], key, r))
 
-    COOLDOWN_DAYS = 10
-
     keep, dropped = {}, 0
     for _g, items in groups.items():
+        # De maandpick is een MAANDelijkse beslissing -> ruimere cooldown (25 dagen).
+        # Sterke signalen en CAUTION mogen sneller terugkeren (10 dagen).
+        cooldown = 25 if _g[1] == "monthly_pick" else 10
         items.sort(key=lambda x: x[0])
         prev_date = None
         for dt, key, r in items:
             d = date.fromisoformat(dt)
-            if prev_date is not None and (d - prev_date).days < COOLDOWN_DAYS:
+            if prev_date is not None and (d - prev_date).days < cooldown:
                 dropped += 1
                 # prev_date NIET bijwerken: de cooldown loopt vanaf de EERSTE dag van
                 # de episode. Anders schuift het venster mee en blijft de episode
@@ -2848,14 +2836,41 @@ def record_recommendations(track, today_iso, allocation, stocks, prices, bench_c
     bench_entry = float(bench_close.iloc[-1]) if bench_close is not None and len(bench_close) else None
 
     def open_episode(ticker, rec_type, direction, entry_price, snapshot, state):
-        """Open een record ALLEEN als de ticker nog niet in deze toestand zat."""
+        """
+        Open een record ALLEEN als dit een nieuw signaal is.
+
+        Twee checks:
+        1. Zat de ticker gisteren al in deze toestand? -> geen nieuw record.
+        2. COOLDOWN: is er recent (< 10 dagen) al een record van dit TYPE voor deze
+           ticker? -> ook geen nieuw record. Zonder deze check opende de maandpick
+           elke dag opnieuw zodra de toestand tussendoor wegviel: MU verscheen zo drie
+           keer met exact dezelfde entry ($937, composiet 80). De sterke signalen hadden
+           deze cooldown al; de maandpick niet.
+        """
         if entry_price is None:
             return False
-        prev = last_state.get(ticker)
+        # De maandpick heeft een eigen toestands-sleutel ("pick::TICKER"), gescheiden
+        # van de signaal-toestand. Anders wist de sterke-signalen-lus de pick-toestand
+        # en leek de pick de volgende dag weer nieuw.
+        state_key = f"pick::{ticker}" if rec_type == "monthly_pick" else ticker
+        prev = last_state.get(state_key)
         if prev == state:
             return False        # zelfde signaal als gisteren -> geen nieuwe aanbeveling
-        # Nieuw signaal: open een episode. De sleutel bevat de STARTDATUM, zodat een
-        # herhaling later (na een onderbreking) wel een eigen record krijgt.
+
+        # De maandpick krijgt een RUIMERE cooldown (25 dagen). Hij heet niet voor niets
+        # de MAANDaanbeveling: dezelfde ticker die 11 dagen later opnieuw bovenaan staat
+        # is geen nieuwe aanbeveling, het is dezelfde positie. Met de standaard 10 dagen
+        # verscheen MU tweemaal binnen twee weken met vrijwel dezelfde entry.
+        cooldown = 25 if rec_type == "monthly_pick" else 10
+        for r in records.values():
+            if r["ticker"] == ticker and r["type"] == rec_type:
+                try:
+                    gap = (date.fromisoformat(today_iso) - date.fromisoformat(r["date"])).days
+                    if gap < cooldown:
+                        return False    # te recent -> zelfde episode
+                except Exception:
+                    continue
+
         key = _record_key(ticker, today_iso, rec_type)
         if key in records:
             return False        # idempotent binnen dezelfde dag
@@ -2870,13 +2885,17 @@ def record_recommendations(track, today_iso, allocation, stocks, prices, bench_c
 
     opened = 0
     new_state = {}
+    # De maandpick en een sterk signaal kunnen op DEZELFDE ticker vallen. Ze krijgen
+    # daarom losse toestands-sleutels, anders overschrijft de een de ander en lijkt
+    # het signaal de volgende dag weer "nieuw".
+    pick_state = {}
 
     # 1. Maandpick
     if allocation and allocation.get("primaryPick"):
         p = allocation["primaryPick"]
         t = p["ticker"]
         st = f"pick:{t}"
-        new_state[t] = st
+        pick_state[t] = st
         if open_episode(t, "monthly_pick", "BUY", prices.get(t), {
                 "composite": p.get("composite"), "quality": p.get("quality"),
                 "valuation": p.get("valuation"), "timing": p.get("timing"),
@@ -2959,7 +2978,12 @@ def record_recommendations(track, today_iso, allocation, stocks, prices, bench_c
                     break
         new_state[t] = st
 
-    track["_lastState"] = new_state
+    # De pick-toestand mag NIET overschreven worden door de signaal-toestand van
+    # dezelfde ticker. Beide worden bewaard onder een eigen sleutel.
+    merged_state = dict(new_state)
+    for t, st in pick_state.items():
+        merged_state[f"pick::{t}"] = st
+    track["_lastState"] = merged_state
     n_open = len([r for r in records.values()])
     print(f"  Aanbevelingen: {opened} NIEUW vandaag ({n_open} episodes totaal)")
     print(f"    (een doorlopend signaal telt als EEN aanbeveling, niet als een per dag)")
