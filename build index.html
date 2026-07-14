@@ -1,0 +1,2551 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0a0d12">
+<title>BUFFETT+ - Kwaliteit x Timing</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>chart</text></svg>">
+<style>
+  html, body { margin:0; padding:0; background:#0a0d12; }
+  #root { min-height:100vh; }
+  .bplus-loading { color:#8b949e; font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+    font-size:14px; text-align:center; padding-top:42vh; letter-spacing:1px; }
+</style>
+<script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.23.5/babel.min.js"></script>
+</head>
+<body>
+<div id="root"><div class="bplus-loading">BUFFETT+ laden...</div></div>
+<script type="text/plain" id="jsx-source">
+const { useState, useEffect, useRef } = React;
+
+// ── CONFIG — pas deze URL aan na GitHub Pages setup ───────────────────────────
+// Formaat: https://JOUW-GITHUB-NAAM.github.io/REPO-NAAM/signals.json
+const SIGNALS_URL = "https://RubahX2.github.io/buffett-dashboard/signals.json";
+
+// ── FALLBACK fundamentals (statisch, als backup) ──────────────────────────────
+const FALLBACK_FUND = {
+  WM:    { pe:29.2,  roe:29.9, fcfYield:3.0,  debtEquity:2.28, netMargin:11.0, divYield:1.69, revenueGrowth:6.1,   eps:7.72,  mktCap:"$90B",   beta:0.46 },
+  PLTR:  { pe:117.6, roe:32.6, fcfYield:1.0,  debtEquity:0.02, netMargin:43.7, divYield:0,    revenueGrowth:67.7,  eps:0.96,  mktCap:"$271B",  beta:1.52 },
+  CAT:   { pe:47.1,  roe:51.3, fcfYield:1.7,  debtEquity:2.31, netMargin:13.3, divYield:1.1,  revenueGrowth:11.9,  eps:8.12,  mktCap:"$176B",  beta:1.60 },
+  ASML:  { pe:58.8,  roe:55.0, fcfYield:1.9,  debtEquity:0.12, netMargin:31.0, divYield:0.4,  revenueGrowth:12.0,  eps:27.80, mktCap:"€640B",  beta:1.37 },
+  ASMI:  { pe:44.9,  roe:21.6, fcfYield:2.9,  debtEquity:0.01, netMargin:23.9, divYield:0.3,  revenueGrowth:12.0,  eps:23.75, mktCap:"$52B",   beta:1.50 },
+  MU:    { pe:25.3,  roe:66.6, fcfYield:2.1,  debtEquity:0.06, netMargin:55.9, divYield:0.05, revenueGrowth:125.0, eps:44.80, mktCap:"$1280B", beta:2.17 },
+  GOOGL: { pe:19.8,  roe:31.5, fcfYield:4.2,  debtEquity:0.07, netMargin:28.6, divYield:0.5,  revenueGrowth:14.0,  eps:9.15,  mktCap:"$2200B", beta:1.05 },
+  AMZN:  { pe:27.2,  roe:24.3, fcfYield:2.8,  debtEquity:0.53, netMargin:12.2, divYield:0,    revenueGrowth:11.0,  eps:8.36,  mktCap:"$2440B", beta:1.44 },
+  ORCL:  { pe:31.6,  roe:53.4, fcfYield:4.2,  debtEquity:3.63, netMargin:25.2, divYield:1.3,  revenueGrowth:15.0,  eps:5.83,  mktCap:"$438B",  beta:1.65 },
+  KO:    { pe:25.5,  roe:43.4, fcfYield:3.3,  debtEquity:1.25, netMargin:27.8, divYield:3.0,  revenueGrowth:3.5,   eps:2.91,  mktCap:"$320B",  beta:0.36 },
+  LHX:   { pe:24.5, roe:11.2, fcfYield:4.8, debtEquity:0.70, netMargin:9.8,   divYield:1.9, revenueGrowth:9.5,   eps:13.10, mktCap:"$47B",  beta:0.90 },
+  MOGA:  { pe:22.0, roe:13.5, fcfYield:3.5, debtEquity:0.85, netMargin:7.5,   divYield:1.1, revenueGrowth:11.0,  eps:8.60,  mktCap:"$6B",   beta:1.15 },
+  TDG:   { pe:38.0, roe:45.0, fcfYield:2.7, debtEquity:5.20, netMargin:18.5,  divYield:0,   revenueGrowth:12.5,  eps:33.00, mktCap:"$78B",  beta:1.20 },
+  KTOS:  { pe:95.0, roe:3.5,  fcfYield:0.4, debtEquity:0.25, netMargin:3.2,   divYield:0,   revenueGrowth:22.0,  eps:0.55,  mktCap:"$9B",   beta:1.40 },
+  RKLB:  { pe:null, roe:-18.0,fcfYield:-3.0,debtEquity:0.60, netMargin:-28.0, divYield:0,   revenueGrowth:58.0,  eps:-0.28, mktCap:"$14B",  beta:2.10 },
+  OPEN:  { pe:null, roe:-22.0,fcfYield:-5.0,debtEquity:3.10, netMargin:-6.5,  divYield:0,   revenueGrowth:45.0,  eps:-0.35, mktCap:"$3B",   beta:2.60 },
+  SDGR:  { pe:null, roe:-15.0,fcfYield:-4.0,debtEquity:0.05, netMargin:-32.0, divYield:0,   revenueGrowth:32.0,  eps:-1.60, mktCap:"$2B",   beta:1.70 },
+  BNGO:  { pe:null, roe:-85.0,fcfYield:-40.0,debtEquity:0.40,netMargin:-180.0,divYield:0,   revenueGrowth:15.0,  eps:-2.50, mktCap:"$0.05B",beta:3.20 },
+};
+
+const STOCK_NAMES = {
+  WM:"Waste Management", PLTR:"Palantir", CAT:"Caterpillar",
+  ASML:"ASML Holding", ASMI:"ASM International", MU:"Micron Technology",
+  GOOGL:"Alphabet (Google)", AMZN:"Amazon", ORCL:"Oracle", KO:"Coca-Cola",
+  LHX:"L3Harris Technologies", MOGA:"Moog Inc. (A)", TDG:"TransDigm Group",
+  KTOS:"Kratos Defense", RKLB:"Rocket Lab", OPEN:"Opendoor",
+  SDGR:"Schrödinger", BNGO:"Bionano Genomics",
+  GAW:"Games Workshop", MNST:"Monster Beverage", V:"Visa", KPG:"Kelly Partners",
+  ADM:"Admiral Group", AON:"Aon plc", MELI:"MercadoLibre", III:"3i Group",
+  SHOP:"Shopify", NET:"Cloudflare", CRWV:"CoreWeave", MSFT:"Microsoft",
+  MTLS:"Materialise", SNAP:"Snap", NVDA:"Nvidia", NKE:"Nike",
+  DIE:"D'Ieteren", SOF:"Sofina", AIR:"Airbus", ALFEN:"Alfen", LOTB:"Lotus Bakeries",
+  MSTR:"Strategy", AAPL:"Apple", NFLX:"Netflix", DIS:"Disney", BLK:"BlackRock", BABA:"Alibaba",
+  NABTESCO:"Nabtesco", HARMONIC:"Harmonic Drive", KEYENCE:"Keyence", FANUC:"Fanuc",
+  YASKAWA:"Yaskawa Electric", ABB:"ABB Ltd", SOFTBANK:"SoftBank Group",
+  ROK:"Rockwell Automation", TER:"Teradyne", ISRG:"Intuitive Surgical",
+  CGNX:"Cognex", NOVT:"Novanta", IONQ:"IonQ", RGTI:"Rigetti Computing",
+  QBTS:"D-Wave Quantum", UBTECH:"UBTECH Robotics", SYM:"Symbotic",
+  SERV:"Serve Robotics", RR:"Richtech Robotics", PL:"Planet Labs",
+  ANET:"Arista Networks", HOOD:"Robinhood Markets", TSCO:"Tractor Supply",
+  ODFL:"Old Dominion Freight", HWM:"Howmet Aerospace", SNDK:"Sandisk",
+  RDDT:"Reddit", NOW:"ServiceNow", GILD:"Gilead Sciences",
+  DDOG:"Datadog", ARCC:"Ares Capital", ONON:"On Holding",
+  ARCG:"ARK Genomic Revolution ETF",
+};
+
+const TV_LINKS = {
+  WM:"NYSE:WM", PLTR:"NASDAQ:PLTR", CAT:"NYSE:CAT", ASML:"EURONEXT:ASML",
+  ASMI:"EURONEXT:ASM", MU:"NASDAQ:MU", GOOGL:"NASDAQ:GOOGL",
+  AMZN:"NASDAQ:AMZN", ORCL:"NYSE:ORCL", KO:"NYSE:KO",
+  LHX:"NYSE:LHX", MOGA:"NYSE:MOG.A", TDG:"NYSE:TDG", KTOS:"NASDAQ:KTOS",
+  RKLB:"NASDAQ:RKLB", OPEN:"NASDAQ:OPEN", SDGR:"NASDAQ:SDGR", BNGO:"NASDAQ:BNGO",
+  GAW:"LSE:GAW", MNST:"NASDAQ:MNST", V:"NYSE:V", KPG:"ASX:KPG", ADM:"LSE:ADM",
+  AON:"NYSE:AON", MELI:"NASDAQ:MELI", III:"LSE:III", SHOP:"NYSE:SHOP", NET:"NYSE:NET",
+  CRWV:"NASDAQ:CRWV", MSFT:"NASDAQ:MSFT", MTLS:"NASDAQ:MTLS", SNAP:"NYSE:SNAP",
+  NVDA:"NASDAQ:NVDA", NKE:"NYSE:NKE", DIE:"EURONEXT:DIE", SOF:"EURONEXT:SOF",
+  AIR:"EURONEXT:AIR", ALFEN:"EURONEXT:ALFEN", LOTB:"EURONEXT:LOTB", MSTR:"NASDAQ:MSTR",
+  AAPL:"NASDAQ:AAPL", NFLX:"NASDAQ:NFLX", DIS:"NYSE:DIS", BLK:"NYSE:BLK", BABA:"NYSE:BABA",
+  NABTESCO:"TSE:6268", HARMONIC:"TSE:6324", KEYENCE:"TSE:6861", FANUC:"TSE:6954",
+  YASKAWA:"TSE:6506", ABB:"NYSE:ABB", SOFTBANK:"TSE:9984", ROK:"NYSE:ROK",
+  TER:"NASDAQ:TER", ISRG:"NASDAQ:ISRG", CGNX:"NASDAQ:CGNX", NOVT:"NASDAQ:NOVT",
+  IONQ:"NYSE:IONQ", RGTI:"NASDAQ:RGTI", QBTS:"NYSE:QBTS", UBTECH:"HKEX:9880",
+  SYM:"NASDAQ:SYM", SERV:"NASDAQ:SERV", RR:"NASDAQ:RR", PL:"NYSE:PL",
+};
+
+// ── DESIGN TOKENS ─────────────────────────────────────────────────────────────
+const C = {
+  bg:"#0a0d12", panel:"#111620", panel2:"#161c28", border:"#1e2533",
+  accent:"#e8c84a", green:"#22c55e", red:"#ef4444", orange:"#f59e0b",
+  blue:"#3b82f6", purple:"#a855f7", teal:"#14b8a6",
+  text:"#e2e8f0", textDim:"#8892a4", muted:"#4a5568",
+};
+
+// ── BUFFETT SCORE ─────────────────────────────────────────────────────────────
+function bScore(f) {
+  if (!f) return 0;
+  // ETF's hebben geen fundamentals (pe/roe/marge zijn null). In JS is `null < 15`
+  // gelijk aan `true`, dus zonder deze check zou een ETF een ONTERECHTE score krijgen.
+  // Geen cijfers = geen oordeel.
+  if (f.pe==null && f.roe==null && f.netMargin==null) return null;
+  let s = 0;
+  if (f.pe > 0 && f.pe < 15) s+=22; else if (f.pe<20) s+=14; else if (f.pe<28) s+=7;
+  if (f.roe > 20) s+=20; else if (f.roe>12) s+=10;
+  if (f.fcfYield > 5) s+=15; else if (f.fcfYield>2.5) s+=8;
+  if (f.debtEquity>=0&&f.debtEquity<0.5) s+=15;
+  else if (f.debtEquity<1) s+=8;
+  else if (f.debtEquity>2.5) s-=8;
+  if (f.netMargin > 20) s+=15; else if (f.netMargin>10) s+=8;
+  if (f.revenueGrowth > 10) s+=8; else if (f.revenueGrowth>4) s+=4;
+  if (f.divYield > 0) s+=3;
+  return Math.min(100, Math.max(0, s));
+}
+
+// ── UI COMPONENTS ─────────────────────────────────────────────────────────────
+function OverallBadge({ signal }) {
+  const m = {
+    "STERK KOOP":   {bg:"#14532d",fg:"#4ade80",bo:"#16a34a"},
+    "KOOP":         {bg:"#052e16",fg:"#86efac",bo:"#166534"},
+    "LICHT KOOP":   {bg:"#052e16",fg:"#6ee7b7",bo:"#065f46"},
+    "NEUTRAAL":     {bg:"#1e293b",fg:"#94a3b8",bo:"#334155"},
+    "LICHT VERKOOP":{bg:"#3b0a0a",fg:"#fca5a5",bo:"#7f1d1d"},
+    "VERKOOP":      {bg:"#450a0a",fg:"#f87171",bo:"#991b1b"},
+    "STERK VERKOOP":{bg:"#450a0a",fg:"#ef4444",bo:"#dc2626"},
+    "CAUTION (overextended)":{bg:"#422006",fg:"#fbbf24",bo:"#b45309"},
+  };
+  const s = m[signal] || m["NEUTRAAL"];
+  return <span style={{background:s.bg,color:s.fg,border:`1px solid ${s.bo}`,borderRadius:4,padding:"3px 9px",fontSize:11,fontWeight:700,whiteSpace:"nowrap"}}>{signal}</span>;
+}
+
+function Ring({ score, size=48 }) {
+  // ETF's hebben geen Buffett-score (score is null). Toon een neutrale ring met "ETF"
+  // in plaats van een misleidende lege/rode ring.
+  if (score==null) {
+    const r0=(size/2)-5;
+    return (
+      <svg width={size} height={size} style={{flexShrink:0}}>
+        <circle cx={size/2} cy={size/2} r={r0} fill="none" stroke={C.border} strokeWidth={5}/>
+        <text x="50%" y="50%" textAnchor="middle" dominantBaseline="central"
+          style={{fill:C.textDim,fontSize:size<44?9:11,fontWeight:700}}>ETF</text>
+      </svg>
+    );
+  }
+  const r=(size/2)-5, circ=2*Math.PI*r, fill=circ*(1-score/100);
+  const col=score>=70?C.green:score>=50?C.accent:C.red;
+  return (
+    <svg width={size} height={size} style={{transform:"rotate(-90deg)",flexShrink:0}}>
+      <circle cx={size/2} cy={size/2} r={r} fill="none" stroke={C.border} strokeWidth={5}/>
+      <circle cx={size/2} cy={size/2} r={r} fill="none" stroke={col} strokeWidth={5}
+        strokeDasharray={circ} strokeDashoffset={fill} strokeLinecap="round"/>
+      <text x={size/2} y={size/2} textAnchor="middle" dominantBaseline="central"
+        style={{transform:`rotate(90deg)`,transformOrigin:`${size/2}px ${size/2}px`,
+          fill:col,fontSize:size<44?10:13,fontWeight:700}}>{score}</text>
+    </svg>
+  );
+}
+
+function SignalCard({ sig }) {
+  const colors = {
+    BUY:   {bg:"#052e16",border:"#166534",text:C.green,  tag:"KOOP"},
+    SELL:  {bg:"#450a0a",border:"#991b1b",text:C.red,    tag:"VERKOOP"},
+    WATCH: {bg:"#1c1a06",border:"#854d0e",text:C.orange, tag:"LET OP"},
+    CAUTION:{bg:"#422006",border:"#b45309",text:"#fbbf24",tag:"OVEREXTENDED"},
+    INFO:  {bg:"#0f172a",border:"#1e3a5f",text:C.blue,   tag:"INFO"},
+  };
+  const c = colors[sig.type] || colors.WATCH;
+  return (
+    <div style={{background:c.bg,border:`1px solid ${c.border}`,borderRadius:6,padding:"8px 10px",marginBottom:5}}>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",gap:6}}>
+        <div style={{flex:1}}>
+          <div style={{display:"flex",alignItems:"center",gap:5,marginBottom:2,flexWrap:"wrap"}}>
+            <span style={{fontSize:13}}>{sig.icon}</span>
+            <span style={{color:c.text,fontSize:12,fontWeight:700}}>{sig.title}</span>
+            {sig.tf&&<span style={{background:C.border,color:C.textDim,borderRadius:3,padding:"1px 5px",fontSize:9}}>{sig.tf}</span>}
+            {sig.cat&&<span style={{background:C.border,color:C.textDim,borderRadius:3,padding:"1px 5px",fontSize:9}}>{sig.cat}</span>}
+          </div>
+          {sig.detail&&<div style={{color:C.textDim,fontSize:11,lineHeight:1.4}}>{sig.detail}</div>}
+        </div>
+        <span style={{color:c.text,fontSize:9,fontWeight:700,background:c.border,borderRadius:3,padding:"2px 5px",whiteSpace:"nowrap"}}>{c.tag}</span>
+      </div>
+    </div>
+  );
+}
+
+function ValuationBadge({ color, compact }) {
+  const map = {
+    green:   { bg:"#052e16", fg:"#4ade80", bo:"#166534", label:"Gunstig" },
+    neutral: { bg:"#1e293b", fg:"#94a3b8", bo:"#334155", label:"Neutraal" },
+    orange:  { bg:"#1c1206", fg:"#f59e0b", bo:"#854d0e", label:"Aan dure kant" },
+    red:     { bg:"#450a0a", fg:"#ef4444", bo:"#991b1b", label:"Duur" },
+  };
+  const s = map[color] || map.neutral;
+  return (
+    <span style={{background:s.bg,color:s.fg,border:`1px solid ${s.bo}`,borderRadius:4,
+      padding:compact?"1px 6px":"2px 8px",fontSize:compact?9:10,fontWeight:700,whiteSpace:"nowrap"}}>
+      {compact ? `💰 ${s.label}` : s.label}
+    </span>
+  );
+}
+
+function ValuationPanel({ valuation, fund }) {
+  if (!valuation) {
+    return <div style={{color:C.textDim,textAlign:"center",padding:20}}>
+      Nog geen waarderingsdata beschikbaar.
+    </div>;
+  }
+  const v = valuation;
+  const colorHex = {green:C.green, neutral:C.textDim, orange:C.orange, red:C.red}[v.verdictColor] || C.text;
+
+  // PEG meter (0 to 4 scale)
+  const pegVal = v.peg;
+  const pegPos = pegVal != null ? Math.min(pegVal / 4 * 100, 100) : null;
+
+  return (
+    <div>
+      {/* Verdict hero */}
+      <div style={{background:C.bg,borderRadius:8,padding:14,marginBottom:12,
+        borderLeft:`3px solid ${colorHex}`}}>
+        <div style={{color:C.textDim,fontSize:11,marginBottom:4}}>Waarderingsoordeel</div>
+        <div style={{color:colorHex,fontSize:15,fontWeight:700,lineHeight:1.3}}>{v.verdict}</div>
+        {v.notes && v.notes.length>0 && (
+          <div style={{color:C.muted,fontSize:10,marginTop:6}}>{v.notes.join(" · ")}</div>
+        )}
+      </div>
+
+      {/* PEG meter */}
+      {pegVal != null && (
+        <div style={{background:C.bg,borderRadius:8,padding:12,marginBottom:10}}>
+          <div style={{display:"flex",justifyContent:"space-between",marginBottom:6}}>
+            <span style={{color:C.textDim,fontSize:11}}>PEG-ratio (P/E ÷ groei)</span>
+            <span style={{color:colorHex,fontWeight:700,fontSize:13}}>{pegVal}</span>
+          </div>
+          <div style={{position:"relative",height:8,background:"#0a0d12",borderRadius:4,overflow:"hidden"}}>
+            {/* zones: <1 green, 1-2.5 neutral, >2.5 red */}
+            <div style={{position:"absolute",left:0,width:"25%",height:"100%",background:"#14532d",opacity:0.5}}/>
+            <div style={{position:"absolute",left:"25%",width:"37.5%",height:"100%",background:"#334155",opacity:0.4}}/>
+            <div style={{position:"absolute",left:"62.5%",width:"37.5%",height:"100%",background:"#450a0a",opacity:0.5}}/>
+            <div style={{position:"absolute",left:`${pegPos}%`,top:-2,width:2,height:12,background:C.accent}}/>
+          </div>
+          <div style={{display:"flex",justifyContent:"space-between",marginTop:3,fontSize:8,color:C.muted}}>
+            <span>0 goedkoop</span><span>1</span><span>2.5</span><span>4+ duur</span>
+          </div>
+        </div>
+      )}
+
+      {/* P/E percentiel (alleen met echte FMP-data) */}
+      {v.pePercentile != null ? (
+        <div style={{background:C.bg,borderRadius:8,padding:12,marginBottom:10}}>
+          <div style={{display:"flex",justifyContent:"space-between",marginBottom:6}}>
+            <span style={{color:C.textDim,fontSize:11}}>P/E vs eigen historie (5j)</span>
+            <span style={{color:v.pePercentile<30?C.green:v.pePercentile>70?C.red:C.text,fontWeight:700,fontSize:13}}>
+              {v.pePercentile}ᵉ percentiel
+            </span>
+          </div>
+          <div style={{position:"relative",height:8,background:"#0a0d12",borderRadius:4}}>
+            <div style={{position:"absolute",left:`${v.pePercentile}%`,top:-2,width:2,height:12,background:C.accent}}/>
+          </div>
+          <div style={{display:"flex",justifyContent:"space-between",marginTop:6,fontSize:10,color:C.textDim}}>
+            <span>Laag: <b style={{color:C.green}}>{v.peMin}x</b></span>
+            <span>Mediaan: <b>{v.peMedian}x</b></span>
+            <span>Hoog: <b style={{color:C.red}}>{v.peMax}x</b></span>
+          </div>
+          <div style={{fontSize:9,color:C.muted,marginTop:6}}>Bron: echte historische P/E (FMP)</div>
+        </div>
+      ) : (
+        <div style={{background:C.bg,borderRadius:8,padding:10,marginBottom:10,fontSize:10,color:C.muted}}>
+          P/E-percentiel vereist FMP-historie. Nu wordt PEG gebruikt als groei-gecorrigeerde
+          waarderingsmaatstaf. (Stel <code style={{color:C.accent}}>FMP_API_KEY</code> in als GitHub Secret voor echte historische P/E.)
+        </div>
+      )}
+
+      {/* Prijspositie in range */}
+      {v.priceRangePosition != null && (
+        <div style={{background:C.bg,borderRadius:8,padding:12,marginBottom:10}}>
+          <div style={{display:"flex",justifyContent:"space-between",marginBottom:6}}>
+            <span style={{color:C.textDim,fontSize:11}}>Prijspositie in 5-jaars range</span>
+            <span style={{color:C.text,fontWeight:700,fontSize:13}}>{v.priceRangePosition}%</span>
+          </div>
+          <div style={{position:"relative",height:8,background:"linear-gradient(90deg,#14532d,#334155,#450a0a)",borderRadius:4,opacity:0.6}}>
+            <div style={{position:"absolute",left:`${v.priceRangePosition}%`,top:-2,width:2,height:12,background:C.accent}}/>
+          </div>
+          <div style={{fontSize:9,color:C.muted,marginTop:6}}>
+            Let op: dit is prijspositie, geen waardering — een aandeel hoog in zijn range kan nog goedkoop zijn als de winst sneller groeide.
+          </div>
+        </div>
+      )}
+
+      {/* Huidige P/E */}
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:6}}>
+        <div style={{background:C.bg,borderRadius:6,padding:"8px 10px"}}>
+          <div style={{color:C.textDim,fontSize:10}}>Huidige P/E</div>
+          <div style={{color:C.text,fontSize:14,fontWeight:700}}>{v.currentPE!=null?`${v.currentPE}x`:"—"}</div>
+        </div>
+        <div style={{background:C.bg,borderRadius:6,padding:"8px 10px"}}>
+          <div style={{color:C.textDim,fontSize:10}}>Omzetgroei (YoY)</div>
+          <div style={{color:C.text,fontSize:14,fontWeight:700}}>{fund?.revenueGrowth!=null?`${fund.revenueGrowth>=0?"+":""}${fund.revenueGrowth}%`:"—"}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ScoreBar({ label, score, max=100, hint }) {
+  const pct = Math.max(0, Math.min(100, (score/max)*100));
+  const col = score>=70?C.green:score>=50?C.accent:score>=35?C.orange:C.red;
+  return (
+    <div style={{marginBottom:8}}>
+      <div style={{display:"flex",justifyContent:"space-between",marginBottom:3}}>
+        <span style={{color:C.textDim,fontSize:11}}>{label}{hint&&<span style={{color:C.muted,fontSize:9}}> · {hint}</span>}</span>
+        <span style={{color:col,fontSize:12,fontWeight:700}}>{score!=null?score:"—"}</span>
+      </div>
+      <div style={{height:6,background:"#0a0d12",borderRadius:3,overflow:"hidden"}}>
+        <div style={{width:`${pct}%`,height:"100%",background:col,borderRadius:3,transition:"width 0.3s"}}/>
+      </div>
+    </div>
+  );
+}
+
+function TimingBreakdown({ timing }) {
+  if (!timing) return <div style={{color:C.textDim,textAlign:"center",padding:16}}>Geen timing-data.</div>;
+  const t = timing;
+  const tfColor = v => v==null?C.muted:v>=60?C.green:v>=45?C.accent:v>=35?C.orange:C.red;
+  return (
+    <div>
+      <div style={{background:C.bg,borderRadius:8,padding:14,marginBottom:12,
+        borderLeft:`3px solid ${{green:C.green,neutral:C.textDim,orange:C.orange,red:C.red}[t.color]||C.text}`}}>
+        <div style={{color:C.textDim,fontSize:11,marginBottom:2}}>Timing-oordeel</div>
+        <div style={{color:{green:C.green,neutral:C.textDim,orange:C.orange,red:C.red}[t.color]||C.text,fontSize:16,fontWeight:800}}>
+          {t.score}/100 · {t.label}
+        </div>
+      </div>
+
+      <div style={{fontSize:11,color:C.textDim,marginBottom:6,fontWeight:700}}>SAMENSTELLING</div>
+      <ScoreBar label="Trend-score (uptrend?)" score={t.trendScore} hint="hogere TF's wegen zwaarder"/>
+      <ScoreBar label="Entry-score (goede instap nu?)" score={t.entryScore} hint="vooral daily"/>
+
+      <div style={{fontSize:11,color:C.textDim,margin:"14px 0 6px",fontWeight:700}}>TREND PER TIMEFRAME</div>
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:6}}>
+        {[["Monthly",t.trendMonthly,"45%"],["Weekly",t.trendWeekly,"35%"],["Daily",t.trendDaily,"20%"]].map(([lbl,v,w])=>(
+          <div key={lbl} style={{background:C.bg,borderRadius:6,padding:"8px 6px",textAlign:"center"}}>
+            <div style={{color:C.muted,fontSize:9}}>{lbl} <span style={{color:C.muted}}>({w})</span></div>
+            <div style={{color:tfColor(v),fontSize:16,fontWeight:800}}>{v!=null?v:"—"}</div>
+          </div>
+        ))}
+      </div>
+      {!t.hasMonthly&&(
+        <div style={{marginTop:8,fontSize:9,color:C.muted}}>Monthly nog niet beschikbaar (te weinig historie) — trend gebaseerd op weekly + daily.</div>
+      )}
+      <div style={{marginTop:10,fontSize:9,color:C.muted,lineHeight:1.5}}>
+        Filosofie: koop kwaliteit in een uptrend die net is teruggevallen. Hoge trend + hoge entry = ideale setup.
+        Hoge trend maar lage entry = uptrend maar overbought (wachten op pullback).
+      </div>
+    </div>
+  );
+}
+
+// ── JOUW AANKOPEN TEGENOVER HET MODEL ─────────────────────────────────────────
+// WAT DIT WEL EN NIET MEET -- lees dit voor je conclusies trekt.
+//
+// De eerste versie berekende "hoeveel duurder kocht je dan het signaal". Dat cijfer
+// was VERTEKEND, om drie redenen:
+//
+//   1. LATENTIE. De cron draait 's ochtends; je koopt de dag erna. Elke aankoop is
+//      dus per constructie "te laat". Dat meet de vertraging van het SYSTEEM, niet
+//      je discipline.
+//   2. WACHTEN WORDT AFGESTRAFT. Bij een vast maandbedrag kan wachten juist lucratief
+//      zijn. Een spiegel die elke dag vertraging als verlies boekt, straft precies het
+//      geduld af dat je wilt aanleren.
+//   3. HET NEGEERDE DE ECHTE FOUT. Een aankoop tegen een VERKOOP-signaal in verdween
+//      als "geen signaal gevonden" -- terwijl dat het belangrijkste datapunt is dat er
+//      bestaat.
+//
+// Deze versie meet daarom niet de prijsafstand, maar de RICHTING: kocht je MET het
+// model mee, of ertegenin? Dat is de vraag die je gedrag echt blootlegt, en hij is
+// ongevoelig voor de latentie van de cron.
+function PurchaseMirror({ portfolio, track, stocks }) {
+  const recs = Object.values(track?.records || {});
+
+  if (!portfolio?.length) {
+    return (
+      <div style={{background:C.panel,border:`1px dashed ${C.border}`,borderRadius:8,
+        padding:"14px 16px",marginBottom:16,color:C.textDim,fontSize:11,lineHeight:1.6}}>
+        <div style={{color:C.accent,fontSize:13,fontWeight:700,marginBottom:5}}>
+          🪞 Jouw aankopen tegenover het model
+        </div>
+        Zodra je posities toevoegt verschijnt hier of je MET het model kocht of ertegenin.
+      </div>
+    );
+  }
+
+  // Voor elke positie: wat zei het model rond je aankoopdatum?
+  // We kijken naar signalen tot 14 dagen VOOR de aankoop (het signaal moest er al zijn)
+  // en hooguit 2 dagen erna (het kan die ochtend gedraaid zijn).
+  const rows = portfolio.map(p => {
+    const buyDate = new Date(p.date);
+    const rondom = recs
+      .filter(r => r.ticker === p.ticker)
+      .map(r => ({...r, dagen: Math.round((buyDate - new Date(r.date)) / 86400000)}))
+      .filter(r => r.dagen >= -2 && r.dagen <= 14)
+      .sort((a,b) => Math.abs(a.dagen) - Math.abs(b.dagen));
+
+    const sig = rondom[0] || null;
+    // De huidige stand -- als het model NU verkoop zegt en je hebt het gekocht,
+    // is dat op zichzelf al informatie.
+    const nu = stocks?.[p.ticker]?.overall || null;
+
+    let oordeel = "geen", kleur = C.muted, uitleg = "";
+    if (sig) {
+      if (sig.direction === "BUY") {
+        oordeel = "MET het model"; kleur = C.green;
+        uitleg = `${sig.snapshot?.overall || "koopsignaal"} rond je aankoop`;
+      } else if (sig.type === "caution") {
+        oordeel = "TEGEN het model"; kleur = C.orange;
+        uitleg = "het model waarschuwde voor overextensie";
+      } else {
+        oordeel = "TEGEN het model"; kleur = C.red;
+        uitleg = `${sig.snapshot?.overall || "verkoopsignaal"} rond je aankoop`;
+      }
+    } else {
+      uitleg = "geen sterk signaal rond je aankoopdatum";
+    }
+    return {...p, sig, nu, oordeel, kleur, uitleg};
+  });
+
+  const mee    = rows.filter(r => r.oordeel === "MET het model").length;
+  const tegen  = rows.filter(r => r.oordeel === "TEGEN het model").length;
+  const zonder = rows.filter(r => r.oordeel === "geen").length;
+
+  return (
+    <div style={{background:C.panel,border:`1px solid ${tegen>0?C.orange+"66":C.border}`,
+      borderRadius:8,padding:"12px 14px",marginBottom:16}}>
+      <div style={{color:C.accent,fontSize:13,fontWeight:700}}>
+        🪞 Jouw aankopen tegenover het model
+      </div>
+      <div style={{color:C.muted,fontSize:10,marginTop:2,marginBottom:10}}>
+        Kocht je MET het model mee, of ertegenin?
+      </div>
+
+      <div style={{display:"flex",gap:8,marginBottom:11}}>
+        {[["MET het model",mee,C.green],["TEGEN het model",tegen,C.red],
+          ["Geen signaal",zonder,C.muted]].map(([l,v,c],i)=>(
+          <div key={i} style={{flex:1,background:C.bg,borderRadius:6,padding:"7px 9px",
+            border:`1px solid ${v>0?c+"44":C.border}`}}>
+            <div style={{color:c,fontSize:19,fontWeight:700}}>{v}</div>
+            <div style={{color:C.textDim,fontSize:9}}>{l}</div>
+          </div>
+        ))}
+      </div>
+
+      <div style={{display:"flex",flexDirection:"column",gap:5}}>
+        {rows.map(r => (
+          <div key={r.id} style={{display:"flex",alignItems:"center",gap:8,fontSize:11,
+            padding:"6px 8px",background:C.bg,borderRadius:5,
+            borderLeft:`3px solid ${r.kleur}`}}>
+            <span style={{color:C.accent,fontWeight:700,minWidth:62}}>{r.ticker}</span>
+            <span style={{color:r.kleur,fontWeight:600,minWidth:112,fontSize:10}}>
+              {r.oordeel==="geen" ? "—" : r.oordeel}
+            </span>
+            <span style={{color:C.textDim,fontSize:10,flex:1}}>{r.uitleg}</span>
+            {r.nu && (
+              <span style={{color:C.muted,fontSize:9}}>
+                nu: <span style={{color:r.nu.includes("VERKOOP")?C.red
+                  :r.nu.includes("KOOP")?C.green:C.textDim}}>{r.nu}</span>
+              </span>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {tegen > 0 && (
+        <div style={{background:"#1c1a06",border:`1px solid ${C.orange}55`,borderRadius:6,
+          padding:"9px 11px",marginTop:10,color:C.textDim,fontSize:10,lineHeight:1.6}}>
+          <b style={{color:C.orange}}>{tegen} {tegen===1?"positie":"posities"} tegen het model in.</b>{" "}
+          Dat is niet automatisch fout — jij weet dingen die het model niet weet. Maar het is
+          wel de vraag waar je een antwoord op wilt: <b style={{color:C.text}}>had je gelijk,
+          of het model?</b> Over een paar maanden zie je dat in de uitkomsten hieronder.
+        </div>
+      )}
+
+      <div style={{color:C.muted,fontSize:9,marginTop:9,borderTop:`1px solid ${C.border}`,
+        paddingTop:7,lineHeight:1.6}}>
+        <b style={{color:C.textDim}}>Bewust geen prijsvergelijking.</b> De cron draait 's ochtends
+        en je koopt de dag erna — elke aankoop zou dan "te laat" heten, terwijl dat de vertraging
+        van het systeem meet en niet je discipline. Bij een vast maandbedrag kan wachten bovendien
+        juist lucratief zijn. De richting zegt meer dan de prijsafstand.
+      </div>
+    </div>
+  );
+}
+
+// ── MODELDIAGNOSTIEK ──────────────────────────────────────────────────────────
+// Twee checks die VANDAAG al iets zeggen -- geen jaar forward returns nodig.
+//   1. Base rates: vuurt een signaal discriminerend, of beschrijft het de markt?
+//      Een signaal dat op 80% van je aandelen vuurt selecteert niets.
+//   2. Correlaties: meten je subscores verschillende dingen? Zo niet, dan telt het
+//      composiet hetzelfde signaal DUBBEL en doet alsof het bevestiging is.
+function ModelDiagnostics({ diag, version }) {
+  const [open,setOpen] = useState(false);
+  if (!diag || diag.error) return null;
+  const warns = diag.corrWarnings || [];
+
+  const cellColor = v => {
+    if (v==null) return C.muted;
+    const a = Math.abs(v);
+    if (a>=0.80) return C.red;
+    if (a>=0.60) return C.orange;
+    if (a>=0.35) return C.text;
+    return C.textDim;
+  };
+
+  return (
+    <div style={{marginBottom:16,background:C.panel,
+      border:`1px solid ${warns.length?C.orange+"66":C.border}`,borderRadius:8,padding:"12px 14px"}}>
+      <div onClick={()=>setOpen(!open)} style={{display:"flex",alignItems:"center",
+        justifyContent:"space-between",cursor:"pointer"}}>
+        <div>
+          <div style={{color:warns.length?C.orange:C.accent,fontSize:13,fontWeight:700}}>
+            🔬 Modeldiagnostiek {warns.length>0?`— ${warns.length} waarschuwing(en)`:""}
+          </div>
+          <div style={{color:C.muted,fontSize:10,marginTop:2}}>
+            Werkt het model, of houdt het zichzelf voor de gek? · {diag.n} aandelen
+            {version?` · model ${version}`:""}
+          </div>
+        </div>
+        <span style={{color:C.textDim,fontSize:12}}>{open?"▲":"▼"}</span>
+      </div>
+
+      {open&&(
+        <div style={{marginTop:12,display:"flex",flexDirection:"column",gap:14}}>
+
+          <div>
+            <div style={{color:C.text,fontSize:12,fontWeight:700,marginBottom:4}}>
+              Vuurt een signaal discriminerend?
+            </div>
+            <div style={{color:C.textDim,fontSize:10,lineHeight:1.5,marginBottom:7}}>
+              Een signaal dat op meer dan de helft van je aandelen vuurt <b style={{color:C.text}}>selecteert
+              niets</b> — het beschrijft de markt. Dat is geen inzicht, dat is een label op een marktbeweging.
+            </div>
+            <div style={{display:"flex",flexDirection:"column",gap:3}}>
+              {(diag.baseRates||[]).map((b,i)=>{
+                const col = b.color==="red"?C.red:b.color==="orange"?C.orange
+                          :b.color==="green"?C.green:C.muted;
+                return (
+                  <div key={i} style={{display:"flex",alignItems:"center",gap:8,fontSize:11}}>
+                    <span style={{color:C.text,minWidth:105,fontWeight:600}}>{b.action}</span>
+                    <div style={{flex:1,height:5,background:C.bg,borderRadius:3,overflow:"hidden",maxWidth:130}}>
+                      <div style={{height:"100%",width:`${Math.min(100,b.pct)}%`,background:col}}/>
+                    </div>
+                    <span style={{color:C.textDim,minWidth:60,fontSize:10}}>{b.n}× ({b.pct}%)</span>
+                    <span style={{color:col,fontSize:10}}>{b.verdict}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div>
+            <div style={{color:C.text,fontSize:12,fontWeight:700,marginBottom:4}}>
+              Meten de subscores verschillende dingen?
+            </div>
+            <div style={{color:C.textDim,fontSize:10,lineHeight:1.5,marginBottom:7}}>
+              Het composiet telt kwaliteit, waardering en timing op alsof het{" "}
+              <b style={{color:C.text}}>onafhankelijke stemmen</b> zijn. Correleren twee scores sterk
+              (|r| ≥ 0,80), dan meten ze hetzelfde en weeg je dat signaal <b style={{color:C.orange}}>dubbel</b>.
+            </div>
+            <div style={{overflowX:"auto"}}>
+              <table style={{borderCollapse:"collapse",fontSize:10}}>
+                <thead>
+                  <tr>
+                    <th style={{padding:"3px 6px"}}></th>
+                    {(diag.corrLabels||[]).map((l,i)=>(
+                      <th key={i} style={{color:C.textDim,padding:"3px 5px",fontWeight:600,
+                        fontSize:9,height:"auto",verticalAlign:"bottom",
+                        whiteSpace:"nowrap"}}>{l}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {(diag.corrMatrix||[]).map((row,i)=>(
+                    <tr key={i}>
+                      <td style={{color:C.text,padding:"3px 8px 3px 0",fontWeight:600,whiteSpace:"nowrap"}}>
+                        {row.label}
+                      </td>
+                      {row.cells.map((v,j)=>(
+                        <td key={j} style={{padding:"3px 6px",textAlign:"center",
+                          color:i===j?C.muted:cellColor(v),
+                          fontWeight:(v!=null&&Math.abs(v)>=0.8&&i!==j)?700:400,
+                          background:(v!=null&&Math.abs(v)>=0.8&&i!==j)?C.red+"22":"transparent"}}>
+                          {i===j?"—":(v==null?"·":v.toFixed(2))}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {warns.length>0&&(
+            <div style={{background:"#1c1a06",border:`1px solid ${C.orange}55`,borderRadius:6,padding:"9px 11px"}}>
+              <div style={{color:C.orange,fontSize:11,fontWeight:700,marginBottom:5}}>
+                ⚠ Deze subscores meten hetzelfde
+              </div>
+              {warns.map((w,i)=>(
+                <div key={i} style={{color:C.textDim,fontSize:10,lineHeight:1.6,
+                  marginBottom:i<warns.length-1?6:0}}>
+                  <b style={{color:C.text}}>{w.a} ↔ {w.b}: r = {w.r>=0?"+":""}{w.r}</b><br/>
+                  {w.note}
+                </div>
+              ))}
+            </div>
+          )}
+
+          <div style={{color:C.muted,fontSize:9,borderTop:`1px solid ${C.border}`,paddingTop:7,lineHeight:1.6}}>
+            Dit meet het MODEL, niet je rendement. Het zegt niets over of de score
+            <i> voorspelt</i> — daarvoor is een jaar forward returns nodig, en zelfs dan
+            meet je vooral het marktregime van dat jaar.
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function TrackRecord({ track }) {
+  if (!track) {
+    return (
+      <div style={{textAlign:"center",color:C.textDim,padding:30}}>
+        Nog geen trackrecord. Dit vult zich vanaf de eerste GitHub Actions run met de nieuwe versie;
+        uitkomsten verschijnen naarmate de horizons (1/4/13/26 weken) verstrijken.
+      </div>
+    );
+  }
+  const acc = track.accuracy || {};
+  const bench = track.benchmarkName || "benchmark";
+  const minObs = track.minObservations || 20;
+  const records = track.records || {};
+  const recList = Object.values(records);
+  const [tab, setTab] = useState("monthly_pick");
+  const HORIZONS = track.horizonsWeeks || [1,4,13,26];
+
+  // CAUTION is een aparte, FALSIFICEERBARE voorspelling: "rijp voor terugval".
+  // Als die aandelen juist doorstijgen, straft het model gezonde uitbraken af --
+  // precies de NET-les. Daarom een eigen tabblad, gescheiden van de sterke signalen.
+  const typeLabel = {monthly_pick:"Maandaanbeveling", strong_signal:"Sterke signalen",
+                     caution:"Overextensie \u26a0"};
+
+  const typeRecs = recList.filter(r=>r.type===tab)
+    .sort((a,b)=> (b.date||"").localeCompare(a.date||""));
+
+  return (
+    <div>
+      {/* Disclaimer */}
+      <div style={{background:"#1c1206",border:"1px solid #854d0e",borderRadius:8,padding:"10px 12px",marginBottom:14,fontSize:11,color:C.orange,lineHeight:1.5}}>
+        ⚠ Observatie-instrument, geen bewijs. Accuraatheid wordt pas getoond vanaf {minObs} afgeronde
+        observaties per horizon — daaronder zie je enkel de telling en gemiddelde return. Alles is
+        gemeten <b>relatief tot {bench}</b> (beter dan de index, niet "ging de markt omhoog"). Het model
+        past nooit zelf gewichten aan; jij trekt de conclusies.
+      </div>
+
+      {/* Type toggle */}
+      <div style={{display:"flex",gap:6,marginBottom:14}}>
+        {["monthly_pick","strong_signal","caution"].map(t=>(
+          <button key={t} onClick={()=>setTab(t)} style={{
+            background:tab===t?C.accent:"none",color:tab===t?C.bg:C.textDim,
+            border:`1px solid ${tab===t?C.accent:C.border}`,borderRadius:5,
+            padding:"5px 12px",fontSize:11,cursor:"pointer",fontWeight:tab===t?700:400}}>
+            {typeLabel[t]}
+          </button>
+        ))}
+      </div>
+
+      {/* Accuracy grid per horizon */}
+      <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(130px,1fr))",gap:8,marginBottom:16}}>
+        {HORIZONS.map(wk=>{
+          const e = (acc[tab]||{})[`${wk}w`] || {n:0,status:"geen data"};
+          const relColor = e.avgRelativeReturn==null?C.textDim:e.avgRelativeReturn>0?C.green:C.red;
+          return (
+            <div key={wk} style={{background:C.panel,border:`1px solid ${C.border}`,borderRadius:8,padding:"10px 12px"}}>
+              <div style={{color:C.textDim,fontSize:10,marginBottom:4}}>Na {wk} {wk===1?"week":"weken"}</div>
+              {e.accuracyShown?(
+                <>
+                  <div style={{color:e.accuracy>=50?C.green:C.red,fontSize:22,fontWeight:800}}>{e.accuracy}%</div>
+                  <div style={{color:C.muted,fontSize:9}}>beter dan index · n={e.n}</div>
+                </>
+              ):(
+                <>
+                  <div style={{color:C.textDim,fontSize:14,fontWeight:700}}>{e.n>0?`n=${e.n}`:"—"}</div>
+                  <div style={{color:C.muted,fontSize:9}}>{e.status}</div>
+                </>
+              )}
+              {e.avgRelativeReturn!=null&&(
+                <div style={{marginTop:6,paddingTop:6,borderTop:`1px solid ${C.border}`}}>
+                  <div style={{color:relColor,fontSize:13,fontWeight:700}}>{e.avgRelativeReturn>0?"+":""}{e.avgRelativeReturn}%</div>
+                  <div style={{color:C.muted,fontSize:9}}>gem. vs {bench}</div>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Individual records */}
+      <div style={{color:C.textDim,fontSize:11,fontWeight:700,marginBottom:8}}>
+        VASTGELEGDE AANBEVELINGEN · {typeRecs.length}
+      </div>
+      {typeRecs.length===0?(
+        <div style={{color:C.textDim,fontSize:12,padding:16,textAlign:"center"}}>Nog geen aanbevelingen van dit type vastgelegd.</div>
+      ):(
+        <div style={{display:"grid",gap:6}}>
+          {typeRecs.slice(0,30).map((r,i)=>{
+            const o4 = r.outcomes?.["4w"];
+            const o13 = r.outcomes?.["13w"];
+            return (
+              <div key={i} style={{background:C.panel,border:`1px solid ${C.border}`,borderRadius:8,padding:"8px 12px"}}>
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:6}}>
+                  <div style={{display:"flex",alignItems:"center",gap:8}}>
+                    <span style={{color:C.accent,fontWeight:700,fontSize:13}}>{r.ticker}</span>
+                    <span style={{background:r.direction==="BUY"?"#052e16":"#450a0a",
+                      color:r.direction==="BUY"?C.green:C.red,border:`1px solid ${r.direction==="BUY"?"#166534":"#991b1b"}`,
+                      borderRadius:3,padding:"1px 6px",fontSize:9,fontWeight:700}}>
+                      {r.direction==="BUY"?"KOOP":"VERKOOP"}
+                    </span>
+                    <span style={{color:C.muted,fontSize:10}}>{r.date}</span>
+                  </div>
+                  <div style={{display:"flex",gap:10,fontSize:11}}>
+                    {["1w","4w","13w","26w"].map(h=>{
+                      const o = r.outcomes?.[h];
+                      if(!o) return <span key={h} style={{color:C.muted,fontSize:10}}>{h}:—</span>;
+                      const c = o.success?C.green:C.red;
+                      return <span key={h} style={{color:c,fontSize:10}} title={`return ${o.return}%, vs index ${o.relativeReturn}%`}>
+                        {h}:{o.relativeReturn!=null?(o.relativeReturn>0?"+":"")+o.relativeReturn+"%":(o.return>0?"+":"")+o.return+"%"}
+                      </span>;
+                    })}
+                  </div>
+                </div>
+                {r.snapshot&&(
+                  <div style={{color:C.muted,fontSize:9,marginTop:4}}>
+                    Bij vastlegging: {r.snapshot.composite!=null?`composiet ${r.snapshot.composite}`:""}
+                    {r.snapshot.timing!=null?` · timing ${r.snapshot.timing}`:""}
+                    {r.entryPrice?` · entry ${r.currency||"$"}${r.entryPrice}`:""}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function BaggerTrack({ baggers, onSelect }) {
+  if (!baggers) {
+    return <div style={{textAlign:"center",color:C.textDim,padding:30}}>
+      Nog geen bagger-data. Verschijnt na de eerste run met de bagger-tickers.
+    </div>;
+  }
+  const list = baggers.candidates || [];
+  const riskColor = {"gemiddeld":C.textDim,"hoog":C.orange,"zeer hoog":C.red};
+  return (
+    <div>
+      {/* Intro / warning */}
+      <div style={{background:"#1c1206",border:"1px solid #854d0e",borderRadius:8,padding:"10px 12px",marginBottom:14,fontSize:11,color:C.orange,lineHeight:1.5}}>
+        🚀 Apart spoor voor asymmetrisch potentieel. <b>Waardering telt hier niet</b> — deze aandelen
+        zien er per definitie "duur" uit. In ruil daarvoor kleine positiegroottes, want het
+        faillissementsrisico is reëel. 100x-baggers vooraf spotten lukt zelfs topfondsen zelden;
+        dit verhoogt de kans, het is geen garantie. Geen financieel advies.
+      </div>
+
+      <div style={{display:"grid",gap:8}}>
+        {list.map((b,i)=>{
+          const col = {green:C.green,orange:C.orange,red:C.red}[b.color]||C.text;
+          return (
+            <div key={b.ticker} onClick={()=>onSelect(b.ticker)}
+              style={{background:C.panel,border:`1px solid ${i===0&&b.color==="green"?C.green:C.border}`,
+                borderRadius:10,padding:"12px 14px",cursor:"pointer"}}>
+              <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:8}}>
+                <div style={{flex:1,minWidth:0}}>
+                  <div style={{display:"flex",alignItems:"center",gap:8,flexWrap:"wrap"}}>
+                    <span style={{color:C.muted,fontSize:14,fontWeight:800}}>{i+1}</span>
+                    <span style={{color:C.accent,fontWeight:700,fontSize:15}}>{b.ticker}</span>
+                    <span style={{color:C.textDim,fontSize:11}}>{STOCK_NAMES[b.ticker]}</span>
+                    {b.passesQualityGate&&(
+                      <span style={{background:"#052e16",color:C.green,border:"1px solid #166534",borderRadius:3,padding:"1px 6px",fontSize:9,fontWeight:700}}>
+                        ✓ ook kwaliteitspoort
+                      </span>
+                    )}
+                  </div>
+                  <div style={{color:col,fontSize:12,fontWeight:700,marginTop:4}}>{b.label}</div>
+                </div>
+                <div style={{textAlign:"center",background:C.bg,borderRadius:8,padding:"6px 12px"}}>
+                  <div style={{color:col,fontSize:24,fontWeight:900,lineHeight:1}}>{b.score}</div>
+                  <div style={{color:C.muted,fontSize:9}}>bagger</div>
+                </div>
+              </div>
+
+              {/* Key metrics */}
+              <div style={{display:"flex",gap:12,marginTop:8,flexWrap:"wrap",fontSize:10}}>
+                {b.price!=null&&<span style={{color:C.text,fontWeight:700}}>{b.currency||"$"}{b.price.toFixed(2)}</span>}
+                {b.revenueGrowth!=null&&<span style={{color:C.textDim}}>Groei <b style={{color:b.revenueGrowth>=40?C.green:C.text}}>+{b.revenueGrowth}%</b></span>}
+                {b.grossMarginTrend!=null&&<span style={{color:C.textDim}}>Marge-trend <b style={{color:b.grossMarginTrend>0?C.green:C.red}}>{b.grossMarginTrend>0?"+":""}{b.grossMarginTrend}pp</b></span>}
+                {b.relStrength!=null&&<span style={{color:C.textDim}}>vs markt <b style={{color:b.relStrength>0?C.green:C.red}}>{b.relStrength>0?"+":""}{b.relStrength}%</b></span>}
+                <span style={{color:C.textDim}}>Risico <b style={{color:riskColor[b.risk]||C.text}}>{b.risk}</b></span>
+              </div>
+
+              {/* Position sizing */}
+              <div style={{marginTop:8,padding:"5px 8px",background:C.bg,borderRadius:5,fontSize:10}}>
+                <span style={{color:C.textDim}}>Positiegrootte-advies: </span>
+                <span style={{color:col,fontWeight:700}}>{b.positionSizing}</span>
+              </div>
+
+              {/* Reasons + flags */}
+              {b.reasons&&b.reasons.length>0&&(
+                <div style={{marginTop:6,display:"flex",flexWrap:"wrap",gap:"3px 8px"}}>
+                  {b.reasons.map((r,j)=><span key={j} style={{color:C.green,fontSize:10}}>✓ {r}</span>)}
+                </div>
+              )}
+              {b.flags&&b.flags.length>0&&(
+                <div style={{marginTop:4,display:"flex",flexWrap:"wrap",gap:"3px 8px"}}>
+                  {b.flags.map((f,j)=><span key={j} style={{color:C.red,fontSize:10}}>⚠ {f}</span>)}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      <div style={{marginTop:14,padding:"10px 12px",background:C.panel,borderRadius:8,fontSize:10,color:C.muted,lineHeight:1.6}}>
+        <b style={{color:C.textDim}}>Methode:</b> {baggers.methodNote} {baggers.note}
+      </div>
+    </div>
+  );
+}
+
+function MarketCard({ market }) {
+  if (!market) return null;
+  const col = {green:C.green,neutral:C.textDim,orange:C.orange,red:C.red}[market.regimeColor]||C.text;
+  return (
+    <div style={{background:C.panel,border:`1px solid ${C.border}`,borderRadius:12,padding:16,marginBottom:16}}>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:8}}>
+        <div>
+          <div style={{color:C.textDim,fontSize:10,letterSpacing:1}}>MARKTREGIME</div>
+          <div style={{color:col,fontSize:15,fontWeight:800}}>{market.regimeLabel}</div>
+        </div>
+        <div style={{textAlign:"right"}}>
+          <div style={{color:col,fontSize:22,fontWeight:900}}>{market.regimeScore??"—"}</div>
+          <div style={{color:C.muted,fontSize:9}}>timing {market.timingAdjustment>0?"+":""}{market.timingAdjustment} (max ±{market.adjMax})</div>
+        </div>
+      </div>
+      <div style={{display:"flex",gap:14,marginTop:8,fontSize:10,color:C.textDim,flexWrap:"wrap"}}>
+        <span>S&P 500 <b style={{color:C.text}}>{market.spx?.score??"—"}</b>
+          {market.spx?.vsMA200!=null&&<span style={{color:market.spx.vsMA200>=0?C.green:C.red}}> ({market.spx.vsMA200>0?"+":""}{market.spx.vsMA200}% vs MA200)</span>}
+        </span>
+        <span>NASDAQ <b style={{color:C.text}}>{market.ndx?.score??"—"}</b></span>
+      </div>
+      {market.context&&Object.keys(market.context).length>0&&(
+        <div style={{display:"flex",gap:12,marginTop:8,fontSize:10,color:C.textDim,flexWrap:"wrap"}}>
+          {Object.values(market.context).map((c,i)=>(
+            <span key={i}>{c.name} <b style={{color:c.change3m>=0?C.green:C.red}}>{c.change3m>0?"+":""}{c.change3m}%</b><span style={{color:C.muted}}> 3m</span></span>
+          ))}
+        </div>
+      )}
+      {market.sectors?.length>0&&(
+        <div style={{marginTop:10,paddingTop:8,borderTop:`1px solid ${C.border}`}}>
+          <div style={{color:C.textDim,fontSize:9,fontWeight:700,marginBottom:4}}>SECTOR-ROTATIE · relatieve sterkte vs S&P 500, 3 maanden</div>
+          <div style={{display:"flex",gap:"3px 12px",flexWrap:"wrap",fontSize:10}}>
+            {market.sectors.map(s=>(
+              <span key={s.etf} style={{color:s.rs63>=0?C.green:C.red}}>{s.name} {s.rs63>0?"+":""}{s.rs63}%</span>
+            ))}
+          </div>
+        </div>
+      )}
+      <div style={{marginTop:8,fontSize:9,color:C.muted,lineHeight:1.4}}>{market.note}</div>
+    </div>
+  );
+}
+
+function WeeklyChangelog({ weekly, onSelect }) {
+  if (!weekly) return null;
+  const changes = weekly.changes || [];
+  const dirColor = {up:C.green, down:C.red, neutral:C.textDim};
+  const dirIcon  = {up:"🟢", down:"🔴", neutral:"⚪"};
+  return (
+    <div style={{background:C.panel,border:`1px solid ${C.border}`,borderRadius:12,padding:16,marginBottom:16}}>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10,flexWrap:"wrap",gap:6}}>
+        <div style={{color:C.text,fontSize:14,fontWeight:800}}>📅 Wekelijkse update</div>
+        <div style={{color:C.textDim,fontSize:10}}>{weekly.periodLabel||"sinds ~1 week geleden"}</div>
+      </div>
+      {changes.length===0?(
+        <div style={{color:C.textDim,fontSize:12,padding:"8px 0"}}>
+          Stabiele week — geen noemenswaardige veranderingen in scores, poort of signalen.
+        </div>
+      ):(
+        <div style={{display:"grid",gap:8}}>
+          {changes.map(c=>(
+            <div key={c.ticker} onClick={()=>onSelect(c.ticker)}
+              style={{background:C.bg,borderRadius:8,padding:"8px 10px",cursor:"pointer"}}>
+              <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:4}}>
+                <span style={{color:C.accent,fontWeight:700,fontSize:13}}>{c.ticker}</span>
+                <span style={{color:C.textDim,fontSize:10}}>{STOCK_NAMES[c.ticker]}</span>
+                <span style={{color:C.muted,fontSize:9,marginLeft:"auto"}}>{c.daysAgo}d geleden</span>
+              </div>
+              <div style={{display:"flex",flexWrap:"wrap",gap:"4px 12px"}}>
+                {c.changes.map((ch,i)=>(
+                  <span key={i} style={{fontSize:11,color:dirColor[ch.dir]||C.textDim}}>
+                    {dirIcon[ch.dir]||"⚪"} {ch.text}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function MRow({ label, value, good, warn, fmt }) {
+  let col = C.text;
+  const v = parseFloat(value);
+  if (!isNaN(v) && good !== undefined && v <= good) col = C.green;
+  if (!isNaN(v) && warn !== undefined && v >= warn) col = C.red;
+  const d = value === null || value === undefined ? "—" : fmt ? fmt(value) : String(value);
+  return (
+    <div style={{display:"flex",justifyContent:"space-between",padding:"5px 0",borderBottom:`1px solid ${C.border}`}}>
+      <span style={{color:C.textDim,fontSize:12}}>{label}</span>
+      <span style={{color:col,fontSize:12,fontWeight:600}}>{d}</span>
+    </div>
+  );
+}
+
+function FibLevelRows({ entries, currentPrice, cur, accent }) {
+  return entries.map((f,i)=>{
+    const dist = Math.abs((currentPrice-f.price)/currentPrice*100);
+    const isNear = dist < 3, isCurrent = dist < 1.5;
+    const inGP = f.gp;
+    return (
+      <div key={i} style={{
+        display:"flex",justifyContent:"space-between",alignItems:"center",
+        padding:"4px 7px",borderRadius:4,marginBottom:3,
+        background:isCurrent?(accent==="green"?"#052e16":"#450a0a"):inGP?"#1c2610":isNear?"#1a1f2e":"transparent",
+        border:`1px solid ${isCurrent?(accent==="green"?C.green:C.red):inGP?C.gold||"#a3852f":C.border}`,
+      }}>
+        <div style={{display:"flex",gap:6,alignItems:"center"}}>
+          <span style={{color:accent==="green"?C.teal:C.orange,fontSize:11,fontWeight:700,minWidth:42}}>{f.label}</span>
+          {inGP&&<span style={{fontSize:8,color:C.gold||"#c9a227",fontWeight:700}}>GOLDEN</span>}
+        </div>
+        <div style={{display:"flex",gap:8,alignItems:"center"}}>
+          {isCurrent&&<span style={{fontSize:9,color:C.accent,fontWeight:700}}>← NU</span>}
+          {isNear&&!isCurrent&&<span style={{fontSize:9,color:C.orange}}>{dist.toFixed(1)}%</span>}
+          <span style={{color:isNear?C.text:C.textDim,fontSize:12,fontWeight:isNear?700:400}}>{cur}{f.price}</span>
+        </div>
+      </div>
+    );
+  });
+}
+
+function FibTable({ fib, currentPrice, cur="$" }) {
+  if (!fib) return null;
+  const { retracements, extensions, goldenPocket, swingLow, swingHigh, extSwingLow, extSwingHigh } = fib;
+  const gpLo = goldenPocket?.low, gpHi = goldenPocket?.high;
+  // Retracements: hoogste prijs boven (0.000 = top), aflopend naar 1.000 (bodem)
+  const retr = Object.entries(retracements||{})
+    .map(([k,v])=>({label:k,price:v,gp:(v>=gpLo&&v<=gpHi)}))
+    .sort((a,b)=>b.price-a.price);
+  // Extensies: hoogste TP boven, aflopend
+  const ext = Object.entries(extensions||{})
+    .map(([k,v])=>({label:k,price:v,gp:false}))
+    .sort((a,b)=>b.price-a.price);
+  return (
+    <div style={{display:"flex",flexDirection:"column",gap:12}}>
+      {/* SET 1 — Retracement / entry */}
+      <div style={{background:C.bg,borderRadius:8,padding:12}}>
+        <div style={{color:C.teal,fontSize:11,fontWeight:800,marginBottom:2}}>RETRACEMENT · instapzones</div>
+        <div style={{fontSize:9,color:C.muted,marginBottom:6}}>
+          Swing {cur}{swingLow} → {cur}{swingHigh} (bodem→top, log-schaal) · golden pocket 0.618–0.705 = premium entry
+        </div>
+        <FibLevelRows entries={retr} currentPrice={currentPrice} cur={cur} accent="green"/>
+      </div>
+      {/* SET 2 — Extensie / take-profit */}
+      <div style={{background:C.bg,borderRadius:8,padding:12}}>
+        <div style={{color:C.orange,fontSize:11,fontWeight:800,marginBottom:2}}>EXTENSIE · winstnemingszones</div>
+        <div style={{fontSize:9,color:C.muted,marginBottom:6}}>
+          Swing {cur}{extSwingHigh ?? swingHigh} → {cur}{extSwingLow ?? swingLow} (top→bodem, chronologisch) · log-schaal, extensies omhoog · 1.618 = kern-TP
+        </div>
+        <FibLevelRows entries={ext} currentPrice={currentPrice} cur={cur} accent="red"/>
+      </div>
+    </div>
+  );
+}
+
+function IndicatorGrid({ ind, cur="$" }) {
+  if (!ind) return null;
+  const items = [
+    {l:"RSI Daily",    v:ind.rsiDaily?.toFixed(1),   c:ind.rsiDaily<30?C.green:ind.rsiDaily>70?C.red:C.text},
+    {l:"RSI Weekly",   v:ind.rsiWeekly?.toFixed(1),  c:ind.rsiWeekly<30?C.green:ind.rsiWeekly>70?C.red:C.text},
+    {l:"EMA 8 (D)",    v:`${cur}${ind.ema8d?.toFixed(2)}`, c:ind.last>ind.ema8d?C.green:C.red},
+    {l:"EMA 21 (D)",   v:`${cur}${ind.ema21d?.toFixed(2)}`,c:ind.last>ind.ema21d?C.green:C.red},
+    {l:"EMA 8 (W)",    v:`${cur}${ind.ema8w?.toFixed(2)}`, c:ind.last>ind.ema8w?C.green:C.red},
+    {l:"EMA 21 (W)",   v:`${cur}${ind.ema21w?.toFixed(2)}`,c:ind.last>ind.ema21w?C.green:C.red},
+    {l:"MA 50",        v:`${cur}${ind.ma50?.toFixed(2)}`,  c:ind.last>ind.ma50?C.green:C.red},
+    {l:"MA 200",       v:`${cur}${ind.ma200?.toFixed(2)}`,  c:ind.last>ind.ma200?C.green:C.red},
+    {l:"MACD (D)",     v:ind.macdLine?.toFixed(3),    c:ind.macdLine>ind.macdSignal?C.green:C.red},
+    {l:"MACD (W)",     v:ind.macdLineW?.toFixed(3),   c:ind.macdLineW>ind.macdSigW?C.green:C.red},
+    {l:"Boll. Hoog",   v:`${cur}${ind.bollUpper?.toFixed(2)}`, c:C.text},
+    {l:"Boll. Laag",   v:`${cur}${ind.bollLower?.toFixed(2)}`, c:C.text},
+    {l:"Volume ratio", v:`${ind.volRatio?.toFixed(2)}x${ind.volNote?` (${ind.volNote.split("✓").join("").trim()})`:""}`, c:ind.highVolume?C.green:C.text},
+    {l:"Weekly eval.", v:ind.isFriday?"Vrijdag ✓":"Weekdag (W signalen vrijdag)", c:ind.isFriday?C.green:C.orange},
+  ];
+  return (
+    <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:5}}>
+      {items.map((item,i)=>(
+        <div key={i} style={{background:C.bg,borderRadius:5,padding:"7px 9px"}}>
+          <div style={{color:C.textDim,fontSize:9}}>{item.l}</div>
+          <div style={{color:item.c,fontSize:12,fontWeight:700}}>{item.v||"—"}</div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function usePortfolio() {
+  const newId = ()=> (typeof crypto!=="undefined"&&crypto.randomUUID)
+    ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2,9)}`;
+  const [p,setP] = useState(()=>{
+    try{
+      const raw = JSON.parse(localStorage.getItem("bplus_v9")||"[]");
+      // Migratie: posities die eerder zonder id zijn opgeslagen krijgen er nu een.
+      // Zonder dit zou update()/remove() op bestaande posities niets doen.
+      return Array.isArray(raw) ? raw.map(pos=>pos.id?pos:{...pos,id:newId()}) : [];
+    }catch{return[]}
+  });
+  const save = v=>{setP(v);try{localStorage.setItem("bplus_v9",JSON.stringify(v))}catch{}};
+  // Sync tussen apparaten: een #sync=... link importeert je gegevens op dít apparaat.
+  // Het #-deel van een URL wordt nooit naar een server gestuurd — dit blijft volledig lokaal.
+  // De sync neemt zowel je POSITIES als je NOTITIES mee. Nieuw formaat is een pakketje
+  // {portfolio:[...], notes:{...}}; een oude link (kale lijst) blijft ook werken.
+  useEffect(()=>{
+    const m = window.location.hash.match(/^#sync=(.+)$/);
+    if(!m) return;
+    try{
+      const data = JSON.parse(decodeURIComponent(escape(atob(m[1]))));
+      let posCount=0, noteCount=0;
+      if(Array.isArray(data)&&data.every(x=>x&&x.ticker)){
+        // Oud formaat: kale positielijst
+        save(data); posCount=data.length;
+      } else if(data&&typeof data==="object"&&Array.isArray(data.portfolio)){
+        // Nieuw formaat: pakketje met posities + notities
+        save(data.portfolio); posCount=data.portfolio.length;
+        if(data.notes&&typeof data.notes==="object"){
+          try{localStorage.setItem("bplus_notes_v1",JSON.stringify(data.notes));}catch{}
+          noteCount=Object.keys(data.notes).length;
+        }
+      } else {
+        throw new Error("onbekend formaat");
+      }
+      const notePart = noteCount>0 ? ` en ${noteCount} notitie(s)` : "";
+      alert(`✓ Gesynchroniseerd: ${posCount} positie(s)${notePart} overgenomen op dit apparaat.`+
+            (noteCount>0?" Herlaad de pagina om je notities te zien.":""));
+    }catch(e){ alert("Sync-link kon niet gelezen worden."); }
+    history.replaceState(null,"",window.location.pathname+window.location.search);
+  },[]);
+  const syncLink = ()=>{
+    // Neem posities én notities mee in het sync-pakketje
+    let notesObj={};
+    try{notesObj=JSON.parse(localStorage.getItem("bplus_notes_v1")||"{}");}catch{}
+    const payload = {portfolio:p, notes:notesObj};
+    const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+    const url = window.location.origin + window.location.pathname + "#sync=" + b64;
+    const nP=p.length, nN=Object.keys(notesObj).length;
+    const summary = `${nP} positie(s)`+(nN>0?` + ${nN} notitie(s)`:"");
+    if(navigator.share){ navigator.share({title:"BUFFETT+ sync",text:summary,url}).catch(()=>{}); }
+    else if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(url); alert(`Sync-link gekopieerd (${summary}) — open hem in Safari op je andere apparaat.`); }
+    else { prompt(`Kopieer deze sync-link (${summary}) en open hem op je andere apparaat:`, url); }
+  };
+  return {
+    portfolio:p,
+    // Elke positie krijgt een UNIEK id. Zonder dat werd de array-index als identiteit
+    // gebruikt -- en die verschuift zodra je een positie verwijdert of de lijst
+    // herschikt, waardoor een bewerking op de VERKEERDE positie kon landen (of een
+    // bewerking als nieuwe positie werd toegevoegd).
+    add:(ticker,shares,buyPrice,date,reason,risk,note)=>save([...p,{
+      id: (typeof crypto!=="undefined"&&crypto.randomUUID) ? crypto.randomUUID()
+          : `${Date.now()}-${Math.random().toString(36).slice(2,9)}`,
+      ticker,shares:+shares,buyPrice:+buyPrice,date,
+      reason:reason||"",risk:risk||"",note:note||""}]),
+    // Bewerken en verwijderen gaan op ID, NIET op array-index. Een index verschuift
+    // zodra de lijst verandert; een id blijft bij de positie horen. Dit was de oorzaak
+    // van bewerkingen die als nieuwe positie werden toegevoegd.
+    update:(id,fields)=>save(p.map(pos=>pos.id===id?{...pos,...fields}:pos)),
+    remove:id=>save(p.filter(pos=>pos.id!==id)),
+    syncLink,
+  };
+}
+
+// Watchlist-notities per aandeel (los van posities): "waar vond ik dit", losse gedachten.
+// Bewaard per ticker in een aparte localStorage-sleutel, werkt voor de hele watchlist —
+// ook aandelen die je niet bezit.
+function useNotes() {
+  const [notes,setNotes] = useState(()=>{try{return JSON.parse(localStorage.getItem("bplus_notes_v1")||"{}")}catch{return{}}});
+  const saveNote = (ticker,text)=>{
+    const next = {...notes};
+    if(text&&text.trim()) next[ticker]=text; else delete next[ticker];
+    setNotes(next);
+    try{localStorage.setItem("bplus_notes_v1",JSON.stringify(next))}catch{}
+  };
+  return { notes, saveNote };
+}
+
+// ── DETAIL MODAL ──────────────────────────────────────────────────────────────
+function Detail({ ticker, data, onClose, portfolio, add, update, notes, saveNote }) {
+  const [tab,setTab] = useState("signalen");
+
+  const fund  = data?.fund || FALLBACK_FUND[ticker] || {};
+  const ind   = data?.indicators || {};
+  const last  = ind.last || 0;
+  const score = bScore(fund);
+  const tvLink= `https://www.tradingview.com/chart/?symbol=${TV_LINKS[ticker]||ticker}`;
+
+  const pct=(v,d=1)=>v==null?"—":`${(+v).toFixed(d)}%`;
+  const cur = data?.currency||"$";
+  const usd=(v,d=2)=>v==null?"—":`${cur}${(+v).toFixed(d)}`;
+
+  return (
+    <div style={{position:"fixed",inset:0,background:"rgba(0,0,0,0.88)",zIndex:100,
+      display:"flex",alignItems:"center",justifyContent:"center",padding:12}}
+      onClick={onClose}>
+      <div style={{background:C.panel,border:`1px solid ${C.border}`,borderRadius:12,
+        maxWidth:680,width:"100%",maxHeight:"94vh",overflowY:"auto",padding:20}}
+        onClick={e=>e.stopPropagation()}>
+
+        {/* Header */}
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:14}}>
+          <div>
+            <div style={{color:C.accent,fontWeight:800,fontSize:22}}>{ticker}</div>
+            <div style={{color:C.text,fontSize:13}}>{STOCK_NAMES[ticker]||ticker}</div>
+            <div style={{display:"flex",gap:8,marginTop:6,alignItems:"center",flexWrap:"wrap"}}>
+              <span style={{color:C.text,fontSize:18,fontWeight:700}}>{last?`${cur}${last.toFixed(2)}`:"—"}</span>
+              {data?.overall&&<OverallBadge signal={data.overall}/>}
+              <a href={tvLink} target="_blank" rel="noopener noreferrer"
+                style={{color:C.accent,fontSize:11,textDecoration:"none"}}
+                onClick={e=>e.stopPropagation()}>
+                📈 TradingView ↗
+              </a>
+            </div>
+            {/* Conflict waarschuwing */}
+            {data?.conflict&&(
+              <div style={{marginTop:6,padding:"5px 8px",background:"#1c1206",border:"1px solid #854d0e",borderRadius:5,fontSize:10,color:C.orange}}>
+                ⚠ {data.conflictNote}
+              </div>
+            )}
+          </div>
+          <button onClick={onClose} style={{background:"none",border:"none",color:C.textDim,fontSize:24,cursor:"pointer"}}>✕</button>
+        </div>
+
+        {/* Tabs */}
+        <div style={{display:"flex",gap:4,marginBottom:14,flexWrap:"wrap"}}>
+          {[["signalen","🚦 Signalen"],["timing","⏱ Timing"],["waardering","💰 Waardering"],
+            ...(data?.bagger?[["bagger","🚀 Bagger"]]:[]),
+            ["indicatoren","📊 Indicatoren"],
+            ["fibonacci","📐 Fibonacci"],["fundamentals","📋 Fundamentals"],["portfolio","💼 Portfolio"]].map(([tb,lb])=>(
+            <button key={tb} onClick={()=>setTab(tb)} style={{
+              background:tab===tb?C.accent:"none",color:tab===tb?C.bg:C.textDim,
+              border:`1px solid ${tab===tb?C.accent:C.border}`,borderRadius:4,
+              padding:"4px 10px",fontSize:11,cursor:"pointer",fontWeight:tab===tb?700:400}}>
+              {lb}
+            </button>
+          ))}
+        </div>
+
+        {/* WATCHLIST-NOTITIE — altijd zichtbaar, los van posities.
+            Voor "waar vond ik dit aandeel" + losse gedachten. Werkt voor de hele
+            watchlist, ook aandelen die je niet bezit. */}
+        <NoteBlock ticker={ticker} notes={notes} saveNote={saveNote}/>
+
+        {/* BAGGER */}
+        {tab==="bagger"&&data?.bagger&&(
+          <div>
+            <div style={{background:C.bg,borderRadius:8,padding:14,marginBottom:12,
+              borderLeft:`3px solid ${{green:C.green,orange:C.orange,red:C.red}[data.bagger.color]||C.text}`}}>
+              <div style={{color:C.textDim,fontSize:11,marginBottom:2}}>Bagger-potentieel</div>
+              <div style={{color:{green:C.green,orange:C.orange,red:C.red}[data.bagger.color]||C.text,fontSize:16,fontWeight:800}}>
+                {data.bagger.score}/100 · {data.bagger.label}
+              </div>
+              <div style={{color:C.textDim,fontSize:11,marginTop:6}}>
+                Positiegrootte-advies: <b style={{color:C.text}}>{data.bagger.positionSizing}</b> · Risico: <b style={{color:data.bagger.risk==="zeer hoog"?C.red:data.bagger.risk==="hoog"?C.orange:C.text}}>{data.bagger.risk}</b>
+              </div>
+            </div>
+            {data.bagger.reasons?.length>0&&(
+              <div style={{marginBottom:8}}>
+                <div style={{color:C.green,fontSize:11,fontWeight:700,marginBottom:4}}>STERKE PUNTEN</div>
+                {data.bagger.reasons.map((r,i)=><div key={i} style={{color:C.textDim,fontSize:11,marginBottom:2}}>✓ {r}</div>)}
+              </div>
+            )}
+            {data.bagger.flags?.length>0&&(
+              <div>
+                <div style={{color:C.red,fontSize:11,fontWeight:700,marginBottom:4}}>RISICO'S</div>
+                {data.bagger.flags.map((f,i)=><div key={i} style={{color:C.orange,fontSize:11,marginBottom:2}}>⚠ {f}</div>)}
+              </div>
+            )}
+            <div style={{marginTop:10,padding:"8px 10px",background:C.bg,borderRadius:6,fontSize:10,color:C.muted,lineHeight:1.5}}>
+              Dit is het bagger-spoor: beoordeeld op asymmetrisch potentieel, niet op klassieke kwaliteit of waardering.
+              100x-baggers vooraf spotten is extreem moeilijk — klein instappen.
+            </div>
+          </div>
+        )}
+
+        {/* TIMING */}
+        {tab==="timing"&&(
+          <TimingBreakdown timing={data?.timing}/>
+        )}
+
+        {/* WAARDERING */}
+        {tab==="waardering"&&(
+          <ValuationPanel valuation={data?.valuation} fund={fund}/>
+        )}
+
+        {/* SIGNALEN */}
+        {tab==="signalen"&&(
+          <div>
+            {!data?(
+              <div style={{color:C.orange,padding:16,textAlign:"center",background:"#1c1206",borderRadius:8,border:"1px solid #854d0e"}}>
+                ⚠ Nog geen live data. Wacht op eerste GitHub Actions run, of open TradingView voor live analyse.
+              </div>
+            ):(
+              <>
+                <div style={{display:"flex",gap:8,marginBottom:14,flexWrap:"wrap"}}>
+                  {[
+                    {l:"🟢 Koop",    v:data.buyWeight||0,  c:C.green},
+                    {l:"🔴 Verkoop", v:data.sellWeight||0, c:C.red},
+                    {l:"⚠ Alerts",  v:data.alerts?.length||0, c:C.orange},
+                  ].map(x=>(
+                    <div key={x.l} style={{background:C.bg,borderRadius:6,padding:"8px 14px",textAlign:"center"}}>
+                      <div style={{color:C.textDim,fontSize:10}}>{x.l}</div>
+                      <div style={{color:x.c,fontSize:20,fontWeight:800}}>{x.v}</div>
+                    </div>
+                  ))}
+                  <div style={{background:C.bg,borderRadius:6,padding:"8px 14px",textAlign:"center",fontSize:9,color:C.textDim,maxWidth:140}}>
+                    <div style={{marginBottom:2}}>Gewichten zijn indicatief</div>
+                    <div style={{color:C.muted}}>Combineer altijd met eigen analyse en TradingView chart</div>
+                  </div>
+                </div>
+
+                {data.signals?.filter(s=>s.type==="BUY").length>0&&(
+                  <div style={{marginBottom:10}}>
+                    <div style={{color:C.green,fontSize:11,fontWeight:700,marginBottom:6}}>🟢 KOOP SIGNALEN</div>
+                    {data.signals.filter(s=>s.type==="BUY").map((s,i)=><SignalCard key={i} sig={s}/>)}
+                  </div>
+                )}
+                {data.signals?.filter(s=>s.type==="SELL").length>0&&(
+                  <div style={{marginBottom:10}}>
+                    <div style={{color:C.red,fontSize:11,fontWeight:700,marginBottom:6}}>🔴 VERKOOP SIGNALEN</div>
+                    {data.signals.filter(s=>s.type==="SELL").map((s,i)=><SignalCard key={i} sig={s}/>)}
+                  </div>
+                )}
+                {data.signals?.filter(s=>s.type==="CAUTION").length>0&&(
+                  <div style={{marginBottom:10}}>
+                    <div style={{color:C.orange,fontSize:11,fontWeight:700,marginBottom:6}}>⚠ VOORZICHTIG (OVEREXTENDED)</div>
+                    {data.signals.filter(s=>s.type==="CAUTION").map((s,i)=><SignalCard key={i} sig={s}/>)}
+                  </div>
+                )}
+                {data.signals?.filter(s=>s.type==="INFO").length>0&&(
+                  <div style={{marginBottom:10}}>
+                    <div style={{color:C.blue,fontSize:11,fontWeight:700,marginBottom:6}}>ℹ INFO</div>
+                    {data.signals.filter(s=>s.type==="INFO").map((s,i)=><SignalCard key={i} sig={s}/>)}
+                  </div>
+                )}
+                {data.alerts?.length>0&&(
+                  <div>
+                    <div style={{color:C.orange,fontSize:11,fontWeight:700,marginBottom:6}}>⚠ NABIJHEID ALERTS</div>
+                    {data.alerts.map((s,i)=><SignalCard key={i} sig={s}/>)}
+                  </div>
+                )}
+              </>
+            )}
+          </div>
+        )}
+
+        {tab==="indicatoren"&&<IndicatorGrid ind={ind} cur={cur}/>}
+
+        {tab==="fibonacci"&&(
+          ind.fib
+            ?<FibTable fib={ind.fib} currentPrice={last} cur={cur}/>
+            :<div style={{color:C.textDim,textAlign:"center",padding:20}}>Nog geen live data beschikbaar.</div>
+        )}
+
+        {tab==="fundamentals"&&(
+          <div>
+            {score==null?(
+              /* ETF: geen bedrijf, dus geen fundamentals. Eerlijk zeggen wat er niet is,
+                 in plaats van een lege ring en een nietszeggende "Zwak" tonen. */
+              <div style={{background:C.bg,padding:14,borderRadius:8,marginBottom:14,
+                border:`1px solid ${C.accent}44`}}>
+                <div style={{color:C.accent,fontSize:13,fontWeight:700,marginBottom:6}}>
+                  📊 Dit is een ETF — geen bedrijf
+                </div>
+                <div style={{color:C.textDim,fontSize:12,lineHeight:1.6}}>
+                  Een ETF is een mandje aandelen. Het heeft dus geen ROE, winstmarge of
+                  schuldratio — die cijfers bestaan simpelweg niet. De Buffett-poort en de
+                  composietscore zijn hier betekenisloos en worden overgeslagen.
+                  <div style={{marginTop:8,color:C.text}}>
+                    Wat <b>wel</b> werkt: de <b>timing</b> (RSI, EMA's, MACD en de
+                    fibonacci/TP-zones). Die zijn puur koersgebaseerd en zeggen over een ETF
+                    net zoveel als over een aandeel. Kijk dus naar de tabs Timing en Signalen.
+                  </div>
+                </div>
+              </div>
+            ):(
+            <div style={{display:"flex",alignItems:"center",gap:14,marginBottom:14,background:C.bg,padding:12,borderRadius:8}}>
+              <Ring score={score} size={58}/>
+              <div>
+                <div style={{color:C.textDim,fontSize:11,marginBottom:2}}>Buffett Score</div>
+                <div style={{color:score>=70?C.green:score>=50?C.accent:C.red,fontSize:13,fontWeight:700}}>
+                  {score>=70?"Uitstekend":score>=50?"Goed":"Zwak"}
+                </div>
+                {fund.lastUpdated&&(
+                  <div style={{color:C.muted,fontSize:9,marginTop:4}}>
+                    Fundamentals bijgewerkt: {fund.lastUpdated} · Controleer bij elk kwartaalrapport
+                  </div>
+                )}
+              </div>
+            </div>
+            )}
+            {score!=null&&(<>
+            <MRow label="P/E Ratio (TTM)"   value={fund.pe}           good={18} warn={40}  fmt={v=>`${(+v).toFixed(1)}x`}/>
+            <MRow label="ROE"               value={fund.roe}                               fmt={v=>`${(+v).toFixed(1)}%`}/>
+            <MRow label="FCF Yield"         value={fund.fcfYield}                          fmt={v=>`${(+v).toFixed(2)}%`}/>
+            <MRow label="Debt / Equity"     value={fund.debtEquity}   good={0.5} warn={2.5} fmt={v=>`${(+v).toFixed(2)}`}/>
+            <MRow label="Netto winstmarge"  value={fund.netMargin}                         fmt={v=>`${(+v).toFixed(1)}%`}/>
+            <MRow label="Dividend Yield"    value={fund.divYield}                          fmt={v=>`${(+v).toFixed(2)}%`}/>
+            <MRow label="Revenue groei YoY" value={fund.revenueGrowth}                     fmt={v=>`${v>=0?"+":""}${(+v).toFixed(1)}%`}/>
+            <MRow label="EPS (TTM)"         value={fund.eps}                               fmt={v=>`${cur}${(+v).toFixed(2)}`}/>
+            <MRow label="Market Cap"        value={fund.mktCap}                            fmt={v=>String(v)}/>
+            <MRow label="Beta"              value={fund.beta}                              fmt={v=>`${(+v).toFixed(2)}`}/>
+            </>)}
+          </div>
+        )}
+
+        {tab==="portfolio"&&(
+          <div>
+            <AddPositionForm ticker={ticker} last={last}
+              currency={data?.currency||"$"} add={add}/>
+            {portfolio.filter(pos=>pos.ticker===ticker).map(pos=>(
+              <PositionCard key={pos.id} p={pos} last={last}
+                currency={data?.currency||"$"} update={update}/>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// Notitie per aandeel — INGEKLAPT tenzij er al iets staat. De meeste aandelen op de
+// watchlist zijn niet getipt, dus dat veld hoeft niet permanent in beeld te staan.
+function NoteBlock({ ticker, notes, saveNote }) {
+  const existing = notes[ticker] || "";
+  const [open,setOpen] = useState(!!existing);
+
+  if (!open) {
+    return (
+      <button onClick={()=>setOpen(true)}
+        style={{background:"transparent",color:C.textDim,border:`1px dashed ${C.border}`,
+          borderRadius:8,padding:"7px 12px",marginBottom:14,fontSize:11,cursor:"pointer",
+          width:"100%",textAlign:"left"}}>
+        📝 + Notitie toevoegen <span style={{color:C.muted}}>(waar vond je dit, losse gedachten)</span>
+      </button>
+    );
+  }
+  return (
+    <div style={{background:C.bg,borderRadius:8,padding:"10px 12px",marginBottom:14,
+      border:`1px solid ${existing?C.accent+"66":C.border}`}}>
+      <div style={{display:"flex",alignItems:"center",gap:6,marginBottom:6}}>
+        <span style={{fontSize:12}}>📝</span>
+        <span style={{color:C.accent,fontSize:11,fontWeight:700}}>Mijn notitie</span>
+        <span style={{color:C.muted,fontSize:10}}>· waar vond je dit, losse gedachten</span>
+        <button onClick={()=>setOpen(false)}
+          style={{marginLeft:"auto",background:"transparent",color:C.textDim,border:"none",
+            fontSize:11,cursor:"pointer",padding:"2px 6px"}}>▲</button>
+      </div>
+      <textarea value={existing} onChange={e=>saveNote(ticker,e.target.value)}
+        placeholder="Bijv. getipt via robotica-research, podcast X, vriend noemde dit..."
+        rows={2} style={{width:"100%",background:C.panel,border:`1px solid ${C.border}`,color:C.text,
+          borderRadius:5,padding:"6px 8px",fontSize:12,boxSizing:"border-box",resize:"vertical",fontFamily:"inherit"}}/>
+    </div>
+  );
+}
+
+// Formulier om een positie toe te voegen. STAAT APART als component, met eigen state.
+// Eerder zat deze state in Detail; die component hertekent bij elke wijziging, waardoor
+// de ingevulde velden konden leeglopen (tekst selecteren wiste het formulier, en een
+// leeg prijsveld blokkeerde de knop stilletjes).
+//
+// Het dagboek is INGEKLAPT by default: de meeste posities hebben geen thesis-notitie
+// nodig, dus die drie velden hoeven niet permanent in beeld te staan.
+function AddPositionForm({ ticker, last, currency, add }) {
+  const [sh,setSh]   = useState("");
+  const [pr,setPr]   = useState("");
+  const [dt,setDt]   = useState(()=>new Date().toISOString().slice(0,10));
+  const [rsn,setRsn] = useState("");
+  const [rsk,setRsk] = useState("");
+  const [nt,setNt]   = useState("");
+  const [openJournal,setOpenJournal] = useState(false);
+
+  // Vul de prijs met de huidige koers zodra die bekend is -- maar alleen als de
+  // gebruiker nog niets zelf heeft ingetypt. (De koers is er soms nog niet bij de
+  // eerste render; een useState-initialisatie zou dan voor altijd leeg blijven.)
+  const touched = useRef(false);
+  useEffect(()=>{
+    if(!touched.current && last && !pr) setPr(last.toFixed(2));
+  },[last]);   // eslint-disable-line react-hooks/exhaustive-deps
+
+  const canSave = sh.trim()!=="" && pr.trim()!=="" && +sh>0 && +pr>0;
+  const submit = ()=>{
+    if(!canSave) return;
+    add(ticker, sh, pr, dt, rsn, rsk, nt);
+    setSh(""); setRsn(""); setRsk(""); setNt("");
+    setOpenJournal(false);
+    touched.current = false;
+    if(last) setPr(last.toFixed(2));
+  };
+  const inp = {width:"100%",background:C.bg,border:`1px solid ${C.border}`,color:C.text,
+    borderRadius:5,padding:"6px 8px",fontSize:12,boxSizing:"border-box"};
+  const ta = extra => ({...inp,resize:"vertical",fontFamily:"inherit",background:C.bg,...extra});
+
+  return (
+    <div style={{marginBottom:16}}>
+      <div style={{color:C.accent,fontSize:13,fontWeight:700,marginBottom:10}}>Positie toevoegen</div>
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:8}}>
+        <div>
+          <div style={{color:C.textDim,fontSize:11,marginBottom:3}}>Aantal aandelen</div>
+          <input value={sh} inputMode="decimal" placeholder="bijv. 10"
+            onChange={e=>setSh(e.target.value)} style={inp}/>
+        </div>
+        <div>
+          <div style={{color:C.textDim,fontSize:11,marginBottom:3}}>Aankoopprijs ({currency})</div>
+          <input value={pr} inputMode="decimal"
+            onChange={e=>{touched.current=true; setPr(e.target.value);}} style={inp}/>
+        </div>
+      </div>
+      <div style={{marginBottom:8}}>
+        <div style={{color:C.textDim,fontSize:11,marginBottom:3}}>Datum</div>
+        <input type="date" value={dt} onChange={e=>setDt(e.target.value)}
+          style={{...inp,width:"auto"}}/>
+      </div>
+
+      {/* Dagboek: ingeklapt tenzij je het nodig hebt */}
+      <div style={{borderTop:`1px solid ${C.border}`,margin:"10px 0 8px",paddingTop:8}}>
+        {!openJournal ? (
+          <button onClick={()=>setOpenJournal(true)}
+            style={{background:"transparent",color:C.textDim,border:`1px dashed ${C.border}`,
+              borderRadius:5,padding:"6px 12px",fontSize:11,cursor:"pointer",width:"100%",
+              textAlign:"left"}}>
+            📓 + Beleggingsdagboek toevoegen <span style={{color:C.muted}}>(optioneel — waarom, gevaar, opmerking)</span>
+          </button>
+        ) : (
+          <div>
+            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:6}}>
+              <span style={{color:C.accent,fontSize:11,fontWeight:700}}>📓 Beleggingsdagboek</span>
+              <button onClick={()=>setOpenJournal(false)}
+                style={{background:"transparent",color:C.textDim,border:"none",fontSize:11,
+                  cursor:"pointer",padding:"2px 6px"}}>▲ inklappen</button>
+            </div>
+            <div style={{marginBottom:6}}>
+              <div style={{color:C.green,fontSize:11,marginBottom:3}}>Waarom kocht ik?</div>
+              <textarea value={rsn} onChange={e=>setRsn(e.target.value)} rows={2}
+                placeholder="Thesis: moat, koopsignaal, waardering..." style={ta()}/>
+            </div>
+            <div style={{marginBottom:6}}>
+              <div style={{color:C.orange,fontSize:11,marginBottom:3}}>Gevaar — wat kan de thesis breken?</div>
+              <textarea value={rsk} onChange={e=>setRsk(e.target.value)} rows={2}
+                placeholder="Het risico dat je erkent op dit moment..." style={ta({border:`1px solid ${C.orange}55`})}/>
+            </div>
+            <div style={{marginBottom:8}}>
+              <div style={{color:C.textDim,fontSize:11,marginBottom:3}}>Bijkomende opmerking</div>
+              <textarea value={nt} onChange={e=>setNt(e.target.value)} rows={2}
+                placeholder="Optioneel..." style={ta()}/>
+            </div>
+          </div>
+        )}
+      </div>
+
+      <button onClick={submit} disabled={!canSave}
+        style={{background:canSave?C.accent:C.panel2,color:canSave?C.bg:C.muted,border:"none",
+          borderRadius:5,padding:"8px 16px",fontWeight:700,fontSize:12,
+          cursor:canSave?"pointer":"not-allowed"}}>
+        + Toevoegen
+      </button>
+      {!canSave&&(sh||pr)&&(
+        <span style={{color:C.muted,fontSize:10,marginLeft:8}}>
+          Vul aantal én prijs in (groter dan 0)
+        </span>
+      )}
+    </div>
+  );
+}
+
+// Eén positie met bewerkbaar dagboek. De bewerkknop klapt de drie velden open —
+// zo kun je ook posities die je eerder toevoegde alsnog van een dagboek voorzien,
+// of je thesis bijstellen als je inzicht verandert.
+function PositionCard({ p, last, currency, update }) {
+  const [editing,setEditing] = useState(false);
+  const [rsn,setRsn] = useState(p.reason||"");
+  const [rsk,setRsk] = useState(p.risk||"");
+  const [nt,setNt]   = useState(p.note||"");
+  const pnl = (last-p.buyPrice)*p.shares;
+  const hasJournal = p.reason||p.risk||p.note;
+
+  const saveEdit = ()=>{ update(p.id,{reason:rsn,risk:rsk,note:nt}); setEditing(false); };
+  const cancelEdit = ()=>{ setRsn(p.reason||""); setRsk(p.risk||""); setNt(p.note||""); setEditing(false); };
+
+  return (
+    <div style={{background:C.bg,borderRadius:6,padding:10,marginBottom:6}}>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+        <span style={{color:C.text,fontSize:12}}>{p.shares} × {currency}{p.buyPrice}</span>
+        <span style={{color:pnl>=0?C.green:C.red,fontWeight:700,fontSize:12}}>
+          {pnl>=0?"+":""}{currency}{pnl.toFixed(0)} ({((pnl/(p.buyPrice*p.shares))*100).toFixed(1)}%)
+        </span>
+      </div>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:2}}>
+        <span style={{color:C.textDim,fontSize:10}}>{p.date}</span>
+        {!editing&&(
+          <button onClick={()=>setEditing(true)}
+            style={{background:"transparent",color:hasJournal?C.accent:C.textDim,
+              border:`1px solid ${hasJournal?C.accent+"66":C.border}`,borderRadius:4,
+              padding:"2px 8px",fontSize:10,cursor:"pointer",fontWeight:600}}>
+            {hasJournal?"✎ Dagboek bewerken":"+ Dagboek toevoegen"}
+          </button>
+        )}
+      </div>
+
+      {editing?(
+        <div style={{marginTop:10,paddingTop:10,borderTop:`1px solid ${C.border}`}}>
+          <div style={{color:C.accent,fontSize:11,fontWeight:700,marginBottom:6}}>📓 Beleggingsdagboek</div>
+          <div style={{marginBottom:6}}>
+            <div style={{color:C.green,fontSize:11,marginBottom:3}}>Waarom kocht ik?</div>
+            <textarea value={rsn} onChange={e=>setRsn(e.target.value)}
+              placeholder="Thesis: moat, koopsignaal, waardering..." rows={2}
+              style={{width:"100%",background:C.panel,border:`1px solid ${C.border}`,color:C.text,
+                borderRadius:5,padding:"6px 8px",fontSize:12,boxSizing:"border-box",resize:"vertical",fontFamily:"inherit"}}/>
+          </div>
+          <div style={{marginBottom:6}}>
+            <div style={{color:C.orange,fontSize:11,marginBottom:3}}>Gevaar — wat kan de thesis breken?</div>
+            <textarea value={rsk} onChange={e=>setRsk(e.target.value)}
+              placeholder="Het risico dat je erkent op dit moment..." rows={2}
+              style={{width:"100%",background:C.panel,border:`1px solid ${C.orange}55`,color:C.text,
+                borderRadius:5,padding:"6px 8px",fontSize:12,boxSizing:"border-box",resize:"vertical",fontFamily:"inherit"}}/>
+          </div>
+          <div style={{marginBottom:8}}>
+            <div style={{color:C.textDim,fontSize:11,marginBottom:3}}>Bijkomende opmerking</div>
+            <textarea value={nt} onChange={e=>setNt(e.target.value)}
+              placeholder="Optioneel..." rows={2}
+              style={{width:"100%",background:C.panel,border:`1px solid ${C.border}`,color:C.text,
+                borderRadius:5,padding:"6px 8px",fontSize:12,boxSizing:"border-box",resize:"vertical",fontFamily:"inherit"}}/>
+          </div>
+          <div style={{display:"flex",gap:6}}>
+            <button onClick={saveEdit}
+              style={{background:C.accent,color:C.bg,border:"none",borderRadius:5,
+                padding:"6px 14px",fontWeight:700,fontSize:12,cursor:"pointer"}}>Opslaan</button>
+            <button onClick={cancelEdit}
+              style={{background:"transparent",color:C.textDim,border:`1px solid ${C.border}`,
+                borderRadius:5,padding:"6px 14px",fontSize:12,cursor:"pointer"}}>Annuleer</button>
+          </div>
+        </div>
+      ):(
+        hasJournal&&(
+          <div style={{marginTop:8,paddingTop:8,borderTop:`1px solid ${C.border}`,display:"flex",flexDirection:"column",gap:6}}>
+            {p.reason&&<div>
+              <div style={{color:C.green,fontSize:10,fontWeight:700,marginBottom:2}}>Waarom gekocht</div>
+              <div style={{color:C.text,fontSize:11,lineHeight:1.4,whiteSpace:"pre-wrap"}}>{p.reason}</div>
+            </div>}
+            {p.risk&&<div>
+              <div style={{color:C.orange,fontSize:10,fontWeight:700,marginBottom:2}}>⚠ Gevaar</div>
+              <div style={{color:C.text,fontSize:11,lineHeight:1.4,whiteSpace:"pre-wrap"}}>{p.risk}</div>
+            </div>}
+            {p.note&&<div>
+              <div style={{color:C.textDim,fontSize:10,fontWeight:700,marginBottom:2}}>Opmerking</div>
+              <div style={{color:C.text,fontSize:11,lineHeight:1.4,whiteSpace:"pre-wrap"}}>{p.note}</div>
+            </div>}
+          </div>
+        )
+      )}
+    </div>
+  );
+}
+
+// ── MAIN APP ──────────────────────────────────────────────────────────────────
+const TICKER_ORDER = ["WM","PLTR","CAT","ASML","ASMI","MU","GOOGL","AMZN","ORCL","KO",
+  "MSFT","AAPL","NVDA","V","MNST","AON","MELI","SHOP","NET","CRWV","SNAP","NKE","MSTR",
+  "NFLX","DIS","BLK","BABA","MTLS","GAW","ADM","III","KPG","DIE","SOF","AIR","ALFEN","LOTB",
+  "ANET","HOOD","TSCO","ODFL","HWM","SNDK","NABTESCO","HARMONIC","KEYENCE","FANUC","YASKAWA","SOFTBANK","ROK","TER","ISRG","CGNX","NOVT",
+  "LHX","MOGA","TDG","KTOS","RKLB","OPEN","SDGR","BNGO","PL",
+  "IONQ","RGTI","QBTS","UBTECH","SYM","SERV","RR",
+  "RDDT","NOW","GILD","DDOG","ARCC","ONON","ARCG"];
+
+function App() {
+  const [jsonData,  setJsonData]  = useState(null);
+  const [trackData, setTrackData] = useState(null);
+  const [loadState, setLoadState] = useState("loading"); // loading | ok | error | unconfigured
+  const [selected,  setSelected]  = useState(null);
+  const [view,      setView]      = useState("allocatie");
+  const [search,    setSearch]    = useState("");   // zoekbalk screener
+  const [sortBy,    setSortBy]    = useState("action");
+  const [sortDir,   setSortDir]   = useState("desc");
+  const [filterType,setFilter]    = useState("ALL");
+  const { portfolio, add, update, remove, syncLink } = usePortfolio();
+  const { notes, saveNote } = useNotes();
+
+  // Cache-busting: voeg timestamp toe aan URL
+  useEffect(()=>{
+    if (SIGNALS_URL.includes("YOUR-USERNAME")) {
+      setLoadState("unconfigured");
+      return;
+    }
+    const t = Date.now();
+    fetch(`${SIGNALS_URL}?t=${t}`)
+      .then(r=>{ if(!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
+      .then(d=>{ setJsonData(d); setLoadState("ok"); })
+      .catch(e=>{ console.error(e); setLoadState("error"); });
+    // Trackrecord apart ophalen (zelfde map)
+    const trackUrl = SIGNALS_URL.replace("signals.json","track_record.json");
+    fetch(`${trackUrl}?t=${t}`)
+      .then(r=>r.ok?r.json():null)
+      .then(d=>{ if(d) setTrackData(d); })
+      .catch(()=>{});
+  },[]);
+
+  const stocks = jsonData?.stocks || {};
+  const meta   = jsonData?.meta || {};
+  const allocation = jsonData?.allocation || null;
+  const weekly = jsonData?.weekly || null;
+  const baggers = jsonData?.baggers || null;
+  const market = jsonData?.market || null;
+  const errors = jsonData?.errors || [];
+
+  // Combineer live data met fallback fundamentals
+  const getStockData = (ticker) => {
+    const live = stocks[ticker];
+    if (!live) return null;
+    return {
+      ...live,
+      fund: live.fund || FALLBACK_FUND[ticker] || {},
+    };
+  };
+
+  // Alle signalen over alle aandelen
+  const allBuySignals  = TICKER_ORDER.flatMap(t=>(stocks[t]?.signals||[]).filter(s=>s.type==="BUY").map(s=>({...s,ticker:t})));
+  const allSellSignals = TICKER_ORDER.flatMap(t=>(stocks[t]?.signals||[]).filter(s=>s.type==="SELL").map(s=>({...s,ticker:t})));
+  const allAlerts      = TICKER_ORDER.flatMap(t=>(stocks[t]?.alerts||[]).map(a=>({...a,ticker:t})));
+
+  const filteredSignals =
+    filterType==="BUY"   ? allBuySignals :
+    filterType==="SELL"  ? allSellSignals :
+    filterType==="WATCH" ? allAlerts :
+    [...allBuySignals,...allSellSignals,...allAlerts];
+
+  // Group by ticker
+  const grouped = {};
+  filteredSignals.forEach(s=>{
+    if(!grouped[s.ticker]) grouped[s.ticker]={ticker:s.ticker,items:[]};
+    grouped[s.ticker].items.push(s);
+  });
+
+  const sorted = [...TICKER_ORDER]
+    .filter(t=>stocks[t])
+    .filter(t=>{
+      // Zoekfilter: match op ticker of bedrijfsnaam (hoofdletterongevoelig)
+      if(!search.trim()) return true;
+      const q = search.trim().toLowerCase();
+      const nm = (STOCK_NAMES[t]||"").toLowerCase();
+      return t.toLowerCase().includes(q) || nm.includes(q);
+    })
+    .sort((a,b)=>{
+      const valScore = t => {
+        const c = stocks[t]?.valuation?.verdictColor;
+        return c==="green"?3:c==="neutral"?2:c==="orange"?1:c==="red"?0:-1;
+      };
+      // Actie-rang: groepeert op categorie (Koop → Verkoop → Caution → Neutraal),
+      // binnen elke groep sterkste eerst. Zo staan actievragers bovenaan.
+      const actionRank = t => {
+        const o = stocks[t]?.overall || "NEUTRAAL";
+        const map = {
+          "STERK KOOP": 100, "KOOP": 90, "LICHT KOOP": 80,
+          "STERK VERKOOP": 70, "VERKOOP": 60, "LICHT VERKOOP": 50,
+          "CAUTION (overextended)": 40,
+          "NEUTRAAL": 10,
+        };
+        return map[o] ?? 10;
+      };
+      const v = t =>
+        sortBy==="action"     ? actionRank(t) :
+        sortBy==="composite"  ? (stocks[t]?.scores?.composite ?? -1) :
+        sortBy==="timing"     ? (stocks[t]?.scores?.timing ?? -1) :
+        sortBy==="opportunity"? (stocks[t]?.scores?.opportunity ?? -1) :
+        sortBy==="entry"      ? (stocks[t]?.timing?.entryScore ?? -1) :
+        sortBy==="trend"      ? (stocks[t]?.timing?.trendScore ?? -1) :
+        sortBy==="buyWeight"  ? (stocks[t]?.buyWeight||0) :
+        sortBy==="sellWeight" ? (stocks[t]?.sellWeight||0) :
+        sortBy==="valuation"  ? valScore(t) :
+        sortBy==="acceleration" ? (stocks[t]?.scores?.acceleration ?? -1) :
+        sortBy==="rsi"        ? (stocks[t]?.indicators?.rsiDaily||50) :
+        sortBy==="alerts"     ? (stocks[t]?.alerts?.length||0) :
+                                (bScore(stocks[t]?.fund||FALLBACK_FUND[t]||{}) ?? -1);
+      // Tiebreak binnen actie-groep: hoogste composiet eerst
+      const primary = sortDir==="desc"?v(b)-v(a):v(a)-v(b);
+      if (sortBy==="action" && primary===0) {
+        return (stocks[b]?.scores?.composite ?? 0) - (stocks[a]?.scores?.composite ?? 0);
+      }
+      return primary;
+    });
+
+  // Elke positie heeft een uniek id, dus remove()/update() raken altijd de JUISTE
+  // positie -- ook al filtert portItems posities zonder koersdata weg.
+  const portItems = portfolio.map(p=>{
+    const last = stocks[p.ticker]?.indicators?.last;
+    if (!last) return null;
+    return{...p,last,cv:last*p.shares,cb:p.buyPrice*p.shares,pnl:(last-p.buyPrice)*p.shares};
+  }).filter(Boolean);
+  const tv2=portItems.reduce((a,p)=>a+p.cv,0);
+  const tc2=portItems.reduce((a,p)=>a+p.cb,0);
+
+  const SBtn=({k,l})=>(
+    <button onClick={()=>{if(sortBy===k)setSortDir(d=>d==="desc"?"asc":"desc");else{setSortBy(k);setSortDir("desc")}}}
+      style={{background:sortBy===k?C.accent:"none",color:sortBy===k?C.bg:C.textDim,
+        border:`1px solid ${sortBy===k?C.accent:C.border}`,borderRadius:4,
+        padding:"3px 9px",fontSize:10,cursor:"pointer",fontWeight:sortBy===k?700:400}}>
+      {l}{sortBy===k?(sortDir==="desc"?" ↓":" ↑"):""}
+    </button>
+  );
+
+  return (
+    <div style={{background:C.bg,minHeight:"100vh",fontFamily:"'Inter',system-ui,sans-serif",color:C.text}}>
+
+      {/* NAV */}
+      <div style={{borderBottom:`1px solid ${C.border}`,padding:"12px 18px",
+        display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:8}}>
+        <div>
+          <span style={{color:C.accent,fontWeight:900,fontSize:18,letterSpacing:2}}>BUFFETT+</span>
+          <span style={{color:C.textDim,fontSize:11,marginLeft:10}}>Kwaliteit × Timing</span>
+        </div>
+        <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
+          {[["allocatie","🎯 Allocatie"],["koopkans","💎 Koopkans"],["baggers","🚀 Baggers"],["signalen","🚦 Signalen"],["screener","📊 Screener"],["sectoren","🗂 Sectoren"],["trackrecord","📈 Trackrecord"],["portfolio","💼 Portfolio"]].map(([v,l])=>(
+            <button key={v} onClick={()=>setView(v)} style={{
+              background:view===v?C.accent:"none",color:view===v?C.bg:C.textDim,
+              border:`1px solid ${view===v?C.accent:C.border}`,borderRadius:5,
+              padding:"5px 12px",fontSize:11,cursor:"pointer",fontWeight:view===v?700:400}}>{l}</button>
+          ))}
+        </div>
+      </div>
+
+      {/* STATUS BALK */}
+      <div style={{padding:"8px 18px",borderBottom:`1px solid ${C.border}`,
+        display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:6}}>
+        <div style={{fontSize:11}}>
+          {loadState==="loading"&&<span style={{color:C.orange}}>⟳ Data ophalen van GitHub Pages…</span>}
+          {loadState==="ok"&&(
+            <span style={{color:C.green}}>
+              ✓ Laatste update: {meta.generatedAtHuman||"onbekend"}
+              {meta.isFriday&&" · 📅 Vrijdag: weekly signalen geëvalueerd"}
+            </span>
+          )}
+          {loadState==="error"&&(
+            <span style={{color:C.red}}>
+              ✗ Kan data niet laden — controleer of GitHub Actions al gedraaid heeft
+            </span>
+          )}
+          {loadState==="unconfigured"&&(
+            <span style={{color:C.orange}}>
+              ⚙ Configuratie nodig: vervang YOUR-USERNAME in de app met je GitHub gebruikersnaam
+            </span>
+          )}
+        </div>
+        {errors.length>0&&(
+          <details style={{display:"inline-block"}}>
+            <summary style={{color:C.red,fontSize:10,cursor:"pointer",listStyle:"none"}}>
+              ⚠ {errors.length} fout(en) bij laatste run <span style={{color:C.muted}}>· klik voor details</span>
+            </summary>
+            <div style={{position:"absolute",right:16,marginTop:6,background:C.panel,
+              border:`1px solid ${C.red}66`,borderRadius:8,padding:"10px 12px",
+              maxWidth:420,zIndex:50,boxShadow:"0 8px 24px rgba(0,0,0,0.5)"}}>
+              <div style={{color:C.red,fontSize:11,fontWeight:700,marginBottom:6}}>
+                Deze aandelen konden niet worden opgehaald:
+              </div>
+              {errors.map((e,i)=>(
+                <div key={i} style={{color:C.textDim,fontSize:10,lineHeight:1.6,
+                  paddingLeft:8,borderLeft:`2px solid ${C.red}44`,marginBottom:3}}>
+                  {e}
+                </div>
+              ))}
+              <div style={{color:C.muted,fontSize:9,marginTop:8,borderTop:`1px solid ${C.border}`,paddingTop:6}}>
+                Meestal een tijdelijke datafout bij yfinance. Draai de workflow opnieuw;
+                blijft het terugkomen, dan klopt de ticker niet.
+              </div>
+            </div>
+          </details>
+        )}
+      </div>
+
+      {/* SETUP INSTRUCTIE (als nog niet geconfigureerd) */}
+      {loadState==="unconfigured"&&(
+        <div style={{margin:16,padding:16,background:"#1c1206",border:"1px solid #854d0e",borderRadius:8}}>
+          <div style={{color:C.accent,fontWeight:700,marginBottom:8}}>⚙ Eenmalige setup nodig</div>
+          <div style={{color:C.textDim,fontSize:12,lineHeight:1.8}}>
+            <b style={{color:C.text}}>Stap 1:</b> Maak een gratis GitHub account op github.com<br/>
+            <b style={{color:C.text}}>Stap 2:</b> Maak een nieuwe repository aan: <code style={{color:C.accent}}>buffett-dashboard</code><br/>
+            <b style={{color:C.text}}>Stap 3:</b> Upload de bestanden: <code style={{color:C.accent}}>analyze.py</code>, <code style={{color:C.accent}}>requirements.txt</code>, <code style={{color:C.accent}}>signals.json</code>, en de <code style={{color:C.accent}}>.github/workflows/daily.yml</code><br/>
+            <b style={{color:C.text}}>Stap 4:</b> Activeer GitHub Pages in de repository settings (branch: main)<br/>
+            <b style={{color:C.text}}>Stap 5:</b> Vervang <code style={{color:C.accent}}>YOUR-USERNAME</code> in de eerste regel van deze app met je GitHub gebruikersnaam<br/>
+            <b style={{color:C.text}}>Stap 6:</b> Run de workflow handmatig via GitHub → Actions → "Dagelijkse Signaalanalyse" → "Run workflow"
+          </div>
+        </div>
+      )}
+
+      {/* ALLOCATIE VIEW */}
+      {view==="allocatie"&&(
+        <div style={{padding:"14px 16px"}}>
+          {loadState==="unconfigured"?(
+            <div style={{textAlign:"center",color:C.textDim,padding:30}}>
+              Configureer eerst de data-URL (zie instructies boven).
+            </div>
+          ):!allocation?(
+            <div style={{textAlign:"center",color:C.textDim,padding:30}}>
+              Nog geen allocatie-aanbeveling. Deze verschijnt na de eerste GitHub Actions run met de nieuwe versie.
+            </div>
+          ):(
+            <>
+              <MarketCard market={market}/>
+              {/* Primary pick hero */}
+              {allocation.primaryPick&&(
+                <div style={{background:`linear-gradient(135deg,${C.panel2},${C.panel})`,
+                  border:`1px solid ${C.accent}`,borderRadius:12,padding:18,marginBottom:16}}>
+                  <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:10}}>
+                    <div>
+                      <div style={{color:C.textDim,fontSize:11,letterSpacing:1}}>AANBEVOLEN DEZE MAAND · {allocation.generatedForMonth}</div>
+                      <div style={{display:"flex",alignItems:"center",gap:10,marginTop:4}}>
+                        <span style={{color:C.accent,fontSize:30,fontWeight:900}}>{allocation.primaryPick.ticker}</span>
+                        <span style={{color:C.text,fontSize:14}}>{STOCK_NAMES[allocation.primaryPick.ticker]}</span>
+                      </div>
+                      <div style={{color:C.text,fontSize:13,marginTop:2}}>
+                        {allocation.primaryPick.currency||"$"}{allocation.primaryPick.price?.toFixed(2)}
+                      </div>
+                    </div>
+                    <div style={{textAlign:"center",background:C.bg,borderRadius:10,padding:"10px 16px"}}>
+                      <div style={{color:C.textDim,fontSize:10}}>Composiet</div>
+                      <div style={{color:C.accent,fontSize:32,fontWeight:900,lineHeight:1}}>{allocation.primaryPick.composite}</div>
+                      <div style={{color:C.muted,fontSize:9}}>/ 100</div>
+                    </div>
+                  </div>
+                  {/* Score breakdown */}
+                  <div style={{marginTop:14}}>
+                    <ScoreBar label="Kwaliteit (Buffett-poort)" score={allocation.primaryPick.quality} hint="30%"/>
+                    <ScoreBar label="Waardering (niet te duur)" score={allocation.primaryPick.valuation} hint="30%"/>
+                    <ScoreBar label="Timing (multi-timeframe chart)" score={Math.max(0,Math.min(100,(allocation.primaryPick.timing||0)+(allocation.primaryPick.marketAdj||0)))} hint={allocation.primaryPick.marketAdj?`40% · incl. markt ${allocation.primaryPick.marketAdj>0?"+":""}${allocation.primaryPick.marketAdj}`:"40%"}/>
+                  </div>
+                  {allocation.reasoning&&(
+                    <div style={{marginTop:10,padding:"8px 10px",background:C.bg,borderRadius:6,fontSize:11,color:C.textDim,lineHeight:1.5}}>
+                      {allocation.reasoning}
+                    </div>
+                  )}
+                  <button onClick={()=>setSelected(allocation.primaryPick.ticker)}
+                    style={{marginTop:10,background:C.accent,color:C.bg,border:"none",borderRadius:6,
+                      padding:"8px 16px",fontWeight:700,fontSize:12,cursor:"pointer"}}>
+                    Bekijk volledige analyse →
+                  </button>
+                </div>
+              )}
+
+              {/* Weekly changelog */}
+              <WeeklyChangelog weekly={weekly} onSelect={setSelected}/>
+
+              {/* Ranked candidates */}
+              <div style={{color:C.textDim,fontSize:11,fontWeight:700,marginBottom:8}}>
+                KWALITEITSKANDIDATEN · gerangschikt op composiet
+              </div>
+              <div style={{display:"grid",gap:6,marginBottom:16}}>
+                {allocation.candidates?.map((c,i)=>(
+                  <div key={c.ticker} onClick={()=>setSelected(c.ticker)}
+                    style={{background:C.panel,border:`1px solid ${i===0?C.accent:C.border}`,borderRadius:8,
+                      padding:"10px 12px",cursor:"pointer",display:"flex",alignItems:"center",gap:12}}>
+                    <div style={{color:C.muted,fontSize:16,fontWeight:800,minWidth:24}}>{i+1}</div>
+                    <div style={{flex:1,minWidth:0}}>
+                      <div style={{display:"flex",alignItems:"center",gap:8,flexWrap:"wrap"}}>
+                        <span style={{color:C.accent,fontWeight:700,fontSize:14}}>{c.ticker}</span>
+                        <span style={{color:C.textDim,fontSize:10}}>{STOCK_NAMES[c.ticker]}</span>
+                      </div>
+                      <div style={{display:"flex",gap:10,marginTop:4,fontSize:10,color:C.textDim,flexWrap:"wrap"}}>
+                        <span>K <b style={{color:C.text}}>{c.quality}</b></span>
+                        <span>W <b style={{color:C.text}}>{c.valuation}</b></span>
+                        <span>T <b style={{color:C.text}}>{c.timing}</b></span>
+                        <span style={{color:C.muted}}>{c.timingLabel}</span>
+                      </div>
+                    </div>
+                    <div style={{textAlign:"right"}}>
+                      <div style={{color:i===0?C.accent:C.text,fontSize:20,fontWeight:800}}>{c.composite}</div>
+                      <div style={{color:C.textDim,fontSize:10}}>{c.price!=null?`${c.currency||"$"}${c.price.toFixed(2)}`:""}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Gate-failed */}
+              {allocation.gateFailed?.length>0&&(
+                <div>
+                  <div style={{color:C.textDim,fontSize:11,fontWeight:700,marginBottom:8}}>
+                    BUITEN KWALITEITSPOORT · niet aanbevolen als kernbelegging
+                  </div>
+                  <div style={{display:"grid",gap:6}}>
+                    {allocation.gateFailed.map(c=>(
+                      <div key={c.ticker} onClick={()=>setSelected(c.ticker)}
+                        style={{background:C.panel,border:`1px solid ${C.border}`,borderRadius:8,
+                          padding:"8px 12px",cursor:"pointer",display:"flex",justifyContent:"space-between",
+                          alignItems:"center",opacity:0.7}}>
+                        <div style={{display:"flex",alignItems:"center",gap:8}}>
+                          <span style={{color:C.textDim,fontWeight:700}}>{c.ticker}</span>
+                          <span style={{color:C.red,fontSize:10}}>✗ {(c.fails||[]).join(", ")}</span>
+                        </div>
+                        <span style={{color:C.muted,fontSize:11}}>{c.price!=null?`${c.currency||"$"}${c.price.toFixed(2)} · `:""}K {c.quality}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Method note */}
+              <div style={{marginTop:16,padding:"10px 12px",background:C.panel,borderRadius:8,fontSize:10,color:C.muted,lineHeight:1.6}}>
+                <b style={{color:C.textDim}}>Methode:</b> alleen aandelen die de kwaliteitspoort passeren (voldoende ROE, marge, houdbare schuld)
+                worden gerangschikt. De composietscore weegt kwaliteit (30%), waardering (30%) en multi-timeframe
+                timing (40%). Timing combineert trend (monthly/weekly/daily) met instapkwaliteit (RSI, MACD, Bollinger,
+                Fibonacci, volume). {allocation.note} Geen financieel advies.
+              </div>
+            </>
+          )}
+        </div>
+      )}
+
+      {/* SIGNALEN VIEW */}
+      {view==="signalen"&&(
+        <div style={{padding:"14px 16px"}}>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:8,marginBottom:14}}>
+            {[
+              {l:"🟢 Koop signalen",   v:allBuySignals.length,  c:C.green,  f:"BUY"},
+              {l:"🔴 Verkoop signalen", v:allSellSignals.length, c:C.red,    f:"SELL"},
+              {l:"⚠ Nabijheid alerts", v:allAlerts.length,      c:C.orange, f:"WATCH"},
+            ].map(x=>(
+              <div key={x.l} onClick={()=>setFilter(f=>f===x.f?"ALL":x.f)}
+                style={{background:filterType===x.f?C.panel2:C.panel,
+                  border:`1px solid ${filterType===x.f?C.accent:C.border}`,
+                  borderRadius:8,padding:"10px 12px",cursor:"pointer",transition:"border-color 0.15s"}}>
+                <div style={{color:C.textDim,fontSize:10,marginBottom:2}}>{x.l}</div>
+                <div style={{color:x.c,fontSize:22,fontWeight:800}}>{x.v}</div>
+              </div>
+            ))}
+          </div>
+
+          {loadState==="ok"&&Object.keys(grouped).length===0&&(
+            <div style={{textAlign:"center",color:C.textDim,padding:30}}>
+              Geen actieve signalen voor dit filter.
+            </div>
+          )}
+
+          {loadState!=="unconfigured"&&Object.values(grouped).map(g=>(
+            <div key={g.ticker} style={{background:C.panel,border:`1px solid ${C.border}`,borderRadius:8,padding:12,marginBottom:10}}>
+              <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:8,cursor:"pointer"}}
+                onClick={()=>setSelected(g.ticker)}>
+                <div style={{display:"flex",alignItems:"center",gap:8,flexWrap:"wrap"}}>
+                  <span style={{color:C.accent,fontWeight:700,fontSize:15}}>{g.ticker}</span>
+                  <span style={{color:C.textDim,fontSize:11}}>{STOCK_NAMES[g.ticker]}</span>
+                  {stocks[g.ticker]?.indicators?.last!=null&&(
+                    <span style={{color:C.text,fontSize:12,fontWeight:700}}>{stocks[g.ticker]?.currency||"$"}{stocks[g.ticker].indicators.last.toFixed(2)}</span>
+                  )}
+                  {stocks[g.ticker]?.overall&&<OverallBadge signal={stocks[g.ticker].overall}/>}
+                  {stocks[g.ticker]?.conflict&&<span style={{color:C.orange,fontSize:10}}>⚠ Conflict</span>}
+                </div>
+                <span style={{color:C.textDim,fontSize:11}}>→ details</span>
+              </div>
+              {g.items.map((s,i)=><SignalCard key={i} sig={s}/>)}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* SCREENER VIEW */}
+      {view==="koopkans"&&(
+        <div style={{padding:"14px 16px"}}>
+          <div style={{marginBottom:14}}>
+            <div style={{color:"#4ade80",fontSize:15,fontWeight:700,marginBottom:4}}>
+              💎 Koopkansen — kwaliteit die gevallen is
+            </div>
+            <div style={{color:C.textDim,fontSize:11,lineHeight:1.6,maxWidth:640}}>
+              Goede bedrijven die <b style={{color:C.text}}>écht zijn gedaald</b> en nu redelijk
+              geprijsd staan. Niet te verwarren met het composiet: dat beloont kwaliteit in een
+              stijgende trend, en straft juist de gevallen namen af.
+              <div style={{marginTop:6,paddingLeft:10,borderLeft:`2px solid ${C.border}`,color:C.muted}}>
+                afstand tot de top + instapmoment 42% · kwaliteit 32% · waardering 26%<br/>
+                Aftrek bij een TP-winstnemingszone (uitstapgebied) en bij een vrije val (trend &lt;15).
+              </div>
+            </div>
+          </div>
+
+          {loadState==="ok"&&(()=>{
+            const kansen = TICKER_ORDER
+              .filter(t=>stocks[t]?.scores?.opportunity!=null)
+              .sort((a,b)=>(stocks[b].scores.opportunity)-(stocks[a].scores.opportunity));
+            if(!kansen.length) return <div style={{color:C.textDim,fontSize:12}}>Geen koopkansen gevonden.</div>;
+            return (
+              <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))",gap:10}}>
+                {kansen.map(ticker=>{
+                  const d=stocks[ticker], s=d.scores, tm=d.timing||{};
+                  const col = s.opportunityColor==="green"?C.green
+                            : s.opportunityColor==="orange"?C.orange : C.textDim;
+                  const off = d.pctOffHigh;
+                  return (
+                    <div key={ticker} onClick={()=>setSelected(ticker)}
+                      style={{background:C.panel,borderRadius:8,padding:"13px",cursor:"pointer",
+                        border:`1px solid ${C.border}`,borderLeft:`3px solid ${col}`,
+                        transition:"transform 0.1s,border-color 0.12s"}}
+                      onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-2px)";e.currentTarget.style.borderColor=C.accent;}}
+                      onMouseLeave={e=>{e.currentTarget.style.transform="";e.currentTarget.style.borderColor=C.border;}}>
+
+                      <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:8}}>
+                        <div>
+                          <div style={{color:C.accent,fontWeight:700,fontSize:15}}>{ticker}</div>
+                          <div style={{color:C.textDim,fontSize:10}}>{STOCK_NAMES[ticker]}</div>
+                        </div>
+                        <div style={{textAlign:"right"}}>
+                          <div style={{color:col,fontWeight:900,fontSize:22,lineHeight:1}}>{s.opportunity}</div>
+                          <div style={{color:col,fontSize:9,fontWeight:700}}>{s.opportunityLabel}</div>
+                        </div>
+                      </div>
+
+                      {off!=null&&(
+                        <div style={{marginBottom:8}}>
+                          <div style={{display:"flex",justifyContent:"space-between",fontSize:10,marginBottom:3}}>
+                            <span style={{color:C.textDim}}>Onder de top</span>
+                            <span style={{color:off>=30?C.green:off>=15?C.accent:C.textDim,fontWeight:700}}>
+                              −{off.toFixed(0)}%
+                            </span>
+                          </div>
+                          <div style={{height:4,background:C.bg,borderRadius:2,overflow:"hidden"}}>
+                            <div style={{height:"100%",width:`${Math.min(100,(off/45)*100)}%`,
+                              background:off>=30?C.green:off>=15?C.accent:C.border}}/>
+                          </div>
+                        </div>
+                      )}
+
+                      <div style={{display:"flex",gap:6,flexWrap:"wrap",fontSize:10,marginBottom:6}}>
+                        <span style={{background:C.panel2,color:C.text,border:`1px solid ${C.border}`,
+                          borderRadius:4,padding:"2px 6px",fontWeight:700}}>
+                          kwal {s.quality}
+                        </span>
+                        {d.valuation?.verdictColor&&<ValuationBadge color={d.valuation.verdictColor} compact/>}
+                        <span style={{background:C.panel2,color:C.textDim,border:`1px solid ${C.border}`,
+                          borderRadius:4,padding:"2px 6px",fontWeight:700}}>
+                          📈{tm.trendScore} · 🎪{tm.entryScore}
+                        </span>
+                        {d.indicators?.last!=null&&(
+                          <span style={{color:C.text,fontWeight:700,padding:"2px 0"}}>
+                            {d.currency||"$"}{d.indicators.last.toFixed(2)}
+                          </span>
+                        )}
+                      </div>
+
+                      {s.opportunityWarning&&(
+                        <div style={{background:"#1c1a06",border:`1px solid ${C.orange}55`,borderRadius:5,
+                          padding:"6px 8px",color:C.orange,fontSize:10,lineHeight:1.5}}>
+                          ⚠ {s.opportunityWarning}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })()}
+        </div>
+      )}
+
+      {view==="screener"&&(
+        <div style={{padding:"14px 16px"}}>
+          {/* LEGENDE — waaruit bestaat elke score? */}
+          <details style={{marginBottom:12,background:C.panel,border:`1px solid ${C.border}`,
+            borderRadius:8,padding:"10px 12px"}}>
+            <summary style={{color:C.accent,fontSize:12,fontWeight:700,cursor:"pointer",userSelect:"none"}}>
+              ℹ Wat betekenen de scores? (klik om te openen)
+            </summary>
+            <div style={{marginTop:10,display:"flex",flexDirection:"column",gap:12}}>
+
+              <div>
+                <div style={{color:"#4ade80",fontSize:12,fontWeight:700,marginBottom:3}}>💎 Koopkans</div>
+                <div style={{color:C.textDim,fontSize:11,lineHeight:1.6}}>
+                  <b style={{color:C.text}}>Kwaliteit die ÉCHT gevallen is en redelijk geprijsd staat.</b>
+                  <div style={{marginTop:4,paddingLeft:10,borderLeft:`2px solid ${C.border}`}}>
+                    afstand tot de top + instapmoment 42% · kwaliteit 32% · waardering 26%<br/>
+                    <span style={{color:C.orange}}>Aftrek</span> bij een TP-winstnemingszone
+                    (= uitstapgebied, geen instapgebied) en bij een vrije val (trend &lt;15).
+                  </div>
+                  <div style={{marginTop:4,color:C.muted}}>
+                    De <b>afstand tot de top</b> is de kern: een duur aandeel dat even ademhaalt
+                    heeft ook een hoge instapscore, maar staat nauwelijks onder zijn top — dat is
+                    een pauze in een rally, geen koopkans. Alleen berekend voor aandelen die de
+                    kwaliteitspoort halen.
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div style={{color:C.accent,fontSize:12,fontWeight:700,marginBottom:3}}>★ Composiet</div>
+                <div style={{color:C.textDim,fontSize:11,lineHeight:1.6}}>
+                  <b style={{color:C.text}}>De maandpick-score: de beste totale setup.</b> Beloont kwaliteit in
+                  een stijgende trend die net is teruggevallen.
+                  <div style={{marginTop:4,paddingLeft:10,borderLeft:`2px solid ${C.border}`}}>
+                    timing 40% · kwaliteit 30% · waardering 30% <span style={{color:C.muted}}>(+ kleine versnellingsbonus)</span>
+                  </div>
+                  <div style={{marginTop:4,color:C.orange}}>
+                    Let op: omdat de timing de trend zwaar laat wegen, scoort een gevallen
+                    kwaliteitsaandeel hier laag — ook als het instapmoment uitstekend is. Kijk
+                    dan naar de koopkans.
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div style={{color:C.text,fontSize:12,fontWeight:700,marginBottom:3}}>📈 Trend · 🎪 Instap</div>
+                <div style={{color:C.textDim,fontSize:11,lineHeight:1.6}}>
+                  De twee helften van de timing, apart zichtbaar:
+                  <div style={{marginTop:4,paddingLeft:10,borderLeft:`2px solid ${C.border}`}}>
+                    <b style={{color:C.text}}>📈 Trend</b> — zit dit in een uptrend? (EMA's, MACD, RSI; zwaarder op weekly/monthly)<br/>
+                    <b style={{color:C.text}}>🎪 Instap</b> — is dit NU een goed moment? (oversold, pullback naar steun, fib-zone)<br/>
+                    <b style={{color:C.text}}>⏱ Timing</b> — de mix: 60% trend + 40% instap
+                  </div>
+                  <div style={{marginTop:4,color:C.muted}}>
+                    Een aandeel met lage trend + hoge instap is een gevallen engel. Hoge trend +
+                    lage instap is al gestegen.
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div style={{color:C.text,fontSize:12,fontWeight:700,marginBottom:3}}>🚀 Versnelling · 💰 Waardering</div>
+                <div style={{color:C.textDim,fontSize:11,lineHeight:1.6}}>
+                  <b style={{color:C.text}}>🚀 Versnelling</b> — verandert het groeitempo? Toont van→naar en de
+                  x-verhouding (bv. 4%→12% = 3x). Vangt bedrijven die op een steilere curve komen.<br/>
+                  <b style={{color:C.text}}>💰 Waardering</b> — PEG-gebaseerd: betaal je een redelijke prijs voor de groei?
+                </div>
+              </div>
+
+              <div style={{color:C.muted,fontSize:10,borderTop:`1px solid ${C.border}`,paddingTop:8}}>
+                De <b>kwaliteitspoort</b> (ROE ≥12%, marge ≥8%, D/E ≤4) bepaalt of een aandeel
+                überhaupt meedoet voor de maandpick. Baggers en ETF's hebben een eigen spoor.
+              </div>
+            </div>
+          </details>
+
+          <div style={{marginBottom:12,position:"relative"}}>
+            <input value={search} onChange={e=>setSearch(e.target.value)}
+              placeholder="🔍 Zoek aandeel op ticker of naam (bijv. ANET, tractor, keyence)..."
+              style={{width:"100%",background:C.panel,border:`1px solid ${C.border}`,color:C.text,
+                borderRadius:8,padding:"9px 12px",fontSize:13,boxSizing:"border-box",fontFamily:"inherit"}}/>
+            {search&&(
+              <button onClick={()=>setSearch("")}
+                style={{position:"absolute",right:8,top:"50%",transform:"translateY(-50%)",
+                  background:C.panel2,color:C.textDim,border:`1px solid ${C.border}`,borderRadius:4,
+                  padding:"2px 8px",fontSize:12,cursor:"pointer"}}>✕</button>
+            )}
+          </div>
+          <div style={{display:"flex",gap:4,flexWrap:"wrap",marginBottom:14,alignItems:"center"}}>
+            <span style={{color:C.textDim,fontSize:10}}>Sorteer:</span>
+            {[["opportunity","Koopkans 💎"],["action","Actie 🎯"],["composite","Composiet ★"],["entry","Instap nu 🎪"],["trend","Trend 📈"],["timing","Timing ⏱"],["valuation","Waardering 💰"],["acceleration","Versnelt 🚀"],["buyWeight","Koop 🟢"],["alerts","Alerts ⚠"],["score","Buffett"]].map(([k,l])=><SBtn key={k} k={k} l={l}/>)}
+          </div>
+
+          {/* Als geen live data: toon alle tickers met fallback fundamentals */}
+          {(loadState==="unconfigured"||loadState==="error")&&(
+            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(280px,1fr))",gap:10}}>
+              {TICKER_ORDER.map(ticker=>{
+                const fund  = FALLBACK_FUND[ticker]||{};
+                const score = bScore(fund);
+                return(
+                  <div key={ticker} onClick={()=>setSelected(ticker)}
+                    style={{background:C.panel,borderRadius:8,padding:"13px",cursor:"pointer",
+                      border:`1px solid ${C.border}`,transition:"transform 0.1s"}}
+                    onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-2px)";e.currentTarget.style.borderColor=C.accent;}}
+                    onMouseLeave={e=>{e.currentTarget.style.transform="";e.currentTarget.style.borderColor=C.border;}}>
+                    <div style={{display:"flex",justifyContent:"space-between",marginBottom:8}}>
+                      <div>
+                        <div style={{color:C.accent,fontWeight:700}}>{ticker}</div>
+                        <div style={{color:C.textDim,fontSize:10}}>{STOCK_NAMES[ticker]}</div>
+                      </div>
+                      <Ring score={score} size={40}/>
+                    </div>
+                    <div style={{color:C.orange,fontSize:10}}>⚠ Geen live data — klik voor fundamentals</div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          {loadState==="ok"&&(
+            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(280px,1fr))",gap:10}}>
+              {sorted.map(ticker=>{
+                const data  = getStockData(ticker);
+                const fund  = data?.fund||FALLBACK_FUND[ticker]||{};
+                const ind   = data?.indicators||{};
+                const score = bScore(fund);
+                return(
+                  <div key={ticker} onClick={()=>setSelected(ticker)}
+                    style={{background:C.panel,borderRadius:8,padding:"13px",cursor:"pointer",
+                      border:`1px solid ${C.border}`,
+                      borderLeft:`3px solid ${(data?.buyWeight||0)>(data?.sellWeight||0)?C.green:(data?.sellWeight||0)>(data?.buyWeight||0)?C.red:C.border}`,
+                      transition:"transform 0.1s,border-color 0.12s"}}
+                    onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-2px)";e.currentTarget.style.borderColor=C.accent;}}
+                    onMouseLeave={e=>{e.currentTarget.style.transform="";e.currentTarget.style.borderColor=(data?.buyWeight||0)>(data?.sellWeight||0)?C.green:(data?.sellWeight||0)>(data?.buyWeight||0)?C.red:C.border;}}>
+
+                    <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:8}}>
+                      <div>
+                        <div style={{display:"flex",alignItems:"center",gap:5}}>
+                          <span style={{color:C.accent,fontWeight:700,fontSize:15}}>{ticker}</span>
+                          {data?.isETF&&<span title="ETF - een mandje aandelen, geen bedrijf. Geen kwaliteitsscore mogelijk; alleen de timing telt."
+                            style={{background:C.panel2,color:C.accent,border:`1px solid ${C.accent}66`,
+                            borderRadius:3,padding:"1px 5px",fontSize:9,fontWeight:700}}>ETF</span>}
+                          {notes[ticker]&&<span title={notes[ticker]} style={{fontSize:11,opacity:0.8}}>📝</span>}
+                        </div>
+                        <div style={{color:C.textDim,fontSize:10}}>{STOCK_NAMES[ticker]}</div>
+                      </div>
+                      <div style={{textAlign:"right"}}>
+                        <div style={{color:C.text,fontWeight:700,fontSize:15}}>{ind.last?`${data?.currency||"$"}${ind.last.toFixed(2)}`:"—"}</div>
+                        {data?.overall&&<OverallBadge signal={data.overall}/>}
+                      </div>
+                    </div>
+
+                    <div style={{display:"flex",gap:6,marginBottom:8,flexWrap:"wrap",alignItems:"center"}}>
+                      <span style={{background:"#052e16",color:C.green,border:"1px solid #166534",borderRadius:4,padding:"2px 7px",fontSize:10,fontWeight:700}}>
+                        🟢 {data?.signals?.filter(s=>s.type==="BUY").length||0}
+                      </span>
+                      <span style={{background:"#450a0a",color:C.red,border:"1px solid #991b1b",borderRadius:4,padding:"2px 7px",fontSize:10,fontWeight:700}}>
+                        🔴 {data?.signals?.filter(s=>s.type==="SELL").length||0}
+                      </span>
+                      <span style={{background:"#1c1a06",color:C.orange,border:"1px solid #854d0e",borderRadius:4,padding:"2px 7px",fontSize:10,fontWeight:700}}>
+                        ⚠ {data?.alerts?.length||0}
+                      </span>
+                      {data?.scores?.opportunity!=null&&(()=>{
+                        const o=data.scores;
+                        const c=o.opportunityColor==="green"?{bg:"#052e16",fg:"#4ade80",bd:"#166534"}
+                               :o.opportunityColor==="orange"?{bg:"#1c1a06",fg:C.orange,bd:"#854d0e"}
+                               :{bg:C.panel2,fg:C.textDim,bd:C.border};
+                        return (
+                          <span title={`Koopkans ${o.opportunity}/100 — ${o.opportunityLabel}${o.opportunityWarning?"\n\n⚠ "+o.opportunityWarning:""}`}
+                            style={{background:c.bg,color:c.fg,border:`1px solid ${c.bd}`,borderRadius:4,
+                            padding:"2px 7px",fontSize:10,fontWeight:700}}>
+                            💎 {o.opportunity}{o.opportunityWarning?" ⚠":""}
+                          </span>
+                        );
+                      })()}
+                      {data?.valuation?.verdictColor&&<ValuationBadge color={data.valuation.verdictColor} compact/>}
+                      {/* Trend en instap APART. De samengestelde timing (0.6*trend + 0.4*entry)
+                          verbergt het verschil: een aandeel kan een beroerde trend hebben maar
+                          toch op een uitstekend instapniveau liggen (bv. NFLX: trend 18, instap 82). */}
+                      {data?.timing?.trendScore!=null&&(()=>{
+                        const tr=data.timing.trendScore, en=data.timing.entryScore;
+                        const trCol = tr>=60?C.green:tr>=40?C.orange:C.red;
+                        const enCol = en>=70?C.green:en>=50?C.accent:en>=35?C.orange:C.textDim;
+                        return (
+                          <span title={`Trend ${tr}/100 (is dit een uptrend?) · Instap ${en}/100 (is NU een goed moment?)`}
+                            style={{background:C.panel2,border:`1px solid ${C.border}`,borderRadius:4,
+                            padding:"2px 7px",fontSize:10,fontWeight:700,display:"inline-flex",gap:5}}>
+                            <span style={{color:trCol}}>📈{tr}</span>
+                            <span style={{color:C.muted}}>·</span>
+                            <span style={{color:enCol}}>🎪{en}</span>
+                          </span>
+                        );
+                      })()}
+                      {data?.scores?.composite!=null&&(
+                        <span style={{background:C.panel2,color:C.accent,border:`1px solid ${C.accent}`,
+                          borderRadius:4,padding:"2px 7px",fontSize:10,fontWeight:700}}>
+                          ★ {data.scores.composite}
+                        </span>
+                      )}
+                      {data?.scores?.accelLabel&&data.scores.accelLabel!=="onbekend"&&data.scores.accelLabel!=="Stabiel"&&(()=>{
+                        const s=data.scores, ac=s.accelColor;
+                        const cmap={green:{bg:"#052e16",fg:"#4ade80",bd:"#166534",ic:"🚀"},
+                                    orange:{bg:"#1c1a06",fg:C.orange,bd:"#854d0e",ic:"🐢"},
+                                    red:{bg:"#450a0a",fg:C.red,bd:"#991b1b",ic:"🐢"},
+                                    gray:{bg:C.panel2,fg:C.textDim,bd:C.border,ic:""}}[ac]||{bg:C.panel2,fg:C.textDim,bd:C.border,ic:""};
+                        // Van→naar cijfers + de "x"-verhouding (alleen als betrouwbaar)
+                        let detail="";
+                        if(s.accelGrowthPrev!=null&&s.accelGrowthNow!=null){
+                          detail=` (${s.accelGrowthPrev}%→${s.accelGrowthNow}%${s.accelRatio!=null?`, ${s.accelRatio}x`:""})`;
+                        }
+                        return (
+                          <span title={`Omzetgroei ${s.accelValue>=0?"+":""}${s.accelValue}pp t.o.v. vorig jaar`}
+                            style={{background:cmap.bg,color:cmap.fg,border:`1px solid ${cmap.bd}`,
+                            borderRadius:4,padding:"2px 7px",fontSize:10,fontWeight:700}}>
+                            {cmap.ic} {s.accelLabel}{detail}
+                          </span>
+                        );
+                      })()}
+                      {data?.conflict&&<span style={{color:C.orange,fontSize:10,alignSelf:"center"}}>⚡ conflict</span>}
+                    </div>
+
+                    <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+                      <div style={{display:"flex",gap:10}}>
+                        {[
+                          {l:"RSI-D",v:ind.rsiDaily?.toFixed(0)||"—",c:ind.rsiDaily<30?C.green:ind.rsiDaily>70?C.red:C.text},
+                          {l:"RSI-W",v:ind.rsiWeekly?.toFixed(0)||"—",c:ind.rsiWeekly<30?C.green:ind.rsiWeekly>70?C.red:C.text},
+                          {l:"P/E",  v:fund.pe?`${(+fund.pe).toFixed(0)}x`:"—",c:fund.pe<20?C.green:fund.pe>45?C.red:C.text},
+                        ].map(m=>(
+                          <div key={m.l}>
+                            <div style={{color:C.textDim,fontSize:9}}>{m.l}</div>
+                            <div style={{color:m.c,fontSize:11,fontWeight:600}}>{m.v}</div>
+                          </div>
+                        ))}
+                      </div>
+                      <Ring score={score} size={40}/>
+                    </div>
+
+                    {portfolio.find(p=>p.ticker===ticker)&&(
+                      <div style={{marginTop:8,padding:"3px 6px",background:"#1e3a2f",border:"1px solid #166534",borderRadius:4,fontSize:10,color:"#4ade80"}}>
+                        💼 In portfolio
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* SECTOREN VIEW */}
+      {view==="sectoren"&&(
+        <div style={{padding:"14px 16px"}}>
+          <div style={{color:C.textDim,fontSize:12,marginBottom:14,lineHeight:1.5}}>
+            Je aandelen per sector, elk gerangschikt op composietscore — de sterkste bovenaan.
+            Zo weeg je binnen elke sector af wie er wint. Het getal naast elke sector toont hoeveel aandelen je erin volgt.
+          </div>
+          {(()=>{
+            // Groepeer alle aandelen met data per sector
+            const bySector = {};
+            [...TICKER_ORDER].filter(t=>stocks[t]).forEach(t=>{
+              const sec = stocks[t]?.sector || "Industrie & diversen";
+              (bySector[sec] ||= []).push(t);
+            });
+            // Sorteer sectoren op grootte (grootste eerst), aandelen binnen sector op composiet
+            const secOrder = Object.keys(bySector).sort((a,b)=>bySector[b].length-bySector[a].length);
+            const compOf = t => stocks[t]?.scores?.composite ?? -1;
+            return secOrder.map(sec=>{
+              const tickers = bySector[sec].sort((a,b)=>compOf(b)-compOf(a));
+              return (
+                <div key={sec} style={{marginBottom:22}}>
+                  <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:10,
+                    borderBottom:`1px solid ${C.border}`,paddingBottom:6}}>
+                    <span style={{color:C.accent,fontSize:15,fontWeight:700}}>{sec}</span>
+                    <span style={{background:C.panel2,color:C.textDim,borderRadius:10,
+                      padding:"1px 9px",fontSize:11,fontWeight:700}}>{tickers.length}</span>
+                  </div>
+                  <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(220px,1fr))",gap:8}}>
+                    {tickers.map((t,idx)=>{
+                      const d=stocks[t], ind=d?.indicators||{};
+                      const comp=compOf(t);
+                      const isWinner=idx===0&&comp>=0;   // hoogste composiet in de sector
+                      return (
+                        <div key={t} onClick={()=>setSelected(t)}
+                          style={{background:C.panel,borderRadius:8,padding:"11px",cursor:"pointer",
+                            border:`1px solid ${isWinner?C.accent:C.border}`,
+                            borderLeft:`3px solid ${(d?.buyWeight||0)>(d?.sellWeight||0)?C.green:(d?.sellWeight||0)>(d?.buyWeight||0)?C.red:C.border}`,
+                            transition:"transform 0.1s,border-color 0.12s"}}
+                          onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-2px)";}}
+                          onMouseLeave={e=>{e.currentTarget.style.transform="";}}>
+                          <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start"}}>
+                            <div>
+                              <div style={{display:"flex",alignItems:"center",gap:5}}>
+                                <span style={{color:C.accent,fontWeight:700,fontSize:14}}>{t}</span>
+                                {isWinner&&<span title="Hoogste composietscore in deze sector"
+                                  style={{fontSize:10}}>👑</span>}
+                              </div>
+                              <div style={{color:C.textDim,fontSize:9}}>{STOCK_NAMES[t]}</div>
+                            </div>
+                            <div style={{textAlign:"right"}}>
+                              <div style={{color:C.text,fontWeight:700,fontSize:12}}>
+                                {ind.last?`${d?.currency||"$"}${ind.last.toFixed(2)}`:"—"}</div>
+                              {d?.overall&&<div style={{marginTop:2}}><OverallBadge signal={d.overall}/></div>}
+                            </div>
+                          </div>
+                          <div style={{display:"flex",gap:5,marginTop:8,alignItems:"center",flexWrap:"wrap"}}>
+                            {d?.isETF
+                              ? <span title="ETF: geen kwaliteitsscore mogelijk — alleen timing telt"
+                                  style={{background:C.panel2,color:C.textDim,border:`1px solid ${C.border}`,
+                                  borderRadius:4,padding:"1px 6px",fontSize:9,fontWeight:700}}>★ n.v.t.</span>
+                              : <span style={{background:C.panel2,color:C.accent,border:`1px solid ${C.accent}`,
+                                  borderRadius:4,padding:"1px 6px",fontSize:9,fontWeight:700}}>★ {comp>=0?comp:"—"}</span>}
+                            {d?.scores?.accelLabel&&d.scores.accelLabel!=="onbekend"&&d.scores.accelLabel!=="Stabiel"&&(
+                              <span style={{color:d.scores.accelColor==="green"?C.green:d.scores.accelColor==="orange"?C.orange:C.textDim,
+                                fontSize:9,fontWeight:700}}>
+                                {d.scores.accelColor==="green"?"🚀":"🐢"}{d.scores.accelValue>0?"+":""}{d.scores.accelValue}pp</span>
+                            )}
+                            {d?.isETF&&<span title="ETF - een mandje aandelen. Geen kwaliteitsscore mogelijk; alleen timing telt."
+                              style={{background:C.panel2,color:C.accent,border:`1px solid ${C.accent}66`,
+                              borderRadius:4,padding:"1px 5px",fontSize:9,fontWeight:700}}>ETF</span>}
+                            {d?.isBagger&&!d?.isETF&&<span style={{color:C.textDim,fontSize:9}}>bagger</span>}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            });
+          })()}
+        </div>
+      )}
+
+      {/* BAGGERS VIEW */}
+      {view==="baggers"&&(
+        <div style={{padding:"14px 16px"}}>
+          <BaggerTrack baggers={baggers} onSelect={setSelected}/>
+        </div>
+      )}
+
+      {/* TRACKRECORD VIEW */}
+      {view==="trackrecord"&&(
+        <div style={{padding:"14px 16px"}}>
+          <PurchaseMirror portfolio={portfolio} track={trackData} stocks={stocks}/>
+          <ModelDiagnostics diag={trackData?.diagnostics} version={trackData?.modelVersion}/>
+          <TrackRecord track={trackData}/>
+        </div>
+      )}
+
+      {/* PORTFOLIO VIEW */}
+      {view==="portfolio"&&(
+        <div style={{padding:"14px 16px"}}>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:10,marginBottom:16}}>
+            {[
+              {l:"Totale waarde",v:`$${tv2.toFixed(0)}`,c:C.accent},
+              {l:"Kostprijs",    v:`$${tc2.toFixed(0)}`,c:C.text},
+              {l:"P&L",         v:`${tv2-tc2>=0?"+":""}$${(tv2-tc2).toFixed(0)}`,c:tv2-tc2>=0?C.green:C.red},
+            ].map(x=>(
+              <div key={x.l} style={{background:C.panel,border:`1px solid ${C.border}`,borderRadius:8,padding:"12px 14px"}}>
+                <div style={{color:C.textDim,fontSize:11}}>{x.l}</div>
+                <div style={{color:x.c,fontSize:20,fontWeight:800,marginTop:2}}>{x.v}</div>
+              </div>
+            ))}
+          </div>
+          {portfolio.some(p=>(stocks[p.ticker]?.currency||"$")!=="$")&&(
+            <div style={{color:C.orange,fontSize:10,marginBottom:12}}>
+              ⚠ Posities in meerdere valuta's — de totalen hierboven tellen bedragen op zonder omrekening.
+            </div>
+          )}
+          {portfolio.length>0&&(
+            <button onClick={syncLink} style={{background:"none",color:C.accent,border:`1px solid ${C.accent}`,
+              borderRadius:6,padding:"8px 14px",fontSize:12,fontWeight:700,cursor:"pointer",marginBottom:16}}>
+              📲 Sync naar ander apparaat
+            </button>
+          )}
+          {portItems.length===0
+            ?<div style={{textAlign:"center",color:C.textDim,padding:40}}>Nog geen posities. Klik een aandeel → tab "Portfolio".</div>
+            :<div style={{display:"grid",gap:8}}>
+              {portItems.map(p=>{
+                const data=getStockData(p.ticker);
+                const hasJournal = p.reason||p.risk||p.note;
+                return(
+                  <div key={p.id} style={{background:C.panel,border:`1px solid ${C.border}`,
+                    borderRadius:8,padding:"12px 14px"}}>
+                    <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:8}}>
+                      <div>
+                        <div style={{color:C.accent,fontWeight:700}}>{p.ticker} <span style={{color:C.textDim,fontWeight:400,fontSize:11}}>{STOCK_NAMES[p.ticker]}</span></div>
+                        <div style={{color:C.textDim,fontSize:11}}>{p.shares} × ${p.buyPrice} · {p.date}</div>
+                        <div style={{color:C.textDim,fontSize:11}}>Huidig: ${p.last?.toFixed(2)||"—"}</div>
+                        {data?.overall&&<div style={{marginTop:4}}><OverallBadge signal={data.overall}/></div>}
+                      </div>
+                      <div style={{textAlign:"right"}}>
+                        <div style={{color:p.pnl>=0?C.green:C.red,fontWeight:700,fontSize:16}}>{p.pnl>=0?"+":""}${p.pnl.toFixed(0)}</div>
+                        <div style={{color:p.pnl>=0?C.green:C.red,fontSize:12}}>{((p.pnl/p.cb)*100).toFixed(1)}%</div>
+                      </div>
+                      <div style={{display:"flex",gap:6}}>
+                        <button onClick={()=>setSelected(p.ticker)}
+                          style={{background:"none",border:`1px solid ${hasJournal?C.accent+"66":C.border}`,
+                            color:hasJournal?C.accent:C.textDim,borderRadius:4,padding:"3px 8px",
+                            fontSize:10,cursor:"pointer",fontWeight:600}}>
+                          {hasJournal?"✎ Dagboek":"+ Dagboek"}
+                        </button>
+                        <button onClick={()=>remove(p.id)} style={{background:"none",border:`1px solid ${C.border}`,color:C.textDim,borderRadius:4,padding:"3px 8px",fontSize:10,cursor:"pointer"}}>Verwijder</button>
+                      </div>
+                    </div>
+                    {hasJournal&&(
+                      <div style={{marginTop:10,paddingTop:10,borderTop:`1px solid ${C.border}`,display:"flex",flexDirection:"column",gap:6}}>
+                        {p.reason&&<div>
+                          <div style={{color:C.green,fontSize:10,fontWeight:700,marginBottom:2}}>Waarom gekocht</div>
+                          <div style={{color:C.text,fontSize:11,lineHeight:1.4,whiteSpace:"pre-wrap"}}>{p.reason}</div>
+                        </div>}
+                        {p.risk&&<div>
+                          <div style={{color:C.orange,fontSize:10,fontWeight:700,marginBottom:2}}>⚠ Gevaar</div>
+                          <div style={{color:C.text,fontSize:11,lineHeight:1.4,whiteSpace:"pre-wrap"}}>{p.risk}</div>
+                        </div>}
+                        {p.note&&<div>
+                          <div style={{color:C.textDim,fontSize:10,fontWeight:700,marginBottom:2}}>Opmerking</div>
+                          <div style={{color:C.text,fontSize:11,lineHeight:1.4,whiteSpace:"pre-wrap"}}>{p.note}</div>
+                        </div>}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          }
+        </div>
+      )}
+
+      {selected&&(
+        <Detail ticker={selected} data={getStockData(selected)}
+          onClose={()=>setSelected(null)} portfolio={portfolio} add={add} update={update}
+          notes={notes} saveNote={saveNote}/>
+      )}
+
+      <div style={{borderTop:`1px solid ${C.border}`,padding:"8px 16px",textAlign:"center",color:C.muted,fontSize:10}}>
+        Technische data via yfinance · Fundamentals jun 2026 · Signaalgewichten zijn indicatief · Geen financieel advies
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+<script>
+(function(){
+  try {
+    var src = document.getElementById("jsx-source").textContent;
+    var out = Babel.transform(src, { presets: ["react"] }).code;
+    var s = document.createElement("script");
+    s.textContent = out;
+    document.body.appendChild(s);
+  } catch (e) {
+    var msg = (e && e.message) ? e.message : String(e);
+    var stack = (e && e.stack) ? e.stack : "";
+    document.body.innerHTML = "<pre style=\"color:#f88;padding:20px;font-family:monospace;white-space:pre-wrap;font-size:12px;\">BABEL FOUT:\n" + msg + "\n\n" + stack + "</pre>";
+    console.error("Babel transform faalde:", e);
+  }
+})();
+</script>
+</body>
+</html>
