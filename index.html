@@ -2597,11 +2597,22 @@ function App() {
               ⚠ Posities in meerdere valuta's — de totalen hierboven tellen bedragen op zonder omrekening.
             </div>
           )}
-          {portfolio.length>0&&(
-            <button onClick={syncLink} style={{background:"none",color:C.accent,border:`1px solid ${C.accent}`,
-              borderRadius:6,padding:"8px 14px",fontSize:12,fontWeight:700,cursor:"pointer",marginBottom:16}}>
-              📲 Sync naar ander apparaat
-            </button>
+          {/* Sync-knop: verschijnt zodra er IETS te syncen valt -- posities OF notities.
+              Voorheen stond hij alleen bij posities (portfolio.length>0), waardoor iemand
+              met enkel watchlist-notities niet kon syncen, terwijl de sync die notities
+              wel meestuurt. De knoptekst noemt nu allebei, zodat duidelijk is dat je
+              notities meegaan. */}
+          {(portfolio.length>0 || Object.keys(notes).length>0)&&(
+            <div style={{marginBottom:16}}>
+              <button onClick={syncLink} style={{background:"none",color:C.accent,border:`1px solid ${C.accent}`,
+                borderRadius:6,padding:"8px 14px",fontSize:12,fontWeight:700,cursor:"pointer"}}>
+                📲 Sync naar ander apparaat
+              </button>
+              <div style={{color:C.muted,fontSize:10,marginTop:6,lineHeight:1.5}}>
+                Stuurt {portfolio.length} positie(s){Object.keys(notes).length>0?` + ${Object.keys(notes).length} notitie(s)`:""} naar je andere apparaat.
+                De link <b style={{color:C.textDim}}>voegt samen</b> — niets wordt overschreven, de nieuwste versie wint.
+              </div>
+            </div>
           )}
           {portItems.length===0
             ?<div style={{textAlign:"center",color:C.textDim,padding:40}}>Nog geen posities. Klik een aandeel → tab "Portfolio".</div>
