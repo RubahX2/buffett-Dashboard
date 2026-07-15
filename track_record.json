@@ -1,7 +1,7 @@
 {
   "_meta": {
     "created": "2026-07-02T21:36:20.214972+02:00",
-    "lastUpdate": "2026-07-15T03:38:22.488709+02:00"
+    "lastUpdate": "2026-07-15T14:07:19.469178+02:00"
   },
   "records": {
     "monthly_pick:MU:2026-07-02": {
@@ -1195,7 +1195,7 @@
         "timing": 47
       },
       "outcomes": {},
-      "episodeDays": 8
+      "episodeDays": 9
     },
     "strong_signal:GILD:2026-07-13": {
       "ticker": "GILD",
@@ -1433,7 +1433,7 @@
         "timing": 37
       },
       "outcomes": {},
-      "episodeDays": 7
+      "episodeDays": 8
     },
     "strong_signal:ODFL:2026-07-14": {
       "ticker": "ODFL",
@@ -1449,7 +1449,7 @@
         "timing": 42
       },
       "outcomes": {},
-      "episodeDays": 5
+      "episodeDays": 6
     },
     "caution:PL:2026-07-14": {
       "ticker": "PL",
@@ -1465,7 +1465,7 @@
         "timing": 42
       },
       "outcomes": {},
-      "episodeDays": 6
+      "episodeDays": 7
     },
     "strong_signal:ARCG:2026-07-14": {
       "ticker": "ARCG",
@@ -1481,7 +1481,7 @@
         "timing": 41
       },
       "outcomes": {},
-      "episodeDays": 7
+      "episodeDays": 8
     },
     "strong_signal:AIR:2026-07-14": {
       "ticker": "AIR",
@@ -1545,7 +1545,7 @@
         "timing": 29
       },
       "outcomes": {},
-      "episodeDays": 4
+      "episodeDays": 5
     },
     "caution:NABTESCO:2026-07-14": {
       "ticker": "NABTESCO",
@@ -1625,7 +1625,7 @@
         "timing": 50
       },
       "outcomes": {},
-      "episodeDays": 2
+      "episodeDays": 3
     },
     "strong_signal:ASMI:2026-07-15": {
       "ticker": "ASMI",
@@ -1641,7 +1641,7 @@
         "timing": 46
       },
       "outcomes": {},
-      "episodeDays": 2
+      "episodeDays": 3
     },
     "strong_signal:MU:2026-07-15": {
       "ticker": "MU",
@@ -1657,7 +1657,7 @@
         "timing": 49
       },
       "outcomes": {},
-      "episodeDays": 2
+      "episodeDays": 3
     },
     "strong_signal:GOOGL:2026-07-15": {
       "ticker": "GOOGL",
@@ -1673,7 +1673,7 @@
         "timing": 49
       },
       "outcomes": {},
-      "episodeDays": 2
+      "episodeDays": 3
     },
     "strong_signal:RKLB:2026-07-15": {
       "ticker": "RKLB",
@@ -1689,7 +1689,7 @@
         "timing": 45
       },
       "outcomes": {},
-      "episodeDays": 2
+      "episodeDays": 3
     },
     "strong_signal:GAW:2026-07-15": {
       "ticker": "GAW",
@@ -1705,7 +1705,7 @@
         "timing": 52
       },
       "outcomes": {},
-      "episodeDays": 2
+      "episodeDays": 3
     },
     "strong_signal:ADM:2026-07-15": {
       "ticker": "ADM",
@@ -1721,7 +1721,7 @@
         "timing": 58
       },
       "outcomes": {},
-      "episodeDays": 2
+      "episodeDays": 3
     },
     "strong_signal:NABTESCO:2026-07-15": {
       "ticker": "NABTESCO",
@@ -1737,7 +1737,7 @@
         "timing": 44
       },
       "outcomes": {},
-      "episodeDays": 2
+      "episodeDays": 3
     },
     "strong_signal:KEYENCE:2026-07-15": {
       "ticker": "KEYENCE",
@@ -1753,7 +1753,7 @@
         "timing": 52
       },
       "outcomes": {},
-      "episodeDays": 2
+      "episodeDays": 3
     },
     "strong_signal:FANUC:2026-07-15": {
       "ticker": "FANUC",
@@ -1769,7 +1769,7 @@
         "timing": 45
       },
       "outcomes": {},
-      "episodeDays": 2
+      "episodeDays": 3
     },
     "strong_signal:YASKAWA:2026-07-15": {
       "ticker": "YASKAWA",
@@ -1785,7 +1785,7 @@
         "timing": 50
       },
       "outcomes": {},
-      "episodeDays": 2
+      "episodeDays": 3
     },
     "strong_signal:SOFTBANK:2026-07-15": {
       "ticker": "SOFTBANK",
@@ -1817,7 +1817,7 @@
         "timing": 44
       },
       "outcomes": {},
-      "episodeDays": 2
+      "episodeDays": 3
     },
     "strong_signal:AMZN:2026-07-15": {
       "ticker": "AMZN",
@@ -1833,7 +1833,7 @@
         "timing": 49
       },
       "outcomes": {},
-      "episodeDays": 1
+      "episodeDays": 2
     },
     "strong_signal:MSFT:2026-07-15": {
       "ticker": "MSFT",
@@ -1849,7 +1849,7 @@
         "timing": 16
       },
       "outcomes": {},
-      "episodeDays": 1
+      "episodeDays": 2
     },
     "strong_signal:BLK:2026-07-15": {
       "ticker": "BLK",
@@ -1863,6 +1863,22 @@
         "overall": "STERK VERKOOP",
         "composite": 60,
         "timing": 35
+      },
+      "outcomes": {},
+      "episodeDays": 2
+    },
+    "strong_signal:CGNX:2026-07-15": {
+      "ticker": "CGNX",
+      "type": "strong_signal",
+      "direction": "BUY",
+      "date": "2026-07-15",
+      "entryPrice": 63.91,
+      "benchEntry": null,
+      "currency": "$",
+      "snapshot": {
+        "overall": "STERK KOOP",
+        "composite": 52,
+        "timing": 49
       },
       "outcomes": {},
       "episodeDays": 1
@@ -1954,8 +1970,8 @@
     "baseRates": [
       {
         "action": "STERK KOOP",
-        "n": 23,
-        "pct": 28.4,
+        "n": 24,
+        "pct": 29.6,
         "verdict": "discriminerend",
         "color": "green"
       },
@@ -1968,8 +1984,8 @@
       },
       {
         "action": "KOOP",
-        "n": 15,
-        "pct": 18.5,
+        "n": 14,
+        "pct": 17.3,
         "verdict": "discriminerend",
         "color": "green"
       },
@@ -2024,23 +2040,23 @@
         "key": "qual",
         "cells": [
           1.0,
-          0.21,
           0.2,
-          0.33,
-          -0.38,
-          0.8,
-          0.45
+          0.17,
+          0.32,
+          -0.42,
+          0.79,
+          0.46
         ]
       },
       {
         "label": "Waardering",
         "key": "val",
         "cells": [
-          0.21,
+          0.2,
           1.0,
-          -0.12,
-          -0.19,
-          -0.02,
+          -0.16,
+          -0.21,
+          0.02,
           0.68,
           0.79
         ]
@@ -2049,50 +2065,50 @@
         "label": "Timing",
         "key": "tim",
         "cells": [
-          0.2,
-          -0.12,
+          0.17,
+          -0.16,
           1.0,
-          0.74,
-          0.02,
-          0.35,
-          -0.53
+          0.76,
+          0.03,
+          0.31,
+          -0.56
         ]
       },
       {
         "label": "Trend",
         "key": "trd",
         "cells": [
-          0.33,
-          -0.19,
-          0.74,
+          0.32,
+          -0.21,
+          0.76,
           1.0,
-          -0.45,
-          0.31,
-          -0.65
+          -0.43,
+          0.3,
+          -0.64
         ]
       },
       {
         "label": "Instap",
         "key": "ent",
         "cells": [
-          -0.38,
-          -0.02,
+          -0.42,
           0.02,
-          -0.45,
+          0.03,
+          -0.43,
           1.0,
-          -0.22,
-          0.31
+          -0.23,
+          0.18
         ]
       },
       {
         "label": "Composiet",
         "key": "comp",
         "cells": [
-          0.8,
+          0.79,
           0.68,
-          0.35,
           0.31,
-          -0.22,
+          0.3,
+          -0.23,
           1.0,
           0.67
         ]
@@ -2101,11 +2117,11 @@
         "label": "Koopkans",
         "key": "opp",
         "cells": [
-          0.45,
+          0.46,
           0.79,
-          -0.53,
-          -0.65,
-          0.31,
+          -0.56,
+          -0.64,
+          0.18,
           0.67,
           1.0
         ]
@@ -2175,7 +2191,7 @@
     "ROK": "sig:strong_signal:BUY",
     "TER": "sig:strong_signal:BUY",
     "ISRG": "sig:strong_signal:SELL",
-    "CGNX": null,
+    "CGNX": "sig:strong_signal:BUY",
     "NOVT": "sig:strong_signal:BUY",
     "ANET": "sig:strong_signal:BUY",
     "HOOD": null,
