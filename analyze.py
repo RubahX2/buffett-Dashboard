@@ -709,15 +709,38 @@ def detect_divergence(price: pd.Series, indicator: pd.Series,
     ind = indicator.reindex(price.index)
     n = len(price)
 
-    # ── Bullish: anker op de LAAGSTE bodem in de recente periode ──
-    # Niet "de laatste pivot" (die is vaak het begin van een herstel, en hangt af
-    # van ruis). We nemen de laagste koersbodem binnen de recente `max_lookback`
-    # candles als anker, en vergelijken met de laagste bodem in de periode DAARVOOR
-    # (nog eens max_lookback terug). Divergentie: recente bodem lager, indicator hoger.
+    # ── Bullish: twee complementaire vergelijkingen ──
+    # (A) De twee LAATSTE opeenvolgende swing-bodems t.o.v. elkaar. Dit vangt een
+    #     double bottom / divergentie waar beide bodems recent en dicht bij elkaar
+    #     liggen (bv. maart vs mei) -- die vielen eerder samen in één 'recente' bak en
+    #     werden nooit met elkaar vergeleken.
+    # (B) FALLBACK: de laagste bodem in de recente periode t.o.v. de laagste bodem in
+    #     de periode daarvoor. Dit vangt een divergentie over een langere afstand.
+    # Divergentie (beide gevallen): koers zet een lagere/gelijke bodem, indicator hoger.
     lows = _find_swing_lows(price, left, right)
     bull = None
+    iv = ind.values
+    # (A) opeenvolgende bodems: de laatste twee pivots die niet te ver uiteen liggen
     if len(lows) >= 2:
-        iv = ind.values
+        for k in range(len(lows) - 1, 0, -1):
+            i2, p2 = lows[k]
+            i1, p1 = lows[k-1]
+            if i2 - i1 > max_lookback:
+                continue   # te ver uiteen -> losse gebeurtenissen, geen divergentie
+            ind1, ind2 = iv[i1], iv[i2]
+            if np.isnan(ind1) or np.isnan(ind2):
+                continue
+            # koers ~gelijk of lager (double bottom telt: binnen 2% hoger mag), indicator hoger
+            if p2 <= p1 * 1.02 and ind2 > ind1:
+                bull = {
+                    "type": "bullish",
+                    "priceLow1": round(p1, 2), "priceLow2": round(p2, 2),
+                    "indLow1": round(float(ind1), 2), "indLow2": round(float(ind2), 2),
+                    "barsApart": int(i2 - i1),
+                }
+                break
+    # (B) fallback over langere afstand, alleen als (A) niets vond
+    if bull is None and len(lows) >= 2:
         recent_grens = n - max_lookback
         recent = [(i, p) for (i, p) in lows if i >= recent_grens]
         eerder = [(i, p) for (i, p) in lows if i < recent_grens and i >= recent_grens - max_lookback]
@@ -1287,6 +1310,30 @@ def _support_confluence(last, daily, weekly, monthly_state):
         near_ma = prox_pct(last, m_last) < 3.0 and last >= m_last * 0.98
         if near_ma and ma_rising and oversold:
             flags.append("200-MA-steun (stijgende MA + oversold)")
+
+    # 55-EMA-steun (weekly): een gevallen kwaliteitsaandeel dat maandenlang op zijn
+    # 55-weeks EMA blijft steunen, terwijl die EMA afvlakt of stijgt, vormt een echte
+    # vloer -- iets wat de 200-MA-check mist als die MA nog daalt (na een scherpe
+    # daling is de 200-MA vaak nog dalend en telt hij niet). We eisen: koers dicht bij
+    # de 55-EMA, EMA vlak of stijgend (geen dalende = weerstand). GEEN dubbele telling:
+    # als de 200-MA-steun al vuurde op vrijwel hetzelfde niveau (<2% ervandaan), is het
+    # dezelfde steunzone en tellen we het niet nog eens.
+    ma200_val = m_last  # kan None zijn
+    if weekly is not None and len(weekly) >= 60:
+        cw_e = weekly["Close"]
+        ema55_w = cw_e.ewm(span=55, adjust=False).mean()
+        e_last = safe_last(ema55_w)
+        if e_last is not None and len(ema55_w.dropna()) > 12:
+            # vlak of stijgend: vergelijk met 12 weken terug, sta lichte daling toe (afvlakkend)
+            e_prev = safe_last(ema55_w.iloc[:-12], e_last)
+            ema_flat_or_rising = e_last >= e_prev * 0.98
+            near_ema = prox_pct(last, e_last) < 3.5 and last >= e_last * 0.965
+            # dubbeltelling-guard: valt de 55-EMA vrijwel samen met de 200-MA-steun?
+            zelfde_als_ma200 = (ma200_val is not None
+                                and prox_pct(e_last, ma200_val) < 2.0
+                                and any("200-MA-steun" in f for f in flags))
+            if near_ema and ema_flat_or_rising and oversold and not zelfde_als_ma200:
+                flags.append("55-EMA-steun weekly (afvlakkende/stijgende EMA, meermaals getest)")
 
     # Onderste weekly-Bollinger: mean-reversion-bounce, alleen met oversold-bevestiging
     if weekly is not None and len(weekly) >= 25:
@@ -4046,7 +4093,7 @@ def main():
             "generatedAt": NOW.isoformat(),
             "generatedAtHuman": NOW.strftime("%A %d %B %Y om %H:%M"),
             "isFriday": IS_FRIDAY, "isWeekend": IS_WEEKEND,
-            "version": "5.4-zonaal-degradatie-aftopping",
+            "version": "5.5-divergence-dubbelbodem-55ema",
             "fundamentalsNote": "Fundamentals handmatig bijgehouden — controleer bij elk kwartaalrapport.",
         },
         "stocks": {}, "errors": [],
