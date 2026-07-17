@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-17T13:00:54.971590+02:00",
-  "generatedAtHuman": "Friday 17 July 2026 om 13:00",
+  "generatedAt": "2026-07-17T13:58:31.890808+02:00",
+  "generatedAtHuman": "Friday 17 July 2026 om 13:58",
   "periodLabel": "sinds ~1 week geleden",
   "changes": [
     {
@@ -10,7 +10,7 @@
         {
           "type": "composite",
           "dir": "up",
-          "text": "Composiet 44 \u2191 60"
+          "text": "Composiet 44 \u2191 58"
         },
         {
           "type": "valuation",
@@ -20,7 +20,7 @@
         {
           "type": "signal",
           "dir": "neutral",
-          "text": "Signaal: VERKOOP \u2192 LICHT VERKOOP"
+          "text": "Signaal: VERKOOP \u2192 CAUTION (overextended)"
         }
       ]
     },
@@ -573,22 +573,6 @@
       ]
     },
     {
-      "ticker": "ADM",
-      "daysAgo": 7,
-      "changes": [
-        {
-          "type": "composite",
-          "dir": "down",
-          "text": "Composiet 68 \u2193 62"
-        },
-        {
-          "type": "signal",
-          "dir": "neutral",
-          "text": "Signaal: KOOP \u2192 STERK KOOP"
-        }
-      ]
-    },
-    {
       "ticker": "MELI",
       "daysAgo": 7,
       "changes": [
@@ -643,12 +627,12 @@
         {
           "type": "composite",
           "dir": "down",
-          "text": "Composiet 60 \u2193 52"
+          "text": "Composiet 60 \u2193 54"
         },
         {
           "type": "signal",
           "dir": "down",
-          "text": "Signaal: KOOP \u2192 VERKOOP"
+          "text": "Signaal: KOOP \u2192 LICHT VERKOOP"
         }
       ]
     },
@@ -933,6 +917,17 @@
           "type": "valuation",
           "dir": "neutral",
           "text": "Waardering: Onvoldoende data \u2192 Lage P/E (absoluut)"
+        }
+      ]
+    },
+    {
+      "ticker": "ADM",
+      "daysAgo": 7,
+      "changes": [
+        {
+          "type": "signal",
+          "dir": "neutral",
+          "text": "Signaal: KOOP \u2192 STERK KOOP"
         }
       ]
     },

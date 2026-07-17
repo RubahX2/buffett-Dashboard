@@ -1,7 +1,7 @@
 {
   "_meta": {
     "created": "2026-07-02T21:36:20.214972+02:00",
-    "lastUpdate": "2026-07-17T13:00:54.971590+02:00"
+    "lastUpdate": "2026-07-17T13:58:31.890808+02:00"
   },
   "records": {
     "monthly_pick:MU:2026-07-02": {
@@ -1273,7 +1273,7 @@
         "timing": 48
       },
       "outcomes": {},
-      "episodeDays": 6
+      "episodeDays": 7
     },
     "caution:ASMI:2026-07-14": {
       "ticker": "ASMI",
@@ -1305,7 +1305,7 @@
         "timing": 39
       },
       "outcomes": {},
-      "episodeDays": 11
+      "episodeDays": 12
     },
     "caution:GOOGL:2026-07-14": {
       "ticker": "GOOGL",
@@ -1481,7 +1481,7 @@
         "timing": 42
       },
       "outcomes": {},
-      "episodeDays": 13
+      "episodeDays": 14
     },
     "strong_signal:ARCG:2026-07-14": {
       "ticker": "ARCG",
@@ -1497,7 +1497,7 @@
         "timing": 41
       },
       "outcomes": {},
-      "episodeDays": 14
+      "episodeDays": 15
     },
     "strong_signal:AIR:2026-07-14": {
       "ticker": "AIR",
@@ -1657,7 +1657,7 @@
         "timing": 46
       },
       "outcomes": {},
-      "episodeDays": 9
+      "episodeDays": 10
     },
     "strong_signal:MU:2026-07-15": {
       "ticker": "MU",
@@ -1689,7 +1689,7 @@
         "timing": 49
       },
       "outcomes": {},
-      "episodeDays": 5
+      "episodeDays": 6
     },
     "strong_signal:RKLB:2026-07-15": {
       "ticker": "RKLB",
@@ -1737,7 +1737,7 @@
         "timing": 58
       },
       "outcomes": {},
-      "episodeDays": 9
+      "episodeDays": 10
     },
     "strong_signal:NABTESCO:2026-07-15": {
       "ticker": "NABTESCO",
@@ -1753,7 +1753,7 @@
         "timing": 44
       },
       "outcomes": {},
-      "episodeDays": 6
+      "episodeDays": 7
     },
     "strong_signal:KEYENCE:2026-07-15": {
       "ticker": "KEYENCE",
@@ -1769,7 +1769,7 @@
         "timing": 52
       },
       "outcomes": {},
-      "episodeDays": 9
+      "episodeDays": 10
     },
     "strong_signal:FANUC:2026-07-15": {
       "ticker": "FANUC",
@@ -1833,7 +1833,7 @@
         "timing": 44
       },
       "outcomes": {},
-      "episodeDays": 9
+      "episodeDays": 10
     },
     "strong_signal:AMZN:2026-07-15": {
       "ticker": "AMZN",
@@ -1865,7 +1865,7 @@
         "timing": 16
       },
       "outcomes": {},
-      "episodeDays": 8
+      "episodeDays": 9
     },
     "strong_signal:BLK:2026-07-15": {
       "ticker": "BLK",
@@ -1881,7 +1881,7 @@
         "timing": 35
       },
       "outcomes": {},
-      "episodeDays": 8
+      "episodeDays": 9
     },
     "strong_signal:CGNX:2026-07-15": {
       "ticker": "CGNX",
@@ -1897,7 +1897,7 @@
         "timing": 49
       },
       "outcomes": {},
-      "episodeDays": 7
+      "episodeDays": 8
     },
     "caution:AMZN:2026-07-16": {
       "ticker": "AMZN",
@@ -1929,7 +1929,7 @@
         "timing": 40
       },
       "outcomes": {},
-      "episodeDays": 6
+      "episodeDays": 7
     },
     "caution:META:2026-07-16": {
       "ticker": "META",
@@ -1961,7 +1961,7 @@
         "timing": 58
       },
       "outcomes": {},
-      "episodeDays": 3
+      "episodeDays": 4
     },
     "caution:RDDT:2026-07-16": {
       "ticker": "RDDT",
@@ -1993,7 +1993,7 @@
         "timing": 38
       },
       "outcomes": {},
-      "episodeDays": 2
+      "episodeDays": 3
     },
     "caution:HARMONIC:2026-07-17": {
       "ticker": "HARMONIC",
@@ -2009,7 +2009,7 @@
         "timing": 38
       },
       "outcomes": {},
-      "episodeDays": 2
+      "episodeDays": 3
     },
     "strong_signal:RGTI:2026-07-17": {
       "ticker": "RGTI",
@@ -2025,7 +2025,7 @@
         "timing": 38
       },
       "outcomes": {},
-      "episodeDays": 2
+      "episodeDays": 3
     },
     "monthly_pick:VST:2026-07-17": {
       "ticker": "VST",
@@ -2131,8 +2131,8 @@
     "baseRates": [
       {
         "action": "VERKOOP",
-        "n": 24,
-        "pct": 29.3,
+        "n": 23,
+        "pct": 28.0,
         "verdict": "discriminerend",
         "color": "green"
       },
@@ -2165,6 +2165,13 @@
         "color": "green"
       },
       {
+        "action": "CAUTION (overextended)",
+        "n": 4,
+        "pct": 4.9,
+        "verdict": "discriminerend",
+        "color": "green"
+      },
+      {
         "action": "LICHT KOOP",
         "n": 4,
         "pct": 4.9,
@@ -2173,13 +2180,6 @@
       },
       {
         "action": "LICHT VERKOOP",
-        "n": 3,
-        "pct": 3.7,
-        "verdict": "discriminerend",
-        "color": "green"
-      },
-      {
-        "action": "CAUTION (overextended)",
         "n": 3,
         "pct": 3.7,
         "verdict": "discriminerend",
@@ -2204,9 +2204,9 @@
           0.18,
           0.15,
           0.33,
-          -0.39,
+          -0.38,
           0.77,
-          0.46
+          0.47
         ]
       },
       {
@@ -2215,7 +2215,7 @@
         "cells": [
           0.18,
           1.0,
-          -0.15,
+          -0.14,
           -0.19,
           0.03,
           0.68,
@@ -2227,12 +2227,12 @@
         "key": "tim",
         "cells": [
           0.15,
-          -0.15,
+          -0.14,
           1.0,
-          0.68,
-          0.22,
+          0.67,
+          0.21,
           0.31,
-          -0.31
+          -0.3
         ]
       },
       {
@@ -2241,7 +2241,7 @@
         "cells": [
           0.33,
           -0.19,
-          0.68,
+          0.67,
           1.0,
           -0.33,
           0.3,
@@ -2252,9 +2252,9 @@
         "label": "Instap",
         "key": "ent",
         "cells": [
-          -0.39,
+          -0.38,
           0.03,
-          0.22,
+          0.21,
           -0.33,
           1.0,
           -0.13,
@@ -2271,19 +2271,19 @@
           0.3,
           -0.13,
           1.0,
-          0.65
+          0.64
         ]
       },
       {
         "label": "Koopkans",
         "key": "opp",
         "cells": [
-          0.46,
+          0.47,
           0.73,
-          -0.31,
+          -0.3,
           -0.47,
           0.36,
-          0.65,
+          0.64,
           1.0
         ]
       }
@@ -2295,7 +2295,7 @@
     "WM": null,
     "PLTR": "sig:strong_signal:SELL",
     "CAT": null,
-    "ASML": null,
+    "ASML": "sig:caution:SELL",
     "ASMI": "sig:strong_signal:BUY",
     "MU": "sig:caution:SELL",
     "GOOGL": "sig:strong_signal:SELL",
