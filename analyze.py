@@ -1422,44 +1422,116 @@ def generate_signals(name: str, daily: pd.DataFrame, weekly: pd.DataFrame,
         vol_known = False
     high_volume = vol_known and vol_ratio > 1.5
 
-    # ── VOLUMETREND: neemt het volume GELEIDELIJK toe? ────────────────────────
-    # Bewust OBSERVEREND: dit geeft geen punten en verandert geen oordeel. Het is
-    # een waarnemingssignaal om volume te leren kennen voordat het meeweegt.
-    # Waarom niet gewoon vol_ratio: dat is EEN dag versus het gemiddelde -- een
-    # incidentele piek. Een geleidelijke opbouw is iets anders: de laatste ~2 weken
-    # liggen structureel hoger dan de 2 weken daarvoor, en die weer hoger dan de
-    # periode ervoor. Dat is het patroon dat op accumulatie kan wijzen.
-    vol_trend = {"rising": False, "ratio": None, "steps": None, "label": None}
-    if vol_known and len(vol_d) >= 120:
-        _v = vol_d.dropna()
-        if len(_v) >= 120:
-            # MEDIAAN i.p.v. gemiddelde: een geleidelijke opbouw moet BREED gedragen
-            # zijn. Met het gemiddelde laten drie extreme dagen de hele meting
-            # kantelen, waardoor een eenmalige piek als "trend" zou tellen.
-            _recent = float(_v.iloc[-20:].median())      # laatste maand
-            _midden = float(_v.iloc[-40:-20].median())   # maand daarvoor
-            _basis  = float(_v.iloc[-120:-40].median())  # ~4 maanden ervoor
-            if _basis > 0 and _midden > 0:
-                _r_tot = _recent / _basis
-                # Geleidelijk = elke stap hoger EN de totale toename substantieel.
-                _oplopend = _recent > _midden > _basis
-                _fors     = _r_tot >= 1.20
-                if _oplopend and _fors:
-                    vol_trend = {
-                        "rising": True,
-                        "ratio": round(_r_tot, 2),
-                        "steps": [round(_basis), round(_midden), round(_recent)],
-                        "label": ("sterk toenemend" if _r_tot >= 1.60
-                                  else "toenemend" if _r_tot >= 1.35
-                                  else "licht toenemend"),
-                    }
-                    alerts.append({"type":"WATCH","cat":"VOL","tf":"1D","icon":"📊",
-                        "title":f"Opgepast: toenemend volume ({vol_trend['label']}, "
-                                f"{_r_tot:.2f}x t.o.v. het half jaar ervoor)",
-                        "detail":"Het mediane volume loopt de laatste twee maanden gestaag op "
-                                 "t.o.v. de periode daarvoor. Dit is een waarneming om te "
-                                 "monitoren, geen koop- of verkoopsignaal: volume bevestigt "
-                                 "een beweging, het voorspelt er geen."})
+    # ── VOLUMETREND + OBV ─────────────────────────────────────────────────────
+    # Bewust OBSERVEREND: geeft geen punten en verandert geen oordeel. Bedoeld om
+    # volume te leren kennen voordat het meeweegt.
+    #
+    # METHODE: de conventionele volume-MA-kruising (20-daags vs 50-daags). Dat is
+    # hoe volumetoename standaard wordt gemeten en het is na te rekenen op elke
+    # chart -- belangrijker dan een technisch mooiere maar oncontroleerbare eigen
+    # constructie. Ligt de 20-MA boven de 50-MA, dan trekt het volume structureel
+    # aan t.o.v. de langere periode.
+    #
+    # RICHTING: hetzelfde volume betekent iets anders afhankelijk van de koers.
+    # Toenemend volume in een stijging is accumulatie; in een daling distributie
+    # of paniek; bij een vlakke koers wisselen stukken van eigenaar zonder winnaar.
+    vol_trend = {"rising": False, "ratio": None, "vma20": None, "vma50": None,
+                 "label": None, "direction": None, "priceChange": None, "verdict": None}
+    obv_state = {"known": False, "slope": None, "trend": None, "divergence": None}
+
+    if vol_known and len(vol_d) >= 60:
+        _vma20 = vol_d.rolling(20).mean()
+        _vma50 = vol_d.rolling(50).mean()
+        _v20, _v50 = safe_last(_vma20), safe_last(_vma50)
+        if _v20 and _v50 and _v50 > 0:
+            _ratio = _v20 / _v50
+            if _ratio >= 1.10:   # 20-MA minstens 10% boven de 50-MA
+                _c = close_d.dropna()
+                _koers_delta = None
+                if len(_c) >= 50:
+                    _c_nu   = float(_c.iloc[-20:].mean())
+                    _c_toen = float(_c.iloc[-50:-30].mean())
+                    if _c_toen > 0:
+                        _koers_delta = (_c_nu / _c_toen - 1) * 100
+                if _koers_delta is None:
+                    _richting, _oordeel = "onbekend", "richting onbekend"
+                elif _koers_delta >= 3.0:
+                    _richting, _oordeel = "bullish", "koers stijgt mee - accumulatie"
+                elif _koers_delta <= -3.0:
+                    _richting, _oordeel = "bearish", "koers daalt - distributie of paniek"
+                else:
+                    _richting, _oordeel = "neutraal", "koers blijft hangen - let op distributie"
+                vol_trend = {
+                    "rising": True,
+                    "ratio": round(_ratio, 2),
+                    "vma20": round(_v20),
+                    "vma50": round(_v50),
+                    "label": ("sterk toenemend" if _ratio >= 1.50
+                              else "toenemend" if _ratio >= 1.25
+                              else "licht toenemend"),
+                    "direction": _richting,
+                    "priceChange": round(_koers_delta, 1) if _koers_delta is not None else None,
+                    "verdict": _oordeel,
+                }
+                _icoon = {"bullish":"\U0001F4C8","bearish":"\U0001F4C9","neutraal":"\U0001F4CA"}.get(_richting,"\U0001F4CA")
+                _koersdeel = (f", koers {_koers_delta:+.1f}%" if _koers_delta is not None else "")
+                alerts.append({"type":"WATCH","cat":"VOL","tf":"1D","icon":_icoon,
+                    "title":f"Volume trekt aan - {_oordeel} (20d-MA {_ratio:.2f}x de 50d-MA{_koersdeel})",
+                    "detail":"Het 20-daags gemiddelde volume ligt boven het 50-daags gemiddelde, " +
+                             ("en de koers stijgt mee. Volume dat een opwaartse beweging begeleidt, "
+                              "maakt die geloofwaardiger." if _richting=="bullish" else
+                              "terwijl de koers daalt. Toenemend volume in een daling wijst op "
+                              "verkoopdruk, niet op een bodem." if _richting=="bearish" else
+                              "terwijl de koers nauwelijks beweegt. Veel handel zonder koersvoortgang "
+                              "kan betekenen dat grote partijen verkopen aan wie instapt.") +
+                             " Waarneming om te monitoren, geen koop- of verkoopsignaal: volume "
+                             "bevestigt een beweging, het voorspelt er geen."})
+
+    # OBV (On-Balance Volume): telt volume op bij een hogere slotkoers en trekt af
+    # bij een lagere. De LIJN zelf zegt weinig; de RICHTING wel. Stijgt de OBV
+    # terwijl de koers daalt, dan wordt er onder de oppervlakte geaccumuleerd --
+    # een klassieke bullish divergentie. Andersom idem.
+    if vol_known and len(close_d) >= 60 and len(vol_d) >= 60:
+        _diff = close_d.diff().fillna(0.0)
+        _dir = (_diff > 0).astype(float) - (_diff < 0).astype(float)
+        _obv = (_dir * vol_d.fillna(0.0)).cumsum()
+        _obv_nu   = safe_last(_obv)
+        _obv_toen = float(_obv.iloc[-40]) if len(_obv) >= 40 else None
+        if _obv_nu is not None and _obv_toen is not None:
+            # normaliseer op het gemiddelde dagvolume, zodat de helling
+            # vergelijkbaar is tussen aandelen met heel andere volumes
+            _schaal = float(vol_d.tail(40).mean()) or 1.0
+            _helling = (_obv_nu - _obv_toen) / (_schaal * 40)   # in "dagvolumes per dag"
+            _obv_op = _helling > 0.04
+            _obv_neer = _helling < -0.04
+            _c40 = close_d.dropna()
+            _koers40 = None
+            if len(_c40) >= 40:
+                _koers40 = (float(_c40.iloc[-1]) / float(_c40.iloc[-40]) - 1) * 100
+            _div = None
+            if _koers40 is not None:
+                if _obv_op and _koers40 <= -3.0:
+                    _div = "bullish"    # koers omlaag, OBV omhoog = stille accumulatie
+                elif _obv_neer and _koers40 >= 3.0:
+                    _div = "bearish"    # koers omhoog, OBV omlaag = uitholling
+            obv_state = {
+                "known": True,
+                "slope": round(_helling, 3),
+                "trend": "stijgend" if _obv_op else ("dalend" if _obv_neer else "vlak"),
+                "divergence": _div,
+            }
+            if _div == "bullish":
+                alerts.append({"type":"WATCH","cat":"OBV","tf":"1D","icon":"\U0001F50E",
+                    "title":f"OBV-divergentie (bullish): koers {_koers40:+.1f}% maar OBV stijgt",
+                    "detail":"De On-Balance Volume loopt op terwijl de koers daalt: er wordt meer "
+                             "volume verhandeld op stijgende dagen dan op dalende. Dat kan wijzen "
+                             "op accumulatie onder de oppervlakte. Waarneming, geen koopsignaal."})
+            elif _div == "bearish":
+                alerts.append({"type":"WATCH","cat":"OBV","tf":"1D","icon":"\U0001F50E",
+                    "title":f"OBV-divergentie (bearish): koers {_koers40:+.1f}% maar OBV daalt",
+                    "detail":"De On-Balance Volume daalt terwijl de koers stijgt: de stijging wordt "
+                             "gedragen door steeds minder volume. Dat kan wijzen op uitholling. "
+                             "Waarneming, geen verkoopsignaal."})
 
     # Laatste waarden met guards
     last_rsi_d  = safe_last(rsi_d, 50.0)
@@ -2505,7 +2577,7 @@ def generate_signals(name: str, daily: pd.DataFrame, weekly: pd.DataFrame,
             "macdSigW": round(last_macd_ws, 4) if last_macd_ws is not None else None,
             "bollUpper": round(last_bb_u, 2), "bollLower": round(last_bb_l, 2),
             "volRatio": round(vol_ratio, 2), "volKnown": vol_known, "highVolume": high_volume, "volNote": vol_note.strip(),
-            "volTrend": vol_trend,
+            "volTrend": vol_trend, "obv": obv_state,
             "fib": fib, "isFriday": IS_FRIDAY, "hasWeekly": has_weekly,
             "divergence": divergence,
         },
@@ -4216,7 +4288,7 @@ def main():
             "generatedAt": NOW.isoformat(),
             "generatedAtHuman": NOW.strftime("%A %d %B %Y om %H:%M"),
             "isFriday": IS_FRIDAY, "isWeekend": IS_WEEKEND,
-            "version": "6.5-volumetrend-observerend",
+            "version": "6.8-volume-ma-obv",
             "fundamentalsNote": "Fundamentals handmatig bijgehouden — controleer bij elk kwartaalrapport.",
         },
         "stocks": {}, "errors": [],
