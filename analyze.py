@@ -1422,6 +1422,45 @@ def generate_signals(name: str, daily: pd.DataFrame, weekly: pd.DataFrame,
         vol_known = False
     high_volume = vol_known and vol_ratio > 1.5
 
+    # ── VOLUMETREND: neemt het volume GELEIDELIJK toe? ────────────────────────
+    # Bewust OBSERVEREND: dit geeft geen punten en verandert geen oordeel. Het is
+    # een waarnemingssignaal om volume te leren kennen voordat het meeweegt.
+    # Waarom niet gewoon vol_ratio: dat is EEN dag versus het gemiddelde -- een
+    # incidentele piek. Een geleidelijke opbouw is iets anders: de laatste ~2 weken
+    # liggen structureel hoger dan de 2 weken daarvoor, en die weer hoger dan de
+    # periode ervoor. Dat is het patroon dat op accumulatie kan wijzen.
+    vol_trend = {"rising": False, "ratio": None, "steps": None, "label": None}
+    if vol_known and len(vol_d) >= 120:
+        _v = vol_d.dropna()
+        if len(_v) >= 120:
+            # MEDIAAN i.p.v. gemiddelde: een geleidelijke opbouw moet BREED gedragen
+            # zijn. Met het gemiddelde laten drie extreme dagen de hele meting
+            # kantelen, waardoor een eenmalige piek als "trend" zou tellen.
+            _recent = float(_v.iloc[-20:].median())      # laatste maand
+            _midden = float(_v.iloc[-40:-20].median())   # maand daarvoor
+            _basis  = float(_v.iloc[-120:-40].median())  # ~4 maanden ervoor
+            if _basis > 0 and _midden > 0:
+                _r_tot = _recent / _basis
+                # Geleidelijk = elke stap hoger EN de totale toename substantieel.
+                _oplopend = _recent > _midden > _basis
+                _fors     = _r_tot >= 1.20
+                if _oplopend and _fors:
+                    vol_trend = {
+                        "rising": True,
+                        "ratio": round(_r_tot, 2),
+                        "steps": [round(_basis), round(_midden), round(_recent)],
+                        "label": ("sterk toenemend" if _r_tot >= 1.60
+                                  else "toenemend" if _r_tot >= 1.35
+                                  else "licht toenemend"),
+                    }
+                    alerts.append({"type":"WATCH","cat":"VOL","tf":"1D","icon":"📊",
+                        "title":f"Opgepast: toenemend volume ({vol_trend['label']}, "
+                                f"{_r_tot:.2f}x t.o.v. het half jaar ervoor)",
+                        "detail":"Het mediane volume loopt de laatste twee maanden gestaag op "
+                                 "t.o.v. de periode daarvoor. Dit is een waarneming om te "
+                                 "monitoren, geen koop- of verkoopsignaal: volume bevestigt "
+                                 "een beweging, het voorspelt er geen."})
+
     # Laatste waarden met guards
     last_rsi_d  = safe_last(rsi_d, 50.0)
     last_ema8d  = safe_last(ema8_d, last)
@@ -2466,6 +2505,7 @@ def generate_signals(name: str, daily: pd.DataFrame, weekly: pd.DataFrame,
             "macdSigW": round(last_macd_ws, 4) if last_macd_ws is not None else None,
             "bollUpper": round(last_bb_u, 2), "bollLower": round(last_bb_l, 2),
             "volRatio": round(vol_ratio, 2), "volKnown": vol_known, "highVolume": high_volume, "volNote": vol_note.strip(),
+            "volTrend": vol_trend,
             "fib": fib, "isFriday": IS_FRIDAY, "hasWeekly": has_weekly,
             "divergence": divergence,
         },
@@ -4176,7 +4216,7 @@ def main():
             "generatedAt": NOW.isoformat(),
             "generatedAtHuman": NOW.strftime("%A %d %B %Y om %H:%M"),
             "isFriday": IS_FRIDAY, "isWeekend": IS_WEEKEND,
-            "version": "6.4-pegcurve-datagedreven",
+            "version": "6.5-volumetrend-observerend",
             "fundamentalsNote": "Fundamentals handmatig bijgehouden — controleer bij elk kwartaalrapport.",
         },
         "stocks": {}, "errors": [],
