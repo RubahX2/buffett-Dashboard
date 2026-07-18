@@ -803,7 +803,7 @@ def calc_fibonacci(swing_low: float, swing_high: float,
     retr = {lbl: _logretr(pct) for lbl, pct in
             [("0.000",0.000),("0.236",0.236),("0.382",0.382),("0.500",0.500),
              ("0.618",0.618),("0.705",0.705),("0.786",0.786),("0.886",0.886),("1.000",1.000),
-             ("1.272",1.272),("1.618",1.618)]}
+             ("1.272",1.272),("1.414",1.414),("1.618",1.618)]}
     gp_low  = _logretr(0.705)   # dieper (lagere prijs)
     gp_high = _logretr(0.618)   # ondieper (hogere prijs)
 
@@ -2557,20 +2557,54 @@ def compute_valuation(name: str, daily: pd.DataFrame, fund: dict, hist_pe_fmp=No
         out["pegNormalized"] = round(current_pe / norm_growth, 2)
         out["normalizedGrowth"] = norm_growth
 
-    if current_pe and name in CYCLICAL_TICKERS:
-        g_now = fund.get("revenueGrowth")
+    # ── PEG-CURVE: wanneer is 'wat als de groei normaliseert?' informatief? ──
+    # Niet elk aandeel heeft er iets aan. Bij een stabiele groeier (MSFT: al jaren
+    # 15-18%) voegt "wat als 15%" niets toe -- dat IS de groei. De curve is nuttig
+    # zodra de HUIDIGE groei sterk AFWIJKT van wat voor dit bedrijf normaal is:
+    # piekgroei die gaat normaliseren (MU in de cyclustop), of juist een dip die
+    # kan herstellen. Dat is meetbaar via de mediane winstgroei uit earningsHistory,
+    # dus we bepalen het per aandeel op data i.p.v. via een handmatige tickerlijst.
+    # CYCLICAL_TICKERS blijft als vangnet voor aandelen zonder winsthistorie.
+    _g_now = fund.get("revenueGrowth")
+    _toon_curve = name in CYCLICAL_TICKERS
+    _curve_reden = "cyclisch (handmatig gemarkeerd)" if _toon_curve else None
+    _mediaan_groei = None
+    if isinstance(_g_now, (int, float)) and _g_now > 0:
+        _eg = compute_earnings_growth(fund) or {}
+        _mediaan_groei = _eg.get("medianGrowth")
+        if isinstance(_mediaan_groei, (int, float)) and _mediaan_groei > 0:
+            _ratio = _g_now / _mediaan_groei
+            # Ondergrens: bij lage groeicijfers is de VERHOUDING betekenisloos.
+            # 1% -> 6% is rekenkundig 6x, maar inhoudelijk geen piekgroei. We eisen
+            # daarom dat minstens een van beide zijden substantieel is (>=12%),
+            # anders is er niets zinvols te normaliseren.
+            _substantieel = max(_g_now, _mediaan_groei) >= 12
+            if _substantieel and _ratio >= 1.6:
+                _toon_curve = True
+                _curve_reden = (f"huidige groei {_g_now:.0f}% ligt ver boven de mediane "
+                                f"winstgroei van {_mediaan_groei:.0f}% - mogelijk tijdelijk")
+            elif _substantieel and _ratio <= 0.6:
+                _toon_curve = True
+                _curve_reden = (f"huidige groei {_g_now:.0f}% ligt ver onder de mediane "
+                                f"winstgroei van {_mediaan_groei:.0f}% - mogelijk een dip")
+
+    if current_pe and _toon_curve:
+        g_now = _g_now
         g_prev = fund.get("revenueGrowthPrev")
         # Bouw een reeks betekenisvolle groei-ankers: huidige groei, vorig jaar,
-        # en vaste referenties (30/15/10%) die een normalere cyclus representeren.
+        # de historische mediaan (als die er is) en vaste referenties (30/15/10%).
         # Dubbele en niet-positieve waarden eruit; oplopend gesorteerd.
         ankers = []
-        for g in [g_now, g_prev, 30, 15, 10]:
+        for g in [g_now, g_prev, _mediaan_groei, 30, 15, 10]:
             if isinstance(g, (int, float)) and g > 0:
                 ankers.append(round(float(g), 1))
         ankers = sorted(set(ankers))
         reeks = [{"growth": g, "peg": round(current_pe / g, 2)} for g in ankers]
         out["pegCurve"] = reeks
         out["isCyclical"] = True
+        out["pegCurveReason"] = _curve_reden
+        if isinstance(_mediaan_groei, (int, float)) and _mediaan_groei > 0:
+            out["medianGrowthRef"] = _mediaan_groei
         # markeer of de HUIDIGE groei ver boven een normalere ~15% ligt (pieksignaal)
         if isinstance(g_now, (int, float)) and g_now > 30:
             out["peakGrowthFlag"] = True
@@ -4142,7 +4176,7 @@ def main():
             "generatedAt": NOW.isoformat(),
             "generatedAtHuman": NOW.strftime("%A %d %B %Y om %H:%M"),
             "isFriday": IS_FRIDAY, "isWeekend": IS_WEEKEND,
-            "version": "6.2-top3-visa-macdkrul-fibkleuren",
+            "version": "6.4-pegcurve-datagedreven",
             "fundamentalsNote": "Fundamentals handmatig bijgehouden — controleer bij elk kwartaalrapport.",
         },
         "stocks": {}, "errors": [],
