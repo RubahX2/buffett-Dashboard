@@ -270,9 +270,17 @@ function ValuationPanel({ valuation, fund }) {
           {v.isCyclical && Array.isArray(v.pegCurve) && v.pegCurve.length > 1 && (
             <div style={{marginTop:8,paddingTop:8,borderTop:`1px solid ${C.border}`}}>
               <div style={{color:C.textDim,fontSize:10,marginBottom:6,lineHeight:1.4}}>
-                <b style={{color:C.orange}}>Cyclisch aandeel</b> — de PEG hangt sterk af van de groei,
-                en die schommelt door de cyclus. Bekijk de PEG bij verschillende groeivoeten en
-                oordeel zelf welke representatief is:
+                <b style={{color:C.orange}}>
+                  {v.pegCurveReason && v.pegCurveReason.indexOf("cyclisch")===0 ? "Cyclisch aandeel"
+                    : v.pegCurveReason && v.pegCurveReason.indexOf("boven")>=0 ? "Groei ligt boven het historische patroon"
+                    : v.pegCurveReason && v.pegCurveReason.indexOf("onder")>=0 ? "Groei ligt onder het historische patroon"
+                    : "Groei wijkt af van het patroon"}
+                </b>
+                {v.pegCurveReason && v.pegCurveReason.indexOf("cyclisch")!==0 && (
+                  <span> — {v.pegCurveReason}.</span>
+                )}
+                {" "}De PEG hangt sterk af van welke groei je aanneemt. Bekijk de PEG bij
+                verschillende groeivoeten en oordeel zelf welke representatief is:
               </div>
               <div style={{display:"flex",flexDirection:"column",gap:2}}>
                 {v.pegCurve.map((pt,i)=>{
@@ -1010,17 +1018,21 @@ function FibLevelRows({ entries, currentPrice, cur, accent }) {
   // je chart. De golden pocket (0.618/0.705) is geel, de kern-extensie 1.618 blauw,
   // de verre 2.618/3.618 rood/groen. Ruben herkent de zones zo in een oogopslag.
   const fibColor = (label)=>{
-    const l = String(label);
+    // Match op de NUMERIEKE waarde, niet op de tekst: de backend levert "0.500"
+    // en "1.000", dus een vergelijking met "0.5" zou nooit raken.
+    const v = parseFloat(label);
+    if (!isFinite(v)) return null;
+    const is = (x)=>Math.abs(v-x) < 0.0005;
     // Rubens kleurschema, zodat de niveaus hier hetzelfde ogen als op zijn chart.
-    if (l==="0.000"||l==="0.0"||l==="0"||l==="1.000"||l==="1.0"||l==="1") return "#8a8f98"; // grijs (swing-uiteinden)
-    if (l==="0.236"||l==="0.382"||l==="1.272") return "#e8eaed";  // wit
-    if (l==="0.5"||l==="1.414") return "#e0533d";                  // rood
-    if (l==="0.786") return "#6fb7e8";                             // lichtblauw
-    if (l==="1.618") return "#3d7ee0";                             // blauw (kern-TP)
-    if (l==="0.618"||l==="0.65"||l==="0.68"||l==="0.705"||l==="0.71") return "#e5c100"; // geel (golden pocket)
-    if (l==="0.886"||l==="1.818") return "#3fae6b";                // groen
-    if (l==="2.618") return "#e0533d";                             // rood (verre extensie)
-    if (l==="3.618") return "#a855c9";                             // paars
+    if (is(0) || is(1)) return "#8a8f98";                       // grijs (swing-uiteinden)
+    if (is(0.236) || is(0.382) || is(1.272)) return "#e8eaed";  // wit
+    if (is(0.5) || is(1.414)) return "#e0533d";                 // rood
+    if (is(0.786)) return "#6fb7e8";                            // lichtblauw
+    if (is(1.618)) return "#3d7ee0";                            // blauw (kern-TP)
+    if (is(0.618) || is(0.65) || is(0.68) || is(0.705) || is(0.71)) return "#e5c100"; // geel (golden pocket)
+    if (is(0.886) || is(1.818)) return "#3fae6b";               // groen
+    if (is(2.618)) return "#e0533d";                            // rood (verre extensie)
+    if (is(3.618)) return "#a855c9";                            // paars
     return null;
   };
   return entries.map((f,i)=>{
