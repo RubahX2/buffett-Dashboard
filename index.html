@@ -50,6 +50,12 @@ const FALLBACK_FUND = {
   BNGO:  { pe:null, roe:-85.0,fcfYield:-40.0,debtEquity:0.40,netMargin:-180.0,divYield:0,   revenueGrowth:15.0,  eps:-2.50, mktCap:"$0.05B",beta:3.20 },
 };
 
+// Versie van DEZE index.html. Staat los van meta.version (dat is de versie van
+// signals.json, dus van de backend). Zonder eigen stempel kun je een verouderde
+// frontend bekijken terwijl de backend-versie nieuw lijkt -- dan ontbreken
+// UI-secties zonder zichtbare oorzaak.
+const UI_VERSION = "6.8";
+
 const STOCK_NAMES = {
   WM:"Waste Management", PLTR:"Palantir", CAT:"Caterpillar",
   ASML:"ASML Holding", ASMI:"ASM International", MU:"Micron Technology",
@@ -2049,7 +2055,8 @@ function App() {
           {loadState==="ok"&&(
             <span style={{color:C.green}}>
               ✓ Laatste update: {meta.generatedAtHuman||"onbekend"}
-              {meta.version&&<span style={{color:C.muted}}> · v{meta.version}</span>}
+              {meta.version&&<span style={{color:C.muted}}> · data v{meta.version}</span>}
+              <span style={{color:C.muted}}> · ui v{UI_VERSION}</span>
               {meta.isFriday&&" · 📅 Vrijdag: weekly signalen geëvalueerd"}
             </span>
           )}
@@ -2579,40 +2586,123 @@ function App() {
 
                 {(()=>{
                   const vt = (t)=>(stocks[t]?.indicators||{}).volTrend;
-                  const vol = TICKER_ORDER.filter(t=>vt(t)?.rising)
+                  const alle = TICKER_ORDER.filter(t=>vt(t)?.rising)
                     .sort((a,b)=>(vt(b).ratio||0)-(vt(a).ratio||0));
+                  const groepen = [
+                    {k:"bullish",  titel:"📈 Volume stijgt mét de koers", kleur:C.teal,
+                     uitleg:"Accumulatie: kopers stappen in. Volume maakt de opwaartse beweging geloofwaardiger."},
+                    {k:"neutraal", titel:"📊 Volume stijgt, koers hangt", kleur:C.orange,
+                     uitleg:"Let op distributie: veel handel zonder koersvoortgang kan betekenen dat grote partijen verkopen aan wie instapt."},
+                    {k:"bearish",  titel:"📉 Volume stijgt in een daling", kleur:C.red,
+                     uitleg:"Verkoopdruk of paniek. Toenemend volume in een daling is geen bodemsignaal."},
+                  ];
                   return (
                     <div style={{marginTop:24,paddingTop:16,borderTop:`1px solid ${C.border}`}}>
                       <div style={{color:"#7dd3fc",fontSize:13,fontWeight:700,marginBottom:6}}>
-                        📊 Toenemend volume ({vol.length})
+                        Toenemend volume ({alle.length})
                       </div>
-                      <div style={{color:C.textDim,fontSize:11,lineHeight:1.6,maxWidth:640,marginBottom:10}}>
-                        Aandelen waar het <b style={{color:C.text}}>mediane volume geleidelijk oploopt</b> —
-                        de laatste twee maanden structureel hoger dan het half jaar ervoor. Dit telt
-                        <b style={{color:C.text}}> niet mee</b> in enige score: het is een waarneming om te
-                        monitoren. Volume bevestigt een beweging, het voorspelt er geen.
+                      <div style={{color:C.textDim,fontSize:11,lineHeight:1.6,maxWidth:660,marginBottom:14}}>
+                        Aandelen waar het <b style={{color:C.text}}>20-daags gemiddelde volume boven het
+                        50-daags gemiddelde</b> ligt — de standaardmaat voor structureel aantrekkend volume,
+                        na te rekenen op elke chart. Wat het betékent hangt af van de koers, dus ze staan
+                        hieronder gesplitst. Dit telt <b style={{color:C.text}}>niet mee</b> in enige score:
+                        volume bevestigt een beweging, het voorspelt er geen.
                       </div>
-                      {vol.length ? (
-                        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(240px,1fr))",gap:8}}>
-                          {vol.map(t=>{
-                            const v=vt(t), d=stocks[t];
-                            return (
-                              <div key={t} onClick={()=>setSelected(t)}
-                                style={{background:C.panel,borderRadius:8,padding:"11px",cursor:"pointer",
-                                  border:`1px solid ${C.border}`,borderLeft:"3px solid #7dd3fc"}}>
-                                <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline"}}>
-                                  <span style={{color:C.accent,fontWeight:700,fontSize:14}}>{t}</span>
-                                  <span style={{color:"#7dd3fc",fontSize:13,fontWeight:800}}>{v.ratio}×</span>
-                                </div>
-                                <div style={{color:C.textDim,fontSize:10,marginBottom:5}}>{STOCK_NAMES[t]}</div>
-                                <div style={{color:C.muted,fontSize:10,borderTop:`1px solid ${C.border}`,paddingTop:5}}>
-                                  {v.label} · {d?.overall||""}
-                                </div>
-                              </div>
-                            );
-                          })}
+                      {alle.length===0 && <div style={{color:C.textDim,fontSize:12}}>Geen aandeel met duidelijk aantrekkend volume.</div>}
+                      {groepen.map(g=>{
+                        const lijst = alle.filter(t=>vt(t).direction===g.k);
+                        if(!lijst.length) return null;
+                        return (
+                          <div key={g.k} style={{marginBottom:16}}>
+                            <div style={{color:g.kleur,fontSize:12,fontWeight:700,marginBottom:3}}>
+                              {g.titel} ({lijst.length})
+                            </div>
+                            <div style={{color:C.muted,fontSize:10,marginBottom:8,maxWidth:620,lineHeight:1.5}}>{g.uitleg}</div>
+                            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(240px,1fr))",gap:8}}>
+                              {lijst.map(t=>{
+                                const v=vt(t), d=stocks[t];
+                                return (
+                                  <div key={t} onClick={()=>setSelected(t)}
+                                    style={{background:C.panel,borderRadius:8,padding:"11px",cursor:"pointer",
+                                      border:`1px solid ${C.border}`,borderLeft:`3px solid ${g.kleur}`}}>
+                                    <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline"}}>
+                                      <span style={{color:C.accent,fontWeight:700,fontSize:14}}>{t}</span>
+                                      <span style={{color:g.kleur,fontSize:13,fontWeight:800}}>{v.ratio}×</span>
+                                    </div>
+                                    <div style={{color:C.textDim,fontSize:10,marginBottom:5}}>{STOCK_NAMES[t]}</div>
+                                    <div style={{color:C.muted,fontSize:10,borderTop:`1px solid ${C.border}`,paddingTop:5,
+                                      display:"flex",justifyContent:"space-between"}}>
+                                      <span>{v.label}</span>
+                                      {v.priceChange!=null&&<span style={{color:g.kleur}}>koers {v.priceChange>0?"+":""}{v.priceChange}%</span>}
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })()}
+
+                {(()=>{
+                  const ob = (t)=>(stocks[t]?.indicators||{}).obv;
+                  const bull = TICKER_ORDER.filter(t=>ob(t)?.divergence==="bullish");
+                  const bear = TICKER_ORDER.filter(t=>ob(t)?.divergence==="bearish");
+                  if(!bull.length && !bear.length) return null;
+                  const Kaart = (t,kleur)=>{
+                    const o=ob(t);
+                    return (
+                      <div key={t} onClick={()=>setSelected(t)}
+                        style={{background:C.panel,borderRadius:8,padding:"11px",cursor:"pointer",
+                          border:`1px solid ${C.border}`,borderLeft:`3px solid ${kleur}`}}>
+                        <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline"}}>
+                          <span style={{color:C.accent,fontWeight:700,fontSize:14}}>{t}</span>
+                          <span style={{color:kleur,fontSize:11,fontWeight:700}}>OBV {o.trend}</span>
                         </div>
-                      ) : <div style={{color:C.textDim,fontSize:12}}>Geen aandeel met duidelijk oplopend volume.</div>}
+                        <div style={{color:C.textDim,fontSize:10}}>{STOCK_NAMES[t]}</div>
+                      </div>
+                    );
+                  };
+                  return (
+                    <div style={{marginTop:24,paddingTop:16,borderTop:`1px solid ${C.border}`}}>
+                      <div style={{color:"#7dd3fc",fontSize:13,fontWeight:700,marginBottom:6}}>
+                        On-Balance Volume ({bull.length+bear.length})
+                      </div>
+                      <div style={{color:C.textDim,fontSize:11,lineHeight:1.6,maxWidth:660,marginBottom:14}}>
+                        OBV telt volume op bij een hogere slotkoers en trekt het af bij een lagere. De lijn
+                        zelf zegt weinig, de <b style={{color:C.text}}>richting t.o.v. de koers</b> wel. Loopt
+                        de OBV een andere kant op dan de koers, dan verschuift er volume onder de oppervlakte.
+                        Ook dit telt <b style={{color:C.text}}>niet mee</b> in enige score.
+                      </div>
+                      {bull.length>0&&(
+                        <div style={{marginBottom:16}}>
+                          <div style={{color:C.teal,fontSize:12,fontWeight:700,marginBottom:3}}>
+                            Bullish divergentie ({bull.length})
+                          </div>
+                          <div style={{color:C.muted,fontSize:10,marginBottom:8,maxWidth:620,lineHeight:1.5}}>
+                            Koers daalt maar OBV stijgt: er gaat meer volume om op stijgende dagen. Kan op
+                            stille accumulatie wijzen.
+                          </div>
+                          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(240px,1fr))",gap:8}}>
+                            {bull.map(t=>Kaart(t,C.teal))}
+                          </div>
+                        </div>
+                      )}
+                      {bear.length>0&&(
+                        <div>
+                          <div style={{color:C.red,fontSize:12,fontWeight:700,marginBottom:3}}>
+                            Bearish divergentie ({bear.length})
+                          </div>
+                          <div style={{color:C.muted,fontSize:10,marginBottom:8,maxWidth:620,lineHeight:1.5}}>
+                            Koers stijgt maar OBV daalt: de stijging wordt door steeds minder volume gedragen.
+                          </div>
+                          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(240px,1fr))",gap:8}}>
+                            {bear.map(t=>Kaart(t,C.red))}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   );
                 })()}
