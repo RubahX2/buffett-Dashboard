@@ -2,7 +2,7 @@
   "_meta": {
     "created": "2026-07-02T21:21:34",
     "note": "Schone start \u2014 demo-data verwijderd 2026-07-02",
-    "lastUpdate": "2026-07-20T12:25:59.085196+02:00"
+    "lastUpdate": "2026-07-20T12:38:15.782886+02:00"
   },
   "stocks": {
     "WM": [
@@ -770,8 +770,8 @@
       },
       {
         "date": "2026-07-20",
-        "price": 1541.4,
-        "rsiDaily": 48.5,
+        "price": 1541.2,
+        "rsiDaily": 48.4,
         "rsiWeekly": 64.8,
         "overall": "CAUTION (overextended)",
         "composite": 56,
@@ -964,7 +964,7 @@
       },
       {
         "date": "2026-07-20",
-        "price": 864.0,
+        "price": 863.6,
         "rsiDaily": 40.3,
         "rsiWeekly": 55.0,
         "overall": "KOOP",
@@ -3656,8 +3656,8 @@
       },
       {
         "date": "2026-07-20",
-        "price": 20280.0,
-        "rsiDaily": 47.1,
+        "price": 20270.0,
+        "rsiDaily": 47.0,
         "rsiWeekly": 56.0,
         "overall": "STERK VERKOOP",
         "composite": 49,
@@ -4336,8 +4336,8 @@
       },
       {
         "date": "2026-07-20",
-        "price": 3599.36,
-        "rsiDaily": 55.8,
+        "price": 3598.33,
+        "rsiDaily": 55.7,
         "rsiWeekly": 60.9,
         "overall": "STERK KOOP",
         "composite": 62,
@@ -4846,8 +4846,8 @@
       },
       {
         "date": "2026-07-20",
-        "price": 2560.0,
-        "rsiDaily": 53.6,
+        "price": 2563.0,
+        "rsiDaily": 53.9,
         "rsiWeekly": 45.4,
         "overall": "VERKOOP",
         "composite": 70,
@@ -6340,12 +6340,12 @@
       },
       {
         "date": "2026-07-20",
-        "price": 177.7,
-        "rsiDaily": 58.7,
+        "price": 179.65,
+        "rsiDaily": 61.0,
         "rsiWeekly": 53.2,
         "overall": "LICHT VERKOOP",
-        "composite": 54,
-        "timing": 50,
+        "composite": 50,
+        "timing": 42,
         "qualityGate": true,
         "valuationVerdict": "Neutraal (PEG 1.5\u20132.5)",
         "valuationColor": "neutral"
@@ -6680,12 +6680,12 @@
       },
       {
         "date": "2026-07-20",
-        "price": 193.14,
-        "rsiDaily": 50.3,
+        "price": 192.94,
+        "rsiDaily": 50.0,
         "rsiWeekly": 56.7,
         "overall": "STERK VERKOOP",
-        "composite": 41,
-        "timing": 43,
+        "composite": 42,
+        "timing": 45,
         "qualityGate": false,
         "valuationVerdict": "Duur (PEG > 3.5)",
         "valuationColor": "red"
@@ -6850,8 +6850,8 @@
       },
       {
         "date": "2026-07-20",
-        "price": 13.43,
-        "rsiDaily": 40.3,
+        "price": 13.44,
+        "rsiDaily": 40.4,
         "rsiWeekly": 52.4,
         "overall": "KOOP",
         "composite": 32,
@@ -12606,8 +12606,8 @@
       },
       {
         "date": "2026-07-20",
-        "price": 73.08,
-        "rsiDaily": 42.7,
+        "price": 73.16,
+        "rsiDaily": 43.0,
         "rsiWeekly": 35.4,
         "overall": "VERKOOP",
         "composite": 32,
@@ -12878,12 +12878,12 @@
       },
       {
         "date": "2026-07-20",
-        "price": 491.05,
-        "rsiDaily": 50.1,
+        "price": 490.8,
+        "rsiDaily": 49.9,
         "rsiWeekly": 48.6,
         "overall": "STERK VERKOOP",
-        "composite": 27,
-        "timing": 17,
+        "composite": 28,
+        "timing": 19,
         "qualityGate": true,
         "valuationVerdict": "Duur (PEG > 3.5)",
         "valuationColor": "red"

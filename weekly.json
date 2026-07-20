@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-20T12:25:59.085196+02:00",
-  "generatedAtHuman": "Monday 20 July 2026 om 12:25",
+  "generatedAt": "2026-07-20T12:38:15.782886+02:00",
+  "generatedAtHuman": "Monday 20 July 2026 om 12:38",
   "periodLabel": "sinds ~1 week geleden",
   "changes": [
     {
@@ -546,6 +546,22 @@
       ]
     },
     {
+      "ticker": "DIE",
+      "daysAgo": 7,
+      "changes": [
+        {
+          "type": "composite",
+          "dir": "down",
+          "text": "Composiet 56 \u2193 50"
+        },
+        {
+          "type": "signal",
+          "dir": "neutral",
+          "text": "Signaal: VERKOOP \u2192 LICHT VERKOOP"
+        }
+      ]
+    },
+    {
       "ticker": "DIS",
       "daysAgo": 7,
       "changes": [
@@ -806,17 +822,6 @@
           "type": "signal",
           "dir": "up",
           "text": "Signaal: CAUTION (overextended) \u2192 VERKOOP"
-        }
-      ]
-    },
-    {
-      "ticker": "DIE",
-      "daysAgo": 7,
-      "changes": [
-        {
-          "type": "signal",
-          "dir": "neutral",
-          "text": "Signaal: VERKOOP \u2192 LICHT VERKOOP"
         }
       ]
     },
