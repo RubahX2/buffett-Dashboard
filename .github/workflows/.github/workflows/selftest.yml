@@ -1,0 +1,31 @@
+# Selftest: draait automatisch bij elke wijziging aan analyze.py of selftest.py,
+# en is ook handmatig te starten via Actions -> Selftest -> Run workflow.
+# Groen vinkje = de code doorstaat alle invarianten-checks (84 aandelen, geen
+# errors, idempotent, alle kernvelden aanwezig) VOOR de echte dagelijkse run draait.
+#
+# UPLOADEN: dit bestand moet naar .github/workflows/selftest.yml
+#   GitHub -> Add file -> Create new file -> typ als naam:
+#   .github/workflows/selftest.yml
+#   en plak deze inhoud erin. (Mappen maak je door ze in de bestandsnaam te typen.)
+name: Selftest
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "analyze.py"
+      - "selftest.py"
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Dependencies
+        run: pip install pandas numpy
+      - name: Run selftest
+        run: python selftest.py
