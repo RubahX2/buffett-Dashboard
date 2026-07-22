@@ -1,7 +1,7 @@
 {
   "_meta": {
     "created": "2026-07-02T21:36:20.214972+02:00",
-    "lastUpdate": "2026-07-21T14:48:08.845274+02:00"
+    "lastUpdate": "2026-07-22T15:06:55.660145+02:00"
   },
   "records": {
     "monthly_pick:MU:2026-07-02": {
@@ -1352,8 +1352,16 @@
         "composite": 80,
         "timing": 39
       },
-      "outcomes": {},
-      "episodeDays": 26
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-21",
+          "exitPrice": 970.82,
+          "return": -3.61,
+          "relativeReturn": -3.69,
+          "success": false
+        }
+      },
+      "episodeDays": 27
     },
     "caution:GOOGL:2026-07-14": {
       "ticker": "GOOGL",
@@ -1368,7 +1376,15 @@
         "composite": 58,
         "timing": 38
       },
-      "outcomes": {},
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-21",
+          "exitPrice": 347.15,
+          "return": 1.52,
+          "relativeReturn": 1.44,
+          "success": true
+        }
+      },
       "episodeDays": 9
     },
     "caution:RKLB:2026-07-14": {
@@ -1384,7 +1400,15 @@
         "composite": 40,
         "timing": 32
       },
-      "outcomes": {},
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-21",
+          "exitPrice": 69.12,
+          "return": 9.92,
+          "relativeReturn": 9.84,
+          "success": true
+        }
+      },
       "episodeDays": 9
     },
     "caution:GAW:2026-07-14": {
@@ -1424,7 +1448,15 @@
         "composite": 56,
         "timing": 17
       },
-      "outcomes": {},
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-21",
+          "exitPrice": 397.75,
+          "return": -1.73,
+          "relativeReturn": -1.81,
+          "success": false
+        }
+      },
       "episodeDays": 6
     },
     "caution:BLK:2026-07-14": {
@@ -1440,7 +1472,15 @@
         "composite": 60,
         "timing": 37
       },
-      "outcomes": {},
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-21",
+          "exitPrice": 1038.24,
+          "return": -0.65,
+          "relativeReturn": -0.73,
+          "success": false
+        }
+      },
       "episodeDays": 6
     },
     "caution:FANUC:2026-07-14": {
@@ -1504,7 +1544,15 @@
         "composite": 46,
         "timing": 34
       },
-      "outcomes": {},
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-21",
+          "exitPrice": 374.04,
+          "return": -9.65,
+          "relativeReturn": -9.74,
+          "success": false
+        }
+      },
       "episodeDays": 4
     },
     "strong_signal:ANET:2026-07-14": {
@@ -1520,7 +1568,15 @@
         "composite": 64,
         "timing": 37
       },
-      "outcomes": {},
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-21",
+          "exitPrice": 174.58,
+          "return": -3.63,
+          "relativeReturn": -3.55,
+          "success": false
+        }
+      },
       "episodeDays": 13
     },
     "strong_signal:ODFL:2026-07-14": {
@@ -1536,8 +1592,16 @@
         "composite": 43,
         "timing": 42
       },
-      "outcomes": {},
-      "episodeDays": 23
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-21",
+          "exitPrice": 234.79,
+          "return": 0.81,
+          "relativeReturn": 0.89,
+          "success": true
+        }
+      },
+      "episodeDays": 24
     },
     "caution:PL:2026-07-14": {
       "ticker": "PL",
@@ -1552,7 +1616,15 @@
         "composite": 46,
         "timing": 42
       },
-      "outcomes": {},
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-21",
+          "exitPrice": 23.1,
+          "return": 11.02,
+          "relativeReturn": 10.94,
+          "success": true
+        }
+      },
       "episodeDays": 16
     },
     "strong_signal:ARCG:2026-07-14": {
@@ -1568,7 +1640,15 @@
         "composite": null,
         "timing": 41
       },
-      "outcomes": {},
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-21",
+          "exitPrice": 39.56,
+          "return": -2.54,
+          "relativeReturn": -2.46,
+          "success": false
+        }
+      },
       "episodeDays": 17
     },
     "strong_signal:AIR:2026-07-14": {
@@ -1608,7 +1688,15 @@
         "composite": 52,
         "timing": 47
       },
-      "outcomes": {},
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-21",
+          "exitPrice": 464.82,
+          "return": 0.97,
+          "relativeReturn": 0.58,
+          "success": true
+        }
+      },
       "episodeDays": 1
     },
     "caution:ODFL:2026-07-14": {
@@ -1624,7 +1712,15 @@
         "composite": 45,
         "timing": 46
       },
-      "outcomes": {},
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-21",
+          "exitPrice": 234.79,
+          "return": -1.54,
+          "relativeReturn": -1.93,
+          "success": false
+        }
+      },
       "episodeDays": 2
     },
     "caution:DDOG:2026-07-14": {
@@ -1640,7 +1736,15 @@
         "composite": 30,
         "timing": 29
       },
-      "outcomes": {},
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-21",
+          "exitPrice": 254.79,
+          "return": 4.25,
+          "relativeReturn": 3.87,
+          "success": true
+        }
+      },
       "episodeDays": 6
     },
     "caution:NABTESCO:2026-07-14": {
@@ -1728,8 +1832,16 @@
         "composite": 35,
         "timing": 17
       },
-      "outcomes": {},
-      "episodeDays": 8
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-21",
+          "exitPrice": 29.64,
+          "return": 2.08,
+          "relativeReturn": 1.59,
+          "success": true
+        }
+      },
+      "episodeDays": 9
     },
     "strong_signal:ASML:2026-07-15": {
       "ticker": "ASML",
@@ -1744,7 +1856,15 @@
         "composite": 62,
         "timing": 50
       },
-      "outcomes": {},
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-22",
+          "exitPrice": 1546.0,
+          "return": 0.34,
+          "relativeReturn": null,
+          "success": true
+        }
+      },
       "episodeDays": 7
     },
     "strong_signal:ASMI:2026-07-15": {
@@ -1760,7 +1880,15 @@
         "composite": 59,
         "timing": 46
       },
-      "outcomes": {},
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-22",
+          "exitPrice": 883.0,
+          "return": -0.74,
+          "relativeReturn": null,
+          "success": false
+        }
+      },
       "episodeDays": 17
     },
     "strong_signal:MU:2026-07-15": {
@@ -1793,7 +1921,7 @@
         "timing": 49
       },
       "outcomes": {},
-      "episodeDays": 20
+      "episodeDays": 21
     },
     "strong_signal:RKLB:2026-07-15": {
       "ticker": "RKLB",
@@ -1809,7 +1937,7 @@
         "timing": 45
       },
       "outcomes": {},
-      "episodeDays": 10
+      "episodeDays": 11
     },
     "strong_signal:GAW:2026-07-15": {
       "ticker": "GAW",
@@ -1824,8 +1952,16 @@
         "composite": 62,
         "timing": 52
       },
-      "outcomes": {},
-      "episodeDays": 11
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-22",
+          "exitPrice": 19990.0,
+          "return": -1.14,
+          "relativeReturn": null,
+          "success": false
+        }
+      },
+      "episodeDays": 12
     },
     "strong_signal:ADM:2026-07-15": {
       "ticker": "ADM",
@@ -1840,8 +1976,16 @@
         "composite": 67,
         "timing": 58
       },
-      "outcomes": {},
-      "episodeDays": 19
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-22",
+          "exitPrice": 3618.0,
+          "return": 0.22,
+          "relativeReturn": null,
+          "success": true
+        }
+      },
+      "episodeDays": 20
     },
     "strong_signal:NABTESCO:2026-07-15": {
       "ticker": "NABTESCO",
@@ -1856,7 +2000,15 @@
         "composite": 34,
         "timing": 44
       },
-      "outcomes": {},
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-22",
+          "exitPrice": 4938.0,
+          "return": -5.0,
+          "relativeReturn": null,
+          "success": false
+        }
+      },
       "episodeDays": 14
     },
     "strong_signal:KEYENCE:2026-07-15": {
@@ -1872,8 +2024,16 @@
         "composite": 51,
         "timing": 52
       },
-      "outcomes": {},
-      "episodeDays": 24
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-22",
+          "exitPrice": 72110.0,
+          "return": -4.86,
+          "relativeReturn": null,
+          "success": false
+        }
+      },
+      "episodeDays": 25
     },
     "strong_signal:FANUC:2026-07-15": {
       "ticker": "FANUC",
@@ -1888,8 +2048,16 @@
         "composite": 38,
         "timing": 45
       },
-      "outcomes": {},
-      "episodeDays": 10
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-22",
+          "exitPrice": 6873.0,
+          "return": 0.87,
+          "relativeReturn": null,
+          "success": true
+        }
+      },
+      "episodeDays": 11
     },
     "strong_signal:YASKAWA:2026-07-15": {
       "ticker": "YASKAWA",
@@ -1904,8 +2072,16 @@
         "composite": 32,
         "timing": 50
       },
-      "outcomes": {},
-      "episodeDays": 10
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-22",
+          "exitPrice": 5213.0,
+          "return": -2.96,
+          "relativeReturn": null,
+          "success": false
+        }
+      },
+      "episodeDays": 11
     },
     "strong_signal:SOFTBANK:2026-07-15": {
       "ticker": "SOFTBANK",
@@ -1920,7 +2096,15 @@
         "composite": 65,
         "timing": 48
       },
-      "outcomes": {},
+      "outcomes": {
+        "1w": {
+          "exitDate": "2026-07-22",
+          "exitPrice": 5703.0,
+          "return": -11.85,
+          "relativeReturn": null,
+          "success": false
+        }
+      },
       "episodeDays": 1
     },
     "strong_signal:TER:2026-07-15": {
@@ -2033,7 +2217,7 @@
         "timing": 40
       },
       "outcomes": {},
-      "episodeDays": 21
+      "episodeDays": 22
     },
     "caution:META:2026-07-16": {
       "ticker": "META",
@@ -2065,7 +2249,7 @@
         "timing": 58
       },
       "outcomes": {},
-      "episodeDays": 7
+      "episodeDays": 8
     },
     "caution:RDDT:2026-07-16": {
       "ticker": "RDDT",
@@ -2097,7 +2281,7 @@
         "timing": 38
       },
       "outcomes": {},
-      "episodeDays": 17
+      "episodeDays": 18
     },
     "caution:HARMONIC:2026-07-17": {
       "ticker": "HARMONIC",
@@ -2113,7 +2297,7 @@
         "timing": 38
       },
       "outcomes": {},
-      "episodeDays": 15
+      "episodeDays": 16
     },
     "strong_signal:RGTI:2026-07-17": {
       "ticker": "RGTI",
@@ -2213,7 +2397,7 @@
         "timing": 43
       },
       "outcomes": {},
-      "episodeDays": 12
+      "episodeDays": 13
     },
     "strong_signal:MOGA:2026-07-18": {
       "ticker": "MOGA",
@@ -2229,7 +2413,7 @@
         "timing": 50
       },
       "outcomes": {},
-      "episodeDays": 12
+      "episodeDays": 13
     },
     "strong_signal:WM:2026-07-18": {
       "ticker": "WM",
@@ -2245,7 +2429,7 @@
         "timing": 41
       },
       "outcomes": {},
-      "episodeDays": 7
+      "episodeDays": 8
     },
     "strong_signal:LHX:2026-07-18": {
       "ticker": "LHX",
@@ -2261,7 +2445,7 @@
         "timing": 37
       },
       "outcomes": {},
-      "episodeDays": 7
+      "episodeDays": 8
     },
     "strong_signal:MNST:2026-07-18": {
       "ticker": "MNST",
@@ -2277,7 +2461,7 @@
         "timing": 31
       },
       "outcomes": {},
-      "episodeDays": 7
+      "episodeDays": 8
     },
     "strong_signal:CRWV:2026-07-18": {
       "ticker": "CRWV",
@@ -2293,7 +2477,7 @@
         "timing": 28
       },
       "outcomes": {},
-      "episodeDays": 7
+      "episodeDays": 8
     },
     "strong_signal:SOF:2026-07-18": {
       "ticker": "SOF",
@@ -2309,7 +2493,7 @@
         "timing": 32
       },
       "outcomes": {},
-      "episodeDays": 7
+      "episodeDays": 8
     },
     "strong_signal:MC:2026-07-20": {
       "ticker": "MC",
@@ -2325,7 +2509,7 @@
         "timing": 17
       },
       "outcomes": {},
-      "episodeDays": 6
+      "episodeDays": 7
     },
     "strong_signal:NKE:2026-07-20": {
       "ticker": "NKE",
@@ -2341,7 +2525,7 @@
         "timing": 20
       },
       "outcomes": {},
-      "episodeDays": 1
+      "episodeDays": 2
     },
     "strong_signal:AAPL:2026-07-20": {
       "ticker": "AAPL",
@@ -2357,7 +2541,7 @@
         "timing": 48
       },
       "outcomes": {},
-      "episodeDays": 3
+      "episodeDays": 4
     }
   },
   "accuracy": {
@@ -2387,10 +2571,10 @@
     },
     "strong_signal": {
       "1w": {
-        "n": 49,
-        "avgReturn": -2.32,
-        "avgRelativeReturn": -2.47,
-        "accuracy": 42.9,
+        "n": 62,
+        "avgReturn": -2.29,
+        "avgRelativeReturn": -2.34,
+        "accuracy": 41.9,
         "status": "ok",
         "accuracyShown": true
       },
@@ -2412,10 +2596,10 @@
     },
     "caution": {
       "1w": {
-        "n": 8,
-        "avgReturn": 5.34,
-        "avgRelativeReturn": null,
-        "status": "te weinig data (8/20)",
+        "n": 18,
+        "avgReturn": 2.96,
+        "avgRelativeReturn": 0.88,
+        "status": "te weinig data (18/20)",
         "accuracyShown": false
       },
       "4w": {
@@ -2462,22 +2646,22 @@
       },
       {
         "action": "VERKOOP",
-        "n": 18,
-        "pct": 22.0,
-        "verdict": "discriminerend",
-        "color": "green"
-      },
-      {
-        "action": "LICHT VERKOOP",
-        "n": 9,
-        "pct": 11.0,
+        "n": 17,
+        "pct": 20.7,
         "verdict": "discriminerend",
         "color": "green"
       },
       {
         "action": "STERK KOOP",
-        "n": 7,
-        "pct": 8.5,
+        "n": 8,
+        "pct": 9.8,
+        "verdict": "discriminerend",
+        "color": "green"
+      },
+      {
+        "action": "LICHT VERKOOP",
+        "n": 8,
+        "pct": 9.8,
         "verdict": "discriminerend",
         "color": "green"
       },
@@ -2490,8 +2674,8 @@
       },
       {
         "action": "NEUTRAAL",
-        "n": 1,
-        "pct": 1.2,
+        "n": 2,
+        "pct": 2.4,
         "verdict": "zeldzaam (weinig observaties)",
         "color": "gray"
       }
@@ -2511,24 +2695,24 @@
         "key": "qual",
         "cells": [
           1.0,
-          0.18,
-          0.3,
-          0.37,
-          -0.22,
-          0.79,
-          0.48
+          0.19,
+          0.31,
+          0.38,
+          -0.27,
+          0.8,
+          0.49
         ]
       },
       {
         "label": "Waardering",
         "key": "val",
         "cells": [
-          0.18,
+          0.19,
           1.0,
-          -0.08,
-          -0.26,
-          0.12,
-          0.68,
+          -0.17,
+          -0.23,
+          0.05,
+          0.67,
           0.71
         ]
       },
@@ -2536,64 +2720,64 @@
         "label": "Timing",
         "key": "tim",
         "cells": [
-          0.3,
-          -0.08,
+          0.31,
+          -0.17,
           1.0,
-          0.67,
-          0.14,
-          0.4,
-          -0.15
+          0.77,
+          -0.05,
+          0.36,
+          -0.29
         ]
       },
       {
         "label": "Trend",
         "key": "trd",
         "cells": [
-          0.37,
-          -0.26,
-          0.67,
+          0.38,
+          -0.23,
+          0.77,
           1.0,
-          -0.47,
-          0.26,
-          -0.5
+          -0.51,
+          0.31,
+          -0.49
         ]
       },
       {
         "label": "Instap",
         "key": "ent",
         "cells": [
-          -0.22,
-          0.12,
-          0.14,
-          -0.47,
+          -0.27,
+          0.05,
+          -0.05,
+          -0.51,
           1.0,
-          -0.03,
-          0.5
+          -0.15,
+          0.44
         ]
       },
       {
         "label": "Composiet",
         "key": "comp",
         "cells": [
-          0.79,
-          0.68,
-          0.4,
-          0.26,
-          -0.03,
+          0.8,
+          0.67,
+          0.36,
+          0.31,
+          -0.15,
           1.0,
-          0.67
+          0.64
         ]
       },
       {
         "label": "Koopkans",
         "key": "opp",
         "cells": [
-          0.48,
+          0.49,
           0.71,
-          -0.15,
-          -0.5,
-          0.5,
-          0.67,
+          -0.29,
+          -0.49,
+          0.44,
+          0.64,
           1.0
         ]
       }
@@ -2614,7 +2798,7 @@
     "KO": "sig:strong_signal:BUY",
     "MC": "sig:strong_signal:SELL",
     "LHX": "sig:strong_signal:SELL",
-    "MOGA": "sig:strong_signal:SELL",
+    "MOGA": "sig:strong_signal:BUY",
     "TDG": "sig:strong_signal:SELL",
     "KTOS": "sig:strong_signal:SELL",
     "RKLB": "sig:strong_signal:SELL",
@@ -2636,7 +2820,7 @@
     "MTLS": null,
     "SNAP": null,
     "NVDA": "sig:strong_signal:SELL",
-    "NKE": null,
+    "NKE": "sig:strong_signal:SELL",
     "DIE": null,
     "SOF": "sig:strong_signal:SELL",
     "AIR": "sig:strong_signal:SELL",
@@ -2825,6 +3009,95 @@
         "EL": "LICHT VERKOOP",
         "META": "LICHT VERKOOP",
         "VST": "LICHT VERKOOP",
+        "COPX": null,
+        "ROBO": null,
+        "MSTR": "VERKOOP",
+        "AAPL": "STERK KOOP",
+        "NFLX": "STERK VERKOOP",
+        "DIS": "VERKOOP",
+        "BLK": "KOOP",
+        "BABA": "STERK VERKOOP",
+        "NABTESCO": "KOOP",
+        "HARMONIC": "CAUTION (overextended)",
+        "KEYENCE": "STERK KOOP",
+        "FANUC": "STERK VERKOOP",
+        "YASKAWA": "STERK VERKOOP",
+        "SOFTBANK": "NEUTRAAL",
+        "ROK": "KOOP",
+        "TER": "KOOP",
+        "ISRG": "STERK VERKOOP",
+        "CGNX": "KOOP",
+        "NOVT": "STERK KOOP",
+        "ANET": "KOOP",
+        "HOOD": "KOOP",
+        "TSCO": "STERK VERKOOP",
+        "ODFL": "STERK KOOP",
+        "HWM": "KOOP",
+        "SNDK": "LICHT VERKOOP",
+        "IONQ": "VERKOOP",
+        "RGTI": "VERKOOP",
+        "QBTS": "VERKOOP",
+        "UBTECH": "VERKOOP",
+        "SYM": "STERK VERKOOP",
+        "SERV": "VERKOOP",
+        "RR": "VERKOOP",
+        "PL": "VERKOOP",
+        "RDDT": "KOOP",
+        "NOW": "VERKOOP",
+        "GILD": "KOOP",
+        "DDOG": "KOOP",
+        "ARCC": "LICHT VERKOOP",
+        "ONON": "VERKOOP",
+        "ARCG": "KOOP"
+      },
+      "pick": "RDDT"
+    },
+    "2026-07-22": {
+      "verdicts": {
+        "WM": "STERK VERKOOP",
+        "PLTR": "STERK VERKOOP",
+        "CAT": "STERK VERKOOP",
+        "ASML": "CAUTION (overextended)",
+        "ASMI": "KOOP",
+        "MU": "CAUTION (overextended)",
+        "GOOGL": "STERK VERKOOP",
+        "AMZN": "KOOP",
+        "ORCL": "STERK VERKOOP",
+        "KO": "STERK KOOP",
+        "MC": "STERK VERKOOP",
+        "LHX": "STERK VERKOOP",
+        "MOGA": "STERK KOOP",
+        "TDG": "STERK VERKOOP",
+        "KTOS": "STERK VERKOOP",
+        "RKLB": "STERK VERKOOP",
+        "OPEN": "KOOP",
+        "SDGR": "KOOP",
+        "BNGO": "NEUTRAAL",
+        "GAW": "STERK VERKOOP",
+        "MNST": "STERK VERKOOP",
+        "V": "LICHT VERKOOP",
+        "KPG": "VERKOOP",
+        "ADM": "STERK KOOP",
+        "AON": "LICHT VERKOOP",
+        "MELI": "VERKOOP",
+        "III": "VERKOOP",
+        "SHOP": "LICHT VERKOOP",
+        "NET": "STERK KOOP",
+        "CRWV": "STERK VERKOOP",
+        "MSFT": "VERKOOP",
+        "MTLS": "KOOP",
+        "SNAP": "VERKOOP",
+        "NVDA": "STERK VERKOOP",
+        "NKE": "STERK VERKOOP",
+        "DIE": "LICHT VERKOOP",
+        "SOF": "STERK VERKOOP",
+        "AIR": "STERK VERKOOP",
+        "ALFEN": "KOOP",
+        "LOTB": "KOOP",
+        "VOW": "VERKOOP",
+        "EL": "LICHT VERKOOP",
+        "META": "LICHT VERKOOP",
+        "VST": "KOOP",
         "COPX": null,
         "ROBO": null,
         "MSTR": "VERKOOP",
